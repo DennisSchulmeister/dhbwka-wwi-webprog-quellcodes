@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Einzelne DOM-Elemente auslesen</title>
+    </head>
+    <body>
+        <h1>Einzelne DOM-Elemente auslesen</h1>
+        <p id="hinweis">
+            Klicke einen der beiden Knöpfe.
+        </p>
+
+        <button onclick="getElementByIdClicked()">Element mit ID „hinweis”</button>
+        <button onclick="querySelectorClicked1()">Das erste &lt;h1&gt;</button>
+        <button onclick="querySelectorClicked2()">Das erste &lt;h2&gt;</button>
+
+        <script>
+            getElementByIdClicked = () => {
+                let hinweis = document.getElementById("hinweis");
+                alert(hinweis.outerHTML);
+            }
+
+            querySelectorClicked1 = () => {
+                let heading = document.querySelector("h1")
+                alert(heading.outerHTML);
+            }
+
+            querySelectorClicked2 = () => {
+                let heading = document.querySelector("h2")
+                // heading ist null !!
+                alert(heading);
+            }
+        </script>
+    </body>
+</html>

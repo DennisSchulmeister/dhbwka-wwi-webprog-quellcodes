@@ -1,0 +1,70 @@
+/**
+ * Stylesheet zur Klasse PaeeList: Adressübersicht
+ *
+ * Hier wird das Aussehen der Seite mit der Adressübersicht definiert. Da
+ * sich die CSS-Regeln allerdings global auf die ganz Anwendung auswirken,
+ * steht vor jeder Regel #main-page-list, damit nur der Inhalt in diesem
+ * Element gestyled wird.
+ *
+ * Die längste Zeit war dies die einzige Möglichkeit, CSS-Regeln auf einzelne
+ * Teile einer Seite zu beschränken. Sobald sich die "Shadow DOM"-Spezifikation
+ * stabilisiert, wird es hier in Zusammenhang mit JavaScript weitere, elegantere
+ * Möglichkeiten geben.
+ */
+
+/* LISTENEINTRÄGE */
+#main-page-list ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#main-page-list li {
+    margin: 0;
+    padding: 1em;
+    padding-bottom: 0.5em;
+
+    background-color: white;
+    transition: background-color 0.5s;
+
+    border: 0px solid lightgrey;
+    border-bottom-width: 1px;
+}
+
+#main-page-list li:hover {
+    background-color: #fafafa;
+}
+
+#main-page-list .name {
+    font-size: 150%;
+}
+
+/* AKTIONSBUTTONS */
+#main-page-list .actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+#main-page-list .actions > div {
+    padding: 0.5em;
+    margin: 0.5em;
+
+    background-color: #e0e0e0;
+    transition: background-color 0.5s;
+
+    flex: 1;
+    text-align: center;
+}
+
+#main-page-list .actions > div:first-child {
+    margin-left: 0;
+}
+
+#main-page-list .actions > div:last-child {
+    margin-right: 0;
+}
+
+#main-page-list .actions > div:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}

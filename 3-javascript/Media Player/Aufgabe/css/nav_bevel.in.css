@@ -1,0 +1,187 @@
+/*
+ * 3D NAVIGATION
+ */
+@nav_fg: #F7F7F7;
+@nav_hover: #40A4D1;
+@nav_active: #FF7300;
+@nav_active_hover: #FFAF00;
+@nav_padding: 1em;
+
+nav.bevel {
+    z-index: 999;   /* Due to skrollr.js */
+
+    display: inline-block;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    box-sizing: border-box;
+
+    padding: @nav_padding;
+
+    /* http://www.colorzilla.com/gradient-editor/#222932+0,34404e+48,262e38+100;Custom */
+    background: rgb(34,41,50);
+    background: -moz-linear-gradient(top, rgba(34,41,50,1) 0%, rgba(52,64,78,1) 48%, rgba(38,46,56,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(34,41,50,1)), color-stop(48%,rgba(52,64,78,1)), color-stop(100%,rgba(38,46,56,1)));
+    background: -webkit-linear-gradient(top, rgba(34,41,50,1) 0%,rgba(52,64,78,1) 48%,rgba(38,46,56,1) 100%);
+    background: -o-linear-gradient(top, rgba(34,41,50,1) 0%,rgba(52,64,78,1) 48%,rgba(38,46,56,1) 100%);
+    background: -ms-linear-gradient(top, rgba(34,41,50,1) 0%,rgba(52,64,78,1) 48%,rgba(38,46,56,1) 100%);
+    background: linear-gradient(to bottom, rgba(34,41,50,1) 0%,rgba(52,64,78,1) 48%,rgba(38,46,56,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222932', endColorstr='#262e38',GradientType=0 );
+
+    box-shadow:
+        inset 0.1em 0.1em 0.1em rgba(255,255,255, 0.4),
+        inset -0.1em -0.1em 0.1em rgba(0,0,0, 0.6),
+        0.25em 0.25em 0.25em -0.1em rgba(0,0,0, 0.6);
+
+    color: @nav_fg;
+    font-size: 11pt;
+    text-shadow:
+        0px -1px 0 rgba(0,0,0, 0.6),
+        1px 1px 0 rgba(0,0,0, 0.4);
+
+    ul {
+        display: inline-block;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    ul li {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    ul li:last-child {
+        margin-bottom: 0;
+    }
+
+    a, a:visited {
+        color: @nav_fg;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: @nav_hover;
+    }
+
+    a.active, a.active:visited {
+        color: @nav_active;
+    }
+
+    a.active:hover {
+        color: @nav_active_hover;
+    }
+}
+
+nav.bevel .demo {
+    text-align: center;
+
+    button {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 0.5rem;
+    }
+
+    .status {
+        font-size: small;
+    }
+}
+
+@media (max-width: 899px) {
+    nav.bevel {
+        font-size: 10pt;
+    }
+}
+
+@media (max-width: 480px) {
+    nav.bevel {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+
+        .demo .title {
+            display: none;
+        }
+
+        .menu,
+        .demo {
+            display: inline;
+        }
+
+        .demo button {
+            display: inline;
+            margin-right: 0.5rem;
+        }
+
+        .menu br {
+            display: none;
+        }
+
+        ul li {
+            display: inline;
+            margin: 0;
+            margin-right: 0.5rem;
+        }
+
+        ul li:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+/*
+ * PLAY/STOP BUTTONS
+ */
+nav.bevel {
+    /* Play Button */
+    button.play {
+        font-family: 'WebSymbols';
+        font-size: 26pt;
+        padding-left: 12px;
+        padding-bottom: 4px;
+
+        color: rgba(0,100,0,0.75);
+    }
+
+    button.play:hover {
+        color: rgba(0,150,0,0.75);
+    }
+
+    @media (max-width: 480px) {
+        button.play {
+            font-size: 19pt;
+            padding-left: 10px;
+            padding-bottom: 4px;
+        }
+    }
+
+    /* Stop-Button */
+    @keyframes stop_blink {
+        0%   { color: rgba(0,50,100,0.75); }
+        100% { color: rgba(0,100,200,0.75); }
+
+    }
+
+    button.stop {
+        font-family: 'WebSymbols';
+        font-size: 14pt;
+        padding-right: 4px;
+        padding-bottom: 0px;
+
+        animation: stop_blink 1.25s infinite;
+        animation-timing-function: ease-in-out;
+        animation-direction: alternate;
+    }
+
+    button.stop:hover {
+        color: rgba(0,120,200,0.75) !important;
+    }
+
+    @media (max-width: 480px) {
+        button.stop {
+            font-size: 12pt;
+        }
+    }
+}

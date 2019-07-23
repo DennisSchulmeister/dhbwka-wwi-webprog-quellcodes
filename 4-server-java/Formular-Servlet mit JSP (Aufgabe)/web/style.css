@@ -1,0 +1,46 @@
+html, body {
+    font-family: sans-serif;
+    font-size: 12pt;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-image: url(https://picsum.photos/1024/?image=1067);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: rgba(255,255,255,0.8);
+    border-radius: 0.5em;
+    padding: 1em;
+    margin: 2em;
+}
+
+h1, h2 {
+    color: crimson;
+    text-shadow: 0 0 1px rgba(0,0,0,0.5);
+    margin: 0 0 0.5em 0;
+}
+
+h2 {
+    color: deepskyblue;
+}
+
+input[type="text"] {
+    display: block;
+    width: 25em;
+    box-sizing: border-box;
+    border: 1px solid grey;
+    margin-bottom: 0.5em;
+}

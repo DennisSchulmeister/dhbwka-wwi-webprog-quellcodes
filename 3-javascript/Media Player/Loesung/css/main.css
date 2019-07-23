@@ -1,0 +1,87 @@
+/*
+ * SCHRIFTARTEN
+ */
+@font-face {
+    font-family: 'Abeezee';
+    src: url('../font/abeezee/abeezee-regular-webfont.eot');
+    src: url('../font/abeezee/abeezee-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/abeezee/abeezee-regular-webfont.woff2') format('woff2'),
+         url('../font/abeezee/abeezee-regular-webfont.woff') format('woff'),
+         url('../font/abeezee/abeezee-regular-webfont.ttf') format('truetype'),
+         url('../font/abeezee/abeezee-regular-webfont.svg#abeezeeregular') format('svg');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'WebSymbols';
+    src: url('../font/websymbols/websymbols-regular-webfont.eot');
+    src: url('../font/websymbols/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/websymbols/websymbols-regular-webfont.woff2') format('woff2'),
+         url('../font/websymbols/websymbols-regular-webfont.woff') format('woff'),
+         url('../font/websymbols/websymbols-regular-webfont.ttf') format('truetype'),
+         url('../font/websymbols/websymbols-regular-webfont.svg#web_symbolsregular') format('svg');
+}
+
+/*
+ * ALLGEMEINES LAYOUT
+ */
+html, body {
+    font-family: 'ABeeZee', sans-serif;'
+    font-size: 14pt;
+
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    background: linear-gradient(135deg, rgba(214,240,253,1) 0%,rgba(242,249,254,1) 100%);
+}
+
+#controls {
+    position: fixed;
+}
+
+header, main {
+    padding-left: 9em;
+    padding-right: 1em;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    height: 4em;
+    overflow: hidden;
+    z-index: 100;
+
+    background: rgb(35, 35, 35);
+    color: skyblue;
+
+    border: 0px solid black;
+    border-bottom-width: 1px;
+}
+
+header h1 {
+    margin: 0.5em 0 0.5em 0;
+}
+
+main {
+    padding-top: 5em;
+    padding-bottom: 1em;
+}
+
+/*
+ * CURSOR FIX FÜR DIE STEUERELEMENTE
+ */
+#controls button,
+#controls a {
+    cursor: pointer;
+}
+
+/*
+ * HILFSKLASSEN
+ */
+.invisible {
+    display: none;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Aussehen verändern mit JavaScript</title>
+        <style>
+            img {
+                display: block;
+                width: 24em;
+                transition: width 0.5s;
+
+                padding: 0.25em;
+                background: #F0F0F0;
+                border: 1px solid #A0A0A0;
+
+                margin-bottom: 1em;
+            }
+
+            body {
+                transition: background-color 0.5s, color 0.5s;
+            }
+            body.dark {
+                background: black;
+                color: white;
+            }
+            body.dark img {
+                background: #A0A0A0;
+                border-color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Aussehen verändern mit JavaScript</h1>
+
+        <img src="img/preview1.jpg" />
+        <button onclick="resizeImage(2)">Größer</button>
+        <button onclick="resizeImage(-2)">Kleiner</button>
+        <button onclick="toggleBackground(event)">Licht aus!</button>
+
+        <script>
+            // Am Anfang ist das Bild laut Stylesheet 24em breit
+            let width = 24;
+
+            // Funktion zum Vergrößern oder Verkleinern des Bilds
+            let resizeImage = delta => {
+                width += delta;
+                width = Math.max(width, 10);
+
+                let imageElement = document.querySelector("img");
+                imageElement.style.width = width + "em";
+            };
+
+            // Funktion zum Umschalten des Hintergrunds
+            let toggleBackground = event => {
+                let bodyElement = document.querySelector("body");
+
+                if (bodyElement.classList.contains("dark")) {
+                    bodyElement.classList.remove("dark");
+                    event.target.textContent = "Licht aus!";
+                } else {
+                    bodyElement.classList.add("dark");
+                    event.target.textContent = "Licht an!";
+                }
+            };
+        </script>
+    </body>
+</html>

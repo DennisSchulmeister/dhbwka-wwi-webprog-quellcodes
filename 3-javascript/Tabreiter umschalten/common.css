@@ -1,0 +1,53 @@
+html, body {
+    font-family: sans-serif;
+    font-size: 12pt;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-image: url(img/header.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+    padding-bottom: 7%;
+    position: relative;
+}
+
+header .tab-items {
+    position: absolute;
+    bottom: 0;
+}
+
+header h1,
+header h2 {
+    margin: 0;
+    color: white;
+}
+
+.container {
+    width: 100%;
+    max-width: 70em;
+    margin: 0 auto;
+}
+
+.padding-1 {
+    padding: 1em;
+}
+
+.button {
+    display: inline-block;
+    background-color: darkred;
+    transition: background-color 0.1s;
+    color: white;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    padding: 0.75em;
+}
+
+.button:hover {
+    background-color: #c70000;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript und HTML in einer Datei</title>
+        <meta charset="utf-8" />
+
+        <style>
+            html, body {
+                font-size: 16pt;
+                font-family: sans-serif;
+            }
+
+            button {
+                font-size: 150%;
+                background-color: #353F8E;
+                color: white;
+                border: none;
+            }
+
+            button:hover,
+            button:active,
+            button:focus,
+            button::-moz-focus-inner {
+                outline: 0;
+                border: 0;
+            }
+
+            #ergebnis {
+                font-weight: bold;
+                color: crimson;
+                margin-top: 1em;
+            }
+        </style>
+
+        <script>
+            window.addEventListener("load", () => {
+                let klickMichButton = document.getElementById("klick-mich-button");
+                let ergebnisDiv = document.getElementById("ergebnis");
+                let anzahl = 0;
+
+                klickMichButton.addEventListener("click", () => {
+                    anzahl++;
+                    ergebnisDiv.textContent = `Du hast mich ${anzahl} mal angeklickt.`;
+
+                    if (anzahl > 2) {
+                        ergebnisDiv.innerHTML += "<br />"
+                                           + "Du hast einen einfachen Button sehr glücklich gemacht.";
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <button id="klick-mich-button">Klick mich</button>
+        <div id="ergebnis"></div>
+    </body>
+</html>

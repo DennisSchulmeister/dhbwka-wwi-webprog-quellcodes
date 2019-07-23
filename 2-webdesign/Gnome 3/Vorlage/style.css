@@ -1,0 +1,37 @@
+/*
+ * ALLGEMEINES
+ */
+body {
+    font-family: sans-serif;
+    font-size: 9pt;
+
+    /* Damit der Footer quasi immer bis ganz nach unten geht */
+    background: black;
+}
+
+body, a, a:visited {
+    color: #919191;
+}
+
+a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/*
+ * Navigationsleiste
+ */
+
+
+/*
+ * Hauptbereich mit kleinen Screenshots und Texten
+ */
+main {
+    background: white;
+    color: #555555;
+}
+
+
+/*
+ * Fußbereich mit weiteren Links
+ */

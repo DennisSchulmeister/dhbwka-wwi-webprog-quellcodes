@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Mini-Beispiel für Event Listener</title>
+    </head>
+    <body>
+        <h1>Mini-Beispiel für Event Listener</h1>
+        <button id="button1">Klick doch mal hier …</button>
+        <button onclick="onButtonClicked2()">Oder hier :-)</button>
+
+        <div id="ergebnis"></div>
+
+        <script>
+            window.addEventListener("load", () => {
+                let button1 = document.getElementById("button1");
+
+                button1.addEventListener("click", () => {
+                    let neuesH1Element = document.createElement("h1");
+                    neuesH1Element.textContent = "🛌 Was ist? Warum störst du mich?";
+
+                    let ergebnisDiv = document.getElementById("ergebnis");
+                    ergebnisDiv.appendChild(neuesH1Element);
+                });
+            });
+
+            let onButtonClicked2 = () => {
+                let ergebnisDiv = document.getElementById("ergebnis");
+                ergebnis.innerHTML += "<h1>🚪 Keiner zuhause!</h1>";
+            };
+        </script>
+    </body>
+</html>

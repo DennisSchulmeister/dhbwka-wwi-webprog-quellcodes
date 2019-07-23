@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Media Player</title>
+        <link rel="shortcut icon" href="img/favicon.png" />
+
+        <link rel="stylesheet" href="css/nav_bevel.css" />
+        <link rel="stylesheet" href="css/buttons.css" />
+        <link rel="stylesheet" href="css/tiles.css" />
+        <link rel="stylesheet" href="css/list.css" />
+        <link rel="stylesheet" href="css/main.css" />
+
+        <script src="js/tile_view.js"></script>
+        <script src="js/list_view.js"></script>
+        <script src="js/player.js"></script>
+
+        <script>
+            window.addEventListener("load", () => {
+                // ACHTUNG: Der AJAX-Aufruf funktioniert nur, wenn die Seite von einem Webserver
+                // geladen wird. Im Atom-Editor können Sie hierfür das Paket „local-web-server”
+                // installieren und dann im Menü unter „Packages → Local Web Server → Start” den
+                // Webserver starten.
+                let prefix = "../Songs";
+
+                let ajax = new XMLHttpRequest();
+                ajax.open("GET", `${prefix}/playlist.json`);
+                ajax.responseType = "json";
+
+                ajax.addEventListener("load", () => {
+                    if (ajax.status == 200) {
+                        let playlist = ajax.response;
+                        let player = new Player(playlist, prefix);
+                    } else {
+                        alert("Fehler beim Laden der Playlist. Siehe Konsole.");
+                        console.error(ajax);
+                    }
+                });
+
+                ajax.send();
+            });
+        </script>
+    </head>
+    <body>
+        <!-- Steuerelemente -->
+        <nav id="controls" class="bevel">
+            <div class="demo">
+                <button class="round play">&#93;</button>
+                <button class="round stop invisible">&#9724;</button>
+                <div class="status">Gestoppt</div>
+            </div>
+            <div class="menu">
+                <br/>
+
+                <ul>
+                    <li class="show-tiles">
+                        <a class="menu_item">Kacheln</a>
+                    </li>
+                    <li class="show-list">
+                        <a class="menu_item">Liste</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Kopfzeile mit dem aktuellen Songtitel -->
+        <header>
+            <h1></h1>
+        </header>
+
+        <!-- Hauptbereich mit der Songauswahl -->
+        <main></main>
+    </body>
+</html>

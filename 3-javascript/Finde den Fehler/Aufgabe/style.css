@@ -1,0 +1,47 @@
+html {
+    font-size: 16pt;
+    font-family: sans-serif;
+
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+    color: white;
+
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 1em;
+}
+
+h1 {
+    color: gold;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.75);
+    margin: 0;
+}
+
+#message {
+    margin-bottom: 1em;
+}
+
+#cards > img {
+    padding: 0.2em;
+    background: #F1F1F1;
+    border: 1px solid #4D4D4D;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+
+    box-sizing: border-box;
+    display: inline-block;
+    width: 100%;
+    max-width: 15em;
+
+    transition: transform 0.75s, box-shadow 0.75s, z-index 0.75s;
+    cursor: pointer;
+}
+
+#cards > img:hover {
+    transform: scale(1.05) rotate(1deg);
+    box-shadow: 6px 6px 6px rgba(0,0,0,0.5);
+    z-index: 75;
+}

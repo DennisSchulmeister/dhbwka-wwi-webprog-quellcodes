@@ -1,0 +1,125 @@
+/*
+ * ALLGEMEINES
+ */
+body {
+    font-family: sans-serif;
+    font-size: 9pt;
+
+    /* Damit der Footer quasi immer bis ganz nach unten geht */
+    background: black;
+}
+
+body, a, a:visited {
+    color: #919191;
+}
+
+a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+section {
+    padding: 2em;
+}
+
+h3 {
+    font-size: 180%;
+}
+
+/*
+ * Navigationsleiste
+ */
+#logo {
+    width: 5em;
+}
+
+#nav-main {
+    background: #4A86CF;
+    font-size: 110%;
+    padding: 0;
+}
+
+#nav-main,
+#nav-main a,
+#nav-main a:visited,
+#nav-main button {
+    color: #F1F4F8;
+}
+
+#nav-main a:hover {
+    color: #3F4D5F;
+}
+
+#nav-main .active {
+    background: #3968A1;
+}
+
+#nav-main li:hover {
+    background: #6E9ED9;
+}
+
+/*
+ * Hauptbereich mit kleinen Screenshots und Texten
+ */
+main {
+    background: white;
+    color: #555555;
+}
+
+section.details {
+    border: 0px solid #C9C9C9;
+    border-top-width: 1px;
+    font-size: 11pt;
+}
+
+section.details h4 {
+    color: black;
+    font-weight: bold;
+}
+
+#more-info h4 {
+    color: #0489B7;
+    font-weight: bold;
+}
+
+#more-info a,
+#more-info a:visited {
+    color: #5474A3;
+    text-decoration: underline;
+}
+
+#more-info a:hover {
+    color: #5A82B5;
+}
+
+/*
+ * Fußbereich mit weiteren Links
+ */
+footer {
+    font-size: small;
+
+    padding-top: 2em;
+    padding-bottom: 1em;
+}
+
+footer .socialmedia {
+    font-size: 200%;
+}
+
+footer .socialmedia a:hover {
+    text-decoration: none;
+}
+
+footer .bold {
+    font-weight: bold;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer p {
+    margin-top: 3rem;
+    font-size: smaller;
+}

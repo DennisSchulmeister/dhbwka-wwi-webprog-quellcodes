@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Einzelne DOM-Elemente auslesen</title>
+    </head>
+    <body>
+        <h1>Mehrere DOM-Elemente auslesen</h1>
+        <ol>
+            <li class="erledigt">
+                Einführung in die Vorlesung
+            </li>
+            <li class="erledigt">
+                Grundlagen des Web
+            </li>
+            <li class="erledigt">
+                Einstieg in HTML
+            </li>
+            <li class="in-arbeit">
+                Layouts erstellen mit CSS
+            </li>
+            <li class="in-arbeit">
+                Responsive Webdesign
+            </li>
+        </ol>
+
+        <button onclick="getElementsByClassNameClicked()">Alle mit Klasse „erledigt”</button>
+        <button onclick="querySelectorAllClicked1()">Alle li.in-arbeit</button>
+        <button onclick="querySelectorAllClicked2()">Alle li.nicht-in-arbeit</button>
+
+        <script>
+            getElementsByClassNameClicked = () => {
+                let result = document.getElementsByClassName("erledigt");
+                showResult(result);
+            }
+
+            querySelectorAllClicked1 = () => {
+                let result = document.querySelectorAll("li.in-arbeit");
+                showResult(result);
+            }
+
+            querySelectorAllClicked2 = () => {
+                let result = document.querySelectorAll("li.nicht-in-arbeit");
+                showResult(result);
+            }
+
+            showResult = domNodes => {
+                console.log(domNodes);
+                let text = `Anzahl gefunden: ${domNodes.length}\n\n`;
+
+                for (let i = 0; i < domNodes.length; i++) {
+                    text += domNodes.item(i).outerHTML + "\n\n";
+                }
+
+                alert(text)
+            }
+        </script>
+    </body>
+</html>

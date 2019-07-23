@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>🐶 Tabreiter nachbauen mit JavaScript</title>
+
+        <link rel="stylesheet" href="common.css" />
+        <link rel="stylesheet" href="tabpages.css" />
+        <script src="tabpages.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="container padding-1">
+                <h1>DER HUND</h1>
+                <h2>Der beste Freund des Menschen</h2>
+
+                <ul class="tab-items">
+                    <!-- Lasche 1: Über den Haushund -->
+                    <li class="tab-item active" data-tab-content="#tabpage-1">
+                        Über den Haushund
+                        <div class="tab-indicator"></div>
+                    </li>
+                    <!-- Lasche 2: Hunderassen -->
+                    <li class="tab-item" data-tab-content="#tabpage-2">
+                        Hunderassen
+                        <div class="tab-indicator"></div>
+                    </li>
+                    <!-- Lasche 3: Ernährung -->
+                    <li class="tab-item" data-tab-content="#tabpage-3">
+                        Ernährung
+                        <div class="tab-indicator"></div>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <main>
+            <div class="container padding-1">
+                <!-- Erste Seite: Über den Haushund -->
+                <div id="tabpage-1" class="tab-page">
+                    <h2>Wie der Mensch, so der Hund</h2>
+                    <p>
+                        Der Haushund (Canis lupus familiaris) ist ein Haustier und wird als Heim- und Nutztier gehalten. Seine wilde Stammform ist der Wolf, dem er als Unterart zugeordnet wird. Wann die Domestizierung stattfand, ist umstritten; wissenschaftliche Schätzungen variieren zwischen 15.000 und 100.000 Jahren vor unserer Zeit.
+                    </p>
+                    <p>
+                        Im engeren Sinn bezeichnet man als Haushund die Hunde, die überwiegend im Haus gehalten werden, und kennzeichnet damit also eine Haltungsform. Historisch wurde ein Hund, der zur Bewachung des Hauses gehalten wird, als Haushund bezeichnet. Eine weitere Verwendung des Begriffs ist die Einschränkung auf sozialisierte (Haus-)Hunde, also Hunde, die an das Zusammenleben mit Menschen in der menschlichen Gesellschaft gewöhnt und an dieses angepasst sind. Damit wird der Haushund abgegrenzt gegen wild lebende, verwilderte oder streunende Hunde, die zwar auch domestiziert, aber nicht sozialisiert sind.
+                    </p>
+                    <p>
+                        Der Dingo ist ebenfalls ein Haushund, wird jedoch provisorisch als eigenständige Unterart des Wolfes geführt.
+                    </p>
+                    <a class="button" href="#">
+                        Weitere Informationen
+                    </a>
+                </div>
+
+                <!-- Zweite Seite: Hunderassen -->
+                <div id="tabpage-2" class="tab-page">
+                    <h2>Einige Hunderassen</h2>
+                    <p>
+                        Zu den kleinsten anerkannten Hunderassen gehört der Chihuahua (FCI-Nr. 218) mit einem Gewicht von 0,5 bis 3,0 kg und einer Widerristhöhe von unter 20 cm; zu den größten Hunderassen zählen die Deutsche Dogge (FCI-Nr. 235) mit einer Widerristhöhe von mindestens 80 cm bei Rüden und der Irish Wolfhound (FCI-Nr. 160) mit bis zu 95 cm. Zu den seltenen Rassen zählt der Curly Coated Retriever oder auch der aus chinesischer Abstammung hervorgehende und seit mehr als 2000 Jahren dokumentierte Shar Pei.
+                    </p>
+                </div>
+
+                <!-- Dritte Seite: Ernährung -->
+                <div id="tabpage-3" class="tab-page">
+                    <h2>Die richtige Ernährung ist wichtig</h2>
+                    <p>
+                        Hunde sind, wie Wölfe, in der Lage, ihre Ernährung in Grenzen an das Nahrungsangebot anzupassen. Schon Wölfe ernähren sich nicht ausschließlich von Beutetieren (wobei diese, weitgehend vollständig gefressen, bereits pflanzliche Nährstoffe enthalten), sondern fressen – je nach Futterangebot – auch pflanzliche Nahrung wie Wurzeln, Blätter, Gräser oder Früchte. Im Verlaufe seines Zusammenlebens mit dem Menschen hat sich der Hund zunehmend an dessen Ernährung angepasst und wurde zum Allesfresser. Fleisch als alleiniges Futtermittel für Hunde ist daher unangemessen.
+                    </p>
+                    <p>
+                        Eine vollwertige Ernährung der Hunde erfolgt am einfachsten mit qualitativ hochwertigem (industriell gefertigtem) Hundefutter. Diese Fütterung versorgt die Tiere mit allen essentiellen Nahrungsbestandteilen. Manche Hundehalter praktizieren eine Hundeernährung mit spezieller Frischkost (BARF). Ernährungsphysiologisch fragwürdig ist die Ernährung mit Speiseresten, da sie Mangelzustände bewirken kann.
+                    </p>
+                    <p>
+                        Viele menschliche Nahrungs- und Genussmittel sind für Hunde mehr oder wenig giftig, so zum Beispiel Schokolade aufgrund des enthaltenen Theobromins, aber auch Speisezwiebeln, Weintrauben und Rosinen.
+                    </p>
+                    <a class="button" href="#">
+                        Jetzt Hundefutter kaufen
+                    </a>
+                </div>
+
+                <!-- Immer sichtbarer Inhalt -->
+                <p>
+                    <small>
+                        Bildnachweis: <a href="https://pixabay.com/de/hund-traurig-warten-boden-2785074/" target="_blank">Pixabay: Fran_F</a> <br />
+                        Textnachweis: <a href="https://de.wikipedia.org/wiki/Haushund" target="_blank">Wikipedia: Haushund</a> <br />
+                        Layoutidee: <a href="https://www.redhat.com/en/technologies/mobile/application-platform" target="_blank">RedHat</a>
+                    </small>
+                </p>
+            </div>
+        </main>
+    </body>
+</html>

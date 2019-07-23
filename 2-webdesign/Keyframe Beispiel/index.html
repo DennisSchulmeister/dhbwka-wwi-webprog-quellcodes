@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>👻 Beispiel für eine Keyframe-Animation</title>
+
+        <style>
+            html {
+                font-size: 230pt;
+
+                background-image: url(schloss.jpg);
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+
+                min-height: 100%;
+                overflow: hidden;
+            }
+
+            #startpos {
+                position: absolute;
+                top: 15%;
+                left: 15%;
+            }
+
+            @keyframes fliegen {
+                0% {
+                    margin: 0;
+                }
+
+                30% {
+                    margin-left: 2em;
+                    transform: rotate(30deg);
+                }
+
+                60% {
+                    margin-left: 2em;
+                    transform: rotate(-45deg);
+                }
+
+                80% {
+                    margin-left: 1.7em;
+                    margin-top: 1.3em;
+                    transform: rotate(90deg);
+                }
+            }
+
+            #gespenst {
+                animation: fliegen 10s infinite;
+
+                /*
+                animation-name: bounce;
+                animation-duration: 4s;
+                animation-iteration-count: 10;
+                animation-direction: alternate;
+                animation-timing-function: ease-out;
+                animation-delay: 2s;
+                */
+            }
+        </style>
+    </head>
+    <body>
+        <div id="startpos">
+            <div id="gespenst">👻</div>
+        </div>
+    </body>
+</html>

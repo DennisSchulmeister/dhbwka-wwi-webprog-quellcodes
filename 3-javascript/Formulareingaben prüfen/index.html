@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Formulareingaben überprüfen</title>
+
+        <link rel="stylesheet" href="style.css" />
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <h1>Kontaktformular</h1>
+
+        <form
+            onsubmit = "validateForm(event)"
+            action   = "contact-form.php"
+            method   = "POST"
+        >
+            <!-- Vorname und Nachname -->
+            <label for="firstname">
+                Ihr Name:
+                <span class="required">*</span>
+            </label>
+            <div class="side-by-side">
+                <input name="firstname" type="text" placeholder="Vorname" />
+                <input name="lastname" type="text" placeholder="Nachname" />
+            </div>
+
+            <!-- E-Mailadresse -->
+            <label for="email">
+                E-Mail:
+                <span class="required">*</span>
+            </label>
+            <input name="email" type="email" />
+
+            <!-- Auswahlliste für den Betreff -->
+            <label for="subject">
+                Betreff:
+            </label>
+            <select name="subject">
+                <option selected="selected">Allgemeine Anfrage</option>
+                <option>Angebot aus der Werbung</option>
+                <option>Kooperation und Partnerschaft</option>
+            </select>
+
+            <!-- Die Nachricht -->
+            <label for="message">
+                Ihre Nachricht:
+                <span class="required">*</span>
+            </label>
+            <textarea name="message"></textarea>
+
+            <!-- Button zum Abschicken des Formulars -->
+            <input type="submit" value="Abschicken" />
+        </form>
+
+        <!-- Hier wird das Ergebnis der Prüfung angezeigt -->
+        <div id="result"></div>
+    </body>
+</html>

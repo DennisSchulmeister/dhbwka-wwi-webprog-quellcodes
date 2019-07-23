@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Einfacher Parallax-Effekt mit CSS</title>
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+                min-height: 100%;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+
+            section {
+                box-sizing: border-box;
+                width: 100vw;
+                height: 100vh;
+                padding: 1em;
+
+                background-size: cover;
+                background-position: center;
+
+                font-family: sans-serif;
+                font-size: 36pt;
+                font-weight: bold;
+                color: white;
+                text-shadow: 1px 1px black, 2px 2px black, 3px 3px black;
+            }
+
+            section:nth-child(odd) {
+                background-attachment: fixed;
+            }
+        </style>
+    </head>
+    <body>
+        <section style="background-image: url(bg1.jpg)">
+            Außenfasade des Computer History Museum
+        </section>
+        <section style="background-image: url(bg2.jpg)">
+            Cloud Café neben dem Eingang des Computer History Museum
+        </section>
+        <section style="background-image: url(bg3.jpg)">
+            Vasquez Rocks nahe Los Angeles
+        </section>
+    </body>
+</html>

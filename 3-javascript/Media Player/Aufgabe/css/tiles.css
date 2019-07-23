@@ -1,0 +1,51 @@
+.tile {
+    display: inline-block;
+    width: calc(((100vw - 10rem) / 6) - 1rem);
+    height: calc(((100vw - 10rem) / 6) - 5rem);
+    padding: 0.5em;
+    margin: 0.25em;
+
+    border: 1px solid rgb(200, 200, 200);
+    background: white;
+    box-shadow: 0 0 3px rgba(0,0,0,0.25);
+    box-sizing: border-box;
+
+    cursor: pointer;
+    position: relative;
+}
+
+.tile:hover {
+    background-color: rgb(250,250,250);
+    border-color: rgb(170, 170, 170);
+    box-shadow: 0 0 5px rgba(0,0,0,0.25);
+}
+
+.tile * {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+	overflow: hidden;
+}
+
+.tile img {
+    display: block;
+    width: 100%;
+}
+.tile .footer {
+    position: absolute;
+    bottom: 0.5em;
+    width: calc(100% - 1em);
+}
+
+.tile .title {
+    font-weight: bold;
+}
+.tile .artist {
+    color: rgb(120,120,120);
+}
+
+.tile.playing .title {
+    color: rgb(180, 66, 105);
+}
+.tile.playing .artist {
+    color: rgb(166, 125, 140);
+}

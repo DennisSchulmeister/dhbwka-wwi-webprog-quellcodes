@@ -1,0 +1,77 @@
+html {
+    /*background-image: url(bg.jpg);*/
+    background: linear-gradient(135deg, rgba(254,255,255,1) 0%,rgba(210,235,249,1) 100%);
+    height: 100%;
+    
+    font-family: sans-serif;
+    font-size: 12pt;
+}
+
+body {
+    margin: 0;
+}
+
+#formular {
+    width: 100%;
+    padding: 1em;
+    box-sizing: border-box;
+    
+    background-color: #37475a;
+    color: white;
+}
+
+input[type=text],
+textarea {
+    vertical-align: top;
+    
+    font-family: cursive;
+    font-size: 1em;
+    font-weight: normal;
+    
+    width: 35em;
+    box-sizing: border-box;
+    margin-bottom: 1em;
+}
+
+#formular span {
+    display: inline-block;
+    width: 9em;
+    text-align: right;
+    margin-right: 0.5em;
+}
+
+#inhalt {
+    width: 100%;
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    margin-bottom: 0.5em;
+}
+
+#inhalt h1,
+#inhalt h2,
+#inhalt h3 {
+    color: #ff9900;
+}
+
+#inhalt .todo {
+    width: 15em;
+    padding: 0.5em;
+    box-sizing: border-box;
+    
+    border-width: thin;
+    border-style: solid;
+    border-color: #f1da36;
+    
+    background: #fcf6bd;
+    background: linear-gradient(to bottom,  #fcf6bd 0%,#f1da36 100%);
+    
+    box-shadow: 0 0 1px black;
+    
+    display: inline-block;
+    margin-right: 1em;
+    margin-bottom: 1em;
+}

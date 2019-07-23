@@ -1,0 +1,100 @@
+/**
+ * ALLGEMEINE EINSTELLUNGEN
+ */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13pt;
+}
+
+a, a:visited {
+    color: rgb(32, 149, 186);
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(97, 217, 255);
+}
+
+/**
+ * BASISLAYOUT FÜR SMARTPHONES
+ */
+body {
+    margin: 0;
+    padding: 0;
+
+    background: rgb(32, 32, 32);
+    color: rgb(180, 180, 180);
+}
+
+/** Header **/
+header {
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+    color: rgb(173, 10, 10);
+
+    border: 0px solid rgb(190,190,190);
+    border-bottom-width: 1px;
+
+    padding: 0.5rem;
+}
+
+header > h1 {
+    margin: 0;
+}
+
+/** Hauptbereich **/
+section {
+    background: white;
+    color: black;
+}
+
+section main {
+    padding: 0.5rem;
+}
+
+section img {
+    max-width: calc(100% - 1rem);
+    display: block;
+
+    background: white;
+    padding: 0.2em;
+    border: 1px solid rgb(180, 180, 180);
+    border-radius: 0.4em;
+    box-shadow: 1px 1px 4px grey;
+}
+
+/** Navigation **/
+section nav {
+    background-color: rgb(240,240,240);
+    padding: 1rem;
+
+    border: 0px solid rgba(200, 200, 200);
+    border-bottom-width: 1px;
+}
+
+section nav h2 {
+    margin: 0 0 0.5em 0;
+    font-size: 100%;
+}
+
+section nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+section nav a,
+section nav a:visited {
+    color: rgb(60,60,60);
+}
+
+section nav a:hover {
+    color: rgb(130,130,130);
+}
+
+/** Footer **/
+footer {
+    font-size: 70%;
+    padding: 1rem;
+}

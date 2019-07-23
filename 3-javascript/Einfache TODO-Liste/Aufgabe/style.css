@@ -1,0 +1,109 @@
+/* Allgemeines */
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    height: 100%;
+
+    font-family: sans-serif;
+    font-size: 11pt;
+}
+
+body {
+    background-image: url(img/bg.jpg);
+}
+
+/* Toolbar */
+#toolbar {
+    background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%);
+    border: 0px solid darkgrey;
+    border-bottom-width: 1px;
+    color: #505050;
+
+    margin: 0;
+    padding: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+#toolbar button,
+#toolbar div {
+    background: none;
+    border: none;
+    outline: 0;
+
+    color: #505050;
+    font-size: 95%;
+
+    padding: 0.75em 0.25em 0.75em 0.25em;
+}
+
+#toolbar button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+}
+
+#toolbar button:active {
+    padding: 0.8em 0.15em 0.7em 0.35em;
+}
+
+#toolbar button:hover,
+#toolbar button:active,
+#toolbar button:focus,
+#toolbar button::-moz-focus-inner {
+    outline: 0;
+    border: 0;
+}
+
+#toolbar .right {
+    float: right;
+}
+
+/* Main Layout */
+main {
+    padding: 1em;
+}
+
+/* Liste der Notizen */
+main > ul {
+    list-style: none;
+    padding: 0;
+}
+
+main > ul > li {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 1em;
+    margin-top: 1em;
+
+    padding: 1em;
+    border: 1px solid rgb(173, 161, 46);
+    background: rgb(245, 238, 70);
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+
+    min-width: 10em;
+    min-height: 10em;
+    max-width: 20em;
+
+    position: relative;
+    padding-bottom: 2.5em;
+}
+
+main > ul > li > p {
+    margin: 0;
+}
+
+main > ul > li > .delete {
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+
+    color: blue !important;
+    text-decoration: underline;
+
+    cursor: pointer;
+}
+
+main > ul > li > .delete:hover {
+    color: rgb(43, 84, 255) !important;
+}

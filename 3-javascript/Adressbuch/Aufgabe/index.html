@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>☎️ Adressbuch</title>
+
+        <!-- Klasse App: Steuert die gesamte Anwendung -->
+        <script src="app.js"></script>
+        <link rel="stylesheet" href="app.css" />
+
+        <!-- Klasse PageList: Stellt die Listenansicht zur Verfügung -->
+        <script src="page-list.js"></script>
+        <link rel="stylesheet" href="page-list.css" />
+
+        <!-- Klasse PageEdit: Stellt das Eingabeformular zur Verfügung -->
+        <script src="page-edit.js"></script>
+        <link rel="stylesheet" href="page-edit.css" />
+
+        <!-- Anwendung starten -->
+        <script>
+            window.addEventListener("load", () => {
+                let pages = [
+                    {
+                        name: "page-list",              // Name zum Aufrufen der Seite
+                        klass: PageList,                // Klasse, die die Seite bereitstellt
+                        label: "Übersicht",             // Bezeichnung der Seite
+                        hidden: false,                  // Seite kann im Menü ausgewählt werden
+                    },
+                    {
+                        name: "page-new",
+                        klass: PageEdit,
+                        label: "Adesse hinzufügen",
+                        hidden: false,                  // Seite kann im Menü ausgewählt werden
+                    },
+                    {
+                        name: "page-edit",
+                        klass: PageEdit,
+                        label: "Adresse bearbeiten",
+                        hidden: true,                   // Seite kann im Menü NICHT ausgewählt werden
+                    },
+                ];
+
+                let app = new App(pages);
+                app.showPage("page-list");
+            });
+        </script>
+    </head>
+    <body>
+        <!-- Kopfbereich mit Tabreitern -->
+        <nav id="app-menu">
+            <ul></ul>
+        </nav>
+
+        <template id="template-app-menu-li">
+            <li data-page-name="$NAME$">
+                <a>$LABEL$</a>
+            </li>
+        </template>
+
+        <!-- Seite: Listenübersicht -->
+        <main id="main-page-list" class="hidden">
+            <ol></ol>
+        </main>
+
+        <template id="template-page-list-empty">
+            <li>
+                <div class="name">
+                    Keine Einträge vorhanden
+                </div>
+            </li>
+        </template>
+
+        <template id="template-page-list-li">
+            <li data-index="$INDEX$">
+                <div class="name">
+                    $LAST_NAME$, $FIRST_NAME$
+                </div>
+                <div class="field phone">
+                    $PHONE$
+                </div>
+                <div class="field email">
+                    $EMAIL$
+                </div>
+                <div class="actions">
+                    <div class="action edit">
+                        <a>🖊️</a>
+                    </div>
+                    <div class="action delete">
+                        <a>🗑️</a>
+                    </div>
+                </div>
+            </li>
+        </template>
+
+        <!-- Seite: Adresse anlegen/bearbeiten -->
+        <main id="main-page-edit" class="hidden">
+        </main>
+
+        <template id="template-page-edit">
+            <div>
+                <div class="form">
+                    <input class="first_name" placeholder="Vorname" value="$FIRST_NAME$" />
+                    <input class="last_name" placeholder="Nachname" value="$LAST_NAME$" />
+                    <input class="phone" placeholder="Telefonnummer" value="$PHONE$" />
+                    <input class="email" placeholder="E-Mailadresse" value="$EMAIL$" />
+                </div>
+                <div class="actions">
+                    <div class="action save">
+                        <a>💾</a>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </body>
+</html>

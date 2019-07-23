@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>🎁 Servlets: Portfolio-Aufgabe</title>
+        <style>
+            html {
+                font-family: sans-serif;
+                font-size: 10pt;
+            }
+
+            @media (min-width: 63em) {
+                html {
+                    font-size: 13pt;
+                    background: rgb(8, 65, 99);
+                }
+
+                section {
+                    background: rgb(245,245,245);
+
+                    width: 60em;
+                    margin: 0 auto;
+                    margin-top: 2em;
+                    margin-bottom: 2em;
+                }
+
+                section > h1 {
+                    font-size: 200%;
+                    margin: 0;
+                }
+
+                section article {
+                    padding: 1em;
+                }
+
+                section p,
+                section h2:first-child,
+                section h3:first-child,
+                section h4:first-child {
+                    margin-top: 0;
+                }
+
+                section h2,
+                section h3,
+                section h4 {
+                    margin-bottom: 0.5em;
+                }
+            }
+
+            h1 {
+                padding: 0.25em;
+                margin-top: 1.5em;
+                color: rgb(193, 29, 29);
+                background: #DFDFDF;
+            }
+
+            h1:first-child {
+                margin-top: 0;
+            }
+
+            a, a:visited {
+                color: #3968A1;
+                text-decoration: underline;
+            }
+
+            a:hover {
+                color: #6E9ED9;
+            }
+
+            li {
+                margin-bottom: 0.5em;
+            }
+
+            .flex {
+                display: flex;
+                margin: 0.5em;
+            }
+
+            .screenshot {
+                flex: 1;
+                box-sizing: border-box;
+                max-width: 100%;
+
+                border: 1px solid #A0A0A0;
+                padding: 0.2em;
+                background: rgba(230,230,230);
+                box-shadow: 0 0 2px rgba(0,0,0,0.5);
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Aufgabe</h1>
+            <article>
+                <p>
+                    Sicher hast du während der Schulzeit viele Comics gelesen. Asterix, Lucky Luke, Donald Duck,
+                    Superman, Clever &amp; Smart und noch viele mehr, die es schon seit Urzeiten gibt. 📚 In dieser
+                    Aufgabe geht es daher darum, mit Servlets und Java Server Pages eine kleine Onlinedatenbank
+                    zu entwickeln, in die du alle deine Lieblingscomics eintragen kannst. 📋
+                </p>
+
+                <p>
+                    Lade dir hierfür von Moodle das Vorlageprojekt herunter und importiere es in Netbeans, indem du
+                    <i>File → Import Project → From ZIP</i> ausführst. Das Projekt enthält bereits folgende
+                    Klassen:
+                </p>
+
+                <ul>
+                    <li>
+                        <tt><b>Comic:</b></tt> Datenklasse mit allen Daten zu einem Comic.
+                    </li>
+                    <li>
+                        <tt><b>Serie:</b></tt> Eine Sammlung von Comics zur gleichen Serie (z.B. alle Asterix-Comics).
+                    </li>
+                    <li>
+                        <tt><b>DatabaseFacade:</b></tt> Hilfsklasse zum Anlegen, Suchen und Löschen von Datenbankeinträgen.
+                    </li>
+                    <li>
+                        <tt><b>UnicodeFilter:</b></tt> Kannst du ignorieren. Stellt sicher, dass Request und Response UTF-8 kodiert sind.
+                    </li>
+                    <li>
+                        <tt><b>IndexServlet:</b></tt> Angefangenes Servlet, das du zu Ende programmieren musst.
+                    </li>
+                </ul>
+
+                <p>
+                    Folgende Anforderungen soll die Seite erfüllen:
+                </p>
+
+                <ol>
+                    <li>
+                        Die Seite soll ein Formular zum Anlegen neuer Comics beinhalten. Das Formular soll dabei alle Felder
+                        der Klasse <tt><b>Comic</b></tt> mit Ausnahme der ID beinhalten.
+                    </li>
+                    <li>
+                        Alle Felder des Formulars sind Pflichtfelder. Bei ungültigen Eingaben sollen entsprechende Fehlermeldungen
+                        angezeigt werden. Der Inhalt des Formulars darf dabei nicht verloren gehen.
+                    </li>
+                    <li>
+                        Eine Meldung soll darauf hinweisen, wenn keine Datensätze vorhanden sind.
+                    </li>
+                    <li>
+                        Die vorhanden Datensätze sollen nach Serie gruppiert werden. Praktischerweise liefert die Methode
+                        <tt><b>this.database.getAllComics()</b></tt> die Datensätze bereits in diesem Format.
+                    </li>
+                    <li>
+                        Über Checkboxen soll es möglich sein, mehrere Comics zu löschen.
+                    </li>
+                </ol>
+
+                <p>
+                    Das Layout der Seite ist zweitranging. Wichtiger ist, dass alles fehlerfrei funktioniert.
+                </p>
+            </article>
+        </section>
+
+        <section>
+            <h1>Screenshots</h1>
+            <article>
+                <div class="flex">
+                    <a href="screenshot1.png" target="_blank">
+                        <img
+                            src   = "screenshot1.png"
+                            alt   = "Am Anfang, wenn es noch keine Einträge gibt"
+                            class = "screenshot"
+                        />
+                    </a>
+
+                    <a href="screenshot2.png" target="_blank">
+                        <img
+                            src   = "screenshot2.png"
+                            alt   = "Fehlermeldungen bei fehlenden Eingaben"
+                            class = "screenshot"
+                        />
+                    </a>
+                </div>
+                <div class="flex">
+                    <a href="screenshot3.png" target="_blank">
+                        <img
+                            src   = "screenshot3.png"
+                            alt   = "Anzeige der vorhandenen Einträge"
+                            class = "screenshot"
+                        />
+                    </a>
+                </div>
+            </article>
+        </section>
+
+        <section>
+            <h1>Hinweise</h1>
+            <article>
+                <ul>
+                    <li>
+                        Du benötigst auf der Seite zwei Formulare. Eines zum Anlegen und eines zum
+                        Löschen von Datensätzen.
+                    </li>
+                    <li>
+                        Mit <code>&lt;input type="hidden" name="aktion" value="anlegen" /&gt;</code>
+                        kannst du dem Server mitteilen, ob das Formular zum Anlegen oder zum Löschen
+                        abgeschickt wurde.
+                    </li>
+                    <li>
+                        Ein Formular kann durchaus mehrere Felder mit gleichem Namen haben. In diesem
+                        Fall musst du die Werte mit <code>request.getParameterValues()</code> auslesen.
+                    </li>
+                    <li>
+                        Bei der Klasse <tt><b>DatabaseFacade</b></tt> handelt es sich um eine Enterprise Java Bean.
+                        Was das genau ist, lernst du im vierten Semester. Innerhalb des Servlets kannst du die Klasse
+                        mit <tt><b>this.database</b></tt> ansprechen.
+                    </li>
+                    <li>
+                        <span style="color: darkred">
+                            Aufgrund eines Bugs in Netbeans und/oder GlassFish kann es leider vorkommen, dass die
+                            Seite hin und wieder nicht richtig funktioniert. 😬 Du erkennst das daran, dass plötzlich
+                            keine Stylesheets mehr geladen werden und die Seite daher komplett ungestyled aussieht.
+                            In diesem Fall hilft ein Neustart von GlassFish. 🐠
+                        </span>
+                    </li>
+                </ul>
+            </article>
+        </section>
+    </body>
+</html>

@@ -1,0 +1,94 @@
+/* Container mit den Tablaschen */
+.tab-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Eine einzelne Tablasche */
+.tab-item {
+    display: block;
+    margin: 0;
+    padding: 0.75em;
+    min-width: 10em;
+
+    background: black;
+
+    border: 0px solid grey;
+    border-bottom-width: 1px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+}
+
+.tab-item,
+.tab-item a,
+.tab-item a:visited {
+    color: #d0d0d0;
+    text-decoration: none;
+}
+
+.tab-item:last-child {
+    border-bottom-width: 0;
+    border-right-width: 0;
+}
+
+@media all and (min-width: 30em) {
+    .tab-items {
+        display: flex;
+    }
+
+    .tab-item {
+        border-bottom-width: 0;
+        border-right-width: 1px;
+    }
+}
+
+.tab-item:hover,
+.tab-item:hover a,
+.tab-item:hover a:visited {
+    color: white;
+}
+
+.tab-item .tab-indicator {
+    margin-top: 0.5em;
+    width: 3em;
+    height: 0.3em;
+    background-color: #b0b0b0;
+}
+
+.tab-item:hover .tab-indicator {
+    background-color: white;
+}
+
+/* Aktive Tablasche */
+.tab-item.active {
+    background: white;
+    font-weight: bold;
+}
+
+.tab-item.active,
+.tab-item.active a,
+.tab-item.active a:visited {
+    color: #404040;
+}
+
+.tab-item.active:hover,
+.tab-item.active:hover a,
+.tab-item.active:hover a:visited {
+    color: black;
+}
+
+.tab-item.active .tab-indicator {
+    background-color: darkred;
+}
+
+.tab-item.active:hover .tab-indicator {
+    background-color: #c70000;
+}
+
+/* Klasse zum Ausblenden der unsichtbaren Tabreiter */
+.tab-page {
+    display: none;
+}

@@ -1,0 +1,30 @@
+[
+    {
+        "artist": "Dennis Schulmeister-Zimolong",
+        "title": "Flying Fool (Demo)",
+        "duration": "3:43",
+        "url": "Flying Fool (Demo).mp3",
+        "cover": "../Songs/bass.jpg"
+    },
+    {
+        "artist": "Dennis Schulmeister-Zimolong",
+        "title": "Like a Falcon in Deep Space",
+        "duration": "3:16",
+        "url": "Like a Falcon in Deep Space.mp3",
+        "cover": "../Songs/synth.jpg"
+    },
+    {
+        "artist": "Dennis Schulmeister-Zimolong",
+        "title": "Some Difference Now (Kurzdemo)",
+        "duration": "1:34",
+        "url": "Some Difference Now (Kurz).mp3",
+        "cover": "../Songs/bass.jpg"
+    },
+    {
+        "artist": "Dennis Schulmeister-Zimolong",
+        "title": "Thank You and Goodbye",
+        "duration": "3:30",
+        "url": "Thank You and Goodbye.mp3",
+        "cover": "../Songs/piano.jpg"
+    }
+]

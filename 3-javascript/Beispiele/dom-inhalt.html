@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Inhalte verändern mit JavaScript</title>
+
+        <style>
+            #preview {
+                display: inline-block;
+                margin-bottom: 1em;
+
+                border: 1px solid black;
+                padding: 0.25em;
+                background: #303030;
+                color: #87AE87;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Inhalte verändern mit JavaScript</h1>
+
+        <div id="preview"></div>
+        <br />
+
+        <button onclick="setInnerHtml()">innerHTML setzen</button>
+        <button onclick="setTextContent()">textContent setzen</button>
+        <button onclick="clearPreview()">Vorschau zurücksetzen</button>
+
+        <script>
+            let previewElement = document.getElementById("preview");
+
+            let newContent = "<ol>\n"
+                           + "    <li>Asterix der Galier</li>"
+                           + "    <li>Asterix und Kleopatra</li>"
+                           + "    <li>Asterix erobert Rom</li>"
+                           + "    <li>Asterix - Sieg über Cäsar</li>"
+                           + "    <li>Asterix bei den Briten</li>"
+                           + "    <li>Asterix - Operation Hinkelstein</li>"
+                           + "    <li>Asterix in Amerika</li>"
+                           + "    <li>Asterix und die Wikinger</li>"
+                           + "    <li>Asterix im Land der Götter</li>"
+                           + "</ol>\n";
+
+            let setInnerHtml = () => previewElement.innerHTML = newContent;
+            let setTextContent = () => previewElement.textContent = newContent;
+            let clearPreview = () => previewElement.innerHTML = "";
+        </script>
+    </body>
+</html>

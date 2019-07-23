@@ -1,0 +1,38 @@
+.list > * {
+    border: 0px solid rgb(0,0,0,0.1);
+    border-bottom-width: 1px;
+}
+.list > *:last-child {
+    border-bottom-width: 0;
+}
+
+.list .line,
+.list .heading {
+    display: flex;
+}
+
+.list .heading {
+    font-weight: bold;
+}
+
+.list .line {
+    cursor: pointer;
+}
+.list .line:hover {
+    background: rgba(255,255,255,0.4);
+    color: rgb(44, 80, 107);
+}
+
+.list .cell {
+    box-sizing: border-box;
+    margin: 0.5em;
+    flex: 1;
+}
+.list .cell.title,
+.list .cell.artist {
+    flex: 5;
+}
+
+.list .line.playing {
+    color: rgb(180, 66, 105);
+}

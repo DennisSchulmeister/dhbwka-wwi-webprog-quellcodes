@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>☎️ JavaScript im Browser: Adressbuch</title>
+
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Rubik');
+
+            html {
+                font-family: "Rubik", sans-serif;
+                font-size: 10pt;
+                line-height: 1.6;
+            }
+
+            @media (min-width: 63em) {
+                html {
+                    font-size: 12pt;
+
+                    /* https://www.toptal.com/designers/subtlepatterns/ */
+                    background-color: rgb(215, 215, 215);
+                    background-image: url("full-bloom.png");
+                }
+
+                section {
+                    background: white;
+                    box-shadow: 2px 2px 3px rgba(0,0,0, 0.3);
+
+                    width: 60em;
+                    margin: 0 auto;
+                    margin-top: 2em;
+                    margin-bottom: 2em;
+
+                    border-radius: 0.5rem;
+                    border: 1px solid #202020;
+                }
+
+                section > h1 {
+                    font-size: 200%;
+                    margin: 0;
+
+                    border-radius: 0.5rem 0.5rem 0 0;
+                }
+
+                section article {
+                    padding: 1em;
+                }
+
+                section p,
+                section h2:first-child,
+                section h3:first-child,
+                section h4:first-child {
+                    margin-top: 0;
+                }
+
+                section h2,
+                section h3,
+                section h4 {
+                    margin-bottom: 0.5em;
+                }
+            }
+
+            h1 {
+                padding: 0.25em;
+                margin-top: 1.5em;
+                color: white;
+                background: #0b557e;
+            }
+
+            h1:first-child {
+                margin-top: 0;
+            }
+
+            p {
+                text-align: justify;
+                hyphens: auto;
+            }
+
+            a, a:visited {
+                color: #3968A1;
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: #6E9ED9;
+            }
+
+            li {
+                margin-bottom: 0.5em;
+            }
+
+            .screenshot {
+                display: inline-block;
+                box-sizing: border-box;
+                width: 48%;
+                margin: 0 auto;
+
+                border: 1px solid #A0A0A0;
+                padding: 0.2em;
+                background: rgba(230,230,230);
+                box-shadow: 0 0 2px rgba(0,0,0, 0.5);
+
+                margin: 0.5em;
+
+                transition: transform 0.5s, box-shadow 0.5s;
+            }
+
+            .screenshot:hover {
+                transform: scale(1.05) rotate(3deg);
+                box-shadow: 2px 2px 4px rgba(0,0,0, 0.5);
+            }
+
+            .caption {
+                font-size: 85%;
+                text-align: center;
+            }
+
+            .footnote {
+                font-size: 75%;
+            }
+
+            pre {
+                margin-bottom: 1.5em !important;
+            }
+
+            table, tr, td {
+                vertical-align: top;
+            }
+            .filename {
+                font-family: monospace;
+                padding-right: 2em;
+                color: darkblue;
+            }
+            .skip {
+                padding-bottom: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Beschreibung</h1>
+            <article>
+                <p>
+                    Kannst du dich noch an die guten alten Zeiten erinnern, als man mit dem
+                    Telefon wirklich noch telefoniert hat? Als ein Telefon vielleicht nicht
+                    einmal ein Display hatte, sondern nur einen Höhrer und Tasten zum Wählen?
+                    Damals, also ungefähr kurz nachdem die Dinosaurier 🦖 die Welt beherrschten,
+                    telefonierte man noch richtig mit seinen Freunden. Und je mehr Freunde man
+                    hatte, oder je größer die eigene Familie war, desto mehr Telefonnummern
+                    musste man sich natürlich merken. Damals wie heute gab es deshalb Adressbücher,
+                    in denen man alle Nummern festhalten konnte. 📓
+                </p>
+                <p>
+                    Auf Papier wollen wir unser Adressbuch heute nicht programmieren. Das wäre
+                    dann doch ein wenig old-school. Dafür aber als Browser App mit HTML, CSS und
+                    JavaScript. Folgende Anforderungen soll es erfüllen:
+                </p>
+                <ul>
+                    <li>
+                        Ruft man die App auf, erscheint eine Liste mit allen vorhandenen Adressen.
+                    </li>
+                    <li>
+                        Ist noch keine Adresse vorhanden, wird ein entsprechender Hinweis angezeigt.
+                    </li>
+                    <li>
+                        Zum Anlegen eines neuen Eintrags wird die Adressliste ausgeblendet und ein Eingabeformular eingeblendet.
+                    </li>
+                    <li>
+                        Dasselbe Formular soll auch zum Bearbeiten einer Adresse verwendet werden.
+                    </li>
+                    <li>
+                        Einzelne Adressen können nachträglich auch wieder gelöscht werden.
+                    </li>
+                    <li>
+                        Jede Adresse besteht aus Vorname, Nachname, Telefon und E-Mail.
+                    </li>
+                </ul>
+                <p>
+                    Für diese Aufgabe müssen die Adressen nicht dauerhaft gespeichert werden. Es ist
+                    okay, wenn die Adressliste bei einem Neustart der App wieder leer ist. Falls du
+                    willst, kannst du dich aber mit der
+                    <a href="https://wiki.selfhtml.org/wiki/JavaScript/Web_Storage" target="_blank">LocalStorage API</a>
+                    beschäftigen, um die Liste dauerhaft im Browser zu sichern.
+                </p>
+            </article>
+        </section>
+
+        <section>
+            <h1>Screenshots</h1>
+            <article>
+                <a href="screenshot1.png" target="_blank">
+                    <img
+                        src   = "screenshot1.png"
+                        alt   = "Am Anfang, wenn es noch keine Einträge gibt"
+                        class = "screenshot"
+                    />
+                </a>
+
+                <a href="screenshot2.png" target="_blank">
+                    <img
+                        src   = "screenshot2.png"
+                        alt   = "Formular zum Anlegen eines neuen Eintrags"
+                        class = "screenshot"
+                    />
+                </a>
+
+                <a href="screenshot3.png" target="_blank">
+                    <img
+                        src   = "screenshot3.png"
+                        alt   = "Dieses mal auch mit Daten"
+                        class = "screenshot"
+                    />
+                </a>
+
+                <a href="screenshot4.png" target="_blank">
+                    <img
+                        src   = "screenshot4.png"
+                        alt   = "Liste mit den bereits vorhandenen Adressen"
+                        class = "screenshot"
+                    />
+                </a>
+            </article>
+        </section>
+
+        <section>
+            <h1>Aufbau des Quellcodes</h1>
+            <article>
+                <p>
+                    Des größte Teil der Anwendung ist bereits ausprogrammiert, um dir zu zeigen, wie eine
+                    einfache Browser App mit HTML, CSS und JavaScript strukturiert werden kann. Im weiteren
+                    Verlauf des Semesters werden wir auf dieser Struktur aufbauen und sie noch ein wenig
+                    verfeinern. Für das Erste siehst du hier aber, wie man mit Klassen in JavaScript eine
+                    Anwendung in logische Einheiten unterteilen kann. Nimm dir daher ruhig Zeit, den Code
+                    zu verstehen.
+                </p>
+                <table>
+                    <tr>
+                        <td class="filename skip">
+                            index.html
+                        </td>
+                        <td class="skip">
+                            Startdatei der Anwendung mit dem HTML-Quellcode
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="filename">
+                            app.js
+                        </td>
+                        <td>
+                            Hauptklasse <code>App</code>: Speichert die Daten und schaltet zwischen
+                            den verschiedenen Ansichten um
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="filename skip">
+                            app.css
+                        </td>
+                        <td class="skip">
+                            Hauptstylesheet mit übergreifenden Layoutoptionen, die für alle Ansichten gelten.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="filename">
+                            page-list.js
+                        </td>
+                        <td>
+                            Klasse <code>PageList</code> mit dem JavaScript-Code für die Listenübersicht.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="filename skip">
+                            page-list.css
+                        </td>
+                        <td class="skip">
+                        Stylesheet mit zusätzlichen Layoutoptionen für die Listenübersicht.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="filename">
+                            page-edit.js
+                        </td>
+                        <td>
+                            Klasse <code>PageEdit</code> mit dem Formular zur Anlage oder Bearbeitung eines Datenatzes.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="filename">
+                            page-edit.css
+                        </td>
+                        <td>
+                            Stylesheet mit zusätzlichen Layoutoptionen für das Anlage-/Änderungsformular.
+                        </td>
+                    </tr>
+                </table>
+            </article>
+        </section>
+
+        <section>
+            <h1>Aufgabenstellung</h1>
+            <article>
+                <ol>
+                    <li>
+                        Ergänze im Konstruktor der Klasse <code>App</code> das Attribut <code>this._data</code>
+                        um weitere Adressbucheinträge, damit du ausreichend Testdaten zur Verfügung hast.
+                    </li>
+                    <li>
+                        Rufe in der Methode <code>showPage()</code> der Klasse <code>App</code> die jeweiligen
+                        Methoden der <code>Page</code>-Klassen auf, um die aktuelle Seite aus- und die nächste
+                        Seite einzublenden.
+                    </li>
+                    <li>
+                        Vervollständige in der Klasse <code>PageList</code> die beiden genannten Methode, so dass
+                        der Inhalt dieser Seite wirklich ein- und ausgeblendet wird. Dadurch solltest du nun
+                        oben zwischen den Seiten umschalten können.
+                    </li>
+                    <li>
+                        Vervollständige die Methode <code>_renderList()</code> in der Klasse <code>PageList</code>,
+                        so dass der Hinweis aus dem Template mit der ID <code>template-page-list-empty</code>
+                        angezeigt wird, wenn die Adressliste leer ist. Die Klasse <code>PageEdit</code> oder die
+                        Methode <code>_renderMenu</code> in <code>App</code> können dir hier eine Vorlage sein.
+                    </li>
+                    <li>
+                        Vervollständige dieselbe Methode weiter unten, so dass für jeden Eintrag im Adressbuch
+                        der Inhalt des Templates <code>#template-page-list-li</code> angezeigt wird. Dabei
+                        musst du die mit <code>$NAME$</code> gekennzeichneten Platzhalter im Template durch
+                        die tatsächlich anzuzeigenden Werte ersetzen.
+                    </li>
+                    <li>
+                        Programmiere in der Klasse <code>PageEdit</code> die Methode <code>_saveAndExit()</code>
+                        aus, wie in den Kommentaren erklärt.
+                    </li>
+                </ol>
+            </article>
+        </section>
+    </body>
+</html>

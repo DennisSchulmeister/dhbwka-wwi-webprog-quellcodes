@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Hotelreservierung buchen</title>
+
+        <link rel="stylesheet" href="style.css" />
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <h1>Hotelreservierung buchen</h1>
+
+        <form
+            onsubmit = "validateForm(event)"
+            action   = "hotel-booking.php"
+            method   = "POST"
+        >
+            <div class="side-by-side">
+                <!-- Erster Reisender -->
+                <div class="form">
+                    <h2>Erster Reisender</h2>
+
+                    <label for="first_firstname">
+                        Vor- und Nachname:
+                        <span class="required">*</span>
+                    </label>
+                    <div class="side-by-side">
+                        <input name="first_firstname" type="text" placeholder="Vorname" />
+                        <input name="first_lastname" type="text" placeholder="Nachname" />
+                    </div>
+
+                    <label for="first_zip">
+                        Postleitzahl, Ort:
+                        <span class="required">*</span>
+                    </label>
+                    <div class="side-by-side">
+                        <input name="first_zip" type="text" placeholder="PLZ" />
+                        <input name="first_city" type="text" placeholder="Ort" />
+                    </div>
+
+                    <label for="first_country">
+                        Land:
+                        <span class="required">*</span>
+                    </label>
+                    <input name="first_country" type="text" placeholder="Land" />
+
+                    <label for="first_phone">
+                        Telefon:
+                    </label>
+                    <input name="first_phone" type="phone" />
+
+                    <label for="first_email">
+                        E-Mail:
+                        <span class="required">*</span>
+                    </label>
+                    <input name="first_email" type="email" />
+                </div>
+
+                <!-- Zweiter Reisender -->
+                <div class="form">
+                    <h2>Zweiter Reisender</h2>
+
+                    <label for="second_firstname">
+                        Vor- und Nachname:
+                        <span class="required">*</span>
+                    </label>
+                    <div class="side-by-side">
+                        <input name="second_firstname" type="text" placeholder="Vorname" />
+                        <input name="second_lastname" type="text" placeholder="Nachname" />
+                    </div>
+
+                    <label for="second_zip">
+                        Postleitzahl, Ort:
+                        <span class="required">*</span>
+                    </label>
+                    <div class="side-by-side">
+                        <input name="second_zip" type="text" placeholder="PLZ" />
+                        <input name="second_city" type="text" placeholder="Ort" />
+                    </div>
+
+                    <label for="second_country">
+                        Land:
+                        <span class="required">*</span>
+                    </label>
+                    <input name="second_country" type="text" placeholder="Land" />
+
+                    <label for="second_phone">
+                        Telefon:
+                    </label>
+                    <input name="second_phone" type="phone" />
+
+                    <label for="second_email">
+                        E-Mail:
+                    </label>
+                    <input name="second_email" type="email" />
+                </div>
+            </div>
+
+            <h2>Allgemeine Daten</h2>
+
+            <!-- Ankunft und Abreise -->
+            <label for="arrival">
+                Ankunft und Abreise:
+                <span class="required">*</span>
+            </label>
+            <div class="side-by-side">
+                <input name="arrival" type="date" placeholder="Ankunft" />
+                <input name="departure" type="date" placeholder="Abreise" />
+            </div>
+
+            <!-- Auswahlliste für die Art der Unterkunft -->
+            <label for="accommodation">
+                Unterkunft:
+            </label>
+            <select name="subject">
+                <option selected="selected">Einzelzimmer</option>
+                <option>Doppelzimmer</option>
+                <option>Apartment</option>
+            </select>
+
+            <!-- Nachricht -->
+            <label>
+                Nachricht:
+            </label>
+            <textarea name="message"></textarea>
+
+            <!-- Button zum Abschicken des Formulars -->
+            <input type="submit" value="Abschicken" />
+        </form>
+
+        <!-- Hier wird das Ergebnis der Prüfung angezeigt -->
+        <div id="result"></div>
+    </body>
+</html>

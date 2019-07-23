@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Inhalte eines Arrays anzeigen</title>
+
+        <style>
+            html, body {
+                padding: 0;
+                margin: 0;
+                min-height: 100%;
+
+                font-family: sans-serif;
+                font-size: 13pt;
+            }
+
+            body {
+                /* Bildnachweis: https://pixabay.com/de/sonnenuntergang-himmel-orange-2679106/ */
+                background-image: url(bg.jpg);
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+
+                color: white;
+            }
+
+            a {
+                color: gold;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+
+            a:hover {
+                color: yellow;
+            }
+
+            h1 {
+                margin: 0;
+                padding: 0.5em;
+
+                background-color: rgb(59, 2, 77);
+                color: rgb(167, 28, 28);
+                text-shadow:  1px  1px rgb(106, 30, 46),
+                             -1px -1px rgb(106, 30, 46),
+                              1px -1px rgb(106, 30, 46),
+                             -1px  1px rgb(106, 30, 46),
+                             0px 0px 10px yellow;
+            }
+
+            main {
+                padding: 0.5em;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+        </style>
+
+        <script>
+            let names = [
+                "Michael",
+                "Bonnie",
+                "Devon",
+                "Kit"
+            ];
+
+            let lines = [
+                "Wir brauchen den Turbo Boost, und zwar jetzt.",
+                "Ich habe da schon einen Verdacht.",
+                "Er führt eine internationale Verbrecherbande.",
+                "Schalte auf Silent Mode!",
+                "Treffen wir uns in der mobilen Kommandozentrale.",
+                "Wenn das der alte Wilton wüsste ...",
+            ];
+
+            // TODO: Event Handler für den Hinzufügen-Link
+        </script>
+    </head>
+    <body>
+        <h1>Knight Rider das JavaScript-Programm</h1>
+
+        <main>
+            <p>
+                <!-- TODO: Link mit Event Handler verknüpfen -->
+                <a>Nächste Textzeile</a>
+            </p>
+
+            <ul></ul>
+        </main>
+    </body>
+</html>

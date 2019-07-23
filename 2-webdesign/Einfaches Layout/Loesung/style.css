@@ -1,0 +1,75 @@
+/**
+ * HINWEIS:
+ * Dies ist nur eine Lösung von vielen. Gerade was die Anordnung der
+ * Albencover am rechten Rand angeht, gibt es viele Lösungen. Die hier
+ * gewählte Lösung ist eher ein „traditioneller” Ansatz. Moderner wäre
+ * ein Flexbox-Layout.
+ */
+
+/** Hintergrundbild **/
+html {
+    min-height: 100%;
+
+    background-image: url(img/bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/** Allgemeine Schrifteinstellungen **/
+@import url('https://fonts.googleapis.com/css?family=Bellefair');
+
+html {
+    font-family: 'Bellefair', serif;
+    font-size: 13pt;
+}
+
+/** Header **/
+header {
+    background-color: rgb(235, 235, 235);
+    border: 0px solid #a8aeb1;
+    border-bottom-width: 2px;
+
+    padding: 0em 1em 0em 1em;
+    font-variant: small-caps;
+
+    display: flex;
+    justify-content : space-between;
+    align-content: center;
+    align-items: center;
+}
+
+#logo {
+    height: 3em;
+}
+
+/** Hauptbereich **/
+main {
+    padding: 1em;
+}
+
+main > aside {
+    max-width: 50%;
+    float: right;
+    text-align: right;
+}
+
+main > aside > img {
+    border: 1px solid #707070;
+    width: 10em;
+    height: 10em;
+    padding: 0.2em;
+    background: #eaeaea;
+}
+
+main > aside > h2 {
+    text-align: center;
+    margin: 2em 0 2em 0;
+    color: rgb(120, 120, 120);
+    font-weight: normal;
+}

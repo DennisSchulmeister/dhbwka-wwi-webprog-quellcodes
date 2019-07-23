@@ -1,0 +1,14 @@
+**/node_modules
+**/build
+**/lib
+yarn-error.log
+**/.~*
+*.zip
+
+*.class
+*.log
+**/target/
+**/build/
+**/tododb/
+
+

@@ -1,0 +1,106 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    
+    font-family: sans-serif;
+    font-size: 12pt;
+    
+    height: 100%;
+}
+
+html {
+    /* https://pixabay.com/de/donald-duck-im-rampenlicht-comic-498512/ */
+    background-image: url(bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+header {
+    background: darkseagreen; /*rgb(42, 207, 228);*/
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(200, 200, 200, 0.75);
+    padding: 1em;
+    margin: 1em;
+    
+    display: inline-block;
+    float: right;
+    border: 1px solid darkgreen;
+    box-shadow: 0 0 2px rgba(0,0,0,0.5);
+}
+
+header h1 {
+    margin: 0;
+    margin-bottom: 0.5em;
+}
+
+ul.errors {
+    color: crimson;
+    font-weight: bold;
+    text-shadow: 0 0 1px rgba(255,255,255,0.5);
+}
+
+input.input {
+    box-sizing: border-box;
+    height: 2em;
+    margin: 0.2em 0.1em 0.2em 0;
+    padding: 0.1em;
+    border: 1px solid rgba(0,0,0,0.66);
+}
+
+input[name="serie"] {
+    width: 25em;
+}
+
+input[name="nummer"],
+input[name="jahr"] {
+    width: 7em;
+}
+
+input[name="titel"] {
+    width: 40em;
+}
+
+input[name="zeichner"],
+input[name="texter"] {
+    width: 19.75em;
+}
+
+input[type="submit"] {
+    height: auto;
+    margin-top: 0.6em;
+}
+
+main {
+    padding: 0.5em;
+}
+
+h2 {
+    color: skyblue;
+    text-shadow: 0 0 1px rgba(0,0,0,0.5);
+    margin: 0;
+}
+
+.comic {
+    border: 1px solid lightgrey;
+    width: 30em;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    color: rgb(25, 25, 25);
+    background-color: rgba(255,255,255,0.75);
+}
+
+.comic > .icon {
+    font-size: 330%;
+    display: inline-block;
+}
+
+.comic > .description {
+    display: inline-block;
+    margin-left: 0.5em;
+}
+
+.comic .title {
+    font-weight: bold;
+}

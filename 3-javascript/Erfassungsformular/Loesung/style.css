@@ -1,0 +1,102 @@
+/*
+ * Allgemeine Angaben
+ */
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+html {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12pt;
+}
+
+/*
+ * Basis-Layout des Formulars
+ */
+form {
+    max-width: 75em;
+
+    border: 1px solid #d0d0d0;
+    background: #f0f0f0;
+    padding: 1em;
+}
+
+form > *,
+.form > *,
+form .side-by-side > * {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+form .side-by-side {
+    display: flex;
+}
+
+form .side-by-side > * {
+    margin-right: 0.25em;
+}
+
+form .side-by-side > *:last-child {
+    margin-right: 0;
+}
+
+/*
+ * Gestaltung der Feldbezeichner
+ */
+form label {
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+form label:first-child {
+    margin-top: 0;
+}
+
+form label .required {
+    color: darkred;
+}
+
+/*
+ * Gestaltung der Formularfelder
+ */
+input,
+textarea,
+select {
+    border: 1px solid #bebebe;
+    padding: 0.5em;
+    margin: 0;
+    outline: none;
+}
+
+textarea {
+    height: 15em;
+}
+
+/*
+ * Der Button zum Abschicken des Formulars
+ */
+input[type="submit"] {
+    margin-top: 2em;
+    width: auto;
+
+    background-color: #0958A7;
+    color: white;
+    font-weight: bold;
+
+    transition: background-color 0.2s;
+}
+
+input[type="submit"]:hover {
+    background-color: #2868A8;
+}
+
+/*
+ * Element mit dem Prüfergebnis
+ */
+#result {
+    margin-top: 1em;
+    color: red;
+}
+
+#result.okay {
+    color: darkgreen;
+}

@@ -1,0 +1,46 @@
+/** Hintergrundbild **/
+html {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/** Allgemeine Schrifteinstellungen **/
+@import url('https://fonts.googleapis.com/css?family=Bellefair');
+
+html {
+    font-family: 'Bellefair', serif;
+    font-size: 13pt;
+}
+
+/** Header **/
+header {
+    padding: 0em 1em 0em 1em;
+    font-variant: small-caps;
+
+    display: flex;
+    justify-content : space-between;
+    align-content: center;
+    align-items: center;
+}
+
+/** Hauptbereich **/
+main {
+    padding: 1em;
+}
+
+main > aside > img {
+    border: 1px solid #707070;
+    padding: 0.2em;
+    background: #eaeaea;
+}
+
+main > aside > h2 {
+    text-align: center;
+    margin: 2em 0 2em 0;
+    color: rgb(120, 120, 120);
+    font-weight: normal;
+}
