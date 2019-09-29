@@ -7,7 +7,7 @@
  * mit der Listenübersicht oder dem Eingabeformular angezeigt wird. Welche
  * Seite angezeigt wird, macht sie im Kopfbereich der Seite kenntlich.
  *
- * Außerdem enthält sie die eigentliche Datenlist, in der die Adressen
+ * Außerdem enthält sie die eigentliche Datenliste, in der die Adressen
  * gespeichert sind.
  */
 class App {
@@ -20,9 +20,9 @@ class App {
         this._pages = pages;
         this._currentPageObject = null;
 
-        // Datensätze unserer Anwendung. Falls Sie die Anwendung erweitern
-        // wollen, so dass die Datensätze nicht verloren gehen können, müssten
-        // Sie hier die Datensätze komplett einlesen und wiederherstellen.
+        // Datensätze unserer Anwendung. Falls du die Anwendung erweitern
+        // willst, so dass die Datensätze nicht verloren gehen können, müsstest
+        // du die Datensätze hier komplett einlesen und wiederherstellen.
         this._data = [
             {
                 first_name: "Willy",
@@ -101,8 +101,8 @@ class App {
     ////
     //// Methoden zum Bearbeiten der Datensätze
     ////
-    //// Falls Sie die Anwendung so erweitern wollen, dass die Datensätze
-    //// nicht verloren gehen können, müssen Sie die Änderungen in den
+    //// Falls du die Anwendung so erweitern willst, dass die Datensätze
+    //// nicht verloren gehen können, musst du die Änderungen in den
     //// nachfolgenden Methoden irgendwie dauerhaft speichern.
     ////
 
