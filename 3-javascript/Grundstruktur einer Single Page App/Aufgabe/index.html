@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Aufgabe: Meine App</title>
+        <link rel="shortcut icon" href="favicon.png" />
+
+        <!-- Klasse App: Steuert die gesamte Anwendung -->
+        <link rel="stylesheet" href="app.css" />
+
+        <!-- Klasse Database: Verwaltet die Daten der Anwendung -->
+        <script src="database.js"></script>
+
+        <!-- TODO: Klasse App ausprogrammieren -->
+        <!-- TODO: Klasse PageNotFound anlegen und ausprogrammieren -->
+        <!-- TODO: Klasse PageOverview zu Ende programmieren -->
+        <!-- TODO: Klasse PageDetail zu Ende programmieren -->
+
+        <!-- Fontello Icon Font (generiert auf fontello.com) -->
+        <link rel="stylesheet" href="fontello/css/fontello.css" />
+
+        <!-- Stylesheets zur Gestaltung einzelner HTML-Elemente -->
+        <link rel="stylesheet" href="elements/button.css" />
+        <link rel="stylesheet" href="elements/tab-buttons.css" />
+        <link rel="stylesheet" href="elements/form.css" />
+    </head>
+    <body>
+        <!-- Kopfbereich der App -->
+        <header>
+            <nav>
+                <!-- Logo, Zurück-Button und Titel der Seite -->
+                <img class="logo" src="logo.png" alt="Logo" />
+
+                <ul class="menu-left">
+                    <li class="go-back">
+                        <a href="#">
+                            <i class="icon-left-open"></i>
+                            <span class="page-name">Name der Seite</span>
+                        </a>
+                    </li>
+                    <li class="dont-go-back hidden">
+                        <span class="page-name">Name der Seite</span>
+                    </li>
+                    <li class="toggle-menu small-screen-only">
+                        <a href="#">
+                            <i class="icon-menu"></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Übergreifendes App-Menü -->
+                <ul class="menu-right">
+                    <!-- TODO: Inhalte definieren -->
+                </ul>
+            </nav>
+
+            <div class="content">
+                Inhalt des Kopfbereichs
+            </div>
+        </header>
+
+        <!-- Hauptbereich mit dem Inhalt der einzelnen Seiten -->
+        <main id="app-main-area">
+            Inhalt des Hauptbereichs
+        </main>
+    </body>
+</html>

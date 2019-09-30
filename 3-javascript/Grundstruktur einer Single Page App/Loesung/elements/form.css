@@ -1,0 +1,14 @@
+/**
+ * Stylesheet zur schöneren Gestaltung einfacher Formulare
+ */
+
+form > * {
+    display: block;
+    width: 100%;
+
+    border: 0px solid lightgrey;
+    border-bottom-width: 1px;
+
+    padding: 0.5em 0 0.5em 0;
+    margin-bottom: 1em;
+}

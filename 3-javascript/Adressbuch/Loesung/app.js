@@ -7,7 +7,7 @@
  * mit der Listenübersicht oder dem Eingabeformular angezeigt wird. Welche
  * Seite angezeigt wird, macht sie im Kopfbereich der Seite kenntlich.
  *
- * Außerdem enthält sie die eigentliche Datenlist, in der die Adressen
+ * Außerdem enthält sie die eigentliche Datenliste, in der die Adressen
  * gespeichert sind.
  */
 class App {
