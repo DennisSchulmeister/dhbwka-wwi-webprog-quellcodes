@@ -30,7 +30,7 @@ class PageDetail {
             html = await html.text();
             css = await css.text();
         } else {
-            console.error("Fehler beim Laden des HTML/CSS-Inhalts")
+            console.error("Fehler beim Laden des HTML/CSS-Inhalts");
             return;
         }
 

@@ -46,11 +46,9 @@ class App {
         document.querySelector("header nav .toggle-menu a").addEventListener("click", this._toggleHamburgerMenu);
         document.querySelector("header nav .go-back a").addEventListener("click", () => window.history.back());
 
-        window.addEventListener("click", event => this._onLinkClicked(event));
-        window.addEventListener("popstate", event => this._onHistoryChanged(event));
-
-        // Erste Seite aufrufen
-        this.gotoPage(location.hash.slice(1), {showFirstPage: true});
+        // Single Page Router starten und die erste Seite aufrufen
+        window.addEventListener("hashchange", () => this._handleRouting());
+        this._handleRouting();
     }
 
     /**
@@ -79,127 +77,30 @@ class App {
     }
 
     /**
-     * DOM Event Handler für angeklickte Links. Tatsächlich wird der Event
-     * Handler nicht an die einzelnen Link-Elemente sondern an das übergeorndete
-     * Window angehängt, um wirklich jeden Klick auf jeden Link abfangen zu
-     * können, auch wenn der Link erst nach Registrierung des Event Handlers
-     * dynamisch erzeugt wurde.
+     * Diese Methode wertet die aktuelle URL aus und sorgt dafür, dass die
+     * dazu passende App-Seite geladen und angezeigt wird. Der Einfachheit
+     * halber wird eine sog. Hash-URL verwendet, bei der die aufzurufende
+     * Seite nach einem #-Zeichen stehen muss. Zum Beispiel:
      *
-     * Normale URL-Links funktionieren wie gewohnt, indem sie den Browser
-     * veranlassen, eine neue URL aufzurufen. Fängt der Link jedoch mit einer
-     * Raute # an, wird stattdessen die app-interne Navigation angestoßen.
+     *   http://localhost:8080/index.html#/Detail/1234
      *
-     * Folgender Link würde daher eine vollkommen neue Webseite laden:
+     * Hier beschreibt "/Detail/1234" den Teil der URL mit der darzustellenden
+     * Seite. Der Vorteil dieser Technik besteht darin, dass ein Link mit einer
+     * solchen URL keine neue Seite vom Server lädt, wenn sich der vordere Teil
+     * der URL (alles vor dem #-Zeichen) nicht verändert. Stattdessen wird
+     * ein "hashchange"-Ereignis generiert, auf das wir hier reagieren können,
+     * um die sichtbare Unterseite der App auszutauschen.
      *
-     *   <a href="/goto/new/page">New Page</a>
-     *
-     * Der folgende Link hingegen würde nur innerhalb der App eine neue
-     * Unterseite aufrufen
-     *
-     *   <a href="#/Details/42/">Details zu Eintrag 42</a>
-     *
-     * @param {DOMEvent} event Abgefangenes Click-Event
+     * Auf Basis der History-API und dem "popstate"-Ereignis lässt sich ein
+     * noch ausgefeilterer Single Page Router entwickeln, der bei Bedarf auch
+     * ohne das #-Zeichen in der URL auskommt. Dies würde jedoch sowohl mehr
+     * Quellcode in JavaScript sowie eine spezielle Server-Konfiguration
+     * erfordern, so dass der Server bei jeder URL immer die gleiche HTML-Seite
+     * an den Browser schickt. Diesen Aufwand sparen wir uns deshalb hier. :-)
      */
-    _onLinkClicked(event) {
-        // Angeklicktes Link-Element suchen, falls der Klick auf eine Element
-        // innerhalb des eigentlichen Links erfolgt ist
-        let target = event.target;
-        while (target && target.nodeName != "A") target = target.parentNode;
-        if (!target || target.nodeName != "A") return;
+    _handleRouting() {
+        let pageUrl = location.hash.slice(1);
 
-        // Aufzurufende Seite ermitteln. Hierfür muss der Link aus einem
-        // Rautezeichen und dem URL-Pattern der neuen Seite bestehen.
-        // Alle anderen Links sind gewöhnliche Links zum Aufruf einer neuen
-        // URL und werden hier deshalb nicht behandelt.
-        let href = target.getAttribute("href");
-        if (href === null || !href.startsWith("#")) return;
-
-        // Gewünschte Seite anzeigen
-        let pageUrl = target.hash.slice(1);
-        if (!pageUrl.length) return;
-
-        event.preventDefault();
-        this.gotoPage(pageUrl);
-    }
-
-    /**
-     * DOM Event Handler für das Popstate-Event. Dieses wird vom Browser immer
-     * dann geworfen, wenn sich die Navigationshistorie der Seite verändert
-     * hat. In der Regel passiert dies immer dann, wenn der Anwender die
-     * Vor- oder Zurück-Buttons des Browsers betätigt, oder mit JavaScript die
-     * aktuelle URL geändert wird.
-     *
-     * Innerhalb der Methode wird aus dem Historieneintrag die URL der Seite
-     * geholt und diese dann aufgerufen. Über ein Flag wird dabei sichergestellt,
-     * dass dieser Aufruf keinen neuen Historieneintrag erzeugt, da sonst die
-     * komplette Navigation durcheinander kommen würde.
-     *
-     * @param {DOMEvent} event Abgefangenes Popstate-Event
-     */
-    _onHistoryChanged(event) {
-        let pageUrl = "";
-
-        if (event.state) {
-            // Normalerweise müsste im Historieneintrag die URL der Seite
-            // stehen, die wieder angezeigt werden soll.
-            pageUrl = event.state;
-        } else {
-            // Falls die Methode nicht durch die Vor- und Zurück-Buttons des
-            // Browsers aufgerufen wurde, steht die gewünschte URL in der
-            // Adresszeile des Browsers.
-            pageUrl = location.hash.slice(1);
-        }
-
-        this.gotoPage(pageUrl, {noHistory: true});
-    }
-
-    /**
-     * Diese Methode wertet die übergebene URL aus und sorgt dafür, dass die
-     * dazu passende App-Seite geladen und angezeigt wird. Im Parameter pageUrl
-     * muss hierfür die gewünschte URL ohne die führende Raute # übergeben werden.
-     *
-     * Optional kann als zweiter Parameter ein Konfigurationsobjekt mit folgenden
-     * Werten (beide jeweils optional) übergeben werden:
-     *
-     *      {
-     *          showFirstPage: true,
-     *          noHistory: true,
-     *      }
-     *
-     * showFirstPage wird nur beim erstmaligen Aufruf der App benötigt, um
-     * doppelte Einträge im Browserverlauf zu vermeiden. Anstatt, wie sonst
-     * üblich, einen neuen Historieneintrag zu erzeugen, wird beim Aufruf
-     * der ersten Seite der aktuelle Eintrag (der durch das Laden der App
-     * vom Server entstanden ist) überschrieben.
-     *
-     * noHistory wird im Popstate-Event-Handler benötigt, um die Erzeugung
-     * eines Eintrags im Browserverlauf komplett zu unterbinden. Denn, wenn
-     * dieses Event geworfen wird, gibt es bereits einen Eintrag im Verlauf,
-     * zu dem der Anwender zurückkehren möchte. Würden wir hier einen weiteren
-     * Eintrag erzeugen, würde dies die gesamte Historie durcheinander bringen.
-     *
-     * @param {String} pageUrl URL der anzuzeigenden App-Seite
-     * @param {Object} options Detailoptionen zur Steuerung der Navigation
-     */
-    gotoPage(pageUrl, options) {
-        // Optionen auswerten
-        options = options ? options : {};
-        let showFirstPage = options.showFirstPage ? options.showFirstPage : false;
-        let noHistory = options.noHistory ? options.noHistory : false;
-
-        // Eintrag im Browserverlauf erzeugen
-        if (!noHistory) {
-            let url = `#${pageUrl}`;
-            let state = pageUrl;
-
-            if (showFirstPage) {
-                history.replaceState(state, "", url);
-            } else {
-                history.pushState(state, "", url);
-            }
-        }
-
-        // Gewünschte Seite suchen und aufrufen
         if (pageUrl.length === 0) {
             pageUrl = "/";
         }

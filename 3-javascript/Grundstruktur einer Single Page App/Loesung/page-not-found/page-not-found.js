@@ -25,7 +25,7 @@ class PageNotFound {
             html = await html.text();
             css = await css.text();
         } else {
-            console.error("Fehler beim Laden des HTML/CSS-Inhalts")
+            console.error("Fehler beim Laden des HTML/CSS-Inhalts");
             return;
         }
 
@@ -33,7 +33,7 @@ class PageNotFound {
         let pageDom = document.createElement("div");
         pageDom.innerHTML = html;
 
-        this._app.setPageTitle("Seite nicht gefunden");
+        this._app.setPageTitle("Seite nicht gefunden", {isSubPage: true});
         this._app.setPageCss(css);
         this._app.setPageHeader(pageDom.querySelector("header"));
         this._app.setPageContent(pageDom.querySelector("main"));
