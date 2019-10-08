@@ -1,0 +1,222 @@
+/**
+ * Stylesheet zur Klasse App: Hauptstylesheet der Anwendung.
+ *
+ * Hier sollten nur allgemeine Sachen stehen, die das Layout als Ganzes
+ * betreffen. Also solche Dinge wie Schriftart und Größe, Farben sowie das
+ * Layout im Allgemeinen betreffend.
+ */
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+
+/*
+ * ALLGEMEINES
+ */
+html, body {
+    padding: 0;
+    margin: 0;
+
+    min-height: 100%;
+    height: 100%;
+}
+
+html {
+    font-family: "Rubik", sans-serif;
+    font-size: 14pt;
+    line-height: 1.6;
+
+    /* https://pixabay.com/photos/ship-boat-lake-sailing-boat-italy-952292/ */
+    background-color: black;
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+
+    --content-padding: 1rem;
+}
+
+@media (min-width: 40em) {
+    html {
+        font-size: 15pt;
+    }
+}
+
+@media (min-width: 60em) {
+    html {
+        font-size: 16pt;
+    }
+}
+
+@media (min-width: 80em) {
+    html {
+        font-size: 18pt;
+    }
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/*
+ * KOPFBEREICH
+ */
+
+/* Allgemeine Darstellung der Menüzeile */
+header {
+    --text-color: white;
+    --icon-color: rgb(0, 90, 115);
+}
+header nav {
+    padding: var(--content-padding);
+    color: var(--text-color);
+}
+
+header nav i {
+    color: var(--icon-color);
+}
+
+header nav .page-name {
+    font-weight: bold;
+}
+
+header nav .logo {
+    display: none;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav li {
+    padding: 0.25em 0 0.25em 0;
+}
+
+/* Link-Farben */
+header nav a,
+header nav a:visited {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.25s;
+}
+
+header nav a:hover {
+    color: var(--icon-color);
+}
+
+header nav a i,
+header nav a:visited i {
+    color: var(--icon-color);
+}
+
+header nav a:hover i {
+    color: var(--text-color);
+}
+
+/* Linkes Menü */
+header nav .menu-left {
+    display: flex;
+}
+
+header nav .menu-left .go-back,
+header nav .menu-left .dont-go-back {
+    flex: 1;
+}
+
+header nav .menu-left li {
+    display: inline-block;
+}
+
+/* Kopfinhalt der Seite */
+header .content {
+    padding: var(--content-padding);
+
+    background: white;
+    border: 0px solid lightgrey;
+    border-bottom-width: 1px;
+    box-shadow: 1px 1px 2px rgba(0,0,0, 0.9);
+}
+
+header .content h1,
+header .content h2,
+header .content h3,
+header .content h4,
+header .content h5,
+header .content h6 {
+    margin: 0;
+}
+
+header .content h1 {
+    color: rgb(37, 88, 148);
+    text-shadow: 1px 1px 1px rgba(0,0,0, 0.2);
+    font-size: 150%;
+}
+
+header .content h2 {
+    font-size: 110%;
+}
+
+header .content h3,
+header .content h4,
+header .content h5,
+header .content h6 {
+    font-size: 110%;
+}
+
+/* Anpassung an große Bildschirme */
+@media (max-width: 40em) {
+    .small-screen-hidden {
+        display: none;
+    }
+}
+
+@media (min-width: 40em) {
+    .small-screen-only {
+        display: none !important;
+    }
+
+    .logo {
+        display: inline-block !important;
+
+        height: 2em;
+        padding-right: var(--content-padding);
+    }
+
+    header nav,
+    header nav .menu-right {
+        display: flex;
+    }
+
+    header nav .menu-right li {
+        padding-left: var(--content-padding);
+    }
+
+    header nav .menu-left {
+        flex: 1;
+    }
+}
+
+/*
+ * HAUPTBEREICH
+ */
+main {
+    padding: var(--content-padding);
+    background: rgba(240,240,240, 0.9);
+    flex: 1;
+}
+
+main a,
+main a:visited {
+    color: crimson;
+    text-decoration: underline;
+    transition: color 0.25s;
+}
+
+main a:hover {
+    color: red;
+}
