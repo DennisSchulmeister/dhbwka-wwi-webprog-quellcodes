@@ -1,0 +1,38 @@
+html {
+    font-family: sans-serif;
+    font-size: 12pt;
+    height: 100%;
+}
+
+body {
+    padding: 1em;
+    background: rgb(242,242,242);
+    background-image: url(bg.png);
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#toolbar {
+    margin-bottom: 1em;
+}
+
+#data-table {
+    flex: 1;
+    box-shadow: 1px 1px 1px rgba(0,0,0, 0.05);
+}
+
+h3 {
+    color: crimson;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+
+#alerts {
+    position: fixed;
+    top: 1em;
+    right: 1em;
+
+    width: 50em;
+    max-width: calc(100% - 2em);
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Beispiel: Google Firebare</title>
+        <meta charset="utf-8" />
+
+        <!-- Google Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-firestore.js"></script>
+
+        <!-- Tabulator Tables -->
+        <link href="https://unpkg.com/tabulator-tables@4.4.3/dist/css/bootstrap/tabulator_bootstrap.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/tabulator-tables@4.4.3/dist/js/tabulator.min.js"></script>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <!-- Eigene JavaScript-Dateien und Stylesheets -->
+        <script src="database.js"></script>
+        <link rel="stylesheet" href="style.css" />
+
+        <script>
+            window.addEventListener("load", async () => {
+                let buttonInsertRow      = document.getElementById("button-insert-row");
+                let buttonDeleteRows     = document.getElementById("button-delete-rows");
+                let buttonDiscardChanges = document.getElementById("button-discard-changes");
+                let buttonSaveChanges    = document.getElementById("button-save-changes");
+
+                let table = new Tabulator("#data-table", {
+                 	layout: "fitColumns",
+                 	columns: [
+                        // Markierspalte
+                        {formatter: "rowSelection", titleFormatter: "rowSelection", headerSort: false, width: 20},
+
+                        // Datenspalten
+                        {title: "ID",      field: "id",        editor: "input"},
+                        {title: "Titel",   field: "title",     editor: "input"},
+                	 	{title: "Autoren", field: "authors",   editor: "input"},
+                        {title: "Auflage", field: "edition",   editor: "input"},
+                	 	{title: "Verlag",  field: "publisher", editor: "input"},
+                	 	{title: "Jahr",    field: "year",      editor: "number"},
+                 	],
+                });
+
+                let database = new Database();
+                await database.createDemoData();
+
+                let deletedIds = [];
+
+                async function insertRow() {
+                    table.addData([{
+                        id: "",
+                        title: "",
+                        authors: "",
+                        publisher: "",
+                        year: "",
+                    }]);
+                }
+
+                async function deleteRows() {
+                    let books = table.getSelectedData();
+                    let rows = table.getSelectedRows();
+
+                    books.forEach(book => {
+                        deletedIds.push(book.id);
+                    });
+
+                    rows.forEach(row => {
+                        row.delete();
+                    });
+                }
+
+                async function reloadData() {
+                    deletedIds = [];
+                    let books = await database.selectAllBooks();
+                    table.replaceData(books);
+                }
+
+                async function saveChanges() {
+                    try {
+                        await database.deleteBooksById(deletedIds);
+                        await database.saveBooks(table.getData());
+
+                        displayMessage("success", "Änderungen wurden gesichert.");
+                        reloadData();
+                    } catch (error) {
+                        displayMessage("danger", `<strong>Fehler beim Sichern:</strong> ${error}`);
+                    }
+                }
+
+                function displayMessage(type, message) {
+                    // Vgl. https://getbootstrap.com/docs/4.3/components/alerts/
+                    // type = primary, secondary, success, danger, warning, info, light, dark
+                    console.log(type, message);
+
+                    let divElement = document.createElement("div");
+                    divElement.className = `alert alert-${type} alert-dismissible fade show`;
+                    divElement.setAttribute("role", "alert");
+
+                    divElement.innerHTML = `
+                        ${message}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    `;
+
+                    document.getElementById("alerts").appendChild(divElement);
+                    setTimeout(() => $(divElement).alert("close"), 5000);
+                }
+
+                buttonInsertRow.addEventListener("click", insertRow);
+                buttonDeleteRows.addEventListener("click", deleteRows);
+                buttonDiscardChanges.addEventListener("click", reloadData);
+                buttonSaveChanges.addEventListener("click", saveChanges);
+
+                reloadData();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="alerts"></div>
+        <h3>Meine liebsten Fachbücher</h3>
+
+        <div id="toolbar">
+            <button id="button-insert-row"      type="button" class="btn btn-primary">Neue Zeile einfügen</button>
+            <button id="button-delete-rows"     type="button" class="btn btn-primary">Markierte Zeilen löschen</button>
+            <button id="button-discard-changes" type="button" class="btn btn-primary">Änderungen verwerfen</button>
+            <button id="button-save-changes"    type="button" class="btn btn-danger">Änderungen sichern</button>
+        </div>
+
+        <div id="data-table" class="table-striped table-bordered"></div>
+    </body>
+</html>
