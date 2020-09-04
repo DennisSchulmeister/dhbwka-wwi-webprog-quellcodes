@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>Webprogrammierung ganz leicht</title>
+
+        <link rel="stylesheet" href="style.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            Fahre mit der Maus über ein Element, um seine wahre Größe zu sehen.
+        </header>
+
+        <main>
+            <section id="banner">
+                <h1>Webprogrammierung ganz leicht</h1>
+                (versprochen)
+            </section>
+
+            <section id="content">
+                <h3>Strukturierung des HTML-Codes</h3>
+                <p>
+                    Die größte Kunst beim Erstellen einer HTML-Seite ist es, eine gute
+                    Struktur für den HTML-Code zu finden, die einerseits möglichst einfach
+                    das gewünschte Layout erzielt und andererseits auch übersichtlich und
+                    leicht zu verstehen ist. Damit dies gelingt ist es daher wichtig, die
+                    Layoutalgorithmen des Browsers zu verstehen und zu wissen, wie welches
+                    Element auf dem Bildschirm angeordnet wird. Zwar kann die Anordnung im
+                    Stylesheet nachträglich verändert werden, der gesamte Quellcode wird
+                    dadurch aber sehr komplex und fehleranfällig.
+                </p>
+
+                <h3>Zusammenspiel mit dem Stylesheet</h3>
+                <p>
+                    Idealerweise sollte der HTML-Code nur die darzustellenden Inhalte und
+                    die grobe Struktur der Seite beinhalten. Die Layoutregeln des Browsers
+                    sollten dabei so ausgenutzt werden, dass auch ohne Stylesheet die
+                    Anzeige näherungsweise schon dem gewünschten Ergebnis entspricht. In
+                    dem (oder den) Stylesheet(s) sollten dann kosmetische Anpassungen
+                    vorgenommen werden, um die Details des Layouts zu optimieren.
+                </p>
+                <p>
+                    Allerdings ist dies nicht immer möglich. Immer dann, wenn der
+                    voreingestellte Layoutalgorithmus des Browsers nicht das gewünschte
+                    Ergebnis liefern kann (beispielsweise wenn mehrere Blockelemente
+                    nebeneinander stehen sollen), muss im Stylesheet aktiv ein anderer
+                    Layoutalgorithmus ausgewählt werden. Beispiele hierfür sind:
+                </p>
+                <ul>
+                    <li>
+                        Aboslute oder relative Positionierung
+                    </li>
+                    <li>
+                        Tabellarische Darstellung
+                    </li>
+                    <li>
+                        „Sticky” Elemente (bleiben beim Scrollen oben oder unten kleben)
+                    </li>
+                    <li>
+                         „Fixe” Elemente (verändern ihre Position auch beim Scrollen nicht)
+                    </li>
+                    <li>
+                        Flexbox (zur Ausrichtung mehrerer Elemente neben- oder untereinander)
+                    </li>
+                    <li>
+                        Grid Layout (für UI-artige Layouts mit Sidebar usw.)
+                    </li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <img src="img/logo.png" />
+            <span>
+                Made with <span class="heart">❤️</span> by Beaver Productions
+            </span>
+        </footer>
+    </body>
+</html>

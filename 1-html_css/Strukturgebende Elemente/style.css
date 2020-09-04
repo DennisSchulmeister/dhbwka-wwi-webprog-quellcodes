@@ -1,0 +1,90 @@
+/*
+ * Hover-Effekt zur Ermittlung der Größe eines Elements
+ */
+header *, main *, footer *, header, footer {
+    border: 2px solid transparent;
+    box-sizing: border-box;
+}
+
+header *:hover, main *:hover, footer *:hover, header:hover, footer:hover {
+    border-color: red;
+}
+
+/*
+ * Grundlayout mit Fußzeile am unteren Ende
+ */
+html, body {
+    min-height: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/*
+ * Gestaltung der einzelnen Abschnitte
+ */
+body {
+    font-family: 'Montserrat', sans-serif;
+    hyphens: auto;
+}
+
+p {
+    text-align: justify;
+}
+
+header, section, footer {
+    padding: 1rem;
+}
+
+header, footer {
+    background: rgb(30,30,30);
+    color: rgb(240,240,240);
+}
+
+#banner {
+    font-family: 'Lobster', cursive;
+    font-size: 2rem;
+    text-align: center;
+    color: rgb(205, 23, 23);
+    text-shadow: 1px 1px 2px rgba(0,0,0, 0.5);
+
+    background-image: url(img/rocket.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    min-height: 80vh;
+}
+
+@media (min-width: 40em) {
+    #banner {
+        font-size: 4vw;
+    }
+}
+
+#content {
+    background: rgb(240,240,240);
+}
+
+/*
+ * Fußbereich
+ */
+footer {
+    text-align: center;
+}
+
+footer > img {
+    height: 5em;
+    vertical-align: middle;
+    margin-right: 1em;
+}
+
+.heart {
+    color: crimson;
+}

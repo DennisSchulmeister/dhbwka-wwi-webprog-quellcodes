@@ -1,0 +1,11 @@
+{
+  "name": "dhbwka-wwi-webprog-js-socketserver",
+  "version": "1.0.0",
+  "description": "Beispiel für einen einfachen Socketserver mit node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dennis Schulmeister-Zimolong <dhbw@windows3.de>",
+  "license": "CC-BY-4.0"
+}

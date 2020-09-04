@@ -1,0 +1,19 @@
+/**
+ * Übergreifende Layouteinstellungen
+ */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11pt;
+    hyphens: auto;
+}
+
+@media (min-width: 800px) {
+    body {
+        font-size: 15pt;
+    }
+}

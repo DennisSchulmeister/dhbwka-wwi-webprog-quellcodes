@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>Music App</title>
+
+        <link rel="stylesheet" href="main.css" />
+        <link rel="stylesheet" href="playlist.css" />
+        <link rel="stylesheet" href="footer.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <!-- Playlist -->
+        <main>
+            <ul id="playlist">
+                <li>
+                    <img src="https://picsum.photos/200" class="avatar" />
+                    <div class="artist">NAME DES KÜNSTLERS</div>
+                </li>
+            </ul>
+        </main>
+
+        <!-- Steuerelemente -->
+        <footer>
+            <div id="controlls">
+                <button>
+                    <img src="icons/rewind.svg" />
+                </button>
+
+                <button>
+                    <img src="icons/play.svg" />
+                </button>
+
+                <button>
+                    <img src="icons/forward.svg" />
+                </button>
+            </div>
+
+            <div id="progress">
+                <div id="progress-time">1:04</div>
+
+                <div id="progress-bar-outer">
+                    <div id="progress-bar-inner" style="width: 20%;"></div>
+                </div>
+
+                <div id="progress-duration">5:23</div>
+            </div>
+        </footer>
+    </body>
+</html>

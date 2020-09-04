@@ -1,0 +1,46 @@
+/**
+ * Gestaltung der Playlist
+ */
+#playlist {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#playlist .avatar {
+    border-radius: 50%;
+    min-width: 3em;
+    width: 3em;
+    margin-right: 0.5em;
+}
+
+#playlist li {
+    background-color: rgb(240, 240, 240);
+    padding: 1em;
+
+    display: flex;
+    align-items: center;
+}
+
+#playlist li:hover {
+    background-color: rgb(250, 250, 250);
+    cursor: pointer;
+}
+
+@media (min-width: 800px) {
+    main {
+        background-color: rgb(225, 225, 225);
+    }
+
+    #playlist {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #playlist li {
+        width: 15em;
+        border-radius: 0.3em;
+        margin: 1em;
+    }
+}
