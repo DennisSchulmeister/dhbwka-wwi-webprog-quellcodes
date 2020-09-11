@@ -1,0 +1,30 @@
+/*
+ * ALLGEMEINE LAYOUTOPTIONEN
+ */
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14pt;
+
+    background-color: rgb(250, 250, 250);
+    color: rgb(83, 91, 94);
+
+    background-image: url(background.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+
+    box-sizing: border-box;
+    height: 100%;
+}
+
+header, main {
+    padding: 1rem;
+}
