@@ -1,0 +1,228 @@
+/* =============================================================================
+ * HINWEIS ZU DIESER MUSTERLÖSUNG:
+ *
+ * Hier wird extrem viel mit dem FlexBox-Algorithmus (display: flex) gearbeitet,
+ * um mehrere Elemente nebeneinander anzuordnen, die Höhe und Breite der Elemente
+ * zu maximieren und diese zu zentrieren. Dadurch passt sich das Layout
+ * automatisch an die maximale Breite des Bildschirms an, ganz egal wie groß
+ * oder klein diese ist. (Reponsive ist das Layout deshalb aber noch nicht, da
+ * hierfür bei zu kleinen Bildschirmen auf klassische, übereinander gestapelte
+ * Layouts umgeschaltet werden müsste. Aber beachte, wie die Musterlösung
+ * harmonischer als das Original wirkt, da sich alle Elemente schön bündig
+ * links, mittig und rechts ausrichten).
+ *
+ * Letztlich ist das aber nur eine mögliche Lösung. Vor Einführung der FlexBox
+ * war es üblich, Layouts wie diese mit festen Größenangaben zu realisieren.
+ * Dies führt allerdings dazu, dass der nicht genutzte Bereich links und
+ * rechts vom Layout immer größer wird, je höher die Bildschirmauflösung ist,
+ * da die Breite ja immer gleich bleibt. Wollte man trotzdem anstelle von
+ * FlexBox immer noch so arbeiten, könnte man heute die Größenangaben in `vw`
+ * und `vh` vornehmen, um sierelativ zur Breite oder Höhe des Browsers
+ * (Viewports) zu definieren.
+ *
+ * Es gilt also wie so oft in der Webentwicklung: Viele Wege führen nach Rom.
+ * ============================================================================= */
+
+/**
+ * Allgemeine Definitionen
+ */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    /* Bunte Streifen oben und unten. Der Trick ist hier, dass dem <html>-
+     * Element ein Farbverlauf aus Hintergrund gegeben wird, der dadurch
+     * automatisch die gesamte Seite ausfüllt. Der eigentliche Inhalt der
+     * Seite im <body> wird durch den Flexbox-Algorithmus so angeordnet,
+     * dass dieser mindestens den gesamten Bildschirm abzüglich 0.6em Padding
+     * oben und unten ausfüllt, selbst wenn der <body> gar keinen Inhalt
+     * besitzt. Die Hintergrundfarbe des <body> wird daher auf weiß gesetzt,
+     * um den Farbverlauf in der Mitte zu überdecken.
+     */
+    background: rgb(221,145,17);
+    background: linear-gradient(90deg, rgba(221,145,17,1) 0%, rgba(255,9,28,1) 45%, rgba(250,0,255,1) 100%);
+
+    min-height: 100%;
+    padding-top: 0.6em;
+    padding-bottom: 0.6em;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 12pt;
+
+    flex-grow: 1;
+    background-color: white;
+
+    /* Flexbox, um den Footer nach unten zu drücken, auch wenn im <main>
+     * zu wenig oder kein Inhalt steht. Das <main> besitzt hierzu passend
+     * noch die Anweisung "flex-grow: 1", um Header und Footer auseinander
+     * zu drücken.
+     */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+a, a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.line {
+    padding: 0;
+    border: 0px solid lightgrey;
+    border-bottom-width: 1px;
+}
+
+.max-width {
+    max-width: 75vw;
+    margin: 0 auto;
+}
+
+/**
+ * Kopfbereich
+ */
+header > * {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav li {
+    display: inline;
+    padding-left: 1em;
+    font-weight: bold;
+}
+
+#searchbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+#searchbar input {
+    border: 0px solid transparent;
+    background-color: #f0f0f0;
+    padding: 1em;
+
+    flex-grow: 1;
+}
+
+#searchbar button {
+    border: 0px solid transparent;
+    background: none;
+
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+
+    font-weight: bold;
+}
+
+#searchbar button.black {
+    background: black;
+    color: white;
+    margin-right: 2em;
+}
+
+#searchbar button.white {
+    background: white;
+    color: black;
+    border: 1px solid lightgrey;
+}
+
+#searchbar button.transparent {
+    padding-right: 0;
+}
+
+/**
+ * Hauptbereich
+ */
+main {
+    flex-grow: 1;
+}
+
+main > section {
+    display: flex;
+    justify-content: center;
+}
+
+main > section.jumbotron {
+    background-image: url(jumbotron-hintergrund.png);
+    background-size: cover;
+    background-position: center;
+
+    color: white;
+    text-align: center;
+
+    padding-top: 7em;
+    padding-bottom: 5em;
+}
+
+main > section.jumbotron > div {
+    max-width: 35em;
+}
+
+main > section.jumbotron h1 {
+    font-size: 400%;
+}
+
+main > section.narrow > div{
+    font-weight: bold;
+    font-size: 180%;
+
+    max-width: 15em;
+    text-align: center;
+
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+/**
+ * Fußbereich
+ */
+footer {
+    background-color: #f0f0f0;
+    box-shadow: 0px -2px 3px rgba(0,0,0, 0.25);
+
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+
+footer > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer li {
+    margin-bottom: 1.5em;
+}
