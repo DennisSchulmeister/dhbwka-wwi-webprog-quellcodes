@@ -5,8 +5,8 @@ einigermaßen übereinstimmen.
 
 Als Hintergrundbild für das „Jumbotron” (großer bunter Bereich oben mit dem
 Eye Catcher) kannst du das Bild jumbotron-hintergrund.png verwenden. Die
-Farbgebung ist zwar blau statt orange. Dafür handelt es sich um ein frei
-verfügbares Bild, dessen Verwendung in dieser Aufgabe keine Urheberrechte
+Farbgebung ist ähnlich wie das Original. Allerdings handelt es sich um ein
+frei verfügbares Bild, dessen Verwendung in dieser Aufgabe keine Urheberrechte
 verletzt. :-)
 
 https://pixabay.com/illustrations/geometric-wallpaper-abstract-3037028/
