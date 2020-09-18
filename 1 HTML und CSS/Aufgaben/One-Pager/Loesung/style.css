@@ -4,9 +4,6 @@
 html {
     font-family: 'Raleway', sans-serif;
     font-size: 18pt;
-    background: rgb(235, 235, 225);
-
-    color: rgb(32, 32, 32);
 }
 
 body {
@@ -25,6 +22,9 @@ section {
 
     padding: 2em;
     box-sizing: border-box;
+
+    position: sticky;
+    top: 0;
 }
 
 /* Slide 1 */
@@ -33,7 +33,6 @@ section {
     height: 100vh;
     text-align: center;
 
-    position: relative;
     z-index: -10;
 
     display: flex;
@@ -45,10 +44,6 @@ section {
 }
 
 #slide1 .logo {
-    position: absolute;
-    top: 2em;
-    right: 2em;
-
     width: 10rem;
 }
 
@@ -75,6 +70,9 @@ footer {
 
     padding: 2em;
     box-shadow: 0 -5px 5px -3px rgba(0,0,0,0.5);
+
+    background: rgb(235, 235, 225);
+    color: rgb(32, 32, 32);
 }
 
 footer h2,

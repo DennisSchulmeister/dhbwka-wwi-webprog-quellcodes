@@ -25,6 +25,9 @@ section {
 
     padding: 2em;
     box-sizing: border-box;
+
+    position: sticky;
+    top: 0;
 }
 
 /* Slide 1 */
@@ -33,7 +36,6 @@ section {
     height: 100vh;
     text-align: center;
 
-    position: relative;
     z-index: -10;
 
     display: flex;
