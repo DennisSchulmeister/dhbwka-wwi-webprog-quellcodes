@@ -47,7 +47,7 @@
     margin-bottom: calc(var(--content-padding) * -1);
 }
 
-main > img {
+img.gallery {
     box-sizing: border-box;
     width: 20em;
     max-width: 100%;
@@ -55,4 +55,12 @@ main > img {
     border: 1px solid lightgrey;
     padding: 0.25em;
     background: rgb(250, 250, 250);
+}
+
+#tab-actions {
+    display: flex;
+}
+
+#tab-actions > * {
+    margin-right: 1em;
 }

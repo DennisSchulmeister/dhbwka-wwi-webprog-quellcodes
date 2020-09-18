@@ -36,25 +36,38 @@
     </div>
 
     <ul class="tab-buttons">
-        <li class="active">
-            Übersicht
+        <li class="active" data-content="#tab-description">
+            Beschreibung
         </li>
-        <li>
-            Detailbeschreibung
+        <li data-content="#tab-photos">
+            Fotos
         </li>
-        <li>
-            Fotogallerie
+        <li data-content="#tab-actions">
+            Aktionen
         </li>
     </ul>
 </header>
 
 <main>
-    <img src="{IMG}" alt="" />
-    
-    <p>
-        Hier sollten irgendwelche Details zum Segelschiff {NAME} stehen. <br />
-        Stattdessen gibt es hier nur einen Link zum
-        <a href="{LINK}" target="_blank">Wikipedia-Artikel</a>.
-    </p>
-    <button id="show-more-button">Und einen Button</button>
+    <!-- Beschreibung -->
+    <section id="tab-description">
+        <p>
+            Hier sollten irgendwelche Details zum Segelschiff {NAME} stehen. <br />
+            Stattdessen gibt es hier nur einen Link zum
+            <a href="{LINK}" target="_blank">Wikipedia-Artikel</a>.
+        </p>
+    </section>
+
+    <!-- Fotos -->
+    <section id="tab-photos" class="hidden">
+        <img class="gallery" src="{IMG}" alt="" />
+        <img class="gallery" src="{IMG}" alt="" />
+        <img class="gallery" src="{IMG}" alt="" />
+    </section>
+
+    <!-- Aktionen -->
+    <section id="tab-actions" class="hidden">
+        <button id="button-edit">Segelboot bearbeiten</button>
+        <button id="button-delete">Segelboot löschen</button>
+    </section>
 </main>

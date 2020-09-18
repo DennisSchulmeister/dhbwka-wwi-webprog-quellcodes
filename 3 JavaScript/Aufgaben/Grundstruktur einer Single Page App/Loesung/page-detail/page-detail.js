@@ -65,9 +65,26 @@ class PageDetail {
         let pageDom = document.createElement("div");
         pageDom.innerHTML = html;
 
-        // Event Handler für den Button registrieren
-        pageDom.querySelectorAll(".id").forEach(e => e.textContent = this._recordId);
-        pageDom.querySelector("#show-more-button").addEventListener("click", () => this._onShowMoreButtonClicked());
+        // Event Handler für die Tabreiter
+        let tabButtons = pageDom.querySelectorAll(".tab-buttons > li");
+
+        tabButtons.forEach(tabButton => {
+            tabButton.addEventListener("click", event => {
+                // Markierung oben umschalten
+                tabButtons.forEach(tabButton => tabButton.classList.remove("active"));
+                event.target.classList.add("active");
+
+                // Inhalt umschalten
+                tabButtons.forEach(tabButton => {
+                    document.querySelectorAll(tabButton.dataset.content).forEach(element => element.classList.add("hidden"));
+                });
+
+                document.querySelectorAll(event.target.dataset.content).forEach(element => element.classList.remove("hidden"));
+            });
+        });
+
+        // pageDom.querySelectorAll(".id").forEach(e => e.textContent = this._recordId);
+        // pageDom.querySelector("#show-more-button").addEventListener("click", () => this._onShowMoreButtonClicked());
 
         // Fertig bearbeitetes HTML-Element zurückgeben
         return pageDom;
