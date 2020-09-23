@@ -1,0 +1,94 @@
+title: Die Autoren
+centered: true
+
+{% extends "base.html" %}
+
+{% block head %}
+    <style>
+    main.centered .content {
+        align-items: stretch;
+        align-content: center;
+    }
+
+    .card {
+        width: 25em;
+        max-width: 100%;
+        box-sizing: border-box;
+
+        border: 1px solid lightgrey;
+        padding: 1em;
+        border-radius: 0.25em;
+        background-color: #f9f9f9;
+
+        text-align: left;
+
+        margin-bottom: 0.5em;
+    }
+
+    @media (min-width: 54em) {
+        .card {
+            margin: 0.5em;
+        }
+    }
+
+    .card > div {
+        width: 100%;
+    }
+
+    .card .top img {
+        display: block;
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .card .content {
+        margin-top: 1em;
+    }
+    </style>
+{% endblock %}
+
+{% block main %}
+    <div class="card">
+        <div class="top">
+            <img src="{% static 'img/foto-ratz.webp' %}" />
+        </div>
+        <div class="content">
+            <b>Prof. Dr. Dietmar Ratz</b> ist Studiengangsleiter Wirtschaftsinformatik
+            an der Dualen Hochschule Baden-Württemberg (DHBW) Karlsruhe und lehrt als
+            apl. Professor auch am Karlsruher Institut für Technologie (KIT).
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="top">
+            <img src="{% static 'img/foto-schulmeister.webp' %}" />
+        </div>
+        <div class="content">
+            <b>Dipl.-Wirtsch.-Inf. (DH) Dennis Schulmeister-Zimolong</b> arbeitet als
+            Produktmanager bei der SOA People AG in Ettlingen und lehrt als externer
+            Dozent an der Dualen Hochschule Baden-Württemberg (DHBW) Karlsruhe.
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="top">
+            <img src="{% static 'img/foto-seese.webp' %}" />
+        </div>
+        <div class="content">
+            <b>Prof. Dr. Detlef Seese</b> ist ehemaliger Professor für Angewandte Informatik
+            am Institut für Angewandte Informatik und Formale Beschreibungsverfahren (AIFB)
+            des Karlsruher Instituts für Technologie (KIT).
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="top">
+            <img src="{% static 'img/foto-wiesenberger.webp' %}" />
+        </div>
+        <div class="content">
+            <b>Dipl.-Wi.-Ing. Jan Wiesenberger</b> ist geschäftsführender Vorstand des
+            FZI Forschungszentrum Informatik in Karlsruhe und Hauptgesellschafter des
+            IT-Dienstleisters m+ps.
+        </div>
+    </div>
+{% endblock %}

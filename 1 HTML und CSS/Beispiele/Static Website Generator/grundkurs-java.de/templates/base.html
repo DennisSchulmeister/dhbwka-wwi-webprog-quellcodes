@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>{{ title }} – Grundkurs Programmieren in Java</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="canonical" href="{{ CURRENT_PAGE.absolute_final_url }}" />
+        <link rel="shortcut icon" href="{% static 'img/favicon.gif' %}">
+        <link rel="stylesheet" href="{% static 'style.css' %}" />
+
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400;600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            <div class="content">
+                <div class="title">
+                    Grundkurs Programmieren
+                    <span class="subtitle">in Java</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="{% url '/index.html' %}">Das Buch</a>
+                        </li>
+                        <li>
+                            <a href="{% url '/anleitung.html' %}">Tools und Anleitungen</a>
+                        </li>
+                        <li>
+                            <a href="{% url '/autoren.html' %}">Die Autoren</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+
+        <main {%if centered %} class="centered" {% endif %}>
+            <div class="content">
+                {% block main %}
+                {% endblock %}
+            </div>
+        </main>
+
+        <footer>
+            <div class="content">
+                <div class="copyright">
+                    © Dietmar Ratz, Dennis Schulmeister-Zimolong, Detlef Seese, Jan Wiesenberger
+                </div>
+                <a href="mailto:autoren@grundkurs-java.de" class="button">E-Mail schreiben</a>
+            </div>
+        </footer>
+    </body>
+</html>

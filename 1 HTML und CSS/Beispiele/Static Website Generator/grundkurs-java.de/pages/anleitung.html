@@ -1,0 +1,300 @@
+title: Tools und Anleitungen
+
+{% extends "base.html" %}
+
+{% block head %}
+    <style>
+    main ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    main li {
+        padding: 0;
+    }
+    </style>
+{% endblock %}
+
+{% block main %}
+    <h1>Benötigte Software für das Buch</h1>
+    <p>
+        Um die Beispiele im Buch nachzuvollziehen benötigen Sie im Grunde genommen
+        nur zwei Sachen: Das Java Development Kit (kurz JDK) sowie einen einfachen
+        Texteditor, idealerweiße mit Syntaxhervorhebung.
+    </p>
+    <p>
+        Das JDK können Sie sich auf der Webseite von Oracle herunterladen. Achten Sie
+        dabei aber unbedingt darauf, auch wirklich das JDK und nicht nur die
+        Java Runtime Edition (kurz JRE) herunterzuladen, da Sie mit der JRE zwar
+        Java-Programme ausführen, aber keine eigenen Programme schreiben können.
+    </p>
+    <ul>
+        <li>
+            <a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">Java Download</a>
+            (externer Link)
+        </li>
+    </ul>
+    <p>
+        Wenn Sie bisher noch keine Programmiererfahrung besitzen, möchten wir Ihnen, wie bereits
+        im Buch erwähnt, die Verwendung einer IDE anstelle eines einfachen Texteditors nahe
+        legen. Zwar lassen sich alle Beispiele auch nur mit einem Texteditor abtippen und durch
+        Eingabe der richtigen Befehle auf der Konsole ausführen (an manchen Stellen raten wir Ihnen
+        im Buch sogar dazu), im Vergleich dazu bietet eine IDE jedoch einige Vorteile. Denn eine
+        IDE weißt schon gleich bei der Eingabe auf mögliche Fehler im Code hin und schlägt oft
+        auch eine passende Lösung vor. Zusätzlich sorgt sie dafür, dass der Quellcode
+        automatisch compiliert wird und mit nur einem Mausklick direkt gestartet werden kann.
+    </p>
+    <p>
+        Im Grunde genommen gibt es drei weit verbreite IDEs für Java-Entwickler:
+    </p>
+    <ul>
+        <li>
+            <a href="https://www.eclipse.org/" target="_blank">Eclipse</a> (externer Link)
+        </li>
+        <li>
+            <a href="https://netbeans.apache.org/" target="_blank">NetBeans</a> (externer Link)
+        </li>
+        <li>
+            <a href="https://www.jetbrains.com/idea/" target="_blank">IntelliJ IDEA</a> (externer Link)
+        </li>
+    </ul>
+    <p>
+        Als Anfänger oder Anfängerin ist es dabei ziemlich egal, für welche IDE Sie sich entscheiden.
+        Wenn Sie aber noch nicht auf eine bestimmte IDE festgelegt sind, können Sie mit Eclipse nichts
+        falsch machen. Im Folgenden wollen wir deshalb zeigen, wie Sie mit Eclipse die Beispiele aus
+        dem Buch nachvollziehen können. Falls Sie später dann doch lieber ohne IDE arbeiten oder
+        NetBeans und IntelliJ IDEA ausprobieren möchten, nutzen Sie hierfür einfach die folgenden
+        Kurzanleitungen:
+    </p>
+    <ul>
+        <li>
+            <a href="{% static '/pdf/IOTools_Konsole.pdf' %}" target="_blank" class="pdf">Kurzanleitung zur Nutzung der IOTools ohne IDE</a> (PDF)
+        </li>
+        <li>
+            <a href="{% static '/pdf/IOTools_Netbeans.pdf' %}" target="_blank" class="pdf">Kurzenleitung zur Nutzung von NetBeans mit den IOTools</a> (PDF)
+        </li>
+        <li>
+            <a href="{% static '/pdf/IOTools_IntelliJ.pdf' %}" target="_blank" class="pdf">Kurzenleitung zur Nutzung von IntelliJ IDEA mit den IOTools</a> (PDF)
+        </li>
+    </ul>
+
+    <h1>Anlegen eines neuen Projekts</h1>
+    <p>
+        1) Wenn Sie Eclipse starten, erscheint in der Regel folgendes Fenster, das Sie nach der Auswahl
+        eines „Workspace” fragt. Der Begriff „Workspace” kann an dieser Stelle etwas verwirrend sein,
+        damit ist aber einfach nur ein Verzeichnis gemeint, in dem Sie Ihre selbst geschriebenen
+        Java-Programme ablegen wollen.
+    </p>
+    <figure>
+        <img src="{% static '/img/anleitung/eclipse-workspace.png' %}" />
+        <figcaption>
+            Fenster zum Öffnen eines „Workspace” in Eclipse
+        </figcaption>
+    </figure>
+    <p>
+        Am Besten legen Sie ein neues Verzeichnis an, in dem Sie alle Ihre künftigen Java-Projekte
+        ablegen werden, anstatt ein bereits vorhandenes Verzeichnis auszuwählen. Wählen Sie das
+        Verzeichnis in dem oben gezeigten Fenster von Eclipse aus und klicken Sie auf „Launch”,
+        um den Startvorgang abzuschließen. Wenn Sie wollen, können Sie auch das Häkchen bei
+        „Use this as the default and do not ask again” setzen, wenn Sie sich sicher sind, dass
+        Sie künftig immer mit dem ausgewählten Verzeichnis arbeiten wollen.
+    </p>
+    <p>
+        2) Um nun mit dem Programmieren beginnen zu können, müssen Sie ein Projekt in Eclipse anlegen.
+        Es handelt sich dabei im Prinzip um ein eigenständiges Unterverzeichnis in Ihrem Workspace,
+        das mehrere Quellcodedateien zusammenfasst. In der Anfangszeit kann es daher sein, dass ein Projekt
+        viele kleine Anwendungsprogramme – z.B. aus unserem Buch – enthält. Später, wenn die Programme
+        größer werden und aus vielen verschiedenen Quellcodedateien bestehen, wird es hingegen sinnvoll
+        sein, für jedes Programm ein eigenes Projekt anzulegen. Hierfür wählen Sie einfach in der Menüzeile
+        den Eintrag <tt>File → New → Project…</tt> aus.
+    </p>
+    <figure>
+        <img src="{% static '/img/anleitung/eclipse-new-project1.png' %}" />
+        <figcaption>
+            Menüeintrag zum Anlegen eines neuen Projekts
+        </figcaption>
+    </figure>
+    <p>
+        3) Im darauf folgenden Fenster wählen Sie den Eintrag „Java Project” aus und klicken
+        auf „Next”.
+    </p>
+    <figure>
+        <img src="{% static '/img/anleitung/eclipse-new-project2.png' %}" />
+        <figcaption>
+            Auswahl des Eintrags „Java Project”
+        </figcaption>
+    </figure>
+    <p>
+        4) Als nächstes geben Sie bei „Project name” einen aussagekräftigen Namen für das Projekt
+        ein. Direkt darunter sollten Sie dann sehen, dass das Projekt in einem gleichnamigen
+        Unterverzeichnis innerhalb des Workspace angelegt wird. Alle anderen Einstellungen können
+        Sie so lassen, wie sie sind. Klicken Sie anschließend auf „Finish”, um das Projekt anzulegen.
+    </p>
+    <figure>
+        <img src="{% static '/img/anleitung/eclipse-new-project3.png' %}" />
+        <figcaption>
+            Jedes Projekt besitzt einen Namen
+        </figcaption>
+    </figure>
+    <p>
+        5) Vermutlich wird dann als nächstes das folgende Fenster erscheinen. Eclipse möchte hier
+        ein Java-Modul für das Projekt erstellen, was am Anfang jedoch eher hinderlich ist, solange
+        Sie sich nicht mit Paketen (Kapitel 8.8.1) und Modulen (Kapitel 20.2) auseinandergesetzt haben.
+        Klicken Sie hier deshalb einfach auf „Don't Create” und lassen das Eingabefeld leer.
+    </p>
+    <figure>
+        <img src="{% static '/img/anleitung/eclipse-module-info.png' %}" />
+        <figcaption>
+            Hier bitte auf „Don't Create” drücken
+        </figcaption>
+    </figure>
+    <p>
+        Sollten Sie später unerklärliche Fehlermeldungen wie „Must declare a named package because this
+        compilation unit is associated to the named Module” erhalten (weil das Projekt Klassen enthält,
+        die keinem Paket zugeordnet wurden), löschen Sie einfach die Datei „module-info.java”, um den
+        Fehler zu beheben. Später werden Sie lernen, wie Sie Ihre Klassen in Paketen organisieren können,
+        so dass der Fehler gar nicht erst entstehen kann.
+    </p>
+
+    <h1>Ausprogrammieren einer kleinen Klasse</h1>
+    <p>
+        1) Auf der linken Seite des Eclipse-Fensters sollte eine „Project Explorer” genannte
+        Ansicht stehen, in der Ihr neues Projekt nun angezeigt wird. Innerhalb des Projekts
+        sollten Sie einen Eintrag namens „JRE System Library” und ein Verzeichnis namens
+        „src” sehen. Der erste Eintrag kennzeichnet die verwendete Java-Installation und
+        der zweite Eintrag das eigentliche Codeverzeichnis.
+    </p>
+    <figure>
+        <img src="{% static '/img/anleitung/eclipse-new-class1.png' %}" />
+        <figcaption>
+            Darstellung des noch leeren Projekts in Eclipse
+        </figcaption>
+    </figure>
+    <p>
+        2) Am einfachsten können Sie eine neue Klasse anlegen, indem Sie mit der rechten
+        Maustaste auf „src” klicken und dann im Kontextmenü den Eintrag <tt>New → Class</tt>
+        auswählen.
+    </p>
+    <figure>
+        <img src="{% static '/img/anleitung/eclipse-new-class2.png' %}" />
+        <figcaption>
+            Kontextmenü zum Anlegen einer neuen Klasse
+        </figcaption>
+    </figure>
+    <p>
+        3) Geben Sie im Feld „Name” den Namen der Klasse ein, zum Beispiel “HalloWelt”
+        und klicken Sie dann auf „Finish”.
+    </p>
+    <figure>
+        <img src="{% static '/img/anleitung/eclipse-new-class3.png' %}" />
+        <figcaption>
+            Fenster zum Anlegen einer neuen Klasse
+        </figcaption>
+    </figure>
+    <p>
+        4) Eclipse legt daraufhin eine leere Klasse wie in der folgenden Abbildung an.
+        Hier können Sie nun anfangen zu programmieren.
+    </p>
+    <figure>
+        <img src="{% static '/img/anleitung/eclipse-new-class4.png' %}" />
+        <figcaption>
+            Unsere neue Klasse direkt nach ihrer Anlage
+        </figcaption>
+    </figure>
+    <p>
+        Zum Testen geben Sie folgendes kleine Testprogramm ein:
+    </p>
+    <pre><src><b>public class</b> HalloWelt {
+        <b>public static void</b> main(String[] args) {
+            System.out.println("Hallo, Eclipse!");
+        }
+    }</src></pre>
+    <p>
+        5) Zum Starten des Programms klicken Sie oben in der Toolbar auf das
+        grüne Startsymbol. Alternativ können Sie im Menü auch <tt>Run → Run</tt>
+        auswählen oder <kbd>Strg</kbd>+<kbd>F11</kbd> drücken.
+    </p>
+    <figure>
+        <img src="{% static '/img/anleitung/eclipse-new-class5.png' %}" />
+        <figcaption>
+            Symbol zum Starten des Programms
+        </figcaption>
+    </figure>
+    <p>
+        6) Möglicherweise fragt Sie Eclipse jetzt, um was für eine Art von
+        Anwendung es sich handelt. Die Frage sollte dabei je Projekt nur
+        einmal bei ersten Start erscheinen. Falls das Fenster erscheint,
+        wählen Sie „Java Application” aus und klicken dann auf „OK”.
+    </p>
+    <figure>
+        <img src="{% static '/img/anleitung/eclipse-new-class6.png' %}" />
+        <figcaption>
+            Frage nach der Art der Anwendung bei ihrem ersten Start
+        </figcaption>
+    </figure>
+    <p>
+        7) Als Ergebnis sollte sich nun unten ein „Console” genannter Bereich
+        öffnen, in dem die Ausgabe des Programms dargestellt wird.
+    </p>
+    <figure>
+        <img src="{% static '/img/anleitung/eclipse-new-class7.png' %}" />
+        <figcaption>
+            Ausgabe unseres kleinen Beispielprogramms
+        </figcaption>
+    </figure>
+
+    <h1>Import der IOTools</h1>
+    <p>
+        Viele Beispiele im Buch nutzen die von uns bereitgestellten IOTools (Paket Prog1Tools),
+        um den Umgang mit Tastatureingaben zu vereinfachen. Die IOTools lassen sich hierfür auf
+        folgende Weise ganz einfach in ein Projekt importieren.
+    </p>
+    <p>
+        1) Entpacken Sie die ZIP-Datei mit den IOTools in ein beliebiges Verzeichnis auf Ihrem
+        Rechner. Am Besten wählen Sie hierfür ein Verzeichnis, in dem Sie die IOTools auch später
+        noch wiederfinden werden, da Sie es immer wieder benötigen werden, wenn Sie die IOTools
+        in ein Projekt importieren wollen.
+    </p>
+    <p>
+        2) Öffnen Sie das neue Verzeichnis mit den IOTools und kopieren Sie die darin enthaltene
+        Java-Datei sowie das Verzeichnis „Prog1Tools” z.B. mit <kbd>Strg</kbd>+<kbd>C</kbd> in
+        die Zwischenabglage.
+    </p>
+    <figure>
+        <img src="{% static '/img/anleitung/eclipse-iotools1.png' %}" />
+        <figcaption>
+            Inhalte der IOTools in die Zwischenablage kopieren
+        </figcaption>
+    </figure>
+    <p>
+        3) Klicken Sie nun in Eclipse mit der rechten Maustaste auf das „src”-Verzeichnis innerhalb
+        Ihres Projekts und wählen Sie den Menüeintrag <tt>Paste</tt> aus, um die Dateien aus der
+        Zwischenablage einzufügen.
+    </p>
+    <figure>
+        <img src="{% static '/img/anleitung/eclipse-iotools2.png' %}" />
+        <figcaption>
+            IOTools in das Eclipse-Projekt einfügen
+        </figcaption>
+    </figure>
+    <p>
+        4) Anschließend sollte die Projektstruktur wie in folgendem Screenshot aussehen.
+    </p>
+    <figure>
+        <img src="{% static '/img/anleitung/eclipse-iotools3.png' %}" />
+        <figcaption>
+            Projektstruktur in Eclipse mit den IOTools
+        </figcaption>
+    </figure>
+    <p>
+        5) Zum Testen können Sie die enthaltene Klasse „IOToolsDemo” ausführen. Im Konsolenbereich
+        von Eclipse sollte Sie das Programm dann nach der Eingabe verschiedener Werte fragen,
+        die es im Anschluss daran ausgibt.
+    </p>
+    <figure>
+        <img src="{% static '/img/anleitung/eclipse-iotools4.png' %}" />
+        <figcaption>
+            Ausgabe des IOTools-Beispielprogramms
+        </figcaption>
+    </figure>
+{% endblock %}

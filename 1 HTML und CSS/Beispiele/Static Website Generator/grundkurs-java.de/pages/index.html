@@ -1,0 +1,57 @@
+title: Startseite
+centered: true
+
+{% extends "base.html" %}
+
+{% block head %}
+    <style>
+        .side-by-side section {
+            margin-bottom: 2em;
+
+        }
+
+        .buchcover {
+            width: 100%;
+            max-width: 15em;
+        }
+
+        @media (min-width: 71em) {
+            .side-by-side {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .side-by-side section {
+                max-width: 30em;
+                margin-right: 2em;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block main %}
+    <div class="side-by-side">
+        <section>
+            <h1>PROGRAMMIEREN LERNEN LEICHT GEMACHT</h1>
+            <p>
+                Über 100.000 begeisterte Leserinnen und Leser!
+            </p>
+            <ul>
+                <li>
+                    Setzt wirklich keine Programmierkenntnisse voraus.
+                </li>
+                <li>
+                    Führt erfolgreich von den ersten Schritten bis hin zur Entwicklung vernetzter Anwendungen.
+                </li>
+                <li>
+                    Mit zahlreichen Übungsaufgaben und Beispielen.
+                </li>
+                <li>
+                    Auf dieser Webseite: Tools und Anleitungen, Aktualisierungen und mehr.
+                </li>
+            </ul>
+        </section>
+
+        <img src="{% static 'img/buchcover.webp' %}" class="buchcover" />
+    </div>
+{% endblock %}
