@@ -1,0 +1,10 @@
+# Vgl. https://www.gitpod.io/docs/config-gitpod-file/
+
+image: python:3
+
+tasks:
+  - init: pip install -r requirements.txt
+
+ports:
+  - port: 8000
+    onOpen: open-preview
