@@ -95,28 +95,30 @@ Zur Ausführung des Beispiels muss [Python](https://python.org/) auf dem eigenen
 installiert sein. Alternativ kann das Beispiel auch auf [gitpod.io](https://gitpod.io)
 in deren Online-IDE ausgeführt werden.
 
-Zunächst muss einmalig ein Python-Environment angelegt werden:
+Auf dem eigenen Rechner empfiehlt es sich, zunächst ein Python-Environment anzulegen,
+um darin die abhängigen Pakete installieren zu können. Auf gitpod.io entfällt dieser
+Schritt hingegen:
+
+  *Linux, Unix, Mac:*
 
   ```bash
   python -m venv env
-  ```
-
-Der Befehl legt das Environment im Unterverzeichnis `env/` an. Das Environment muss von
-nun an jedes mal gestartet werden, wenn mit dem Projekt gearbeitet werden soll. Unter
-Linux, Unix und Mac geht dies mit folgendem Befehl:
-
-  ```
   . env/bin/activate
   ```
 
-Unter Windows muss stattdessen ein Batchdatei ausgeführt werden:
-
+  *Windows:*
   ```cmd
-  env/bin/activate
+  python -m venv env
+  env\bin\activate
   ```
 
-Der Kommandozeilenprompt zeigt daraufhin an, dass das Environment aktiv ist. Dort
-steht dann der neue Befehl `cactus` zur Verfügung:
+Anschließend können die Abhängigkeiten installiert werden:
+
+  ```bash
+  pip install -r requirements.txt
+  ```
+
+Dadurch steht dann der neue Befehl `cactus` zur Verfügung:
 
   * `cactus create verzeichnis`: Legt ein neues Projekt im übergebenen Verzeichnis an
   * `cactus serve`: Startet einen lokalen Entwicklungsserver zum Testen der Seite

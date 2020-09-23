@@ -1,14 +1,16 @@
 **/node_modules
 **/build
 **/lib
-yarn-error.log
-**/.~*
-*.zip
-
-*.class
-*.log
+**/env
+**/__pycache__
+**/.build
 **/target/
 **/build/
 **/tododb/
 
-
+yarn-error.log
+**/.~*
+*.zip
+*.class
+*.log
+*.pyc
