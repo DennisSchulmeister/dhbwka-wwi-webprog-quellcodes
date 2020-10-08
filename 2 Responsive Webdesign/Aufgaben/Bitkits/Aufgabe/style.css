@@ -1,0 +1,48 @@
+/**
+ * Allgemeines
+ */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 11pt;
+
+    background-color: #e9e9e9;
+    color: #5d5d5d;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+.picture {
+    display: block;
+    width: 100%;
+}
+
+.padding {
+    padding: 1em;
+}
+
+.margin-bottom-1 {
+    margin-bottom: 1em;
+}
+
+.margin-bottom-2 {
+    margin-bottom: 2em;
+}
+
+/**
+ * Dunkler Bereich
+ */
+
+/* --- TODO --- */
+
+/**
+ * Heller Bereich
+ */
+
+/* --- TODO --- */

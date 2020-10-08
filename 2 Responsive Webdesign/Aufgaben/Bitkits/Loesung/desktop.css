@@ -1,0 +1,27 @@
+/**
+ * Anpassungen an große Bildschirme
+ */
+@media (min-width:  65em) {
+    body {
+        font-size: 12pt;
+    }
+
+    .max-width-container {
+        max-width: 60em;
+        margin: 0 auto;
+    }
+
+    .flexbox {
+        display: flex;
+        justify-content: space-between;
+        column-gap: 1em;
+    }
+
+    .flexbox > * {
+        flex: 1;
+    }
+
+    #section2 .buttons {
+        text-align: right;
+    }
+}

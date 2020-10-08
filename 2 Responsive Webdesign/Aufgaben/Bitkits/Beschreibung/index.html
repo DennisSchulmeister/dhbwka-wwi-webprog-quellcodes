@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>🎁 Aufgabe: Mobile-First-Entwicklung</title>
+        <style>
+            html {
+                font-family: sans-serif;
+                font-size: 10pt;
+            }
+
+            @media (min-width: 63em) {
+                html {
+                    font-size: 12pt;
+
+                    /* https://pixabay.com/photos/water-sea-caribbean-background-1330252/ */
+                    background-color: rgb(11, 85, 98);
+                    background-image: url(background.jpg);
+                    background-attachment: fixed;
+                    background-size: cover;
+                    background-position: center;
+
+                    hyphens: auto;
+                }
+
+                section {
+                    background: white;
+
+                    width: 60em;
+                    margin: 0 auto;
+                    margin-top: 2em;
+                    margin-bottom: 2em;
+
+                    box-shadow: 0px 0px 4px rgba(0,0,0, 0.5);
+
+                    text-align: justify;
+                }
+
+                section > h1 {
+                    font-size: 200%;
+                    margin: 0;
+                }
+
+                section article {
+                    padding: 1em;
+                }
+
+                section p,
+                section h2:first-child,
+                section h3:first-child,
+                section h4:first-child {
+                    margin-top: 0;
+                }
+
+                section h2,
+                section h3,
+                section h4 {
+                    margin-bottom: 0.5em;
+                }
+
+                .screenshot {
+                    margin: 0 !important;
+                }
+
+                .screenshot.small {
+                    max-width: 18em;
+                }
+
+                .flexbox {
+                    display: flex;
+                    justify-content: sspace-between;
+                    column-gap: 1em;
+                }
+
+                .flexbox > * {
+                    flex: 1;
+                }
+
+                .centerbox {
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+
+            h1 {
+                padding: 0.25em;
+                margin-top: 1.5em;
+                color: rgb(193, 29, 29);
+                background: #DFDFDF;
+            }
+
+            h1:first-child {
+                margin-top: 0;
+            }
+
+            a, a:visited {
+                color: #3968A1;
+                text-decoration: underline;
+            }
+
+            a:hover {
+                color: #6E9ED9;
+            }
+
+            .screenshot {
+                display: block;
+                width: 100%;
+                border: 1px solid #A0A0A0;
+                margin: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Aufgabe: Mobile-First-Entwicklung</h1>
+
+            <article>
+                <p>
+                    Ein tiefer Griff in die Mottenkiste und wir stoßen auf einen alten Screenshot
+                    der Seite <a href="https://www.uppercussion.com/products/bitkits" target="_blank">https://www.uppercussion.com/products/bitkits</a>.
+                    Es handelt sich dabei um die Produktseite einer Sample-Bibliothek mit 8-Bit-Sounds
+                    für Chiptunes und ähnliche Musik.
+                </p>
+                <p>
+                    <a href="vorlage-desktop.png" target="_blank">
+                        <img
+                            src   = "vorlage-desktop.png"
+                            alt   = "Screenshot der zu erstellenden Webseite"
+                            class = "screenshot"
+                        />
+                    </a>
+                </p>
+                <p style="text-align: center;">
+                    <small>
+                        Bild anklicken für eine größere Version
+                    </small>
+                </p>
+
+                <p>
+                    Die Seite sieht eigentlich ganz nett aus, wurde aber nicht für mobile Geräte
+                    optimiert, wie folgender Screenshot zeigt:
+                </p>
+                <p class="centerbox">
+                    <a href="vorlage-mobile.png" target="_blank">
+                        <img
+                            src   = "vorlage-mobile.png"
+                            alt   = "Probleme der Vorlage auf mobilen Geräten"
+                            class = "screenshot small"
+                        />
+                    </a>
+                </p>
+                <p style="text-align: center;">
+                    <small>
+                        Bild anklicken für eine größere Version
+                    </small>
+                </p>
+
+                <p>
+                    In dieser Aufgabe wollen wir die Seite daher nachbauen, dabei aber mobile first
+                    vorgehen und somit sicherstellen, dass sie wirklich mit allen Displaygrößen
+                    funktioniert.
+                </p>
+            </article>
+        </section>
+
+        <section>
+            <h1>Mobile Darstellung</h1>
+
+            <article>
+                <p>
+                    Rufe den „Responsive Mode” deines Browsers auf und beginne damit, die mobile
+                    Darstellung der Seite zu entwickeln. Diese sollte möglichst genau den folgenden
+                    Screenshots entsprechen. Achte hier insbesondere auf die Details wie die
+                    verschiedenen Farben oder auch das Padding von Überschrift und Text, die beide
+                    absolut bündig ausgerichtet sind, obwohl der linke Rahmen der Überschrift
+                    scheinbar über den Rand hinaus ragt.
+                </p>
+                <p class="flexbox">
+                    <a href="loesung-mobile-1.png" target="_blank">
+                        <img
+                            src   = "loesung-mobile-1.png"
+                            alt   = "Mobile Ansicht der zu erstellenden Seite (1 von 3)"
+                            class = "screenshot inline"
+                        />
+                    </a>
+                    <a href="loesung-mobile-2.png" target="_blank">
+                        <img
+                            src   = "loesung-mobile-2.png"
+                            alt   = "Mobile Ansicht der zu erstellenden Seite (2 von 3)"
+                            class = "screenshot inline"
+                        />
+                    </a>
+                    <a href="loesung-mobile-3.png" target="_blank">
+                        <img
+                            src   = "loesung-mobile-3.png"
+                            alt   = "Mobile Ansicht der zu erstellenden Seite (3 von 3)"
+                            class = "screenshot inline"
+                        />
+                    </a>
+                </p>
+                <p style="text-align: center;">
+                    <small>
+                        Bilder anklicken für eine größere Version
+                    </small>
+                </p>
+
+            </article>
+        </section>
+
+        <section>
+            <h1>Darstellung auf großen Endgeräten</h1>
+
+            <article>
+                <p>
+                    Erweitere die Webseite nun so, dass sie auf großen Endgeräten so wie im folgenden
+                    Screenshot aussieht. Die Breite des Inhalts ist dort auf <code>60em</code>
+                    begrenzt und auch die Schrit ist ein klein wenig größer. Die Hauptinhalten werden
+                    zusätzlich in drei Spalten nebeneinander dargestellt.
+                </p>
+                <p>
+                    <a href="loesung-desktop.png" target="_blank">
+                        <img
+                            src   = "loesung-desktop.png"
+                            alt   = "Desktop-Version der zu erstellenden Webseite"
+                            class = "screenshot"
+                        />
+                    </a>
+                </p>
+                <p style="text-align: center;">
+                    <small>
+                        Bild anklicken für eine größere Version
+                    </small>
+                </p>
+            </article>
+        </section>
+
+        <section>
+            <h1>Hinweise</h1>
+
+            <article>
+                <p>
+                    Für die Texte kannst du irgend welche Dummytexte verwenden. Zum Beispiel
+                    <a href="https://de.wikipedia.org/wiki/Lorem_ipsum" target="_blank">Lorem Ipsum</a>.
+                </p>
+                <p>
+                    Für die Begrenzung der maximalen Breite und die Anordnung mancher Inhalte in drei
+                    Spalten müssen höchst-wahrscheinlich weitere HTML-Elemente in die HTML-Datei
+                    eingebaut werden.
+                </p>
+                <p>
+                    Folgender CSS-Code bringt ein HTML-Element der Klasse <code>flexbox</code>dazu,
+                    seine Kindelemente in drei gleichgroßen Spalten nebeneinander anzuordnen:
+                </p>
+<code><pre>.flexbox {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 1em;
+}
+
+.flexbox > * {
+    flex: 1;
+}</pre></code>
+            </article>
+        </section>
+    </body>
+</html>

@@ -1,0 +1,117 @@
+/**
+ * Allgemeines
+ */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 11pt;
+
+    background-color: #e9e9e9;
+    color: #5d5d5d;
+}
+
+.picture {
+    display: block;
+    width: 100%;
+}
+
+.padding {
+    padding: 1em;
+}
+
+.margin-bottom-1 {
+    margin-bottom: 1em;
+}
+
+.margin-bottom-2 {
+    margin-bottom: 2em;
+}
+
+.highlight {
+    border: #ff9400 solid 0px;
+    border-left-width: 4px;
+    padding: 0.5em;
+
+    margin-left: calc(-4px - 0.5em);
+}
+
+.highlight h1 {
+    margin: 0;
+}
+
+a, a:visited {
+    color: #35aeca;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.button {
+    display: inline-block;
+
+    color: white;
+
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0.5em;
+
+    padding: 0.5em;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+/**
+ * Dunkler Bereich
+ */
+#section1 {
+    background-color: #333333;
+    color: white;
+}
+
+#section1 .padding {
+    margin-left: 8px;
+}
+
+#section1 .highlight {
+    background-color: #292929;
+}
+
+#section1 .highlight h1 {
+    margin: 0;
+}
+
+#section1 .dark-text {
+    color: #666666;
+}
+
+#section1 .button {
+    background-color: #ff9400;
+    border-color: #d97e00;
+}
+
+/**
+ * Heller Bereich
+ */
+#section2 .button {
+     background-color: #009999;
+     border-color: #008888;
+ }
+
+#section2 .highlight {
+    font-size: 85%;
+    border-color: #009999;
+    background-color: #d5d5d5;
+}
+
+#section2 .smallprint {
+    font-size: 80%;
+    text-align: center;
+}
