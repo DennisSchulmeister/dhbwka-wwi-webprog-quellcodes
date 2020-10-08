@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>🎁 HTML/CSS: Reponsive Webdesign mit Bootstrap</title>
+        <title>🎁 Aufgabe: Reponsive Webdesign mit Bootstrap</title>
         <style>
             html {
                 font-family: sans-serif;
@@ -12,7 +12,13 @@
             @media (min-width: 63em) {
                 html {
                     font-size: 12pt;
-                    background: rgb(11, 85, 98);
+
+                    /* https://pixabay.com/photos/water-sea-caribbean-background-1330252/ */
+                    background-color: rgb(11, 85, 98);
+                    background-image: url(background.jpg);
+                    background-attachment: fixed;
+                    background-size: cover;
+                    background-position: center;
                 }
 
                 section {
@@ -22,6 +28,8 @@
                     margin: 0 auto;
                     margin-top: 2em;
                     margin-bottom: 2em;
+
+                    box-shadow: 0px 0px 4px rgba(0,0,0, 0.5);
                 }
 
                 section > h1 {
