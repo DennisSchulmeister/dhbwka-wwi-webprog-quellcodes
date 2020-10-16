@@ -61,6 +61,18 @@ window.addEventListener("load", () => {
             "Bist du dir wirklich sicher?"
         ],
 
+        "DU|DEIN|DEIN": [
+            "Lass uns nicht über mich reden.",
+            "Reden wir lieber über dich",
+            "Ich glaube nicht, dass ich das vertiefen will."
+        ],
+
+        "WETTER|SONNE|WOLKEN|WOLKE|REGEN|NEBEL": [
+            "Eigentlich ist doch ganz schönes Wetter heute.",
+            "Bei diesem Wetter geht es mir nicht gut.",
+            "Das Wetter macht auch nur, das was es will ...",
+        ],
+
         "STUDIUM|HOCHSCHULE|VORLESUNG": [
             "Wie gefallen dir deine aktuellen Vorlesungen?",
             "Ist das Studium derzeit sehr stressig?",
