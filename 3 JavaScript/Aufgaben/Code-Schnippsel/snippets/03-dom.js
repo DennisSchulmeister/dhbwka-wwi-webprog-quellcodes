@@ -138,7 +138,7 @@ class DOMFunktionen3 {
         if (!headingElement) {
             error = `Die Überschrift fehlt nun komplett.`;
         } else if (headingElement.textContent != "Piano-Haus") {
-            error = `Die Überschrift enthält den falschen Test <b><code>${headingElement.textContent}</code></b>.`;
+            error = `Die Überschrift enthält den falschen Text <b><code>${headingElement.textContent}</code></b>.`;
         }
 
         return error;

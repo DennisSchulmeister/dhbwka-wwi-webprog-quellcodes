@@ -41,7 +41,7 @@ class SnippetFunktionen2 {
     get description() {
         return html`
             <p>
-                Definiere eine Funktion mit dem Namen <b><code>checkTempearature()</code></b>
+                Definiere eine Funktion mit dem Namen <b><code>checkTemparature()</code></b>
                 an, die als Parameter eine Temparatur in Grad Celsius übergeben bekommt.
                 Je nach Wert der übergebenen Temparatur soll sie einen der folgenden Strings
                 zurückliefern:
