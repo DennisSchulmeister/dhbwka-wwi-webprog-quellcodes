@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>🎁 Aufgabe: Eliza.js</title>
+        <style>
+            html {
+                font-family: sans-serif;
+                font-size: 10pt;
+            }
+
+            @media (min-width: 63em) {
+                html {
+                    font-size: 12pt;
+
+                    /* https://pixabay.com/photos/phone-old-year-built-1955-bakelite-3594206/ */
+                    background-color: rgb(11, 85, 98);
+                    background-image: url(background.jpg);
+                    background-attachment: fixed;
+                    background-size: cover;
+                    background-position: center;
+                }
+
+                section {
+                    background: white;
+
+                    width: 60em;
+                    margin: 0 auto;
+                    margin-top: 2em;
+                    margin-bottom: 2em;
+
+                    box-shadow: 0px 0px 4px rgba(0,0,0, 0.5);
+                }
+
+                section > h1 {
+                    font-size: 200%;
+                    margin: 0;
+                }
+
+                section article {
+                    padding: 1em;
+                }
+
+                section p,
+                section h2:first-child,
+                section h3:first-child,
+                section h4:first-child {
+                    margin-top: 0;
+                }
+
+                section h2,
+                section h3,
+                section h4 {
+                    margin-bottom: 0.5em;
+                }
+            }
+
+            h1 {
+                padding: 0.25em;
+                margin-top: 1.5em;
+                color: rgb(193, 29, 29);
+                background: #DFDFDF;
+            }
+
+            h1:first-child {
+                margin-top: 0;
+            }
+
+            a, a:visited {
+                color: #3968A1;
+                text-decoration: underline;
+            }
+
+            a:hover {
+                color: #6E9ED9;
+            }
+
+            li {
+                margin-bottom: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Aufgabe: Eliza.js</h1>
+
+            <article>
+                <p>
+                    In dieser Aufgaben wollen wir dem Chatbot aus dem Selbststudium ein würdiges
+                    Zuhause bieten und ihm dabei gleich auch noch etwas mehr Intelligenz einhauchen.
+                    Künftig soll er eine schicke, kleine Webanwendung bewohnen und seine Antworten
+                    anhand verschiedener Schlüsslwörter in den Nachrichten der Benutzer*innen
+                    auswählen. In etwa so soll das fertige Ergebnis aussehen:
+                </p>
+                <p>
+                    <a href="screenshot.png" target="_blank">
+                        <img
+                            src   = "screenshot.png"
+                            alt   = "Screenshot der zu erstellenden Webanwendung"
+                            style = "display: block; width: 50%; margin: 0 auto; border: 1px solid #A0A0A0;"
+                        />
+                    </a>
+                </p>
+                <p style="text-align: center;">
+                    <small>
+                        Bild anklicken für eine größere Version
+                    </small>
+                </p>
+                <p>
+                    Das Grundgerüst der Seite ist wie immer bereits fertiggestellt. Der Quellcode
+                    enthält aber noch ein paar entscheidende Lücken, wodurch der Bot erst fertig
+                    programmiert werden will, bevor er spricht.
+                </p>
+            </article>
+        </section>
+
+        <section>
+            <h1>Vorgehensweise</h1>
+
+            <article>
+                <p>
+                    Die zu ändernden Stellen sind im Quellcode wie üblich mit dem Hinweis
+                    <b><code>TODO</code></b> gekennzeichnet. Sie alle befinden sich innerhalb
+                    der Datei <b><code>index.js</code></b>. Weitere Dateien sind dieses Mal
+                    nicht bearbeiten. Um folgende Aktivitäten soll es jedoch gehen:
+                </p>
+                <ol>
+                    <li>
+                        Die Variablen <b><code>messagesElement</code></b> und
+                        <b><code>inputElement</code></b> müssen mit den jeweiligen
+                        HTML-Elementen aus dem DOM-Baum versorgt werden.
+                    </li>
+                    <li>
+                        Die Struktur <b><code>chatbotKeywords</code></b> muss um weitere
+                        Schlüsslwörter und mögliche Antworten ergänzt werden.
+                    </li>
+                    <li>
+                        Die Funktion <b><code>postMessage()</code></b> muss wie in den Kommentaren
+                        beschrieben zu Ende programmiert werden, um die Nachrichten der beiden
+                        Chatteilnehmer anzuzeigen.
+                    </li>
+                    <li>
+                        Die Anzeige der vom Anweder*in eingegebenen Nachricht muss innerhalb des
+                        <b><code>keyup</code></b>-Event-Handlers vorgenommen werden. In derselben
+                        Funktion muss auch die Antwort des Chatbots angefordert und angezeigt
+                        werden.
+                    </li>
+                    <li>
+                        Schlußendlich muss dann noch die Funktion <b><code>generateBotAnswer()</code></b>.
+                        wie in den Kommentaren beschrieben, vervollständigt werden. Dort muss die Nachricht
+                        vom Anwender auf die bekannten Schlüsselwörter des Bots abgeklopft werden. Bei einer
+                        Übereinstimmung muss die Liste der möglichen Antworten entsprechend verlängert werden,
+                        bevor ganz am Ende der Funktion dann nur noch eine zufällige Auswahl erfolgt.
+                    </li>
+                </ol>
+                <p>
+                    Viel Spaß bei der Umsetzung und gute Unterhalten mit Eliza!
+                </p>
+            </article>
+        </section>
+    </body>
+</html>
