@@ -64,7 +64,7 @@ window.addEventListener("load", () => {
         "DU|DEIN|DEIN": [
             "Lass uns nicht über mich reden.",
             "Reden wir lieber über dich",
-            "Ich glaube nicht, dass ich das vertiefen will."
+            "Ich glaube nicht, dass ich das vertiefen will.",
         ],
 
         "WETTER|SONNE|WOLKEN|WOLKE|REGEN|NEBEL": [
