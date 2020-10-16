@@ -57,11 +57,8 @@ window.addEventListener("load", () => {
      * @return {String} Antwort des Chatbots
      */
     function generateBotAnswer(message) {
-        // Wörter trennen, in Großbuchstaben wandeln und Satzzeichen entfernen
-        //let words = message.split(" ").map(word => word.toUpperCase().match(/\w*/)[0]);
-        message = message.toUpperCase();
-
         // Keywords des Chatbots nach einem Treffer durchsuchen
+        message = message.toUpperCase();
         let possibleAnswers = [];
 
         if (message != "*") {
