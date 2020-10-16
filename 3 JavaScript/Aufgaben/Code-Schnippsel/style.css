@@ -1,0 +1,97 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+html {
+    background-image: url(background.png);
+    background-attachment: fixed;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 13pt;
+    padding: 3em;
+}
+
+main {
+    max-height: 100%;
+}
+
+iframe {
+    display: none;
+}
+
+.flexbox {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-content: stretch;
+    align-items: stretch;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.gaps {
+    column-gap: 1em;
+    row-gap: 1em;
+}
+
+.stretch {
+    flex: 1;
+    overflow: auto;
+}
+
+.stretch2 {
+    flex: 2;
+    overflow: auto;
+}
+
+.CodeMirror {
+    flex: 2;
+    overflow: hidden;
+}
+
+.toolbar {
+    background: rgb(60, 60, 60);
+    color: white;
+    padding: 0.5em;
+    font-weight: bold;
+}
+
+.toolbar a,
+.toolbar a:visited {
+    font-weight: normal;
+    color: white;
+    text-decoration: none;
+}
+
+.toolbar a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.border {
+    border: 1px solid rgb(60, 60, 60);
+    box-shadow: 0px 0px 4px rgba(0,0,0, 0.3);
+
+}
+
+.textpanel {
+    background: rgb(213, 223, 226);
+    color: rgb(60, 60, 60);
+    padding: 1em;
+}
+
+.success {
+    color: rgb(9, 85, 40);
+}
+
+.error {
+    color: rgb(131, 20, 20);
+}

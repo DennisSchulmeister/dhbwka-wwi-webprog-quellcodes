@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript Code-Schnippsel</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="codemirror/lib/codemirror.css">
+        <script src="codemirror/lib/codemirror.js"></script>
+        <script src="codemirror/mode/css/css.js"></script>
+        <script src="codemirror/mode/htmlmixed/htmlmixed.js"></script>
+        <script src="codemirror/mode/javascript/javascript.js"></script>
+        <script src="codemirror/mode/xml/xml.js"></script>
+
+        <link rel="stylesheet" href="style.css"/>
+
+        <script src="app.js"></script>
+        <script src="snippets/01-variablen.js"></script>
+        <script src="snippets/02-funktionen.js"></script>
+        <script src="snippets/03-dom.js"></script>
+
+        <script>
+            function html(strings) {
+                return strings.join("");
+            }
+
+            window.addEventListener("load", () => {
+                let app = new App([
+                    SnippetVariablen,
+                    SnippetFunktionen1,
+                    SnippetFunktionen2,
+                    SnippetFunktionen3,
+                    SnippetFunktionen4,
+                    DOMFunktionen1,
+                    DOMFunktionen2,
+                    DOMFunktionen3,
+                    DOMFunktionen4,
+                ]);
+
+                app.start();
+            });
+        </script>
+    </head>
+    <body class="flexbox gaps">
+        <main class="flexbox gaps stretch">
+            <div class="flexbox column gaps stretch">
+                <div class="flexbox column stretch2 border">
+                    <div class="toolbar flexbox gaps">
+                        <span class="stretch">
+                            HTML-Code
+                        </span>
+                        <span>
+                            <a id="cmd-prev">Vorherige Aufgabe</a>
+                        </span>
+                        <span>
+                            <a id="cmd-next">Nächste Aufgabe</a>
+                        </span>
+                    </div>
+                    <textarea id="html-code" class="stretch"></textarea>
+                </div>
+
+                <div class="flexbox column stretch border">
+                    <div class="toolbar flexbox gaps">
+                        <span class="stretch">
+                            Aufgabe
+                        </span>
+                    </div>
+                    <div id="description" class="stretch textpanel"></div>
+                </div>
+            </div>
+
+            <div class="flexbox column gaps stretch">
+                <div class="flexbox column stretch2 border">
+                    <div class="toolbar flexbox gaps">
+                        <span class="stretch">
+                            JavaScript-Code
+                        </span>
+                        <span>
+                            <a id="cmd-run">Ausführen</a>
+                        </span>
+                    </div>
+                    <textarea id="javascript-code" class="stretch"></textarea>
+                </div>
+
+                <div class="flexbox column stretch border">
+                    <div class="toolbar flexbox gaps">
+                        <span class="stretch">
+                            Ergebnis
+                        </span>
+                    </div>
+                    <div id="result" class="stretch textpanel"></div>
+                    <div id="iframe-container"></div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
