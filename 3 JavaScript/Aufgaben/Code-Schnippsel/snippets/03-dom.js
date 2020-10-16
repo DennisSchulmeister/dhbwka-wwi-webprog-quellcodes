@@ -152,7 +152,7 @@ class DOMFunktionen4 {
     get description() {
         return html`
             <p>
-                Füge den Footer einen Absatz mit beliebigem Text hinzu.
+                Füge dem Footer einen Absatz mit beliebigem Text hinzu.
             </p>
         `;
     }
