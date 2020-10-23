@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Aufgabe: SPA-Router</title>
+        <link rel="stylesheet" href="style.css" />
+
+        <!-- Klasse Router einbinden -->
+        <script src="router.js"></script>
+
+        <!-- Single Page Router initialisieren -->
+        <script>
+            window.addEventListener("load", () => {
+                /**
+                 * Hilfsfunktion zum Umschalten des sichtbaren Inhalts
+                 *
+                 * @param {String} id HTML-ID des anzuzeigenden <main>-Elements
+                 * @param {String} title Neuer Titel für den Browser-Tab
+                 */
+                let swapContent = (id, title) => {
+                    document.querySelectorAll("main").forEach(mainElement => {
+                        mainElement.classList.add("hidden");
+                    })
+
+                    let element = document.querySelector(`#${id}`);
+                    if (element) element.classList.remove("hidden");
+
+                    document.title = `${title} | Aufgabe: SPA-Router`;
+                }
+
+                /**
+                 * Konfiguration des URL-Routers
+                 */
+                let routes = [
+                    {
+                        url: "^/$",
+                        show: () => swapContent("page-start", "Startseite"),
+                    },{
+                        url: "^/other/$",
+                        show: () => swapContent("page-other", "Andere Seite"),
+                    },{
+                        url: ".*",
+                        show: () => swapContent("page-not-found", "Seite nicht gefunden"),
+                    }
+                ];
+
+                let router = new Router(routes);
+                router.start();
+            });
+        </script>
+    </head>
+    <body>
+        <!-- ==================== -->
+        <!-- Inhalt der Starseite -->
+        <!-- ==================== -->
+        <main id="page-start" class="hidden">
+            <h1>Startseite</h1>
+            <ul>
+                <li>
+                    <a href="#/other/">Andere Seite aufrufen</a>
+                </li>
+                <li>
+                    <a href="#/xyzabc/">Nicht vorhandene Seite aufrufen</a>
+                </li>
+                <li>
+                    <a href="#/08154711/">Andere nicht vorhandene Seite aufrufen</a>
+                </li>
+            </ul>
+        </main>
+
+        <!-- ======================== -->
+        <!-- Inhalt der anderen Seite -->
+        <!-- ======================== -->
+        <main id="page-other" class="hidden">
+            <h1>Andere Seite</h1>
+            <p>
+                <a href="#/">Zurück zur Startseite</a>
+            </p>
+        </main>
+
+        <!-- ========================== -->
+        <!-- Inhalt der 404-Fehlerseite -->
+        <!-- ========================== -->
+        <main id="page-not-found" class="hidden">
+            <h1>Fehler</h1>
+            <p>
+                Die gewünschte Seite wurde nicht gefunden.
+            </p>
+            <p>
+                <a href="#/">Zurück zur Startseite</a>
+            </p>
+        </main>
+    </body>
+</html>

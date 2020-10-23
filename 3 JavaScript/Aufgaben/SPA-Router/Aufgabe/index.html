@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Aufgabe: SPA-Router</title>
+        <link rel="stylesheet" href="style.css" />
+
+        <!-- Klasse Router einbinden -->
+        <script src="router.js"></script>
+
+        <!-- Single Page Router initialisieren -->
+        <script>
+            window.addEventListener("load", () => {
+                /**
+                 * Hilfsfunktion zum Umschalten des sichtbaren Inhalts
+                 *
+                 * @param {String} id HTML-ID des anzuzeigenden <main>-Elements
+                 * @param {String} title Neuer Titel für den Browser-Tab
+                 */
+                let swapContent = (id, title) => {
+                    document.querySelectorAll("main").forEach(mainElement => {
+                        mainElement.classList.add("hidden");
+                    })
+
+                    let element = document.querySelector(`#${id}`);
+                    if (element) element.classList.remove("hidden");
+
+                    document.title = `${title} | Aufgabe: SPA-Router`;
+                }
+
+                /**
+                 * Konfiguration des URL-Routers
+                 */
+                let routes = [
+                    {
+                        url: "^/$",
+                        show: () => swapContent("page-start", "Startseite"),
+                    }
+                ];
+
+                // TODO: Neues Objekt der Klasse Router erzeugen und dem Konstruktor
+                // die Variable routes mitgeben
+
+                // TODO: Methode start() des Routers aufrufen
+
+                // TODO: Definition einer zweiten Route auf eine andere URL.
+                // Die zweite Seite soll einen Link zurück auf die Startseite
+                // beinhalten. Die Startseite soll einen Link auf die zweite
+                // Seite beinhalten.
+
+                // TODO: Definition einer Standard-Route, die immer dann
+                // aufgerufen wird, wenn keine andere passende URL gefunden
+                // wird. Hierfür muss folgender, regulärer Ausdruck geprüft
+                // werden: ".*"
+                //
+                // Die Fehlerseite soll ebenfalls einen Link zurück auf die
+                // Startseite beinhalten.
+
+                // TODO: Zum Testen in der Startseite ein paar fehlerhafte
+                // Links einbauen.
+            });
+        </script>
+    </head>
+    <body>
+        <!-- ==================== -->
+        <!-- Inhalt der Starseite -->
+        <!-- ==================== -->
+        <main id="page-start" class="hidden">
+            <h1>Startseite</h1>
+            <ul>
+                <li>
+                    <a href="#/other/">Andere Seite aufrufen</a>
+                </li>
+                <li>
+                    <a href="#/xyzabc/">Nicht vorhandene Seite aufrufen</a>
+                </li>
+                <li>
+                    <a href="#/08154711/">Andere nicht vorhandene Seite aufrufen</a>
+                </li>
+            </ul>
+        </main>
+
+        <!-- TODO: Für jede weitere Seite hier ein <main id="..." class="hidden"> anlegen -->
+    </body>
+</html>
