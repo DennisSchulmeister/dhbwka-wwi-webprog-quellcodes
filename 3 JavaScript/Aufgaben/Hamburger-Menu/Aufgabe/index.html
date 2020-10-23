@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>Aufgabe: Hamburger-Menü mit JavaScript</title>
+
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="fontello/css/fontello.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat&display=swap" rel="stylesheet">
+
+        <!-- JavaScript-Code das Hamburger-Buttons -->
+        <script>
+        /*
+         * AUFGABENBESCHREIBUNG
+         *
+         *   1. Anpassung des Stylesheets.
+         *      Nimm folgende Erweiterungen am Stylesheet vor:
+         *
+         *        » Auf Bildschirmen bis zu 60em Breite soll die CSS-Klasse
+         *          `mobile-hidden`, jedes damit markierte HTML-Element
+         *          unsichtbar schalten
+         *
+         *       » Auf Bildschirmen ab 60em Breite sollen das <ul>-Element
+         *         mit den Navigationslinks als Flexbox fungieren, die ihre
+         *         Inhalte in einer Zeile nebeneinander anzeigt. Die Links
+         *         sollen dabei auf die gesamte Breite von ganz links bis
+         *         nach ganz rechts verteilt werden und zur Not in einer
+         *         zweite Zeile umbrechen dürfen.
+         *
+         *      » Auf kleineren Bildschirmen sollen die Links untereinander
+         *        und zentriert dargestellt werden. Auch hierfür soll eine
+         *        Flexbox verwendet werden, um mit der Anweisung
+         *
+         *          column-gap: 1em
+         *
+         *        den Abstand zwischen den Einträgen definieren zu können.
+         *
+         *   2. Ausprogrammieren der UI-Logik:
+         *
+         *      » Lege einen Event Listener an, der auf das `load`-Ereignis
+         *        des window-Objekts wartet.
+         *
+         *     » Innerhalb des Event Listeners greife auf das Document Object
+         *       Model zu, um jeweils eine Referenz auf den Hamburger-Button
+         *       sowie das darunter befindliche Navigationsmenü zu erhalten.
+         *
+         *     » Programmiere einen Event Listener für den Hamburger-Button
+         *       aus, der das Menü abwechselnd mal ein- und mal ausblendet.
+         *       Prüfe hierfür einfach ab, ob das HTML-Element des Menüs die
+         *       CSS-Klasse `mobile-hidden` besitzt. Falls ja, entferne sie.
+         *        Falls nein, füge sie dem Element hinzu.
+         */
+            window.addEventListener("load", () => {
+                let hamburgerButton = document.querySelector("#nav-toggle-menu button");
+                let navigationList = document.querySelector("#nav-menu");
+
+                hamburgerButton.addEventListener("click", () => {
+                    if (navigationList.classList.contains("mobile-hidden")) {
+                        navigationList.classList.remove("mobile-hidden");
+                        navigationList.classList.add("mobile-visible");
+                    } else {
+                        navigationList.classList.add("mobile-hidden");
+                        navigationList.classList.remove("mobile-visible");
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div id="nav-toggle-menu">
+                    <button class="icon-menu"></button>
+                    &nbsp;
+                    <b>Hamburger-App</b>
+                </div>
+                <ul id="nav-menu" class="mobile-hidden">
+                    <li>
+                        <a href="#">Startseite</a>
+                    </li>
+                    <li>
+                        <a href="#">Golfplatz</a>
+                    </li>
+                    <li>
+                        <a href="#">Mitgliedschaft</a>
+                    </li>
+                    <li>
+                        <a href="#">Green Fee</a>
+                    </li>
+                    <li>
+                        <a href="#">Golfschule</a>
+                    </li>
+                    <li>
+                        <a href="#">Gastronomie</a>
+                    </li>
+                    <li>
+                        <a href="#">Impressum</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="banner">
+                <h1>Hamburger-Menü</h1>
+                für mobile Endgeräte
+            </section>
+        </main>
+
+        <footer>
+            <img src="img/logo.png" />
+            <span>
+                Made with <span class="heart">❤️</span> by Beaver Productions
+            </span>
+        </footer>
+    </body>
+</html>

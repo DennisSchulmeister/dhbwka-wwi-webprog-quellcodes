@@ -1,0 +1,147 @@
+/*
+ * Grundlayout mit Fußzeile am unteren Ende
+ */
+html, body {
+    min-height: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/*
+ * Gestaltung des Hauptabschnitts in der Mitte
+ */
+body {
+    font-family: 'Montserrat', sans-serif;
+    hyphens: auto;
+}
+
+p {
+    text-align: justify;
+}
+
+header, section, footer {
+    padding: 1rem;
+}
+
+header, footer {
+    background: rgb(30,30,30);
+    color: rgb(240,240,240);
+}
+
+#banner {
+    font-family: 'Lobster', cursive;
+    font-size: 2rem;
+    text-align: center;
+    color: rgb(205, 23, 23);
+    text-shadow: 2px 2px 1px rgba(0,0,0, 0.75);
+
+    /* https://pixabay.com/illustrations/burger-pizza-food-meal-icons-5556498/ */
+    background-color: rgb(241, 226, 149);
+    background-image: url(img/food.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    flex: 1;
+}
+
+@media (min-width: 40em) {
+    #banner {
+        font-size: 4vw;
+    }
+}
+
+/*
+ * Gestaltung der Menüzeile
+ */
+button {
+    border: none;
+    outline: none;
+    background-color: rgb(230, 230, 230);
+    color: rgb(60, 60, 60);
+
+    padding: 0.75em;
+    border-radius: 0.4em;
+
+    cursor: pointer;
+}
+header {
+    font-size: 130%;
+}
+
+header a,
+header a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 1em;
+}
+
+header nav li {
+    text-align: center;
+}
+
+@media (max-width: 60em) {
+    .mobile-hidden {
+        display: none;
+    }
+}
+
+@media (min-width: 60em) {
+    #nav-toggle-menu {
+        display: none;
+    }
+
+    header nav ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        text-align: left;
+    }
+}
+
+/*
+ * Fußbereich
+ */
+footer {
+    text-align: center;
+}
+
+footer > img {
+    height: 5em;
+    vertical-align: middle;
+    margin-right: 1em;
+}
+
+.heart {
+    color: crimson;
+}
