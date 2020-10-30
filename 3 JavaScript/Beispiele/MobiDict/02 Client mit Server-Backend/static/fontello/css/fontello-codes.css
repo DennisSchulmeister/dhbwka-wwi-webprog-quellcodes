@@ -1,0 +1,6 @@
+@charset "UTF-8";
+
+ 
+.icon-menu:before { content: '\f0c9'; } /* '' */
+.icon-download:before { content: '📥'; } /* '\1f4e5' */
+.icon-search:before { content: '🔍'; } /* '\1f50d' */

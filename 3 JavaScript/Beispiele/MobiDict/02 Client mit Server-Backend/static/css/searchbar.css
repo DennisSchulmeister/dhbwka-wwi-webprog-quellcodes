@@ -1,0 +1,39 @@
+.searchbar {
+    width: 100%;
+    max-width: 30em;
+
+    display: flex;
+}
+
+.searchbar .search-query {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+
+    outline: 0;
+    border: 1px solid lightgrey;
+    background: white;
+    padding: 0.25em;
+    box-sizing: border-box;
+
+    font-size: 140%;
+    transition: background-color 0.3s;
+}
+
+.searchbar .search-button {
+    outline: 0;
+    border: 1px solid lightgrey;
+    padding: 0.25em;
+    box-sizing: border-box;
+
+    font-size: 140%;
+    color: rgb(100, 100, 100);
+    background: rgb(230, 230, 230);
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.searchbar .search-button:hover,
+.searchbar .search-button:focus {
+    background: rgb(220, 220, 220);
+}

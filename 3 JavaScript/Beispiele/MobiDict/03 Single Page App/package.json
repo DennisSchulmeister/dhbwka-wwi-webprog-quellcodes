@@ -1,0 +1,15 @@
+{
+  "name": "mobidict",
+  "version": "1.0.0",
+  "description": "Online dictionary for mobile devices",
+  "main": "server.js",
+  "scripts": {
+    "run": "node server.js"
+  },
+  "author": "Dennis Schulmeister-Zimolong <dennis@wpvs.de>",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "@apexearth/egrep": "^1.0.9",
+    "express": "^4.17.1"
+  }
+}

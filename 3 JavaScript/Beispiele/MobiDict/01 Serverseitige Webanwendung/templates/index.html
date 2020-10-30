@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block main %}
+<form class="searchbar">
+    <input class="search-query" placeholder="Suche (regex)" name="q" value="{{ query }}"/>
+    <button class="search-button icon-search" type="submit"></button>
+</form>
+
+<p class="small">
+    Wörterbuch bereitgestellt von der
+    <a href="https://dict.tu-chemnitz.de/" target="_blank">TU Chemnitz (Beolingus)</a>.
+</p>
+
+{% if error %}
+<div class="error">
+    {{ error }}
+</div>
+{% endif %}
+
+<table class="result">
+    {% for result in resultlist %}
+    <tr>
+        <td class="result-word">
+            {{result.word}}
+        </td>
+        <td class="result-translation">
+            {{result.translation}}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

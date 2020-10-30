@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>MobiDict</title>
+        <link rel="shortcut icon" href="/img/favicon.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="/css/common.css" />
+        <link rel="stylesheet" href="/css/searchbar.css" />
+        <link rel="stylesheet" href="/fontello/css/fontello.css" />
+
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <header>
+            <img class="logo" src="/img/logo.svg" alt="Mobidict" />
+
+            <nav>
+                <ul>
+                    <li>
+                        <a id="menu-home">Startseite</a>
+                    </li>
+                    <li>
+                        <a id="menu-about">Über uns</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main id="page-search">
+            <div class="searchbar">
+                <input class="search-query" placeholder="Suche (regex)" />
+                <button class="search-button icon-search" type="submit"></button>
+            </div>
+
+            <p class="small">
+                Wörterbuch bereitgestellt von der
+                <a href="https://dict.tu-chemnitz.de/" target="_blank">TU Chemnitz (Beolingus)</a>.
+            </p>
+
+            <div class="error"></div>
+            <table class="result"></table>
+        </main>
+
+        <main id="page-about" class="hidden">
+            <p>
+                Hier könnten wir unsere tolle Anwendung beschreiben …
+            </p>
+        </main>
+    </body>
+</html>
