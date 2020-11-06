@@ -82,6 +82,6 @@ class PageEdit {
         // TODO: Werte aus den Formularfeldern lesen
         // TODO: alert()-Meldung ausgeben, wenn Vorname oder Nachname fehlen
         // TODO: Neuen Datensatz speichern oder vorhandenen Datensatz überschreiben, wenn this._editIndex größer 1
-        // TODO: Methoden zum Anzeigen der Seite "page-list" aufrufen
+        // TODO: URL mit location.hash auf "#/" ändern, um die Startseite erneut aufzurufen
     }
 }

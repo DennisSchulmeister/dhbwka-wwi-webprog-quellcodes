@@ -108,6 +108,6 @@ class PageEdit {
         }
 
         // Zurück zur Übersicht
-        this._app.showPage("page-list");
+        location.hash = "#/";
     }
 }

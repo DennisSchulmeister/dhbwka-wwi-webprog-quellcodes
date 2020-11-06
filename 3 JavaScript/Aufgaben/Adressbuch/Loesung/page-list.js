@@ -74,7 +74,7 @@ class PageList {
             let _addEventListeners = (index) => {
                 // Event Listener für <div class="action edit"> registrieren
                 let editButton = dummy.querySelector(".action.edit");
-                editButton.addEventListener("click", () => this._app.showPage("page-edit", index));
+                editButton.addEventListener("click", () => location.hash = `#/edit/${index}`);
 
                 // Event Listener für <div class="action delete"> registrieren
                 let deleteButton = dummy.querySelector(".action.delete");

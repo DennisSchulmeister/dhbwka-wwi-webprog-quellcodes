@@ -8,6 +8,9 @@
         <script src="app.js"></script>
         <link rel="stylesheet" href="app.css" />
 
+        <!-- Klasse Router: Implementiert einen einfachen Single Page Router -->
+        <script src="router.js"></script>
+
         <!-- Klasse PageList: Stellt die Listenansicht zur Verfügung -->
         <script src="page-list.js"></script>
         <link rel="stylesheet" href="page-list.css" />
@@ -19,17 +22,22 @@
         <!-- Anwendung starten -->
         <script>
             window.addEventListener("load", () => {
+                /**
+                 * Konfiguration der App-Klasse mit der Anwendungslogik
+                 */
                 let pages = [
                     {
                         name: "page-list",              // Name zum Aufrufen der Seite
                         klass: PageList,                // Klasse, die die Seite bereitstellt
                         label: "Übersicht",             // Bezeichnung der Seite
+                        url: "/",                       // URL zum Öffnen der Seite
                         hidden: false,                  // Seite kann im Menü ausgewählt werden
                     },
                     {
                         name: "page-new",
                         klass: PageEdit,
                         label: "Adresse hinzufügen",
+                        url: "/new/",                   // URL zum Öffnen der Seite
                         hidden: false,                  // Seite kann im Menü ausgewählt werden
                     },
                     {
@@ -41,7 +49,28 @@
                 ];
 
                 let app = new App(pages);
-                app.showPage("page-list");
+
+                /**
+                 * Konfiguration des URL-Routers
+                 */
+                let routes = [
+                    {
+                        url: "^/$",
+                        show: () => app.showPage("page-list"),
+                    },{
+                        url: "^/new/$",
+                        show: () => app.showPage("page-new"),
+                    },{
+                        url: "^/edit/(.*)$",
+                        show: matches => app.showPage("page-edit", matches[1]),
+                    },{
+                        url: ".*",
+                        show: () => app.showPage("page-list"),
+                    }
+                ];
+
+                let router = new Router(routes);
+                router.start();
             });
         </script>
     </head>

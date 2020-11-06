@@ -61,7 +61,7 @@ class App {
 
             // Event Listener auf das <li>-Element registrieren
             let li = dummy.firstElementChild;
-            li.addEventListener("click", () => this.showPage(page.name));
+            li.addEventListener("click", () => location.hash = `#${page.url}`);
 
             // Element nun in das Menü umhängen
             dummy.removeChild(li);
