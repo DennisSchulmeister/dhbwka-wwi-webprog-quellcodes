@@ -1,0 +1,16 @@
+{
+  "name": "Adressbuch",
+  "version": "1.0.0",
+  "description": "Beispiel für eine serverseitige Webanwendung mit node.js und Express",
+  "main": "server.js",
+  "scripts": {
+    "run": "node server.js"
+  },
+  "author": "Dennis Schulmeister-Zimolong <dennis@wpvs.de>",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-nunjucks": "^2.2.5",
+    "nunjucks": "^3.2.2"
+  }
+}

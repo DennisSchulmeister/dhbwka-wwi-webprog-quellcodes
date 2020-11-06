@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/page-edit.css" />
+{% endblock %}
+
+{% block body %}
+<main id="main-page-edit">
+    <form method="POST">
+        <div class="form">
+            <input name="first_name" class="first_name" placeholder="Vorname" value="{{ record.first_name }}" />
+            <input name="last_name" class="last_name" placeholder="Nachname" value="{{ record.last_name }}" />
+            <input name="phone" class="phone" placeholder="Telefonnummer" value="{{ record.phone }}" />
+            <input name="email" class="email" placeholder="E-Mailadresse" value="{{ record.email }}" />
+        </div>
+        <div class="actions">
+            <button type="submit" class="action save">💾</button>
+        </div>
+    </endform>
+
+    <ul class="errors">
+        {% for error in errors %}
+        <li>
+            {{ error }}
+        </li>
+        {% endfor %}
+    </ul>
+</main>
+{% endblock %}

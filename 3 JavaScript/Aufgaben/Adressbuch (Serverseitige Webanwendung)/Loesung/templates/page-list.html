@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/page-list.css" />
+{% endblock %}
+
+{% block body %}
+<main id="main-page-list">
+    <ol>
+        {% if data|length < 1 %}
+        <li>
+            <div class="name">
+                Keine Einträge vorhanden
+            </div>
+        </li>
+        {% endif %}
+
+        {% for record in data %}
+        <li data-index="{{ loop.index0 }}">
+            <div class="name">
+                {{ record.last_name}}, {{ record.first_name }}
+            </div>
+            <div class="field phone">
+                {{ record.phone }}
+            </div>
+            <div class="field email">
+                {{ record.email }}
+            </div>
+            <div class="actions">
+                <a href="/edit/{{ loop.index0 }}">
+                    <div class="action edit">
+                        🖊️
+                    </div>
+                </a>
+                <a href="/delete/{{ loop.index0 }}">
+                    <div class="action delete">
+                        🗑️
+                    </div>
+                </a>
+            </div>
+        </li>
+        {% endfor %}
+    </ol>
+</main>
+{% endblock %}

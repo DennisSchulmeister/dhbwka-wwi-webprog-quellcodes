@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>☎️ JavaScript im Browser: Adressbuch</title>
+
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Rubik');
+
+            html {
+                font-family: "Rubik", sans-serif;
+                font-size: 10pt;
+                line-height: 1.6;
+            }
+
+            @media (min-width: 63em) {
+                html {
+                    font-size: 12pt;
+
+                    /* https://www.toptal.com/designers/subtlepatterns/ */
+                    background-color: #c28fc9;
+                    background-image: url("background.png");
+                }
+
+                section {
+                    background: white;
+                    box-shadow: 2px 2px 3px rgba(0,0,0, 0.3);
+
+                    width: 60em;
+                    margin: 0 auto;
+                    margin-top: 2em;
+                    margin-bottom: 2em;
+
+                    border-radius: 0.5rem;
+                    border: 1px solid #202020;
+                }
+
+                section > h1 {
+                    font-size: 200%;
+                    margin: 0;
+
+                    border-radius: 0.5rem 0.5rem 0 0;
+                }
+
+                section article {
+                    padding: 1em;
+                }
+
+                section p,
+                section h2:first-child,
+                section h3:first-child,
+                section h4:first-child {
+                    margin-top: 0;
+                }
+
+                section h2,
+                section h3,
+                section h4 {
+                    margin-bottom: 0.5em;
+                }
+            }
+
+            h1 {
+                padding: 0.25em;
+                margin-top: 1.5em;
+                color: white;
+                background: #0b557e;
+            }
+
+            h1:first-child {
+                margin-top: 0;
+            }
+
+            p {
+                text-align: justify;
+                hyphens: auto;
+            }
+
+            a, a:visited {
+                color: #3968A1;
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: #6E9ED9;
+            }
+
+            li {
+                margin-bottom: 0.5em;
+            }
+
+            .screenshot {
+                display: inline-block;
+                box-sizing: border-box;
+                width: 48%;
+                margin: 0 auto;
+
+                border: 1px solid #A0A0A0;
+                padding: 0.2em;
+                background: rgba(230,230,230);
+                box-shadow: 0 0 2px rgba(0,0,0, 0.5);
+
+                margin: 0.5em;
+
+                transition: transform 0.5s, box-shadow 0.5s;
+            }
+
+            .screenshot:hover {
+                transform: scale(1.05) rotate(3deg);
+                box-shadow: 2px 2px 4px rgba(0,0,0, 0.5);
+            }
+
+            .caption {
+                font-size: 85%;
+                text-align: center;
+            }
+
+            .footnote {
+                font-size: 75%;
+            }
+
+            pre {
+                margin-bottom: 1.5em !important;
+            }
+
+            table, tr, td {
+                vertical-align: top;
+            }
+            .filename {
+                font-family: monospace;
+                padding-right: 2em;
+                color: darkblue;
+            }
+            .command {
+                font-family: monospace;
+                padding-right: 2em;
+                color: darkred;
+            }
+            .skip {
+                padding-bottom: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Beschreibung</h1>
+            <article>
+                <p>
+                    Vor lauter Freude und Nostalgie über das Adressbuch, das wir in einer
+                    anderen Aufgabe bereits als Single Page App entwickelt haben, wollen
+                    wir die gleiche Anwendung nun als serverseitige Webanwendung entwickeln.
+                    Die App besitzt daher exakt die gleichen Anforderungen, beinhaltet aber
+                    keinerlei clientseige Anwendungslogik, da sowohl die Datenhaltung als
+                    auch die Generierung der HTML-Anzeige komplett serverseitig abgewickelt
+                    werden:
+                </p>
+                <ul>
+                    <li>
+                        Ruft man die App auf, erscheint eine Liste mit allen vorhandenen Adressen.
+                    </li>
+                    <li>
+                        Ist noch keine Adresse vorhanden, wird ein entsprechender Hinweis angezeigt.
+                    </li>
+                    <li>
+                        Zum Anlegen eines neuen Eintrags wird die Adressliste ausgeblendet und ein Eingabeformular eingeblendet.
+                    </li>
+                    <li>
+                        Dasselbe Formular soll auch zum Bearbeiten einer Adresse verwendet werden.
+                    </li>
+                    <li>
+                        Einzelne Adressen können nachträglich auch wieder gelöscht werden.
+                    </li>
+                    <li>
+                        Jede Adresse besteht aus Vorname, Nachname, Telefon und E-Mail.
+                    </li>
+                </ul>
+                <p>
+                    Auch hier werden die Adressen nicht dauerhaft gespeichert. Normalerweise
+                    würde der Webserver hierfür auf einen separaten Datenbankserver zugreifen.
+                    Der Einfachheit halber, verwaltet der Webserver die Daten hier jedoch nur
+                    im Hauptspeicher.
+                </p>
+            </article>
+        </section>
+
+        <section>
+            <h1>Screenshots</h1>
+            <article>
+                <a href="screenshot1.png" target="_blank">
+                    <img
+                        src   = "screenshot1.png"
+                        alt   = "Am Anfang, wenn es noch keine Einträge gibt"
+                        class = "screenshot"
+                    />
+                </a>
+
+                <a href="screenshot2.png" target="_blank">
+                    <img
+                        src   = "screenshot2.png"
+                        alt   = "Formular zum Anlegen eines neuen Eintrags"
+                        class = "screenshot"
+                    />
+                </a>
+
+                <a href="screenshot3.png" target="_blank">
+                    <img
+                        src   = "screenshot3.png"
+                        alt   = "Dieses mal auch mit Daten"
+                        class = "screenshot"
+                    />
+                </a>
+
+                <a href="screenshot4.png" target="_blank">
+                    <img
+                        src   = "screenshot4.png"
+                        alt   = "Liste mit den bereits vorhandenen Adressen"
+                        class = "screenshot"
+                    />
+                </a>
+            </article>
+        </section>
+
+        <section>
+            <h1>Vorbereitung</h1>
+            <article>
+                <ol>
+                    <li>
+                        Um diese Aufgabe bearbeiten zu können, musst du
+                        <a href="https://nodejs.org/" target="_blank">node.js</a>
+                        installiert haben.
+                    </li>
+                    <li>
+                        Außerdem solltest du einfache Befehle in der Kommandozeile
+                        ausführen können. So musst du in der Lage sein, innerhalb
+                        der Kommandozeile in das Quellcode-Verzeichnis zu wechseln
+                        und dort Befehle auszuführen.
+                    </li>
+                    <li>
+                        <p>
+                            Innerhalb des Quellcode-Verzeichnisses musst du dann folgenden
+                            Befehl ausführen, um alle benötigten Abhängikeiten aus dem
+                            Internet herunterzuladen:
+                        </p>
+                        <p class="command">
+                            npm install
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Zum Test solltest du dann versuchen, die Anwendung mit folgendem
+                            Befehl zu starten:
+                        </p>
+                        <p class="command">
+                            npm start
+                        </p>
+                        <p>
+                            Du solltest folgende Ausgabe auf dem Bildschirm sehen und die
+                            Anwendung unter <a href="http://localhost:8888/" target="_blank">http://localhost:8888/</a>
+                            zu starten.
+                        </p>
+                        <a href="server.png" target="_blank">
+                            <img
+                                src   = "server.png"
+                                alt   = "Konsolenausgaben des Webservers"
+                                class = "screenshot"
+                            />
+                        </a>
+                    </li>
+                    <li>
+                        <p>
+                            Als Hilftestellung beim Programmieren kannst du folgende Seiten verwenden.
+                            Die Kommentare im Quellcode sollten aber auch so ausreichen.
+                        </p>
+                        <ul>
+                            <li>
+                                <a href="https://expressjs.com/de/4x/api.html#req.body" target="_blank">Express API Referenz</a>
+                            </li>
+                            <li>
+                                <a href="https://mozilla.github.io/nunjucks/templating.html" target="_blank">Nunjucks API Referenz</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+            </article>
+        </section>
+
+        <section>
+            <h1>Aufbau des Quellcodes</h1>
+            <article>
+                <p>
+                    Der Quellcode ist relativ simpel strukturiert. Es gibt lediglich zwei
+                    serverseitig ausgeführte JavaScript-Dateien, ein paar HTML-Templates zur
+                    Generierung der Bildschirmausgabe sowie statische Dateien wie Stylesheets,
+                    die unverändert an den Browser übertragen werden.
+                </p>
+                <table>
+                    <tr>
+                        <td class="filename">
+                            package.json
+                        </td>
+                        <td>
+                            Projektkonfiguration für node.js und den Node Package Manager.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="filename">
+                            server.js
+                        </td>
+                        <td>
+                            Hauptdatei des Servers. Diese musst du bearbeiten.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="filename">
+                            js/database.js
+                        </td>
+                        <td>
+                            Hilfsklasse zur Simulation einer einfachen Datenbank.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="filename">
+                            static/
+                        </td>
+                        <td>
+                            Statische Dateien wie Bilder oder Styhesheets, die unverändert
+                            an den Browser geschickt werden.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="filename">
+                            templates/
+                        </td>
+                        <td>
+                            HTML-Templates zur Generierung der Bildschirmausgabe. Auch hier
+                            musst du eine Daten bearbeiten.
+                        </td>
+                    </tr>
+                </table>
+            </article>
+        </section>
+
+        <section>
+            <h1>Aufgabenstellung</h1>
+            <article>
+                <ol>
+                    <li>
+                        Lies dich zunächst etwas in den Quellcode der Anwendung ein, indem
+                        du dir die Dateien
+                        <span class="filename" style="padding: 0;">server.js</span>,
+                        <span class="filename" style="padding: 0;">database.js</span>,
+                        <span class="filename" style="padding: 0;">templates/base.html</span> und
+                        <span class="filename" style="padding: 0;">templates/page-edit.html</span>
+                        anschaust. Erkennst du, wo der Server HTTP-Anfragen empfängt und wie
+                        er dann eine passende HTML-Antwort generiert?
+                    </li>
+                    <li>
+                        Die Startseite der Anwendung sollte schon vollständig funktionieren.
+                        Lediglich die Seiten zum Anlegen und Bearbeiten von Adressen sind
+                        noch nicht ganz fertig entwickelt. Dies merkst du, indem du versuchst,
+                        eine vorhandene Adresse zu bearbeiten. Es erscheint zwar das Formular
+                        zum Bearbeiten der Adressen, die Felder sind aber noch leer. Folge
+                        daher den Anweisungen in der Datei
+                        <span class="filename" style="padding: 0;">templates/page-edit.html</span>,
+                        um die im Feld <code>record</code> übergebenen Werte des bearbeiteten
+                        Datensatzes in die Eingabefelder zu schreiben.
+                    </li>
+                    <li>
+                        Die Felder Vorname und Nachname sollen Pflichtfelder sein. Der Server
+                        prüft deshalb schon, ob hier etwas eingetragen wurde, bevor ein
+                        Datensatz gespeichert wird. Wurden eines oder beide Felder vergessen,
+                        werden stattdessen mehrere Feldermeldungen in das Feld <code>errors</code>
+                        geschrieben. Folgee daher auch gleich den Kommentaren am Ende der Datei
+                        <span class="filename" style="padding: 0;">templates/page-edit.html</span>,
+                        um die Fehlermeldungen auszugeben.
+                    </li>
+                    <li>
+                        In der Datei <span class="filename" style="padding: 0;">server.js</span>
+                        sind bereits alle notwendigen HTTP-Request-Handler ausprogrammiert.
+                        POST-Anfragen, die beim Anlegen oder Bearbeiten eines Datensatzes an
+                        den Server geschickt werden (mit Hilfe des HTML-Formulars in der Datei
+                        <span class="filename" style="padding: 0;">templates/page-edit.html</span>),
+                        werden jedoch noch nicht vollständig bearbeitet. Was fehlt ist der Fehlerfall,
+                        bei dem keine automatische Weiterleitung auf die Startseite erfolgen darf.
+                        Stattdessen muss eine POST-Anfrage bei Fehlern eine HTML-Antwort mit dem
+                        auszufüllenden HTML-Formular erzeugen. Der Quellcode hierfür ist im Grunde
+                        genommen der Gleiche, wie er bei GET-Anfragen an die jeweiligen URLs
+                        durchlaufen wird. Du musst jedoch darauf achten, die Liste der Fehlermeldungen
+                        sowie die zuvor eingegebenen Formulardaten an das Template zu übergeben.
+                    </li>
+                    <li>
+                        Das war es auch schon. Natürlich gibt es noch viel mehr zu entdecken.
+                        Als kleiner Einstieg soll uns diese Augabe aber genügen.
+                    </li>
+                </ol>
+            </article>
+        </section>
+    </body>
+</html>

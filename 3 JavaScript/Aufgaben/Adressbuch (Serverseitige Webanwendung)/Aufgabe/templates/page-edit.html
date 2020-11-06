@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/page-edit.css" />
+{% endblock %}
+
+{% block body %}
+<main id="main-page-edit">
+    <form method="POST">
+        <div class="form">
+            <!--
+                TODO: Werte des bearbeiteten Datensatzes in den Formularfeldern anzeigen.
+                Hierzu muss das Attribut "value" mit dem jeweiligen Wert versorgt werden.
+                Die Werte können dabei mit {{ record.first_name}}, {{ record.last_name }}
+                und so weiter ausgelesen werden.
+            -->
+            <input name="first_name" class="first_name" placeholder="Vorname" />
+            <input name="last_name" class="last_name" placeholder="Nachname" />
+            <input name="phone" class="phone" placeholder="Telefonnummer" />
+            <input name="email" class="email" placeholder="E-Mailadresse" />
+        </div>
+        <div class="actions">
+            <button type="submit" class="action save">💾</button>
+        </div>
+    </endform>
+
+    <ul class="errors">
+        <!--
+            TODO: Fehlermeldungen anzeigen, wenn vergessen wurde eines oder mehrere
+            Pflichtfelder zu füllen. Hierfür kann mit
+
+                {% for error in errors %}
+                {% endfor %}
+
+            eine Schleife über alle Fehlermeldungen definiert werden, innerhalb dererer
+            mit {{ error }} auf den Fehlertext zugegriffen werden kann.
+        -->
+    </ul>
+</main>
+{% endblock %}

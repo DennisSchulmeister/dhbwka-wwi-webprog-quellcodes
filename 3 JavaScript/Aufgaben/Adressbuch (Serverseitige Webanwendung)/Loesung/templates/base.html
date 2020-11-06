@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>☎️ {{ title }} | Adressbuch</title>
+
+        <link rel="stylesheet" href="/app.css" />
+
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+        <!-- Kopfbereich mit Tabreitern -->
+        <nav id="app-menu">
+            <ul>
+                {% for menuitem in appmenu %}
+                <li class="{{ menuitem.class }}">
+                    <a href="{{ menuitem.href }}">{{ menuitem.text }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
+
+        <!-- Inhalt der Seite -->
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>
