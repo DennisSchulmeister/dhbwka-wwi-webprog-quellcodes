@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>🎙️ Aufgabe: Joe Cocker</title>
+        <style>
+            html {
+                font-family: sans-serif;
+                font-size: 10pt;
+            }
+
+            @media (min-width: 63em) {
+                html {
+                    font-size: 12pt;
+
+                    /* https://pixabay.com/photos/music-performance-concert-musician-3264716/ */
+                    background-color: rgb(11, 85, 98);
+                    background-image: url(background.jpg);
+                    background-attachment: fixed;
+                    background-size: cover;
+                    background-position: center;
+
+                    hyphens: auto;
+
+                    min-height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                section {
+                    background: white;
+
+                    width: 60em;
+                    margin-top: 2em;
+                    margin-bottom: 2em;
+
+                    box-shadow: 0px 0px 4px rgba(0,0,0, 0.5);
+
+                    text-align: justify;
+                }
+
+                section > h1 {
+                    font-size: 200%;
+                    margin: 0;
+                }
+
+                section article {
+                    padding: 1em;
+                }
+
+                section p,
+                section h2:first-child,
+                section h3:first-child,
+                section h4:first-child {
+                    margin-top: 0;
+                }
+
+                section h2,
+                section h3,
+                section h4 {
+                    margin-bottom: 0.5em;
+                }
+
+                .screenshot {
+                    margin: 0 !important;
+                }
+
+                .screenshot.small {
+                    max-width: 18em;
+                }
+
+                .flexbox {
+                    display: flex;
+                    justify-content: center;
+                    column-gap: 1em;
+                }
+            }
+
+            h1 {
+                padding: 0.25em;
+                margin-top: 1.5em;
+                color: rgb(193, 29, 29);
+                background: #DFDFDF;
+            }
+
+            h1:first-child {
+                margin-top: 0;
+            }
+
+            a, a:visited {
+                color: #3968A1;
+                text-decoration: underline;
+            }
+
+            a:hover {
+                color: #6E9ED9;
+            }
+
+            .screenshot {
+                display: block;
+                width: 100%;
+                border: 1px solid #A0A0A0;
+                margin: 1em 0 1em 0;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Aufgabe: Joe Cocker</h1>
+
+            <article>
+                <p>
+                    Als am 22. Dezember 2014 der legendäre Sänger Joe Cocker starb, zeigte die offizielle Webseite
+                    <a href="https://www.cocker.com" target="_blank">www.cocker.com</a> eine einfache Gedenkseite
+                    mit den Lebensdaten und den Covern aller bis dato veröffentlichten Alben. Inzwischen findet sich
+                    auf der Seite natürlich ganz anderer Inhalt, weshalb die Seite von damals in dieser Aufgabe
+                    rekontruiert werden soll.
+                </p>
+                <p class="flexbox">
+                    <span>
+                        <span>Originalwebseite:</span>
+                        <a href="vorlage.png" target="_blank">
+                            <img
+                                src   = "vorlage.png"
+                                alt   = "Screenshot der Original-Webseite"
+                                class = "screenshot small"
+                            />
+                        </a>
+                    </span>
+                </p>
+                <p class="flexbox">
+                    <span>
+                        <span>Musterlösung (<a href="../Loesung/index.html" target="_blank">Link</a>):</span>
+                        <a href="musterloesung.png" target="_blank">
+                            <img
+                                src   = "musterloesung.png"
+                                alt   = "Screenshot der Musterlösung"
+                                class = "screenshot small"
+                            />
+                        </a>
+                    </span>
+                </p>
+                <p style="text-align: center;">
+                    <small>
+                        Bilder anklicken für eine größere Version
+                    </small>
+                </p>
+
+                <p>
+                    Das Grundgerüst der Seite wurde bereits fertiggestellt. Jedoch müssen noch verschiedene
+                    Anpassungen vorgenommen werden, um das gewünschte Layout zu realisieren. Die notwendigen
+                    Änderungen sind als Kommentar in der Datei <tt>index.html</tt> beschrieben.
+                </p>
+            </article>
+        </section>
+    </body>
+</html>

@@ -3,6 +3,11 @@
     <head>
         <meta charset="utf-8" />
         <title>🎁 Aufgabe: Mobile-First-Entwicklung</title>
+
+        <!-- Syntaxhighlighting -->
+        <link rel="stylesheet" href="prism.css" />
+        <script src="prism.js"></script>
+
         <style>
             html {
                 font-family: sans-serif;
@@ -21,13 +26,18 @@
                     background-position: center;
 
                     hyphens: auto;
+
+                    min-height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
                 }
 
                 section {
                     background: white;
 
                     width: 60em;
-                    margin: 0 auto;
                     margin-top: 2em;
                     margin-bottom: 2em;
 
@@ -68,12 +78,8 @@
 
                 .flexbox {
                     display: flex;
-                    justify-content: sspace-between;
+                    justify-content: center;
                     column-gap: 1em;
-                }
-
-                .flexbox > * {
-                    flex: 1;
                 }
 
                 .centerbox {
@@ -106,7 +112,7 @@
                 display: block;
                 width: 100%;
                 border: 1px solid #A0A0A0;
-                margin: 1em;
+                margin: 1em 0 1em 0;
             }
         </style>
     </head>
@@ -251,7 +257,7 @@
                     Folgender CSS-Code bringt ein HTML-Element der Klasse <code>flexbox</code> dazu,
                     seine Kindelemente in drei gleichgroßen Spalten nebeneinander anzuordnen:
                 </p>
-<code><pre>.flexbox {
+<pre><code class="language-css">.flexbox {
     display: flex;
     justify-content: space-between;
     column-gap: 1em;
@@ -259,7 +265,7 @@
 
 .flexbox > * {
     flex: 1;
-}</pre></code>
+}</code></pre>
 
                 <p>
                     Damit das Soundcloud-Widget funktioniert muss die Seite, wie in den HTML-Folien erklärt,

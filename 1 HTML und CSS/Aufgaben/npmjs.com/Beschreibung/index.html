@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>💻 Aufgabe: npmjs.com</title>
+
+        <!-- Syntaxhighlighting -->
+        <link rel="stylesheet" href="prism.css" />
+        <script src="prism.js"></script>
+
+        <style>
+            html {
+                font-family: sans-serif;
+                font-size: 10pt;
+            }
+
+            @media (min-width: 63em) {
+                html {
+                    font-size: 12pt;
+
+                    /* https://pixabay.com/illustrations/code-jquery-web-design-583073/ */
+                    background-color: rgb(11, 85, 98);
+                    background-image: url(background.jpg);
+                    background-attachment: fixed;
+                    background-size: cover;
+                    background-position: center;
+
+                    hyphens: auto;
+
+                    min-height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                section {
+                    background: white;
+
+                    width: 60em;
+                    margin-top: 2em;
+                    margin-bottom: 2em;
+
+                    box-shadow: 0px 0px 4px rgba(0,0,0, 0.5);
+
+                    text-align: justify;
+                }
+
+                section > h1 {
+                    font-size: 200%;
+                    margin: 0;
+                }
+
+                section article {
+                    padding: 1em;
+                }
+
+                section p,
+                section h2:first-child,
+                section h3:first-child,
+                section h4:first-child {
+                    margin-top: 0;
+                }
+
+                section h2,
+                section h3,
+                section h4 {
+                    margin-bottom: 0.5em;
+                }
+
+                .screenshot {
+                    margin: 0 !important;
+                }
+
+                .screenshot.small {
+                    max-width: 18em;
+                }
+
+                .flexbox {
+                    display: flex;
+                    justify-content: center;
+                    column-gap: 1em;
+                }
+            }
+
+            h1 {
+                padding: 0.25em;
+                margin-top: 1.5em;
+                color: rgb(193, 29, 29);
+                background: #DFDFDF;
+            }
+
+            h1:first-child {
+                margin-top: 0;
+            }
+
+            a, a:visited {
+                color: #3968A1;
+                text-decoration: underline;
+            }
+
+            a:hover {
+                color: #6E9ED9;
+            }
+
+            .screenshot {
+                display: block;
+                width: 100%;
+                border: 1px solid #A0A0A0;
+                margin: 1em 0 1em 0;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Aufgabe: npmjs.com</h1>
+
+            <article>
+                <p>
+                    Ein gutes Workout für die HTML- und CSS-Muskeln 💪 ist, interessant gestaltete Webseiten zu
+                    analysieren und anschließend nachzuprogrammieren. Ebenso kann es nicht schaden, Screenshots
+                    guter Webseiten zu sammeln, um diese später als Inspiration für eigene Projekte heranzuziehen.
+                    In dieser Aufgabe soll deshalb die Startseite von <a href="https://www.npmjs.com">npmjs.com</a>
+                    nachgebaut werden.
+                </p>
+                <p class="flexbox">
+                    <span>
+                        <span>Originalwebseite:</span>
+                        <a href="vorlage.png" target="_blank">
+                            <img
+                                src   = "vorlage.png"
+                                alt   = "Screenshot der Original-Webseite"
+                                class = "screenshot small"
+                            />
+                        </a>
+                    </span>
+
+                    <span>
+                        <span>Musterlösung (<a href="../Loesung/index.html" target="_blank">Link</a>):</span>
+                        <a href="musterloesung.png" target="_blank">
+                            <img
+                                src   = "musterloesung.png"
+                                alt   = "Screenshot der Musterlösung"
+                                class = "screenshot small"
+                            />
+                        </a>
+                    </span>
+                </p>
+                <p style="text-align: center;">
+                    <small>
+                        Bilder anklicken für eine größere Version
+                    </small>
+                </p>
+
+                <p>
+                    Das Erscheinungsbild der Originalwebseite ändert sich immer mal wieder und entspricht deshalb
+                    möglicherweise schon nicht mehr dem Screenshot. Außerdem enthält sie noch viel mehr Inhalt, den
+                    nachzubauen sich nicht lohnt. Für den Screenshot wurden daher mit den Entwicklungswerkzeugen
+                    des Browsers alle unnötigen Inhalte entfernt, um die wesentlichen Gestaltungsmerkmale besser
+                    hervorzuheben. In der Musterlösung wurden darüber hinaus ein paar Schönheitsfehler behoben,
+                    so dass die Seite wirklich „pixelperfekt” ist (Größe der Suchbuttons sowie die rechtsbündige
+                    Ausrichtung der Buttons mit der Menüzeile und dem Fußbereich).
+                </p>
+            </article>
+        </section>
+
+        <section>
+            <h1>Hinweise</h1>
+
+            <article>
+                <p>
+                    <b>Flexbox, Flexbox, Flexbox.</b> Am einfachsten lässt sich das Layout mit mehreren,
+                    ineinander geschachtelten Flexboxen realisieren. Die Einteilung der Seite selbst,
+                    die Menüzeile, die Suchzeile, die Textbereiche und der Fußbereich: Sie alle sind
+                    Flexboxen mit unterschiedlichen Einstellungen. Vor Beginn der Aufgabe lohnt es
+                    sich daher, die Beschreibung des Flexbox-Algorithmus auf
+                    <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">css-tricks.com</a>
+                    zu studieren und immer wieder zu konsultieren.
+                </p>
+                <p>
+                    Denke zuerst vertikal, dann horizontal. Versuche also erst die übereinander gestapelten
+                    Bereiche zu definieren und mit dem Flexbox-Algorithmus zu positionieren. Das Elternelement
+                    muss hierfür die CSS-Anweisungen <b><tt>display: flex</tt></b> und <b><tt>flex-direction: column</tt></b>
+                    sowie weitere Anweisungen zur Ausrichtung ihrer Inhalte besitzen. Anschließend mache die
+                    Bereiche selbst zu Flexboxen und definiere damit die horizontale Ausrichtung ihrer Inhalte.
+                </p>
+                <p>
+                    Ein guter Trick für die bunten Farbstreifen oben und unten ist, einfach dem
+                    <b><tt>&lt;html&gt;</tt></b>-Element einen Farberlauf zu geben und die Dicke der Streifen
+                    als Padding zu definieren. Damit der Hauptinhalt den Farbverlauf überdeckt, müssen zusätzlich
+                    der Flexbox-Algorithmus aktiviert und für das <b><tt>&lt;body&gt;</tt></b>-Element eine
+                    Hintergrundfarbe gesetzt werden:
+                </p>
+<pre><code class="language-css">html {
+    background: rgb(221,145,17);
+    background: linear-gradient(
+                    90deg,
+                    rgba(221,145,17,1) 0%,
+                    rgba(255,9,28,1) 45%,
+                    rgba(250,0,255,1) 100%
+                );
+
+    min-height: 100%;
+    padding-top: 0.6em;
+    padding-bottom: 0.6em;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    flex-grow: 1;
+    background-color: white;
+}</code></pre>
+                <p>
+                    Um die CSS-Anweisungen für Farbverläufe zu generieren, gibt es diverse Onlinetools wie
+                    <a href="https://cssgradient.io" target="_blank">https://cssgradient.io</a>. Damit wurde
+                    auch der eben beschriebene Farbverlauf erzeugt, welcher der Vorlage recht nahe kommen sollte.
+                </p>
+                <p>
+                    Als Hintergrundbild für das Jumbotron (großer bunter Bereich mit dem Eye-Catcher-Text)
+                    kann das in der Vorlage enthaltene Bild
+                    <a href="../Aufgabe/jumbotron-hintergrund.png" target="_blank">jumbotron-hintergrund.png</a>
+                    verwendet werden. Die Farbgebung ist ähnlich wie im Original. Allerdings handelt es sich um ein
+                    frei verfügbares Bild
+                    (<a href="https://pixabay.com/illustrations/geometric-wallpaper-abstract-3037028/" target="_blank">Quelle</a>),
+                    dessen Verwendung keine Urheberrechte verletzt. 🐒
+                </p>
+                <p class="flexbox">
+                    <span>
+                        <span>Ersatzbild für das Jumbotron:</span>
+                        <a href="../Aufgabe/jumbotron-hintergrund.png" target="_blank">
+                            <img
+                                src   = "../Aufgabe/jumbotron-hintergrund.png"
+                                alt   = "Ersatzbild für das Jumbotron"
+                                class = "screenshot small"
+                            />
+                        </a>
+                    </span>
+                </p>
+                <p style="text-align: center;">
+                    <small>
+                        Bild anklicken für eine größere Version
+                    </small>
+                </p>
+            </article>
+        </section>
+    </body>
+</html>

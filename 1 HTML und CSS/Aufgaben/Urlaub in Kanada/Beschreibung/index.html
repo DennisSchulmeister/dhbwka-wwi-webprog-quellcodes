@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>🇨🇦 Aufgabe: Urlaub in Kanada</title>
+        <style>
+            html {
+                font-family: sans-serif;
+                font-size: 10pt;
+            }
+
+            @media (min-width: 63em) {
+                html {
+                    font-size: 12pt;
+
+                    background-color: rgb(11, 85, 98);
+                    background-image: url(background.jpg);
+                    background-attachment: fixed;
+                    background-size: cover;
+                    background-position: center;
+
+                    hyphens: auto;
+
+                    min-height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                section {
+                    background: white;
+
+                    width: 60em;
+                    margin-top: 2em;
+                    margin-bottom: 2em;
+
+                    box-shadow: 0px 0px 4px rgba(0,0,0, 0.5);
+
+                    text-align: justify;
+                }
+
+                section > h1 {
+                    font-size: 200%;
+                    margin: 0;
+                }
+
+                section article {
+                    padding: 1em;
+                }
+
+                section p,
+                section h2:first-child,
+                section h3:first-child,
+                section h4:first-child {
+                    margin-top: 0;
+                }
+
+                section h2,
+                section h3,
+                section h4 {
+                    margin-bottom: 0.5em;
+                }
+
+                .screenshot {
+                    margin: 0 !important;
+                }
+
+                .screenshot.small {
+                    max-width: 18em;
+                }
+
+                .flexbox {
+                    display: flex;
+                    justify-content: space-between;
+                    column-gap: 1em;
+                }
+            }
+
+            h1 {
+                padding: 0.25em;
+                margin-top: 1.5em;
+                color: rgb(193, 29, 29);
+                background: #DFDFDF;
+            }
+
+            h1:first-child {
+                margin-top: 0;
+            }
+
+            a, a:visited {
+                color: #3968A1;
+                text-decoration: underline;
+            }
+
+            a:hover {
+                color: #6E9ED9;
+            }
+
+            .screenshot {
+                display: block;
+                width: 100%;
+                border: 1px solid #A0A0A0;
+                margin: 1em 0 1em 0;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Aufgabe: Urlaub in Kanada</h1>
+
+            <article>
+                <p>
+                    Kanada ist nicht nur eines der größten, sondern auch eines der schönsten und vielfältigsten
+                    Länder der Welt. Es gibt nichts schöneres, als mit einem Mietwagen durch die Rocky Mountains
+                    bis nach Vancouver zu fahren und an unzähligen Zwischenstationen die atemberaubende Schönheit
+                    der Natur zu genießen. 🐻 In dieser Aufgaben soll deshalb eine Landing Page für das fiktive
+                    Reisebüro <b>DH Best World – Travel Agency Ltd.</b> (kurz DHBW Travel) erstellt werden. Die
+                    Seite soll dabei als One Pager (alle Inhalte auf einer Seite) mit Parallax-Effekt, wie in
+                    den folgenden Screenshots zu sehen, gestaltet werden.
+                </p>
+                <p class="flexbox">
+                    <a href="vorlage1.png" target="_blank">
+                        <img
+                            src   = "vorlage1.png"
+                            alt   = "Ansicht direkt nach dem Laden der Seite"
+                            class = "screenshot small"
+                        />
+                    </a>
+
+                    <a href="vorlage2.png" target="_blank">
+                        <img
+                            src   = "vorlage2.png"
+                            alt   = "Ansicht, wenn man ein wenig scrollt"
+                            class = "screenshot small"
+                        />
+                    </a>
+
+                    <a href="vorlage3.png" target="_blank">
+                        <img
+                            src   = "vorlage3.png"
+                            alt   = "Ansicht komplett nach unten gescrollt"
+                            class = "screenshot small"
+                        />
+                    </a>
+                </p>
+                <p style="text-align: center;">
+                    <small>
+                        Bilder anklicken für eine größere Version
+                        (<a href="../Loesung/index.html" target="_blank">Musterlösung</a>)
+                    </small>
+                </p>
+
+                <p>
+                    Die HTML-Struktur wurde bereits fertiggestellt, und auch Teile des Stylesheets zur Realisierung
+                    des Parallax-Effekts sind schon vorhanden. Der Parallax-Effekt wird dadurch auf beliebig viele
+                    <b><tt>&lt;section&gt;</tt></b>-Elemente angewendet, die sich beim Scrollen immer übereinander
+                    schieben. (Eine tolle Variation ist, unterschiedlich große Abschnitte zu verwenden). Konkret
+                    beinhaltet die Seite aber nur einen Abschnitt für den Kopfbereich, welcher aufgrund der Höhenangabe
+                    <b><tt>height: 100vh</tt></b> den gesamten Bildschirm ausfüllt und somit den Fußbereich quasi
+                    unten aus dem Bildschirm schiebt.
+                </p>
+                <p>
+                    Der Rest fehlt allerdings noch. So werden weder die Inhalte des Kopf- noch des Fußbereichs
+                    vollständig formatiert. Deine Aufgabe ist daher, möglichst ohne den HTML-Code zu verändern,
+                    das Stylesheet entsprechend der Screenshots zu Ende zu programmieren. Der
+                    <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">Flexbox-Algorithmus</a>
+                    könnte dabei gute Dienste leisten. 😉
+                </p>
+            </article>
+        </section>
+    </body>
+</html>
