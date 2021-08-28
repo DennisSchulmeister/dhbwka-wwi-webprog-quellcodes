@@ -7,7 +7,8 @@ html, body {
 }
 
 html {
-    background-image: url(background.png);
+    /* https://pixabay.com/illustrations/leaves-tropical-summer-exotic-3923413/ */
+    background-image: url(background.jpg);
     background-attachment: fixed;
 }
 
@@ -26,8 +27,11 @@ main {
 }
 
 h1 {
-    color: rgba(101, 0, 138, 0.67);
-    text-shadow: 0px 0px 4px rgba(255,255,255, 0.5);
+    color: #eb3b5a;
+    text-shadow:  1px  1px white,
+                 -1px -1px white,
+                 -1px  1px white,
+                  1px -1px white;
 }
 
 .flexbox {
@@ -88,13 +92,13 @@ h1 {
 }
 
 .message.local {
-    background-color: rgb(232, 220, 189);
-    color: rgb(51, 48, 39);
+    background-color: #a5b1c2;
+    color: rgba(0,0,0, 0.75);
     float: left;
 }
 
 .message.remote {
-    background-color: rgb(86, 125, 157);
-    color: rgb(19, 36, 50);
+    background-color: #4b6584;
+    color: rgba(255,255,255, 0.75);
     float: right;
 }
