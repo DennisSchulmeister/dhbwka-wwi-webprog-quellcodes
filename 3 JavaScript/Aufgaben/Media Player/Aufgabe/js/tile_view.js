@@ -35,6 +35,7 @@ class TileView {
      */
     display() {
         this.player.mainElement.classList.add("tiles");
+        this.player.mainElement.classList.remove("list");
 
         //// TODO: Je Song eine Kachel erzeugen, wie im Kommentar oben beschrieben
         this.player.mainElement.textContent = "Die Kachelansicht müssen Sie erst programmieren. Liste geht schon. 🐻";

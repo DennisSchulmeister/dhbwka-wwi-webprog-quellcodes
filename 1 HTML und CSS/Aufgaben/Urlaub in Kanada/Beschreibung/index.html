@@ -3,16 +3,16 @@
     <head>
         <meta charset="utf-8" />
         <title>🇨🇦 Aufgabe: Urlaub in Kanada</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <style>
             html {
                 font-family: sans-serif;
-                font-size: 10pt;
+                font-size: max(1.4vmin, 10pt);
             }
 
             @media (min-width: 63em) {
                 html {
-                    font-size: 12pt;
-
                     background-color: rgb(11, 85, 98);
                     background-image: url(background.jpg);
                     background-attachment: fixed;
@@ -36,8 +36,6 @@
                     margin-bottom: 2em;
 
                     box-shadow: 0px 0px 4px rgba(0,0,0, 0.5);
-
-                    text-align: justify;
                 }
 
                 section > h1 {
@@ -75,6 +73,12 @@
                     justify-content: space-between;
                     column-gap: 1em;
                 }
+            }
+
+            section {
+                text-align: justify;
+                word-wrap: break-word;
+                hyphens: auto;
             }
 
             h1 {

@@ -35,6 +35,7 @@ class TileView {
      */
     display() {
         this.player.mainElement.classList.add("tiles");
+        this.player.mainElement.classList.remove("list");
 
         for (let i = 0; i < this.player.playlist.length; i++) {
             let song = this.player.playlist[i];

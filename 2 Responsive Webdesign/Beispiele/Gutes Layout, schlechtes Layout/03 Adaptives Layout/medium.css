@@ -1,0 +1,38 @@
+/* Layout für Tablets */
+
+html {
+    font-size: 16px;
+
+    /* https://pixabay.com/photos/sim-card-card-memory-micro-sd-4475649/ */
+    background-color: black;
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-position: left;
+    background-attachment: fixed;
+
+    --header-height: 55px;
+    --sidebar-width: 135px;
+}
+
+body {
+    width: 789px;
+    margin: 0 auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+    border: 1px solid grey;
+
+    position: relative;
+}
+
+main {
+    margin-right: var(--sidebar-width);
+}
+
+nav {
+    position: absolute;
+    top: var(--header-height);
+    right: 0px;
+    width: var(--sidebar-width);
+    box-sizing: border-box;
+}

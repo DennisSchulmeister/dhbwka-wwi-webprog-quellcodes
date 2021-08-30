@@ -1,0 +1,134 @@
+/**
+ * ALLGEMEINE EINSTELLUNGEN
+ */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html {
+    font-family: 'Roboto', sans-serif;
+    font-size: max(1.8vmin, 16px);
+
+    /* https://pixabay.com/photos/church-lake-sunset-panorama-bled-1993645/ */
+    background-color: black;
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-position: left;
+    background-attachment: fixed;
+
+    --header-height: 3em;
+    --sidebar-width: 10em;
+    --default-padding: 0.75em;
+    --small-padding: 0.3525em;
+}
+
+body {
+    background: rgb(64, 64, 64);
+    color: mintcream;
+    border: 1px solid grey;
+
+    width: max(calc(100% - 300px), 550px);
+    margin: 0 auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding: 0;
+
+    position: relative;
+}
+
+/** Header **/
+header {
+    background: rgb(32, 32, 32);
+
+    height: var(--header-height);
+    padding: var(--small-padding);
+    padding-left: var(--default-padding);
+    padding-right: var(--default-padding);
+    box-sizing: border-box;
+}
+
+header > h1 {
+    margin: 0;
+}
+
+/** Hauptbereich **/
+main {
+    background: white;
+    color: black;
+
+    padding: var(--default-padding);
+    margin-right: var(--sidebar-width);
+}
+
+main h1,
+main h2 {
+    color: #d63031;
+    margin: 0;
+}
+
+main h1 {
+    font-size: 150%;
+}
+
+main h2 {
+    margin-top: var(--default-padding);
+    font-size: 130%;
+}
+
+main h2.ipsum {
+    color: #e49c9d;
+}
+
+main p.ipsum {
+    color: #999999;
+}
+
+main p,
+main ul.p li {
+    text-align: justify;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+main ul.p li {
+    margin-bottom: var(--default-padding);
+}
+
+main img {
+    display: inline-block;
+    min-width: 330px;
+    width: 35%;
+    margin-right: var(--default-padding);
+}
+
+/** Navigation **/
+nav {
+    padding: var(--small-padding);
+    padding-left: 0;
+    font-size: 80%;
+
+    position: absolute;
+    top: var(--header-height);
+    right: 0px;
+    width: var(--sidebar-width);
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin: 0;
+    margin-top: var(--small-padding);
+    margin-bottom: var(--small-padding);
+}
+
+nav a,
+nav a:visited {
+    color: #dfe6e9;
+}
+
+nav a:hover {
+    color: #ffeaa7;
+    cursor: pointer;
+}

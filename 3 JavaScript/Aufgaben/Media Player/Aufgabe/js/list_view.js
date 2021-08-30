@@ -34,6 +34,7 @@ class ListView {
     display() {
         // Titelzeile erzeugen
         this.player.mainElement.classList.add("list");
+        this.player.mainElement.classList.remove("tiles");
 
         let headingDiv = document.createElement("div");
         headingDiv.classList.add("heading");
@@ -91,7 +92,7 @@ class ListView {
             let durationDiv = document.createElement("div");
             durationDiv.classList.add("cell");
             durationDiv.classList.add("duration");
-            durationDiv.textContent = song.duration != "" ? song.duration : "";;
+            durationDiv.textContent = song.duration != "" ? song.duration : "";
             lineDiv.appendChild(durationDiv);
         }
     }

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>🔌 Adaptives Layout</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="common.css" />
+        <link rel="stylesheet" href="small.css"  media="screen and (max-width: 768px)"/>
+        <link rel="stylesheet" href="medium.css" media="screen and (min-width: 769px) and (max-width: 992px)"/>
+        <link rel="stylesheet" href="large.css"  media="screen and (min-width: 993px)"/>
+        <link rel="stylesheet" href="print.css"  media="print" />
+    </head>
+    <body>
+        <header>
+            <h1>Adaptives Layout für mehrere Geräteklassen</h1>
+        </header>
+
+        <!-- Side Bar mit Navigation -->
+        <nav>
+            <h2>Toolbox</h2>
+            <ul>
+                <li> <a>Einstellungen</a> </li>
+                <li> <a>Bearbeiten</a> </li>
+                <li> <a>Nutzer/innen</a> </li>
+                <li> <a>Filter</a> </li>
+                <li> <a>Berichte</a> </li>
+                <li> <a>Sicherung</a> </li>
+                <li> <a>Wiederherstellen</a> </li>
+                <li> <a>Import</a> </li>
+                <li> <a>Zurücksetzen</a> </li>
+                <li> <a>Papierkorb</a> </li>
+            </ul>
+        </nav>
+
+        <!-- Hauptbereich mit Inhalt -->
+        <main>
+            <h1>Hart-codierte Bildschirmgrößen</h1>
+            <p>
+                Auch wenn sich der Inhalt aufgrund der festen Breite auf ganz großen
+                Bildschirmen verliert, stellt diese Version bisher die beste Variante
+                dar. Denn sie passt sich mit einem optimierten Layout an alle gängigen
+                Geräteklassen an:
+            </p>
+            <ul class="p">
+                <li>
+                    <b>Smartphone:</b> Die Sidebar erscheint als Menü unterhalb des
+                    Kopfbereichs. Das Hintergrundbild und die Abstände um den Inhalt
+                    sind verschwunden. Die Schritgröße ist hier am kleinsten, so dass
+                    sie auf Mobilgeräten noch gut lesbar ist, aber dennoch ausreichend
+                    viel Text angezeigt werden kann.
+                </li>
+                <li>
+                    <b>Tablet:</b> Die Darstellung entspricht beinahe der Version für
+                    große Bildschirme. Die Sidebar ist jedoch nicht ganz so breit und
+                    auch die Schriftgröße ist etwas kleiner.
+                </li>
+                <li>
+                    <b>Computerbildschirme:</b> Entspricht weitgehend der Tablet-Version
+                    nur mit größeren Größenangaben. Allerdings ist diese Version eher
+                    für kleinere Computerbildschirme optimiert, weshalb für ganz große
+                    Bildschirme eigentlich eine eigene Version benötigt wird.
+                </li>
+                <li>
+                    <b>Drucker:</b> Besitzt ein Layout in maximeler Seitenbreite ohne
+                    Hintergrundbild und Sidebar.
+                </li>
+            </ul>
+            <p>
+                Dennoch ist diese Version nicht optimal. Die Größenangaben sind immer
+                noch in Pixeln hart-codiert und es wird auch nur zwischen drei starren
+                Layouts umgeschaltet. Eine fluide Anpassung an den verfügbaren Bildschirmplatz
+                findet nicht statt. Darüber hinaus wurde die Seite auch nicht mobile first
+                gestaltet, wodurch es einige Wiederholungen in den Stylesheets gibt.
+            </p>
+
+            <!-- https://pixabay.com/photos/ipad-mockup-apple-business-605420/ -->
+            <img src="image1.jpg" />
+
+            <!-- https://pixabay.com/photos/office-printer-copier-jobs-5169618/ -->
+            <img src="image2.jpg" />
+
+            <h2 class="ipsum">Lorem ipsum</h2>
+            <p class="ipsum">
+                Dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
+                nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
+                quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel,
+                aliquet nec, vulputate eget, arcu.
+            </p>
+            <p class="ipsum">
+                In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis
+                eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.
+                Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae,
+                eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
+                Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.
+            </p>
+
+            <h2 class="ipsum">Aenean imperdiet</h2>
+            <p class="ipsum">
+                 Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.
+                 Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero,
+                 sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,
+                 hendrerit id. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero
+                 venenatis faucibus.
+            </p>
+        </main>
+    </body>
+</html>

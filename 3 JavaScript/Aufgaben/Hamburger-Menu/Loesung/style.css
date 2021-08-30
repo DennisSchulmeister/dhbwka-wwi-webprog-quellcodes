@@ -32,6 +32,7 @@ body {
 
 p {
     text-align: justify;
+    word-wrap: break-word;
 }
 
 header, section, footer {
@@ -51,7 +52,7 @@ header, footer {
     text-shadow: 2px 2px 1px rgba(0,0,0, 0.75);
 
     /* https://pixabay.com/illustrations/burger-pizza-food-meal-icons-5556498/ */
-    background-color: rgb(241, 226, 149);
+    background-color: rgb(255, 245, 195);
     background-image: url(img/food.png);
     background-size: cover;
     background-position: center;

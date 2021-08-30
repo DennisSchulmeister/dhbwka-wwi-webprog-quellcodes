@@ -2,7 +2,8 @@
 <html lang="de">
     <head>
         <meta charset="utf-8" />
-        <title>Aufgabe: Hamburger-Menü mit JavaScript</title>
+        <title>🍔 Aufgabe: Hamburger-Menü mit JavaScript</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="fontello/css/fontello.css" />
@@ -50,20 +51,6 @@
          *       CSS-Klasse `mobile-hidden` besitzt. Falls ja, entferne sie.
          *        Falls nein, füge sie dem Element hinzu.
          */
-            window.addEventListener("load", () => {
-                let hamburgerButton = document.querySelector("#nav-toggle-menu button");
-                let navigationList = document.querySelector("#nav-menu");
-
-                hamburgerButton.addEventListener("click", () => {
-                    if (navigationList.classList.contains("mobile-hidden")) {
-                        navigationList.classList.remove("mobile-hidden");
-                        navigationList.classList.add("mobile-visible");
-                    } else {
-                        navigationList.classList.add("mobile-hidden");
-                        navigationList.classList.remove("mobile-visible");
-                    }
-                });
-            });
         </script>
     </head>
     <body>

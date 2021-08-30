@@ -44,16 +44,13 @@ body {
 }
 
 header, main {
-    padding-left: 9em;
+    padding-left: 1em;
     padding-right: 1em;
 }
 
 header {
-    position: fixed;
-    width: 100%;
-    height: 4em;
-    overflow: hidden;
-    z-index: 100;
+    min-height: 2.5em;
+    padding: 0.5em;
 
     background: rgb(35, 35, 35);
     color: skyblue;
@@ -62,12 +59,18 @@ header {
     border-bottom-width: 1px;
 }
 
+@media (min-width: 481px) {
+    header, main {
+        padding-left: 8em;
+    }
+}
+
 header h1 {
-    margin: 0.5em 0 0.5em 0;
+    margin: 0;
 }
 
 main {
-    padding-top: 5em;
+    padding-top: 1em;
     padding-bottom: 1em;
 }
 

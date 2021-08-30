@@ -1,0 +1,172 @@
+/**
+ * ALLGEMEINE EINSTELLUNGEN
+ */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.hidden {
+    display: none;
+}
+
+html {
+    font-family: 'Roboto', sans-serif;
+    font-size: max(2vmin, 16px);
+
+    --default-padding: 1rem;
+    --small-padding: 0.5rem;
+}
+
+body {
+    background: white;
+    color: mintcream;
+
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (min-width: 40em) {
+    html {
+        /* https://pixabay.com/photos/blue-lake-lake-constance-nature-2702172/ */
+        background-color: black;
+        background-image: url(background.jpg);
+        background-size: cover;
+        background-position: left;
+        background-attachment: fixed;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100%;
+    }
+
+    body {
+        border: 1px solid grey;
+        margin: min(3vmax, 4em);
+        flex: 1;
+        max-width: 80em;
+    }
+}
+
+/** Header **/
+header {
+    background: rgb(32, 32, 32);
+
+    padding: var(--small-padding);
+    padding-left: var(--default-padding);
+    padding-right: var(--default-padding);
+    box-sizing: border-box;
+}
+
+header > h1 {
+    margin: 0;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/** Hauptbereich **/
+main {
+    background: white;
+    color: black;
+
+    padding: var(--default-padding);
+}
+
+main h1,
+main h2 {
+    color: #d63031;
+    margin: 0;
+}
+
+main h1 {
+    font-size: 150%;
+}
+
+main h2 {
+    margin-top: var(--default-padding);
+    font-size: 130%;
+}
+
+main h2.ipsum {
+    color: #e49c9d;
+}
+
+main p.ipsum {
+    color: #999999;
+}
+
+main p,
+main ul.p li {
+    text-align: justify;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+main ul.p li {
+    margin-bottom: var(--default-padding);
+}
+
+main img {
+    display: inline-block;
+    width: 20em;
+    max-width: 45%;
+    margin-right: var(--default-padding);
+}
+
+main button {
+    font-size: 100%;
+}
+
+/** Navigation **/
+nav {
+    background: rgb(64, 64, 64);
+    padding: var(--default-padding);
+    font-size: 80%;
+}
+
+@media print {
+    nav {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 40em) {
+    .side-by-side {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    main {
+        flex: 1;
+    }
+
+    nav {
+        order: 2;
+    }
+}
+
+nav h2 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin: 0;
+    margin-top: var(--small-padding);
+    margin-bottom: var(--small-padding);
+}
+
+nav a,
+nav a:visited {
+    color: #dfe6e9;
+}
+
+nav a:hover {
+    color: #ffeaa7;
+    cursor: pointer;
+}

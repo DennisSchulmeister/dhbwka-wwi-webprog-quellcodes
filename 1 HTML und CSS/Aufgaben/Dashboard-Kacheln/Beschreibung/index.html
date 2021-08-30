@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>📅 Aufgabe: Dashboard-Kacheln</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            html {
+                font-family: sans-serif;
+                font-size: max(1.4vmin, 10pt);
+            }
+
+            @media (min-width: 63em) {
+                html {
+                    /* https://pixabay.com/photos/tablet-notes-coffee-work-desk-1250410/ */
+                    background-color: whitesmoke;
+                    background-image: url(background.jpg);
+                    background-attachment: fixed;
+                    background-size: cover;
+                    background-position: center;
+
+                    hyphens: auto;
+
+                    min-height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                section {
+                    background: white;
+
+                    width: 60em;
+                    margin-top: 2em;
+                    margin-bottom: 2em;
+
+                    box-shadow: 0px 0px 4px rgba(0,0,0, 0.5);
+                }
+
+                section > h1 {
+                    font-size: 200%;
+                    margin: 0;
+                }
+
+                section article {
+                    padding: 1em;
+                }
+
+                section p,
+                section h2:first-child,
+                section h3:first-child,
+                section h4:first-child {
+                    margin-top: 0;
+                }
+
+                section h2,
+                section h3,
+                section h4 {
+                    margin-bottom: 0.5em;
+                }
+
+                .screenshot {
+                    margin: 0 !important;
+                }
+
+                .screenshot.small {
+                    max-width: 18em;
+                }
+
+                .flexbox {
+                    display: flex;
+                    justify-content: space-between;
+                    column-gap: 1em;
+                }
+            }
+
+            section {
+                text-align: justify;
+                word-wrap: break-word;
+                hyphens: auto;
+            }
+
+            h1 {
+                padding: 0.25em;
+                margin-top: 1.5em;
+                color: rgb(193, 29, 29);
+                background: #DFDFDF;
+            }
+
+            h1:first-child {
+                margin-top: 0;
+            }
+
+            a, a:visited {
+                color: #3968A1;
+                text-decoration: underline;
+            }
+
+            a:hover {
+                color: #6E9ED9;
+            }
+
+            .screenshot {
+                display: block;
+                width: 100%;
+                border: 1px solid #A0A0A0;
+                margin: 1em 0 1em 0;
+            }
+
+            .teilaufgabe {
+                color: darkslateblue;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                margin-bottom: 1em;
+            }
+
+            table thead {
+                background-color: lightsteelblue;
+            }
+
+            table th,
+            table td {
+                padding: 0.5em;
+                border: 1px solid black;
+            }
+
+            table td.given {
+                background-color: oldlace;
+            }
+
+            table td[contenteditable="true"] {
+                color: darkblue;
+            }
+
+            table td.code {
+                font-family: monospace;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Aufgabe: Dashboard-Kacheln</h1>
+
+            <article>
+                <p class="flexbox">
+                    <a href="screenshot.png" target="_blank">
+                        <img
+                            src   = "screenshot.png"
+                            alt   = "Screenshot der zu erstellenden Ansicht"
+                            class = "screenshot"
+                        />
+                    </a>
+                </p>
+                <p style="text-align: center;">
+                    <small>
+                        Bild anklicken für eine größere Version
+                        (<a href="../Loesung/index.html" target="_blank">Musterlösung</a>)
+                    </small>
+                </p>
+            </article>
+        </section>
+
+        <section>
+            <h1>Struktur des Quellcodes</h1>
+
+            <article>
+                <p>
+                    <span class="teilaufgabe">a)</span>
+                    Angenommen, wir wollten die Gestaltung der oben gezeigten Webanwendung nachprogrammieren.
+                    Wie müsste im ersten Schritt der HTML-Code (noch ohne Stylesheet) aussehen? Schließt euch
+                    in kleine Gruppen zusammen und erarbeitet zusammen ein Grundgerüst für den HTML-Code.
+                </p>
+
+                <p>
+                    <span class="teilaufgabe">b)</span>
+                    Füllt auf Grundlage des eben erarbeiteten HTML-Codes folgende Tabelle aus, um den Inhalt
+                    des Styleheets grob vorzubereiten.
+                </p>
+
+                <table>
+                    <colgroup>
+                        <col style="width: 30%" />
+                        <col style="width: 25%" />
+                        <col style="width: 55%" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>CSS-Selektor</th>
+                            <th>Gestaltung</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="given">Wurzelelement der Seite</td>
+                            <td class="code" contenteditable="true"></td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                        <tr>
+                            <td class="given">Kopfbereich der Seite</td>
+                            <td class="code" contenteditable="true"></td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                        <tr>
+                            <td class="given">Titel der Anwendung</td>
+                            <td class="code" contenteditable="true"></td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                        <tr>
+                            <td class="given">Das Wort „Aufgabenliste”</td>
+                            <td class="code" contenteditable="true"></td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                        <tr>
+                            <td class="given">Das Wort „Dashboard”</td>
+                            <td class="code" contenteditable="true"></td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                        <tr>
+                            <td class="given">Das Navigationsmenü</td>
+                            <td class="code" contenteditable="true"></td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                        <tr>
+                            <td class="given">Überschriften im Hauptbereich</td>
+                            <td class="code" contenteditable="true"></td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                        <tr>
+                            <td class="given">Sämtliche Kacheln</td>
+                            <td class="code" contenteditable="true"></td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                        <tr>
+                            <td class="given">Kacheln mit dem Text „Alle”</td>
+                            <td class="code" contenteditable="true"></td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                        <tr>
+                            <td class="given">Alle gelben Kacheln</td>
+                            <td class="code" contenteditable="true"></td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="text-align: center;">
+                    <small>
+                        In die weißen Spalten klicken, um etwas einzutragen.
+                        Am Ende mit <kbd>Strg+S</kbd> die Seite sichern oder als PDF drucken.
+                    </small>
+                </p>
+            </article>
+        </section>
+
+        <section>
+            <h1>Maßeinheiten in CSS</h1>
+
+            <article>
+                <p>
+                    Bei der Definition von Größen und Abständen können folgende Maßeinheiten im Stylesheet
+                    verwendet werden. Für welche Anwendungsfälle eignen sich die jeweiligen Einheiten am Besten?
+                </p>
+
+                <table>
+                    <colgroup>
+                        <col style="width: 10%" />
+                        <col style="width: 40%" />
+                        <col style="width: 50%" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Einheit</th>
+                            <th>Definition</th>
+                            <th>Bevorzugte Anwendungsfälle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="given">px</td>
+                            <td class="given">Ein virtueller Pixel</td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                        <tr>
+                            <td class="given">pt</td>
+                            <td class="given">0,376 Millimeter</td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                        <tr>
+                            <td class="given">em</td>
+                            <td class="given">Breite eines großen M im aktuellen Element</td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                        <tr>
+                            <td class="given">ex</td>
+                            <td class="given">Breite eines kleinen X im aktuellen Element</td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                        <tr>
+                            <td class="given">rem</td>
+                            <td class="given">Breite eines großen M im Wurzelelement</td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                        <tr>
+                            <td class="given">rex</td>
+                            <td class="given">Breite eines kleinen X im Wurzelelement</td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                        <tr>
+                            <td class="given">%</td>
+                            <td class="given">Ein Prozent der Breite des Elternelements</td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                        <tr>
+                            <td class="given">vw</td>
+                            <td class="given">Ein Prozent der Viewport-Breite</td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                        <tr>
+                            <td class="given">vh</td>
+                            <td class="given">Ein Prozent der Viewport-Höhe</td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                        <tr>
+                            <td class="given">vmin</td>
+                            <td class="given">Das Kleinere von 1vw und 1vh</td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                        <tr>
+                            <td class="given">vmax</td>
+                            <td class="given">Das Größere von 1vw und 1vh</td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="text-align: center;">
+                    <small>
+                        In die weiße Spalte klicken, um etwas einzutragen.
+                        Am Ende mit <kbd>Strg+S</kbd> die Seite sichern oder als PDF drucken.
+                    </small>
+                </p>
+            </article>
+        </section>
+    </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>📱 Mobile First</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="mobile-first.css" />
+
+        <script>
+            window.addEventListener("load", () => {
+                let toggleButton = document.querySelector("#button-toggle");
+                let extraContent = document.querySelectorAll(".extra-content");
+
+                toggleButton.addEventListener("click", () => {
+                    extraContent.forEach(e => e.classList.contains("hidden") ? e.classList.remove("hidden") : e.classList.add("hidden"));
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>Mobile First Responsive Layout</h1>
+        </header>
+
+        <div class="side-by-side">
+            <!-- Side Bar mit Navigation -->
+            <nav>
+                <h2>Toolbox</h2>
+                <ul>
+                    <li> <a>Einstellungen</a> </li>
+                    <li> <a>Bearbeiten</a> </li>
+                    <li> <a>Nutzer/innen</a> </li>
+                    <li> <a>Filter</a> </li>
+                    <li> <a>Berichte</a> </li>
+                    <li> <a>Sicherung</a> </li>
+                    <li> <a>Wiederherstellen</a> </li>
+                    <li> <a>Import</a> </li>
+                    <li> <a>Zurücksetzen</a> </li>
+                    <li> <a>Papierkorb</a> </li>
+                </ul>
+            </nav>
+
+            <!-- Hauptbereich mit Inhalt -->
+            <main>
+                <h1>Optimales Layout für alle Geräte</h1>
+                <p>
+                    In dieser Version passt sich die Seite nun endgültig an die verschiedenen
+                    Bildschirmgrößen an, wofür das Layout zunächst für kleine Smartphones
+                    gestaltet und dann durch Media Queries an größere Bildschirme angepasst
+                    wurde (sog. Mobile-First-Ansatz). Die hart-codierten Pixelangaben und absolute
+                    Positionierung sind nun endgültig verschwunden, so dass sich alle Elemente
+                    perfekt an ihren Inhalt anpassen. Dies betrifft insbesondere die Sidebar,
+                    deren Breite sich nun aus ihrem Inhalt ergibt, da sie mit Hilfe einer
+                    Flexbox ausgerichtet wird.
+                </p>
+                <p>
+                    Davon abgesehen wurden ein paar Tricks, wie die dynamische Schriftgröße, aus dem
+                    fluiden Layout übernommen, um auch auf ganz großen Bildschirmen einen guten
+                    Eindruck zu machen. Gleichzeitig wurde die Breite des Hauptbereichs auf 80em
+                    begrenzt (entsprechend ca. 80 Anschlägen), um einen angenehmene Lesefluss zu
+                    ermöglichen.
+                </p>
+                <p>
+                    <button id="button-toggle">Zusatzinhalt ein-/ausblenden</button>
+                </p>
+
+                <!-- https://pixabay.com/photos/pile-animals-fairy-tale-1651945/ -->
+                <img src="image1.jpg" class="extra-content hidden" />
+
+                <!-- https://pixabay.com/photos/dog-happy-car-ride-head-car-window-1149964/ -->
+                <img src="image2.jpg" class="extra-content hidden" />
+
+                <h2 class="ipsum extra-content hidden">Lorem ipsum</h2>
+                <p class="ipsum extra-content hidden">
+                    Dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
+                    nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
+                    quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel,
+                    aliquet nec, vulputate eget, arcu.
+                </p>
+                <p class="ipsum extra-content hidden">
+                    In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis
+                    eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.
+                    Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae,
+                    eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
+                    Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.
+                </p>
+
+                <h2 class="ipsum extra-content hidden">Aenean imperdiet</h2>
+                <p class="ipsum extra-content hidden">
+                     Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.
+                     Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero,
+                     sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,
+                     hendrerit id. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero
+                     venenatis faucibus.
+                </p>
+            </main>
+        </div>
+    </body>
+</html>

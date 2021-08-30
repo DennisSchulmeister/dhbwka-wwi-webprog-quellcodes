@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>🌊 Fluides Layout</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="fluid-layout.css" />
+    </head>
+    <body>
+        <header>
+            <h1>Fluides Layout mit variabler Breite</h1>
+        </header>
+
+        <!-- Hauptbereich mit Inhalt -->
+        <main>
+            <h1>Für große Bildschirme in Ordnung</h1>
+            <p>
+                Diese Version der Webseite stellt insofern eine Verbesserung gegenüber
+                dem fixen Layout dar, als dass die wichtigsten Größenangaben mit der
+                Bildschirmgröße mitwachsen, was auch „fluides Layout” genannt wird.
+                Am besten sieht man den Effekt, wenn man die Größe des Browserfensters
+                oder des Viewports in der Responsive-Ansicht ändert. Folgende Werte passen
+                sich dem verfügbaren Platz an:
+            </p>
+            <ul>
+                <li>
+                    Die Schriftgröße
+                </li>
+                <li>
+                    Die Breite des Inhaltsbereichs
+                </li>
+                <li>
+                    Die Breite der Sidebar
+                </li>
+                <li>
+                    Die Höhe des Headers
+                </li>
+            </ul>
+            <p>
+                Dies wird hauptsächlich durch die Verwendung relativer Schriftgrößen
+                sowie Größenangaben in Prozent erreicht. Durch Verwendung der
+                <b><tt>min()</tt></b>- und <b><tt>max()</tt></b>-Funktionen werden
+                sogar einfache Vorkehrungen für mobile Endgeräte getroffen. Dennoch
+                ist das Layout nicht ideal: Die Breite für mobile Endgeräte ist auf
+                550 Pixel hart-codiert und man würde erwarten, dass die Sidebar sowie
+                die Abstände ober- und unterhalb des Inhalts verschwinden. Auf Tablets
+                wirkt insbesondere der breite Rand überdimensioniert.
+            </p>
+
+            <!-- https://pixabay.com/photos/maldives-tropics-tropical-1993704/ -->
+            <img src="image1.jpg" />
+
+            <!-- https://pixabay.com/photos/swimmer-swim-road-street-surreal-1678307/ -->
+            <img src="image2.jpg" />
+
+            <h2 class="ipsum">Lorem ipsum</h2>
+            <p class="ipsum">
+                Dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
+                nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
+                quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel,
+                aliquet nec, vulputate eget, arcu.
+            </p>
+            <p class="ipsum">
+                In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis
+                eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.
+                Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae,
+                eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
+                Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.
+            </p>
+
+            <h2 class="ipsum">Aenean imperdiet</h2>
+            <p class="ipsum">
+                 Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.
+                 Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero,
+                 sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,
+                 hendrerit id. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero
+                 venenatis faucibus.
+            </p>
+        </main>
+
+        <!-- Side Bar mit Navigation -->
+        <nav>
+            <h2>Toolbox</h2>
+            <ul>
+                <li> <a>Einstellungen</a> </li>
+                <li> <a>Bearbeiten</a> </li>
+                <li> <a>Nutzer/innen</a> </li>
+                <li> <a>Filter</a> </li>
+                <li> <a>Berichte</a> </li>
+                <li> <a>Sicherung</a> </li>
+                <li> <a>Wiederherstellen</a> </li>
+                <li> <a>Import</a> </li>
+                <li> <a>Zurücksetzen</a> </li>
+                <li> <a>Papierkorb</a> </li>
+            </ul>
+        </nav>
+    </body>
+</html>

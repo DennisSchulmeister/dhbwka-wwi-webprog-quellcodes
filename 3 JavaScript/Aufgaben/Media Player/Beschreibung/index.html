@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>🎶 Aufgabe: Media Player</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Syntaxhighlighting -->
+        <link rel="stylesheet" href="prism.css" />
+        <script src="prism.js"></script>
+
+        <style>
+            html {
+                font-family: sans-serif;
+                font-size: max(1.4vmin, 10pt);
+            }
+
+            @media (min-width: 63em) {
+                html {
+                    /* https://pixabay.com/photos/turntable-music-laptop-audio-1109588/ */
+                    background-color: rgb(11, 85, 98);
+                    background-image: url(background.jpg);
+                    background-attachment: fixed;
+                    background-size: cover;
+                    background-position: center;
+
+                    hyphens: auto;
+
+                    min-height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                section {
+                    background: white;
+
+                    width: 60em;
+                    margin-top: 2em;
+                    margin-bottom: 2em;
+
+                    box-shadow: 0px 0px 4px rgba(0,0,0, 0.5);
+
+                    text-align: justify;
+                }
+
+                section > h1 {
+                    font-size: 200%;
+                    margin: 0;
+                }
+
+                section article {
+                    padding: 1em;
+                }
+
+                section p,
+                section h2:first-child,
+                section h3:first-child,
+                section h4:first-child {
+                    margin-top: 0;
+                }
+
+                section h2,
+                section h3,
+                section h4 {
+                    margin-bottom: 0.5em;
+                }
+
+                .screenshot {
+                    margin: 0 !important;
+                }
+
+                .screenshot.small {
+                    max-width: 18em;
+                }
+
+                .flexbox {
+                    display: flex;
+                    justify-content: center;
+                    column-gap: 1em;
+                }
+            }
+
+            section {
+                text-align: justify;
+                word-wrap: break-word;
+                hyphens: auto;
+            }
+
+            h1 {
+                padding: 0.25em;
+                margin-top: 1.5em;
+                color: rgb(193, 29, 29);
+                background: #DFDFDF;
+            }
+
+            h1:first-child {
+                margin-top: 0;
+            }
+
+            a, a:visited {
+                color: #3968A1;
+                text-decoration: underline;
+            }
+
+            a:hover {
+                color: #6E9ED9;
+            }
+
+            .screenshot {
+                display: block;
+                width: 100%;
+                border: 1px solid #A0A0A0;
+                margin: 1em 0 1em 0;
+            }
+
+            .caption {
+                font-size: 90%;
+                color: #666666;
+            }
+
+            li {
+                margin: 1em 0 1em 0;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Aufgabe: Media Player</h1>
+
+            <article>
+                <p>
+                    Seitdem in HTML5 das <b><tt>&lt;audio&gt;</tt></b>- und das <b><tt>&lt;video&gt;</tt></b>-Element
+                    spezifiziert wurden, können Multimedia-Inhalte problemlos mit HTML und JavaScript wiedergegeben
+                    werden. Plattformabhängige Browserplugins wie Adobe Flash, Microsoft Silverlight oder auch Java
+                    Applets gehören damit zum Glück der Vergangenheit an. Was liegt also näher, als einen kleinen
+                    Media Player (zur Wiedergabe von Musik 🎶) zu programmieren? Auch wenn man sie nicht hören kann:
+                    Die folgenden Screenshots zeigen, wie die Anwendung aussehen soll.
+                </p>
+                <p class="flexbox">
+                    <a href="screenshot1.png" target="_blank">
+                        <img
+                            src   = "screenshot1.png"
+                            alt   = "Kachelansicht"
+                            class = "screenshot"
+                        />
+                    </a>
+                    <a href="screenshot2.png" target="_blank">
+                        <img
+                            src   = "screenshot2.png"
+                            alt   = "Listenansicht"
+                            class = "screenshot"
+                        />
+                    </a>
+                </p>
+                <p style="text-align: center;">
+                    <small>
+                        Bilder anklicken für eine größere Version
+                    </small>
+                </p>
+                <p>
+                    Die Benutzeroberfläche besteht aus zwei Ansichten, welche die vorhandenen Songs einmal als
+                    Kachelansicht und einmal als Liste zeigen. Links davon sind die Elemente zum Steuern der
+                    Wiedergabe und Umschalten der Ansicht. Die Titelzeile zeigt den Namen des aktuellen Titels,
+                    der darüber hinaus im Hauptbereich farblich hervorgehoben wird.
+                </p>
+                <p>
+                    Damit die Aufgabe nicht zu groß wird, wurden die meisten Funktionen schon ausprogrammiert.
+                    Wie immer fehlen aber wesentliche Inhalte, auf die die Kommentare im Quellcode hinweisen.
+                    Unter anderem fehlt in der Klasse <b><tt>Player</tt></b> der Quellcode, um die Wiedergabe
+                    zu starten. Und an einigen Stellen wird das UI noch nicht vollständig aktualisiert.
+                    Die Listenansicht ist hingegen schon fertig programmiert. Die Kachelansicht fehlt, kann
+                    aber nach dem gleichen Prinzip umgesetzt werden, um den Umgang mit der objekt-orientierten
+                    DOM API zu üben.
+                </p>
+                <p>
+                    Alle anzupassenden Quellcodestellen sind mit <b><tt>TODO</tt></b> gekennzeichnet.
+                    Fange in der <tt>index.html</tt> an und suche dann in den anderen Dateien nach
+                    dem Schlüsselwort. Im Kommentar steht jeweils, was zu tun ist.
+                </p>
+            </article>
+        </section>
+
+        <section>
+            <h1>Testen der Anwendung</h1>
+
+            <article>
+                <p>
+                    Der Fetch-Aufruf innerhalb der <tt>index.html</tt> zum Abholen der Playlist funktioniert
+                    nur, wenn die Anwendung über einen Webserver gestartet wird. Es muss daher, wie im Video
+                    in den HTML-Folien gezeigt, ein lokaler Entwicklungsserver zum Testen der Anwendung
+                    gestartet werden.
+                </p>
+                <iframe style="margin-bottom: 1em;" width="560" height="315" src="https://www.youtube-nocookie.com/embed/FijXwFMqrVc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>
+                    In Atom kann zum Beispiel das Plugin <b>local-web-server</b> genutzt werden. Einfach
+                    die Datei <tt>index.html</tt> im Hauptverzeichnis der Aufgabe (nicht die gleichnamige
+                    Datei, in den Unterverzeichnissen <tt>Aufgabe</tt> oder <tt>Loesung</tt>) öffnen und
+                    dann im Menü <tt>Packages → Local Web Server → Start</tt> auswählen. Daraufhin sollte
+                    sich eine kleine Seite im Browser öffnen, die auf den Aufgabenquellcode und die
+                    Musterlösung verweist.
+                </p>
+            </article>
+        </section>
+    </body>
+</html>

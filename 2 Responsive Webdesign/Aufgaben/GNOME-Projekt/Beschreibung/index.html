@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>🤖 Aufgabe: GNOME-Projekt</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            html {
+                font-family: sans-serif;
+                font-size: max(1.4vmin, 10pt);
+            }
+
+            @media (min-width: 63em) {
+                html {
+                    /* https://pixabay.com/photos/music-desktop-audio-earphones-1106439/ */
+                    background-color: rgb(209, 230, 233);
+                    background-image: url(background.jpg);
+                    background-attachment: fixed;
+                    background-size: cover;
+                    background-position: center;
+                }
+
+                section {
+                    background: white;
+
+                    width: 60em;
+                    margin: 0 auto;
+                    margin-top: 2em;
+                    margin-bottom: 2em;
+
+                    box-shadow: 0px 0px 4px rgba(0,0,0, 0.5);
+                }
+
+                section > h1 {
+                    font-size: 200%;
+                    margin: 0;
+                }
+
+                section article {
+                    padding: 1em;
+                }
+
+                section p,
+                section h2:first-child,
+                section h3:first-child,
+                section h4:first-child {
+                    margin-top: 0;
+                }
+
+                section h2,
+                section h3,
+                section h4 {
+                    margin-bottom: 0.5em;
+                }
+
+                .screenshot {
+                    margin: 0 !important;
+                }
+
+                .screenshot.small {
+                    max-width: 15em;
+                }
+
+                .flexbox {
+                    display: flex;
+                    justify-content: center;
+                    column-gap: 1em;
+                }
+            }
+
+            section {
+                text-align: justify;
+                word-wrap: break-word;
+                hyphens: auto;
+            }
+
+            h1 {
+                padding: 0.25em;
+                margin-top: 1.5em;
+                color: rgb(193, 29, 29);
+                background: #DFDFDF;
+            }
+
+            h1:first-child {
+                margin-top: 0;
+            }
+
+            a, a:visited {
+                color: #3968A1;
+                text-decoration: underline;
+            }
+
+            a:hover {
+                color: #6E9ED9;
+            }
+
+            .screenshot {
+                display: block;
+                width: 100%;
+                border: 1px solid #A0A0A0;
+                margin: 1em 0 1em 0;
+            }
+
+            #color-codes {
+            }
+
+            #color-codes td {
+                padding: 0.3em;
+                padding-right: 1em;
+            }
+
+            #color-codes td:last-child {
+                padding-right: 0;
+            }
+
+            #color-codes tr > td:first-child {
+                width: 7em;
+                border: 1px solid; #A0A0A0;
+            }
+
+            #color-codes tr > td:nth-child(2) {
+                font-family: monospace;
+                padding-left: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Aufgabe: GNOME-Projekt</h1>
+
+            <article>
+                <p>
+                    Wer sich ein wenig mit Linux auseinandergesetzt hat, weiß, dass es die eine
+                    grafische Desktopumgebung unter Linux nicht gibt. Das System ist so modular
+                    und flexibel, dass man stattdessen unter einer Vielzahl von Angeboten
+                    auswählen kann, von denen die GNOME-Desktopumgebung eine weit verbreitete
+                    Option ist. Im Gegensatz zu anderen Desktops orientiert sie sich weniger am
+                    allgegenwärtigen Microsoft Windows, sondern geht zu Gunsten von Klarheit,
+                    Effizienz und leichter Bedienung ganz eigene Wege. Auf der Webseite des
+                    Projekts findet sich hierzu natürlich eine kleine Screenshot-Gallerie, die
+                    die Eleganz des Konzepts aber nur ansatzweise wiederspiegelt.
+                </p>
+                <p>
+                    Für unsere Zwecke interessentar ist, dass sich die Webseite mit Bootstrap
+                    sehr leicht nachbauen lässt. Wir wollen daher die Gelegenheit nutzen und
+                    eine eigene Version der Seite bauen, um unsere Bootstrap-Kenntnisse zu
+                    vertiefen. Die linke Abbildung zeigt, wie die fertige Seite aussehen soll.
+                    Inzwischen hat sich die Originalseite zwar verändert, die wesentlichen
+                    Merkmale sind aber immer noch vorhanden. Der rechte Screenshot zeigt die
+                    Musterlösung, die dem Original wirklich sehr nahe kommt.
+                </p>
+
+                <p class="flexbox">
+                    <a href="screenshot.png" target="_blank">
+                        <img
+                            src   = "screenshot.png"
+                            alt   = "Screenshot der zu erstellenden Seite"
+                            class = "screenshot small"
+                        />
+                    </a>
+
+                    <a href="musterloesung.png" target="_blank">
+                        <img
+                            src   = "musterloesung.png"
+                            alt   = "Screenshot der Musterlösung"
+                            class = "screenshot small"
+                        />
+                    </a>
+                </p>
+                <p style="text-align: center;">
+                    <small>
+                        Bilder anklicken für eine größere Version
+                        (<a href="../Loesung/index.html" target="_blank">Musterlösung</a>)
+                    </small>
+                </p>
+
+                <p>
+                    Die Seite sollte sich mit Bootstrap relativ leicht nachbauen lassen.
+                    Im Gegensatz zum Original soll der große Screenshot ganz oben jedoch
+                    durch ein Karussel mit vier wechselnden Bildern ersetzt werden. Alles
+                    Andere bleibt gleich. Die hierfür notwendigen Bilder sind im Aufgabenverzeichnis
+                    enthalten. Die exakten Farbcodes sowie Texte zum Rauskopieren befinden sich
+                    am Ende des Aufgabenblatts.
+                </p>
+            </article>
+        </section>
+
+        <section>
+            <h1>Bootstrap-Dokumentation</h1>
+
+            <article>
+                <p>
+                    <a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/" target="_blank">Startseite</a> <br />
+                    <a href="https://getbootstrap.com/docs/4.0/components/navbar/" target="_blank">Responsive Navigationsleisten</a> <br />
+                    <a href="https://getbootstrap.com/docs/4.0/components/carousel/" target="_blank">Karussell für die großen Screenshots</a> <br />
+                    <a href="https://getbootstrap.com/docs/4.0/utilities/text/" target="_blank">Hilfsklassen für zentrierten Text</a> <br />
+                    <a href="https://getbootstrap.com/docs/4.0/layout/grid/" target="_blank">Layout-Grid zur für den Hauptbereich</a> <br />
+                </p>
+            </article>
+        </section>
+
+        <section>
+            <h1>Farbcodes</h1>
+
+            <article>
+                <table id="color-codes" style="margin-bottom: 1em;">
+                    <tr>
+                        <td style="background: #000000;"></td>
+                        <td>#000000</td>
+                        <td>Hintergrundfarbe des Footers</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #919191;"></td>
+                        <td>#919191</td>
+                        <td>Schriftfarbe im Footer (auch für Links)</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #FFFFFF;"></td>
+                        <td>#FFFFFF</td>
+                        <td>Schriftfarbe für Links im Footer, wenn die Maus drüber fährt</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #4A86CF;"></td>
+                        <td>#4A86CF</td>
+                        <td>Hintergrundfarbe der Navigationsleiste</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #3968A1;"></td>
+                        <td>#3968A1</td>
+                        <td>Hintergrundfarbe des aktiven Navigationseintrags</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #6E9ED9;"></td>
+                        <td>#6E9ED9</td>
+                        <td>Hintergrundfarbe eines Navigationseintrags, wenn die Maus drüber fährt</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #F1F4F8;"></td>
+                        <td>#F1F4F8</td>
+                        <td>Schriftfarbe in der Navigationsleiste</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #3F4D5F;"></td>
+                        <td>#3F4D5F</td>
+                        <td>Schriftfarbe in der Navigationsleiste, wenn die Maus drüber fährt</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #FFFFFF;"></td>
+                        <td>#FFFFFF</td>
+                        <td>Hintergrundfarbe im Hauptbereich</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #555555;"></td>
+                        <td>#555555</td>
+                        <td>Schriftfarbe im Hauptbereich</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #000000;"></td>
+                        <td>#000000</td>
+                        <td>Schriftfarbe für die Bildüberschriften im Hauptbereich</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #C9C9C9;"></td>
+                        <td>#C9C9C9</td>
+                        <td>Farbe der Trennlinien im Hauptbereich</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #0489B7;"></td>
+                        <td>#0489B7</td>
+                        <td>Schriftfarbe für „And much much more”</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #5474A3;"></td>
+                        <td>#5474A3</td>
+                        <td>Linkfarbe für „Find out how to get GNOME 3”</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #5A82B5;"></td>
+                        <td>#5A82B5</td>
+                        <td>Linkfarbe für „Find out how to get GNOME 3”, wenn die Maus drüber fährt</td>
+                    </tr>
+                </table>
+            </article>
+        </section>
+
+        <section>
+            <h1>Texte zum Rauskopieren</h1>
+
+            <article>
+                <ul>
+                    <li>GNOME 3</li>
+                    <li>Technologies</li>
+                    <li>Get Involved</li>
+                    <li>Foundation</li>
+                    <li>About Us</li>
+                </ul>
+
+                <p>
+                    Get things done with ease, comfort and control.
+                </p>
+                <p>
+                    GNOME 3 has been designed from the ground up to help you have the best possible computing experience. Learn about what it has to offer.
+                </p>
+
+                <h3>Simple and easy to use</h3>
+                <p>
+                    Every part of GNOME 3 has been designed to make it simple and easy to use. The Activities Overview is an easy way to access all your basic tasks. A press of a button is all it takes to view your open windows, launch applications or check if you have new messages. Having everything in one place is convenient and means that you don’t have to learn your way around a maze of different technologies.
+                </p>
+                <h3>Helps you get things done</h3>
+                <p>
+                    GNOME 3 provides a focused working environment that helps you to get things done, and it is packed with features that will make you more productive. A powerful search feature lets you access all your work from one place. Side-by-side windows makes it easy to view several documents at the same time, and we even provide a way to turn off notifications when you really need to concentrate on the task in hand.
+                </p>
+                <h3>Puts you in control</h3>
+                <p>
+                    GNOME 3 lets you do the things you want without getting in the way. It won’t bother you or badger you with demands, and it has been designed to help you comfortably deal with notifications. Our messaging system lets you quickly respond to notifications in place or to return to them at a convenient time.
+                </p>
+                <h3>Finely crafted</h3>
+                <p>
+                    Every aspect of GNOME 3 has been crafted to fit together as a harmonious whole, so that it offers a consistent and integrated experience. We have paid a huge amount of attention to detail, resulting in a smooth and polished product that is satisfying to use and beautiful to behold.
+                </p>
+                <h3>Easily access all your data</h3>
+                <p>
+                    If you use online services to store documents or to organize your calendar or contacts, GNOME 3 is just for you. It will seamlessly integrate with your online accounts, so that all your data can be accessed from the same place. This takes the work out of using online accounts and makes it easy to find things when you need them.
+                </p>
+                <h3>And much, much more</h3>
+                <p>
+                    Find out how to get GNOME 3
+                </p>
+
+                <ul>
+                    <li>The Gnome Project</li>
+                    <li>About Us</li>
+                    <li>Get Involved</li>
+                    <li>Support GNOME</li>
+                    <li>Merchandise</li>
+                    <li>Contact Us</li>
+                    <li>The GNOME Foundation</li>
+                </ul>
+                <ul>
+                    <li>Resources</li>
+                    <li>Developer Center</li>
+                    <li>Documentation</li>
+                    <li>Wiki</li>
+                    <li>Mailing Lists</li>
+                    <li>IRC Channels</li>
+                    <li>Bug Tracker</li>
+                    <li>Development Code</li>
+                </ul>
+                <ul>
+                    <li>News</li>
+                    <li>Press Releases</li>
+                    <li>Latest Release</li>
+                    <li>Planet GNOME</li>
+                </ul>
+                <p>
+                    © The GNOME Project <br />
+                    Free to share and remix: Creative Commons CC-BY. Optimized for standards. Hosted by Red Hat. Powered by WordPress.
+                </p>
+            </article>
+        </section>
+    </body>
+</html>

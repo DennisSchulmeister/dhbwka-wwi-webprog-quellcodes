@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
         <title>Media Player</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="img/favicon.png" />
 
         <link rel="stylesheet" href="css/nav_bevel.css" />
@@ -16,32 +17,24 @@
         <script src="js/player.js"></script>
 
         <script>
-            window.addEventListener("load", () => {
+            window.addEventListener("load", async () => {
                 // ACHTUNG: Der AJAX-Aufruf funktioniert nur, wenn die Seite von einem Webserver
                 // geladen wird. Im Atom-Editor können Sie hierfür das Paket „local-web-server”
                 // installieren und dann im Menü unter „Packages → Local Web Server → Start” den
                 // Webserver starten.
                 let prefix = "../Songs";
-
-                let ajax = new XMLHttpRequest();
-                ajax.open("GET", `${prefix}/playlist.json`);
-                ajax.responseType = "json";
-
-                ajax.addEventListener("load", () => {
-                    if (ajax.status == 200) {
-                        let playlist = ajax.response;
-                        let player = new Player(playlist, prefix);
-                    } else {
-                        alert("Fehler beim Laden der Playlist. Siehe Konsole.");
-                        console.error(ajax);
-                    }
-                });
-
-                ajax.send();
+                let response = await fetch(`${prefix}/playlist.json`);
+                let playlist = await response.json();
+                let player = new Player(playlist, prefix);
             });
         </script>
     </head>
     <body>
+        <!-- Kopfzeile mit dem aktuellen Songtitel -->
+        <header>
+            <h1>Media Player</h1>
+        </header>
+
         <!-- Steuerelemente -->
         <nav id="controls" class="bevel">
             <div class="demo">
@@ -62,11 +55,6 @@
                 </ul>
             </div>
         </nav>
-
-        <!-- Kopfzeile mit dem aktuellen Songtitel -->
-        <header>
-            <h1></h1>
-        </header>
 
         <!-- Hauptbereich mit der Songauswahl -->
         <main></main>
