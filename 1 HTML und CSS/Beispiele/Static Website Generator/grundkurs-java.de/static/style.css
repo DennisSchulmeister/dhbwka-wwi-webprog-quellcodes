@@ -100,11 +100,13 @@ header {
     padding-bottom: 1em;
 }
 
-header .content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+@media (min-width: 54em) {
+    header .content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
 }
 
 header a, header a:visited {
@@ -123,11 +125,21 @@ header .subtitle {
 header nav ul {
     list-style: none;
     padding: 0;
-    display: flex;
 }
 
-header nav li:not(:last-child) {
-    margin-right: 1em;
+header nav li {
+    display: block;
+    margin-bottom: 1em;
+}
+
+@media (min-width: 54em) {
+    header nav ul {
+        display: flex;
+    }
+
+    header nav li:not(:last-child) {
+        margin-right: 1em;
+    }
 }
 
 /**
