@@ -15,7 +15,6 @@ html {
 body {
     font-family: sans-serif;
     font-size: 13pt;
-    padding: 3em;
 }
 
 input {
@@ -59,12 +58,17 @@ h1 {
     background-image: url(pattern.png);
 
     width: 100%;
-    max-width: 30em;
-    box-sizing: border-box;
-
     height: 100%;
-    max-height: 50em;
+    box-sizing: border-box;
 }
+
+@media screen and (min-width: 36em) and (min-height: 36em){
+    #chatbox {
+        max-width: 30em;
+        max-height: 50em;
+    }
+}
+
 
 #chatbox .messages {
     align-self: stretch;
