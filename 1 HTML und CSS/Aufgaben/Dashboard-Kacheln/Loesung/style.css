@@ -51,11 +51,9 @@ header h1 .app-title {
 header nav ul {
     list-style: none;
     padding: 0;
-    display: flex;
-}
 
-header nav li {
-    padding-right: 2em;
+    display: flex;
+    column-gap: 2em;
 }
 
 /* Farben für Links */
@@ -76,6 +74,7 @@ a:hover {
     border: 1px solid lightgrey;
     box-shadow: 1px 1px 1px rgba(0,0,0, 0.2);
 
+    /* Bessere Alternative: Flexbox! */
     display: inline-block;
     box-sizing: border-box;
     width: 9em;
