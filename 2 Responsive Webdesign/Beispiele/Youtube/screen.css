@@ -1,0 +1,46 @@
+/**
+ * Zusätzliches Stylesheet für simulierte, große Bildschirme
+ */
+
+html {
+    font-size: 2vh;
+}
+
+/*
+ * Kopfbereich
+ */
+header {
+    margin-left: 0;
+    padding-left: 0.5em;
+}
+
+/*
+ * Hauptbereich
+ */
+#banner {
+    height: 9em;
+}
+
+/*
+ * Seitenmenü reduziert
+ */
+#side-menu-narrow {
+    display: none;
+}
+
+/*
+ * Seitenmenü voll
+ */
+#side-menu-wide {
+    left: 0;
+    top: 3em;
+    padding-top: 1em;
+}
+
+#side-menu-wide li.toggle-menu {
+    display: none;
+}
+
+main {
+    margin-left: 15em;
+}

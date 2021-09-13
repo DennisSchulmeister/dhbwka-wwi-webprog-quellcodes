@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Einleitendes Beispiel für Responsive Webdesign</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--
+            Stylesheets für die simulierten Bildschirme. Werden durch JavaScript
+            in Abhängigkeit der URL-Paremeter wieder entfernt, um die Darstellung
+            auf einem bestimmten Endgerät zu simulieren:
+
+              » ?phone: Smartphone-Version; nur base.css
+              » ?tablet: Tablet-Version; base.css und tablet.css
+              » ?screen: PC-Version; base.css, tablet.css und screen.css
+        -->
+        <link rel="stylesheet" id="style-base" href="base.css" />
+        <link rel="stylesheet" id="style-tablet" href="tablet.css" />
+        <link rel="stylesheet" id="style-screen" href="screen.css" />
+
+        <script>
+            (function() {
+                let styleTablet = document.querySelector("#style-tablet");
+                let styleScreen = document.querySelector("#style-screen");
+
+                let screenSize = location.href.split("?")[1] || "screen";
+
+                switch (screenSize) {
+                    case "phone":
+                        styleTablet.remove();
+                    case "tablet":
+                        styleScreen.remove();
+                }
+            }());
+
+            function toggle_side_menu() {
+                let modalBackdrop = document.querySelector("#modal-backdrop");
+                let sideMenu = document.querySelector("#side-menu-wide");
+
+                if (sideMenu.classList.contains("visible")) {
+                    modalBackdrop.classList.remove("visible");
+                    sideMenu.classList.remove("visible");
+
+                    window.setTimeout(() => {
+                        modalBackdrop.classList.add("zindex")
+                        sideMenu.classList.remove("animated");
+                    }, 550);
+                } else {
+                    modalBackdrop.classList.remove("zindex");
+                    modalBackdrop.classList.add("visible");
+
+                    sideMenu.classList.add("animated");
+                    sideMenu.classList.add("visible");
+                }
+
+                return false;
+            }
+        </script>
+
+        <!-- Fontello Icons -->
+        <link rel="stylesheet" href="fontello/css/fontello.css" />
+    </head>
+    <body>
+        <!-- Kopfzeile -->
+        <header>
+            <div class="hamburger-toggle" onclick="toggle_side_menu()">
+                <span class="icon-menu"></span>
+            </div>
+            <div class="search flex-stretch">
+                <input placeholder="Search" />
+                <button class="icon-search"></button>
+            </div>
+            <div class="header-menu">
+                <span class="icon-bell-alt"></span>
+                <span class="icon-videocam"></span>
+                <img src="img/profile.jpg" class="round" />
+            </div>
+        </header>
+
+        <!-- Hauptinhalt -->
+        <main>
+            <section id="banner">
+            </section>
+
+            <section id="channel-info">
+                <img src="img/profile.jpg" class="round" />
+
+                <div class="channel-info-main flex-stretch">
+                    <div class="flex-stretch">
+                        <div class="channel-name">
+                            Dennis Schulmeister-Zimolong
+                        </div>
+                        <div class="channel-description">
+                            Videos zur Vorlesung
+                        </div>
+                    </div>
+
+                    <button>CUSTOMIZE CHANNEL</button>
+                </div>
+            </section>
+
+            <section id="videos" class="flex-stretch">
+                <div class="actions">
+                    <a href="#">PLAY ALL</a>
+                    <a href="#" class="icon-sort-alt-up">SORT BY</a>
+                </div>
+
+                <div class="flex-container">
+                    <div class="video">
+                        <img src="img/video1.png" />
+                        <div class="title">
+                            HTTP-Anfragen ohne Browser testen
+                        </div>
+                    </div>
+
+                    <div class="video">
+                        <img src="img/video2.png" />
+                        <div class="title">
+                            Grundlegender Aufbau einer Webseite
+                        </div>
+                    </div>
+
+                    <div class="video">
+                        <img src="img/video3.png" />
+                        <div class="title">
+                            Nutzung eines lokalen Webservers
+                        </div>
+                    </div>
+
+                    <div class="video">
+                        <img src="img/video4.png" />
+                        <div class="title">
+                            Strukturgebende HTML-Elemente
+                        </div>
+                    </div>
+
+                    <div class="video">
+                        <img src="img/video5.jpg" />
+                        <div class="title">
+                            Interview mit dem Education Support Center
+                        </div>
+                    </div>
+
+                    <div class="video">
+                        <img src="img/video6.png" />
+                        <div class="title">
+                            Entwicklung eigener Webservices
+                        </div>
+                    </div>
+
+                    <div class="video">
+                        <img src="img/video7.png" />
+                        <div class="title">
+                            Aufruf fremder Webservices
+                        </div>
+                    </div>
+
+                    <div class="video">
+                        <img src="img/video8.png" />
+                        <div class="title">
+                            Grundprinzipien skalierbarer Cloudanwendungen
+                        </div>
+                    </div>
+
+                    <div class="video">
+                        <img src="img/video9.png" />
+                        <div class="title">
+                            Fallbeispiel Notebook-as-a-Service
+                        </div>
+                    </div>
+
+                    <div class="video">
+                        <img src="img/video10.jpg" />
+                        <div class="title">
+                            Flying Fool
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Modaler Hintergrund -->
+        <aside id="modal-backdrop" class="zindex" onclick="toggle_side_menu()">
+        </aside>
+
+        <!-- Seitenmenü: Reduzierte Breite -->
+        <ul id="side-menu-narrow" class="side-menu">
+            <li>
+                <a href="#" class="icon-menu" onclick="toggle_side_menu()">
+                </a>
+            </li>
+            <li>
+                <a href="#" class="icon-home">
+                    <span class="label">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="icon-calendar">
+                    <span class="label">Recent Uploads</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="icon-chat-empty">
+                    <span class="label">Comments</span>
+                </a>
+            </li>
+            <li class="line">
+                <a href="#" class="icon-thumbs-up">
+                    <span class="label">Social Activities</span>
+                </a>
+            </li>
+        </ul>
+
+        <!-- Seitenmenü: Volle Breite -->
+        <ul id="side-menu-wide" class="side-menu">
+            <li class="toggle-menu">
+                <a href="#" class="icon-menu" onclick="toggle_side_menu()">
+                </a>
+            </li>
+            <li>
+                <a href="#" class="icon-home">
+                    <span class="label">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="icon-calendar">
+                    <span class="label">Recent Uploads</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="icon-chat-empty">
+                    <span class="label">Comments</span>
+                </a>
+            </li>
+            <li class="line">
+                <a href="#" class="icon-thumbs-up">
+                    <span class="label">Social Activities</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="icon-star-empty">
+                    <span class="label">Favorites</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="icon-history">
+                    <span class="label">Recent Videos</span>
+                </a>
+            </li>
+            <li class="line">
+                <a href="#" class="icon-user-secret">
+                    <span class="label">Private Videos</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="icon-guidedog">
+                    <span class="label">Guide</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="icon-graduation-cap">
+                    <span class="label">Help</span>
+                </a>
+            </li>
+        </ul>
+    </body>
+</html>

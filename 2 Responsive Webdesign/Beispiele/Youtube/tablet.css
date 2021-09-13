@@ -1,0 +1,95 @@
+/**
+ * Zusätzliches Stylesheet für simulierte Tablets oder größer
+ */
+
+html {
+    font-size: 2.7vh;
+}
+
+/*
+ * Header
+ */
+header {
+    padding-left: 0;
+}
+
+header .hamburger-toggle {
+    display: none;
+}
+
+header .search {
+    display: flex;
+    margin-left: 0;
+    margin-right: 4em;
+}
+
+header .search input {
+    flex-grow: 1;
+    flex-shrink: 1;
+
+    border: 1px solid lightgrey;
+    background-color: white;
+
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+header .search button {
+    border: 1px solid lightgrey;
+    background-color: white;
+    color: #606060;
+    margin-left: -1px;
+}
+
+/*
+ * Hauptbereich
+ */
+#banner {
+    height: 7em;
+}
+
+#channel-info img {
+    width: 3em;
+}
+
+/*
+ * Seitenmenü reduziert
+ */
+#side-menu-narrow {
+    z-index: 20;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+
+    width: 3.5em;
+    left: 0;
+
+    padding: 0.5em;
+    box-sizing: border-box;
+    overflow: scroll-y;
+
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+
+    list-style: none;
+    margin: 0;
+
+    line-height: 0.5em;
+    text-align: center;
+}
+
+#side-menu-narrow li {
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+}
+
+#side-menu-narrow .label {
+    font-size: 50%;
+}
+
+header, main {
+    margin-left: 3.5em;
+}
