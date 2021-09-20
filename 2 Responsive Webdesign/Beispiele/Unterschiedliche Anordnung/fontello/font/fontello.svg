@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2021 by original authors @ fontello.com</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="1000" >
+<font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="search" unicode="&#xe800;" d="M643 386q0 103-73 176t-177 74-177-74-73-176 73-177 177-73 177 73 73 177z m286-465q0-29-22-50t-50-21q-30 0-50 21l-191 191q-100-69-223-69-80 0-153 31t-125 84-84 125-31 153 31 152 84 126 125 84 153 31 153-31 125-84 84-126 31-152q0-123-69-223l191-191q21-21 21-51z" horiz-adv-x="928.6" />
+
+<glyph glyph-name="camera" unicode="&#xe801;" d="M536 475q66 0 113-47t47-114-47-113-113-47-114 47-47 113 47 114 114 47z m393 232q59 0 101-42t41-101v-500q0-59-41-101t-101-42h-786q-59 0-101 42t-42 101v500q0 59 42 101t101 42h125l28 76q11 27 39 47t58 20h286q29 0 57-20t39-47l29-76h125z m-393-643q103 0 176 74t74 176-74 177-176 73-177-73-73-177 73-176 177-74z" horiz-adv-x="1071.4" />
+
+<glyph glyph-name="paw" unicode="&#xf1b0;" d="M435 587q0-34-10-64t-35-51-59-22q-42 0-77 32t-51 76-17 84q0 33 10 63t36 52 58 22q43 0 78-32t51-76 16-84z m-191-270q0-45-23-77t-66-33q-43 0-79 31t-56 74-20 85q0 45 23 78t67 33q42 0 79-31t56-75 19-85z m220 15q66 0 143-54t127-132 52-142q0-26-10-43t-27-25-36-12-42-3q-38 0-105 25t-102 26q-36 0-107-25t-112-25q-102 0-102 82 0 48 31 106t78 108 105 81 107 33z m134 118q-34 0-59 22t-35 51-11 64q0 41 17 84t51 76 77 32q34 0 59-22t35-52 11-63q0-41-17-84t-51-76-77-32z m241 58q43 0 66-33t24-78q0-41-20-85t-56-74-79-31q-43 0-66 33t-24 77q0 41 20 85t56 75 79 31z" horiz-adv-x="928.6" />
+</font>
+</defs>
+</svg>

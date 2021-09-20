@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>Wir lieben Hunde</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Stylesheet und Icon -->
+        <link rel="stylesheet" id="style-base" href="style.css" />
+        <link rel="shortcut icon" href="img/logo.svg" />
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?&family=Pacifico&display=swap" rel="stylesheet" />
+
+        <!-- Fontello Icons -->
+        <link rel="stylesheet" href="fontello/css/fontello.css" />
+
+        <!-- Beispieldaten generieren -->
+        <script src="example-data.js"></script>
+
+        <script>
+            window.addEventListener("load", function() {
+                let template = document.querySelector("#template-dog-card").innerHTML;
+                let targetElement = document.querySelector("#dog-cards");
+
+                for (let example of examples) {
+                    let html = template;
+                    html = html.replaceAll("$IMG$",  example.img);
+                    html = html.replaceAll("$NAME$", example.name);
+                    html = html.replaceAll("$TEXT$", example.text);
+
+                    targetElement.innerHTML += html;
+                }
+            });
+        </script>
+    </head>
+    <body>
+        <!-- Kopfbereich mit Suchfeld -->
+        <header>
+            <div class="searchbar">
+                <div class="icon icon-search"></div>
+                <div class="input" contenteditable="true"></div>
+                <div class="icon icon-camera"></div>
+            </div>
+
+            <a class="icon icon-paw" href="#"></a>
+        </header>
+
+        <!-- Hauptbereich mit den darzustellenden Einträgen -->
+        <main>
+            <h2>Wahre Freunde</h2>
+            <p>
+                Entdecken Sie die liebsten Hunde der Welt. Für Familien mit
+                und ohne Kinder, für Singles und alle anderen Menschen. Ein
+                Hund ist ein Freund für's Leben. Einfach auf einen Eintrag
+                klicken, um mehr zu erfahren.
+            </p>
+
+            <div id="dog-cards" class="card-container">
+                <!--
+                    Hier wird mit JavaScript  für jeden Eintrag der Inhalt des
+                    untenstehenden Templates eingefügt. Dadurch wird der HTML-
+                    Code hier nicht wegen der Beispiele unübersichtlich groß.
+                -->
+            </div>
+
+            <template id="template-dog-card">
+                <div class="card">
+                    <h2 class="card-title">$NAME$</h2>
+                    <img src="$IMG$" alt="" class="card-image" />
+
+                    <p class="card-body">
+                        $TEXT$
+                    </p>
+                </div>
+            </template>
+        </main>
+
+        <!-- Fußbereich -->
+        <footer>
+            <img class="logo" src="img/logo.svg" alt="" />
+            <span class="slogan">Wir lieben Hunde!</span>
+        </footer>
+    </body>
+</html>

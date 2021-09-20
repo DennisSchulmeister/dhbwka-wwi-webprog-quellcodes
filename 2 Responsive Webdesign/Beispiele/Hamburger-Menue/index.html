@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>McKing</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Icon und Stylesheet -->
+        <link rel="shortcut icon" href="img/favicon.svg" />
+        <link rel="stylesheet" href="style.css" />
+
+        <!-- Fontello Icons -->
+        <link rel="stylesheet" href="fontello/css/fontello.css" />
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Calistoga&display=swap" rel="stylesheet" />
+
+        <!-- JavaScript-Code für den Hamburger-Button -->
+        <script>
+            window.addEventListener("load", () => {
+                let hamburgerButton = document.querySelector("header .toggle-button");
+                let navigationList = document.querySelector("#nav-menu");
+
+                hamburgerButton.addEventListener("click", () => {
+                    if (navigationList.classList.contains("small-screen-hidden")) {
+                        navigationList.classList.remove("small-screen-hidden");
+                    } else {
+                        navigationList.classList.add("small-screen-hidden");
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <header>
+            <!-- Mobile Ansicht: Hamburger-Button und Logo -->
+            <div class="app-header large-screen-hidden">
+                <div class="toggle-button icon-menu">Menü</div>
+                <img src="img/logo.svg" alt="" class="logo" />
+            </div>
+
+            <!-- Navigationsmenü -->
+            <nav>
+                <ul id="nav-menu" class="small-screen-hidden animated">
+                    <li>
+                        <a href="#">Hamburger</a>
+                    </li>
+                    <li>
+                        <a href="#">Getränke</a>
+                    </li>
+                    <li>
+                        <a href="#">Lieferservice</a>
+                    </li>
+                    <li>
+                        <a href="#">Filialfinder</a>
+                    </li>
+                    <li>
+                        <a href="#">Jobs</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Desktop-Ansicht: Logo am rechten Bildschirmrand-->
+            <img src="img/logo.svg" alt="" class="logo small-screen-hidden" />
+        </header>
+
+        <main>
+            <img class="hamburger" src="img/hamburger1.jpg" alt="" />
+            <img class="hamburger" src="img/hamburger2.jpg" alt="" />
+            <img class="hamburger" src="img/hamburger3.jpg" alt="" />
+            <img class="hamburger" src="img/hamburger4.jpg" alt="" />
+            <img class="hamburger" src="img/hamburger5.jpg" alt="" />
+            <img class="hamburger" src="img/hamburger6.jpg" alt="" />
+            <img class="hamburger" src="img/hamburger7.jpg" alt="" />
+            <img class="hamburger" src="img/hamburger8.jpg" alt="" />
+        </main>
+    </body>
+</html>

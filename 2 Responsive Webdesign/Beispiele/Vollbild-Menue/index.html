@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>Unser Mond</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Stylesheet und Icon -->
+        <link rel="stylesheet" id="style-base" href="style.css" />
+        <link rel="shortcut icon" href="favicon.svg" />
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?&family=Heebo&family=Pacifico&display=swap" rel="stylesheet" />
+
+        <!-- JavaScript-Code zum Öffnen/Schließen des Hauptmenüs -->
+        <script>
+            async function timeout(ms) {
+                return new Promise(resolve => {
+                    setTimeout(resolve, ms);
+                });
+            }
+
+            window.addEventListener("load", () => {
+                let toggleButton = document.querySelector("header .toggle-button");
+                let mainMenu = document.querySelector("#main-menu");
+                let menuItems = document.querySelectorAll("#main-menu li");
+
+                menuItems.forEach(e => e.classList.add("fade-out"));
+
+                toggleButton.addEventListener("click", async () => {
+                    if (mainMenu.classList.contains("invisible")) {
+                        // Menü einblenden
+                        mainMenu.classList.remove("hidden");
+                        await timeout(100);
+                        mainMenu.classList.remove("invisible");
+                        menuItems.forEach(e => e.classList.replace("fade-out", "fade-in"));
+                    } else {
+                        // Menü ausblenden
+                        mainMenu.classList.add("invisible");
+                        menuItems.forEach(e => e.classList.replace("fade-in", "fade-out"));
+                        await timeout(1000);
+                        mainMenu.classList.add("hidden");
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <!-- Kopfbereich mit Button zum Öffnen/Schließen des Menüs -->
+        <header>
+            <div class="brandname">Der Mond</div>
+            <div class="toggle-button">Menü</div>
+        </header>
+
+        <!-- Hauptmenü -->
+        <nav id="main-menu" class="invisible hidden">
+            <ul>
+                <li><a href="#">Etymologie</a></li>
+                <li><a href="#">Umlaufbahn</a></li>
+                <li><a href="#">Geologie</a></li>
+                <li><a href="#">Oberfläche</a></li>
+                <li><a href="#">Geschichte</a></li>
+                <li><a href="#">Erforschung</a></li>
+                <li><a href="#">Missionen</a></li>
+            </ul>
+        </nav>
+    </body>
+</html>

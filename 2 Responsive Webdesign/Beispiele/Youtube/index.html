@@ -2,37 +2,16 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Einleitendes Beispiel für Responsive Webdesign</title>
+        <title>Youtube</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!--
-            Stylesheets für die simulierten Bildschirme. Werden durch JavaScript
-            in Abhängigkeit der URL-Paremeter wieder entfernt, um die Darstellung
-            auf einem bestimmten Endgerät zu simulieren:
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="base.css" />
+        <link rel="stylesheet" href="tablet.css" media="(min-width: 50em)" />
+        <link rel="stylesheet" href="screen.css" media="(min-width: 80em)" />
 
-              » ?phone: Smartphone-Version; nur base.css
-              » ?tablet: Tablet-Version; base.css und tablet.css
-              » ?screen: PC-Version; base.css, tablet.css und screen.css
-        -->
-        <link rel="stylesheet" id="style-base" href="base.css" />
-        <link rel="stylesheet" id="style-tablet" href="tablet.css" />
-        <link rel="stylesheet" id="style-screen" href="screen.css" />
-
+        <!-- JavaScript-Code zum Auf-/Zuklappen des Seitenmenüs -->
         <script>
-            (function() {
-                let styleTablet = document.querySelector("#style-tablet");
-                let styleScreen = document.querySelector("#style-screen");
-
-                let screenSize = location.href.split("?")[1] || "screen";
-
-                switch (screenSize) {
-                    case "phone":
-                        styleTablet.remove();
-                    case "tablet":
-                        styleScreen.remove();
-                }
-            }());
-
             function toggle_side_menu() {
                 let modalBackdrop = document.querySelector("#modal-backdrop");
                 let sideMenu = document.querySelector("#side-menu-wide");

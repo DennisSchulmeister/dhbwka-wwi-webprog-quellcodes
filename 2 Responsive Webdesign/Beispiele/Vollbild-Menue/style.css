@@ -1,0 +1,174 @@
+/***************
+ * ALLGEMEINES *
+ **************/
+
+html {
+    /** Schriftart und Größe  */
+    font-family: 'Heebo', sans-serif;
+    font-size: max(2.8vh, 11pt);
+
+    /* Hintergrundbild */
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+html, body {
+    /* Vordefinierte Abstände zum Bildschirmrand übersteuern */
+    padding: 0;
+    margin: 0;
+}
+
+html,               /* Die Seite allgemein */
+a,                  /* Unbesuchte Links    */
+a:visited {         /* Besuchte Links      */
+    /* Weiße Schriftfarbe und keine Untertreichung */
+    color: rgb(220, 220, 220);
+    text-decoration: none;
+}
+
+a:hover {
+    /* Links unterstreichen, wenn die Maus darüber fährt */
+    text-decoration: underline;
+}
+
+/***************
+ * KOPFBEREICH *
+ **************/
+
+header {
+    /* Innenabstand und Schriftart */
+    padding: 1rem;
+    font-family: 'Pacifico', cursive;
+
+    /* Inhalt mit dem Flexbox-Algorithmus so anordnen, dass das Seitentitel
+     * ganz links und der Link zum Öffnen des Menüs ganz rechts erscheint */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .brandname {
+    /* Header durch das Menü nicht übermalen */
+    z-index: 999;
+}
+
+header .toggle-button {
+    /* Schriftfarbe und Mauszeiger */
+    color: BurlyWood;
+    cursor: pointer;
+
+    /* Header durch das Menü nicht übermalen */
+    z-index: 999;
+}
+
+header .toggle-button:hover {
+    /* Buttontext unterstreichen, wenn die Maus darüber fährt */
+    text-decoration: underline;
+}
+
+/*************
+ * HAUPTMENÜ *
+ *************/
+
+#main-menu {
+    /* Gesamten Bildschirm mit dem Menü verdecken */
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+
+    background-color: rgb(30, 30, 30);
+    overflow-y: scroll;
+
+    /* Inhalt horizontal und vertikal zentrieren */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Menü ein-/ausblenden */
+    transition: opacity 1s;
+    opacity: 1;
+}
+
+#main-menu ul {
+    /* Menüeinträge nicht als typische Listenelemente darstellen */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    /* Menüeinträge untereinander und zentriert anordnen */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+}
+
+/* Beim Ein-/Ausblenden zunächst nur die Transaprenz des Menüs ändern,
+ * später mit JavaScript das Menü richtig vom Bildschirm entfnern, indem
+ * die Klasse 'hidden' gesetzt wird */
+#main-menu.invisible {
+    opacity: 0;
+}
+
+#main-menu.hidden {
+    display: none;
+}
+
+
+/* Zusätzliche Animation zum Einblenden der einzelnen Menüeinträge */
+#main-menu li.fade-in:nth-child(1) { animation-delay: 0.125s; }
+#main-menu li.fade-in:nth-child(2) { animation-delay: 0.250s; }
+#main-menu li.fade-in:nth-child(3) { animation-delay: 0.375s; }
+#main-menu li.fade-in:nth-child(4) { animation-delay: 0.500s; }
+#main-menu li.fade-in:nth-child(5) { animation-delay: 0.625s; }
+#main-menu li.fade-in:nth-child(6) { animation-delay: 0.750s; }
+#main-menu li.fade-in:nth-child(7) { animation-delay: 0.875s; }
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#main-menu .fade-in {
+    opacity: 0;
+    animation-name: fadein;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+/* Zusätzliche Animation zum Ausblenden der einzelnen Menüeinträge */
+#main-menu li.fade-out:nth-child(7) { animation-delay: 0.125s; }
+#main-menu li.fade-out:nth-child(6) { animation-delay: 0.250s; }
+#main-menu li.fade-out:nth-child(5) { animation-delay: 0.375s; }
+#main-menu li.fade-out:nth-child(4) { animation-delay: 0.500s; }
+#main-menu li.fade-out:nth-child(3) { animation-delay: 0.625s; }
+#main-menu li.fade-out:nth-child(2) { animation-delay: 0.750s; }
+#main-menu li.fade-out:nth-child(1) { animation-delay: 0.875s; }
+
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+#main-menu .fade-out {
+    opacity: 1;
+    animation-name: fadeout;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}

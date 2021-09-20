@@ -1,0 +1,189 @@
+/***************
+ * ALLGEMEINES *
+ **************/
+
+html {
+    /* Dynamische Schriftgröße je nach Bildschirmgröße */
+    font-family: sans-serif;
+    font-size: max(2.4vh, 11pt);
+
+    /* Hintergrundfarbe und Schriftfarbe */
+    background-color: rgb(240, 230, 217);
+    color: rgb(209, 0, 0);
+}
+
+body {
+    /* Vordefinierte Abstände zum Fensterrand übersteuern */
+    margin: 0;
+    padding: 0;
+}
+
+header, main {
+    /* Einheitlicher Innenabstand für den Kopf- und Hauptbereich */
+    padding: 1rem;
+}
+
+@media (max-width: 60em) {
+    /* CSS-Klassen, um Inhalte auf kleinen Bildschirmen auszublenden. Die Klasse
+     * 'small-screen-hidden' kann entweder einzeln oder zusammen mit der Klasse
+     * 'animated' verwendet werden. Einzeln wird das Element mit 'display: none'
+     * einfach ausgeblendet. Zusammen mit der Klasse 'animated' wird die maximale
+     * Höhe des Elements auf Null gesetzt, um es animiert zuzuklappen. */
+    .small-screen-hidden:not(.animated) {
+        display: none !important;
+    }
+
+    .small-screen-hidden.animated {
+        max-height: 0 !important;
+    }
+
+    .animated {
+        /* Die maximale Höhe muss angepasst werden, wenn sich die Anzahl der
+         * Menüeinträge ändert, damit des Menü vollständig angezeigt und die
+         * Animation beim Zuklappen ohne Zeitversatz sichtbar wird. */
+        max-height: 10em;
+        transition: max-height 1s;
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 60em) {
+    /* CSS-Klasse, um Inhalte auf großen Bildschirmen auszublenden */
+    .large-screen-hidden {
+        display: none !important;
+    }
+}
+
+
+/***************
+ * KOPFBEREICH *
+ **************/
+
+header {
+    /* Schriftart */
+    font-family: 'Calistoga', cursive;
+
+    /* Größere Schrift auf kleinen Bildschirmen */
+    font-size: 120%;
+
+    /* Kleiner Schatten als Abgrenzung zum Haubtbereich */
+    box-shadow: 0 1px 2px rgba(0,0,0, 0.2);
+}
+
+header .logo {
+    /* Größe des Logos, die Höhe ergibt sicht automatisch */
+    width: 3em;
+}
+
+header .app-header {
+    /* Die Inhalte des App-Headers für die mobile Ansicht mit Hilfe des
+     * Flexbox-Algorithmus so anordnen, dass ganz links das Icon zum Auf-
+     * und Zuklappen des Menüs und ganz rechts das Logo erscheint */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .toggle-button {
+    /* Für das Menü-Icon denselben Mauszeiger wie bei einem Link verwenden */
+    cursor: pointer;
+}
+
+header nav ul {
+    /* Einträge des Navigationsmenüs nicht wie eine typische Liste darstellen */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    /* Stattdessen die Einträge untereinander, horizontal zentriert anordnen */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+}
+
+header,                             /* Der Kopfbereich allgemein       */
+header a,                           /* Unbesuchte Links im Kopfbereich */
+header a:visited {                  /* Besuchte Links im Kopfbereich   */
+    /* Schriftfarbe und keine Unterstreichung */
+    color: rgb(70, 49, 49);
+    text-decoration: none;
+}
+
+header a:hover {
+    /* Links unterstreichen, wenn die Maus darüber fährt */
+    text-decoration: underline;
+}
+
+@media (min-width: 60em) {
+    header {
+        /* Auf großen Bildschirmen zurück zur normalen Schriftgröße */
+        font-size: 100%;
+
+        /* Auf großen Bildschirmen die Inhalte des Headers mit Hilfe des
+         * Flexbox-Algorithmus so anordnen, das ganz links das Menü und
+         * ganz rechts das Logo erscheint */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header nav ul {
+        /* Die Inhalte des Menüs auf großen Bildschirmen nebeneinander statt
+         * untereinander anordnen */
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+/****************
+ * HAUPTBEREICH *
+ ****************/
+
+main {
+    /* Auf kleinen Bildschirmen wird eigentlich keine Flexbox benötigt.
+     * Allerdings kann mit 'gap: 1em' auch hier leichter ein einheitlicher
+     * Abstand zwischen den Bildern erzielt werden. */
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+main .hamburger {
+    /* Rahmen, runde Ecken und Schatten für die Bilder im Hauptbereich */
+    border-radius: 1em;
+    border: 3px solid white;
+    box-shadow: 2px 2px 3px rgba(0,0,0, 0.25);
+
+    /* Breite der Bilder auf 100% des Elternelements begrenzen. Wichtig, da
+     * die Bilder sonst durchaus breiter als das Browserfenster dargestellt
+     * werden können. */
+    width: 100%;
+
+    /* Selben Mauszeiger wie bei anklickbaren Links verwenden */
+    cursor: pointer;
+}
+
+@media (min-width: 55em) {
+    main {
+        /* Auf großen Bildschirmen die Breite des Hauptbereichs begrenzen
+         * und diesen horizontal zentriert anordnen. Durch den Trick mit
+         * 'margin: 0 auto' können wir auf eine Flexbox als Elternelement
+         * verzichten, nur um den Hauptinhalt zu zentrieren. */
+        width: 55em;
+        margin: 0 auto;
+
+        /* Die Inhalte des Elements selbst werden allerdings durchaus mit dem
+         * Flexbox-Algorithmus angeordnet. Auf großen Bildschirmen diese so
+         * ändern, dass mehrere Bilder in einer Zeile stehen können und die
+         * Bilder automatisch in die nächste Zeile umbrechen. */
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    main .hamburger {
+        /* Auf großen Bildschirmen die Größe der Bilder so begrenzen, dass
+         * in einer Zeile immer genau zwei Bilder nebeneinander stehen können */
+        width: 25em;
+    }
+}
