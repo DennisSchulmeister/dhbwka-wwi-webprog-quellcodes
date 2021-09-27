@@ -17,7 +17,7 @@ body {
     color: #5d5d5d;
 }
 
-header, main, footer {
+header, footer {
     padding: 1rem;
     box-sizing: border-box;
 }
