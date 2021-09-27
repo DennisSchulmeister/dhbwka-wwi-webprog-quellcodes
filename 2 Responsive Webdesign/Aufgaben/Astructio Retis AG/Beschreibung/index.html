@@ -5,6 +5,17 @@
         <title>📜 Aufgabe: Astructio Retis AG</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <!-- CKEditor -->
+        <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
+
+        <script>
+            window.addEventListener("load", () => {
+                document.querySelectorAll(".ckeditor").forEach(element => {
+                    ClassicEditor.create(element).catch(error => console.error(error));
+                });
+            });
+        </script>
+
         <style>
             html {
                 font-family: sans-serif;
@@ -13,7 +24,7 @@
 
             @media (min-width: 63em) {
                 html {
-                    /* https://pixabay.com/photos/communication-workplace-macbook-2802996/ */
+                    /* https://pixabay.com/photos/university-greece-athens-building-5188610/ */
                     background-color: rgb(209, 230, 233);
                     background-image: url(background.jpg);
                     background-attachment: fixed;
@@ -102,6 +113,10 @@
                 margin: 1em 0 1em 0;
             }
 
+            .teilaufgabe {
+                color: darkslateblue;
+            }
+
             #color-codes {
             }
 
@@ -131,36 +146,84 @@
 
             <article>
                 <p>
-                    xxx
+                    Die folgenden Screenshots zeigen die Webseite einer fiktiven Webdesign-Agentur
+                    in der mobilen Ansicht. Diese Webseite wollen wir heute nachbauen, die Darstellung
+                    dabei allerdings für unterschiedliche Endgeräte optimieren. Bevor wir uns deshalb
+                    gleich auf den Quellcode stürzen, wollen wir die Screenshots etwas genauer betrachten.
                 </p>
-
                 <p class="flexbox">
-                    <a href="screenshot.png" target="_blank">
+                    <a href="loesung-mobile-1.png" target="_blank">
                         <img
-                            src   = "screenshot.png"
-                            alt   = "Screenshot der zu erstellenden Seite"
-                            class = "screenshot small"
+                            src   = "loesung-mobile-1.png"
+                            alt   = "Mobile Ansicht der zu erstellenden Seite (1 von 4)"
+                            class = "screenshot inline"
                         />
                     </a>
-
-                    <a href="musterloesung.png" target="_blank">
+                    <a href="loesung-mobile-2.png" target="_blank">
                         <img
-                            src   = "musterloesung.png"
-                            alt   = "Screenshot der Musterlösung"
-                            class = "screenshot small"
+                            src   = "loesung-mobile-2.png"
+                            alt   = "Mobile Ansicht der zu erstellenden Seite (2 von 4)"
+                            class = "screenshot inline"
+                        />
+                    </a>
+                    <a href="loesung-mobile-3.png" target="_blank">
+                        <img
+                            src   = "loesung-mobile-3.png"
+                            alt   = "Mobile Ansicht der zu erstellenden Seite (3 von 4)"
+                            class = "screenshot inline"
+                        />
+                    </a>
+                    <a href="loesung-mobile-4.png" target="_blank">
+                        <img
+                            src   = "loesung-mobile-4.png"
+                            alt   = "Mobile Ansicht der zu erstellenden Seite (4 von 4)"
+                            class = "screenshot inline"
                         />
                     </a>
                 </p>
                 <p style="text-align: center;">
                     <small>
                         Bilder anklicken für eine größere Version
-                        (<a href="../Loesung/index.html" target="_blank">Musterlösung</a>)
                     </small>
                 </p>
 
                 <p>
-                    xxx
+                    Schließt euch in kleine Gruppen zusammen und beantwortet die folgenden Fragen,
+                    damit wir sie in der Vorlesung besprechen können. Anschließend werden wir das
+                    Design gemeinsam implementieren.
                 </p>
+            </article>
+        </section>
+
+        <section>
+            <h1>Gruppenarbeit</h1>
+
+            <article>
+                <p>
+                    <span class="teilaufgabe">a)</span>
+                    Was ist auf den Screenshots alles zu sehen? Erstelle eine Liste mit allen
+                    in den Bildern erkennbaren, gestalterischen Einzelheiten. Versuche dabei,
+                    das Layout so genau wie möglich zu beschreiben.
+                </p>
+
+                <div class="ckeditor"></div>
+
+                <p style="margin-top: 1em;">
+                    <span class="teilaufgabe">b)</span>
+                    Wie sollte das Layout auf großen Bildschirmen aussehen? Erstelle eine
+                    oder mehrere Mockup-Skizzen (zum Beispiel im Browser mit <a href="https://draw.io" target="_blank">draw.io</a>)
+                    und beschreibe diese.
+                </p>
+
+                <div class="ckeditor"></div>
+
+                <p style="margin-top: 1em;">
+                    <span class="teilaufgabe">c)</span>
+                    Mit welchen Media Queries können für die Seite sinnvolle Geräteeigenschaften
+                    abgefragt werden?
+                </p>
+
+                <div class="ckeditor"></div>
             </article>
         </section>
     </body>

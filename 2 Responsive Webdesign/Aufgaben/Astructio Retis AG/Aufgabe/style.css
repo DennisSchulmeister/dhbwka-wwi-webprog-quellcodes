@@ -1,0 +1,39 @@
+/***************
+ * ALLGEMEINES *
+ ***************/
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    font-size: max(1.8vh, 12pt);
+
+    /* https://pixabay.com/photos/marble-texture-white-pattern-2371776/ */
+    background-image: url(img/marble.jpg);
+    background-attachment: fixed;
+    background-color: white;
+    color: #5d5d5d;
+}
+
+header, main, footer {
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+a, a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    text-align: justify;
+    hyphens: auto;
+    word-wrap: break-word;
+}
+
+/** TODO: Inhalt und Stylesheet */

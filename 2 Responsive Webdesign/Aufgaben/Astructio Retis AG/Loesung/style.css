@@ -1,0 +1,252 @@
+/***************
+ * ALLGEMEINES *
+ ***************/
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    font-size: max(1.8vh, 12pt);
+
+    /* https://pixabay.com/photos/marble-texture-white-pattern-2371776/ */
+    background-image: url(img/marble.jpg);
+    background-attachment: fixed;
+    background-color: white;
+    color: #5d5d5d;
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    /* Globale Variablen */
+    --color-brand: rgb(33, 124, 70);
+    --color-logo: #ffc156;
+    --color-secondary: crimson;
+}
+
+header, main, footer {
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+a, a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    text-align: justify;
+    hyphens: auto;
+    word-wrap: break-word;
+}
+
+nav ul {
+    gap: 0.75em !important;
+    font-size: 110%;
+
+    list-style: none;
+    padding: 0;
+}
+
+.light {
+    color: grey;
+}
+
+.side-by-side {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.side-by-side-responsive {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+@media (min-width: 50em) {
+    .side-by-side-responsive {
+        flex-direction: row;
+    }
+}
+
+/***************
+ * KOPFBEREICH *
+ **************/
+header {
+    background: white;
+    box-shadow: 0px 1px 2px rgba(0,0,0, 0.2);
+
+    justify-content: space-between;
+}
+
+header .logo {
+    height: 2em;
+}
+
+header h1 {
+    color: var(--color-brand);
+    font-size: 140%;
+}
+
+header nav a,
+header nav a:visited {
+    color: var(--color-brand) !important;
+}
+
+@media (min-width: 50em) {
+    header {
+        position: sticky;
+        top: 0;
+    }
+}
+
+/**************************
+ * HAUPTBEREICH ALLGEMEIN *
+ **************************/
+main section {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    padding: 1rem;
+}
+
+main a {
+    color: var(--color-secondary);
+}
+
+/**********
+ * BANNER *
+ *********/
+main section.section-banner {
+    /* https://pixabay.com/photos/communication-workplace-macbook-2802996/ */
+    background-image: url(img/banner.jpg);
+
+    font-family: 'Lobster', cursive;
+    font-size: 500%;
+    color: crimson;
+    text-shadow: 1px 1px 0px black,
+                 2px 2px 0px black,
+                 3px 3px 0px black,
+                 4px 4px 0px black;
+
+    min-height: 5em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+/*************
+ * AKTUELLES *
+ ************/
+main section.section-news h2 {
+    color: var(--color-brand);
+    text-shadow: 1px 1px 1px rgba(0,0,0, 0.1);
+
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+main section.section-news .side-by-side-responsive {
+    align-items: stretch;
+}
+
+main section.section-news .card {
+    flex-grow: 1;
+    flex-shrink: 0;
+    max-width: 100%;
+
+    border: 1px solid lightgrey;
+    background: white;
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+main section.section-news .card img {
+    display: block;
+    width: 100%;
+}
+
+main section.section-news .card h4 {
+    margin: 0.5rem 0.5rem 0 0.5rem;
+}
+
+main section.section-news .card .card-body {
+    padding: 0.5rem;
+}
+
+
+@media (min-width: 50em) {
+    main section.section-news .card {
+        width: 15em;
+    }
+}
+
+/***************
+ * FUSSBEREICH *
+ **************/
+footer {
+    background-color: rgb(25, 25, 25);
+    color: white;
+    font-size: 80%;
+}
+
+footer h1 {
+    color: var(--color-brand);
+}
+
+footer h4 {
+    color: var(--color-brand);
+    margin-top: 2em;
+}
+
+footer .map {
+    width: 100%;
+}
+
+footer a,
+footer a:visited {
+    color: lightgrey;
+}
+
+footer ul {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 50em) {
+    footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+
+        min-height: 100vh;
+        z-index: 200;
+    }
+
+    footer .map {
+        flex: 1;
+    }
+
+    footer .navs {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1em;
+    }
+}
