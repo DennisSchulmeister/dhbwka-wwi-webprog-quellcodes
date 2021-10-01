@@ -104,27 +104,15 @@ header nav a:visited {
     }
 }
 
-/**************************
- * HAUPTBEREICH ALLGEMEIN *
- **************************/
-main section {
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-
-    padding: 1rem;
-}
-
-main a {
-    color: var(--color-secondary);
-}
-
 /***************
  * EYE CATCHER *
  **************/
 .section-eyecatcher {
     /* https://pixabay.com/photos/communication-workplace-macbook-2802996/ */
     background-image: url(img/banner.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 
     font-family: 'Lobster', cursive;
     font-size: 400%;
@@ -153,6 +141,10 @@ main a {
 /*************
  * AKTUELLES *
  ************/
+.section-news {
+    padding: 1rem;
+}
+
 .section-news h2 {
     color: var(--color-primary);
     text-shadow: 1px 1px 1px rgba(0,0,0, 0.1);
