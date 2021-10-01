@@ -46,7 +46,6 @@ p {
 }
 
 nav ul {
-    gap: 0.75em !important;
     font-size: 110%;
 
     list-style: none;
@@ -54,6 +53,7 @@ nav ul {
 
     display: flex;
     flex-direction: column;
+    gap: 0.75em;
 }
 
 /***************
@@ -125,7 +125,6 @@ header nav a:visited {
     min-height: 5em;
 
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -193,11 +192,12 @@ header nav a:visited {
     .section-news .card-container {
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .section-news .card {
-        width: 25em;
+        flex: 1;
+        min-width: 25em;
     }
 }
 
@@ -225,7 +225,7 @@ footer a:visited {
     color: lightgrey;
 }
 
-footer .navs {
+footer .nav-container {
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -236,17 +236,12 @@ footer .map {
     width: 100%;
 }
 
-footer ul {
-    display: flex;
-    flex-direction: column;
-}
-
 @media (min-width: 50em) {
     footer {
         min-height: 100vh;
     }
 
-    footer .navs {
+    footer .nav-container {
         flex-direction: row;
         justify-content: space-between;
     }
