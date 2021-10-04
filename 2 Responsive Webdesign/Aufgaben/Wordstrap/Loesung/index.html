@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <title>Wordstrap Online 365 – Neues Dokument</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Bootstrap Icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
+        <!-- Eigenes Stylesheet -->
+        <link rel="stylesheet" href="style.css" />
+        <link rel="shortcut icon" href="favicon.svg">
+    </head>
+    <body class="user-select-none overflow-hidden
+                 d-flex flex-column justify-content-between vh-100">
+        <!-- Kopfbereich -->
+        <header>
+            <!-- Titelzeile -->
+            <div id="titlebar"
+                 class="d-md-flex justify-content-between align-items-center
+                        bg-primary text-white
+                        p-2">
+                <!-- App-Titel -->
+                <div id="app-title" class="fs-5 mb-2 mb-md-0">
+                    <i class="bi bi-file-earmark-richtext fs-3"></i>
+                    <span class="fw-bold">Wordstrap Online 365</span>
+                </div>
+
+                <!-- Dokumententitel -->
+                <div id="doc-title" class="fs-6 text-md-end">
+                    <div id="doc-name" class="fw-bold" contenteditable="true">Neues Dokument</div>
+                    <div id="doc-status" class="text-white-50">Ungesicherte Änderungen</div>
+                </div>
+            </div>
+
+            <!-- Toolbar-Menü -->
+            <div id="toolbar">
+                <!-- Menü zum Unschalten der Toolbar -->
+                <ul class="nav nav-tabs border-0" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button id="tab-file"
+                                class="nav-link"
+                                role="tab" data-bs-toggle="offcanvas"
+                                data-bs-target="#menu-file" aria-controls="menu-file">
+                            Datei
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button id="tab-start"
+                                class="nav-link active"
+                                role="tab" data-bs-toggle="tab"
+                                data-bs-target="#tbar-start" aria-controls="tbar-start" aria-selected="false">
+                            Start
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button id="tab-insert"
+                                class="nav-link"
+                                role="tab" data-bs-toggle="tab"
+                                data-bs-target="#tbar-insert" aria-controls="tbar-insert" aria-selected="false">
+                            Einfügen
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button id="tab-layout"
+                                class="nav-link"
+                                role="tab" data-bs-toggle="tab"
+                                data-bs-target="#tbar-layout" aria-controls="tbar-layout" aria-selected="false">
+                            Layout
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button id="tab-help"
+                                class="nav-link"
+                                role="tab" data-bs-toggle="tab"
+                                data-bs-target="#tbar-help" aria-controls="tbar-help" aria-selected="true">
+                            Hilfe
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Mit dem Menü umgeschaltete Toolbars -->
+                <div class="tab-content p-2">
+                    <!-- Toolbar: Start -->
+                    <div id="tbar-start"
+                         class="tab-pane show active"
+                         role="tabpanel" aria-labelledby="tab-start">
+                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar: Start">
+                            <select id="sel-partype" class="form-select w-auto me-1" aria-label="Absatzformat">
+                                <option value="p" selected>Absatz</option>
+                                <option value="h1">Überschrift 1</option>
+                                <option value="h2">Überschrift 2</option>
+                                <option value="h3">Überschrift 3</option>
+                            </select>
+
+                            <select id="sel-font" class="form-select w-auto me-1" aria-label="Schriftart">
+                                <option value="sans-serif" selected>Sans Serif</option>
+                                <option value="serif">Serif</option>
+                                <option value="cursive">Cursive</option>
+                                <option value="monospace">Monospace</option>
+                            </select>
+
+                            <select id="sel-fontsize" class="form-select w-auto" aria-label="Schriftgröße">
+                                <option value="8">8 pt</option>
+                                <option value="10" selected>10 pt</option>
+                                <option value="12">12 pt</option>
+                                <option value="14">14 pt</option>
+                                <option value="16">16 pt</option>
+                            </select>
+
+                            <!-- Toogle-Button für mobile Ansicht -->
+                            <button id="btn-start-toggle" class="btn d-md-none" aria-label="Weitere Aktionen"
+                                    data-bs-toggle="collapse" data-bs-target="#tbar-start-collapse"
+                                    aria-controls="tbar-start-collapse" aria-expanded="false">
+                                <i class="bi bi-three-dots"></i>
+                            </button>
+
+                            <div id="tbar-start-collapse" class="collapse btn-toolbar d-md-flex">
+                                <button id="btn-fontsize-inc" class="btn" aria-label="Schriftgröße vergrößern">
+                                    <i class="bi bi-plus"></i>
+                                </button>
+
+                                <button id="btn-fontsize-dec" class="btn" aria-label="Schriftgröße verkleiner">
+                                    <i class="bi bi-dash"></i>
+                                </button>
+
+                                <button id="btn-bold" class="btn" aria-label="Fett">
+                                    <i class="bi bi-type-bold"></i>
+                                </button>
+
+                                <button id="btn-italic" class="btn" aria-label="Kursiv">
+                                    <i class="bi bi-type-italic"></i>
+                                </button>
+
+                                <button id="btn-underline" class="btn" aria-label="Unterstrichen">
+                                    <i class="bi bi-type-underline"></i>
+                                </button>
+
+                                <div class="vr ms-2 me-2"></div>
+
+                                <button id="btn-list-ul" class="btn" aria-label="Liste">
+                                    <i class="bi bi-list-ul"></i>
+                                </button>
+
+                                <button id="btn-list-ol" class="btn" aria-label="Aufzählung">
+                                    <i class="bi bi-list-ol"></i>
+                                </button>
+
+                                <button id="btn-indent-left" class="btn" aria-label="Einzug vergrößern">
+                                    <i class="bi bi-text-indent-left"></i>
+                                </button>
+
+                                <button id="btn-indent-right" class="btn" aria-label="Einzug verringern">
+                                    <i class="bi bi-text-indent-right"></i>
+                                </button>
+
+                                <div class="vr ms-2 me-2"></div>
+
+                                <button id="btn-undo" class="btn" aria-label="Rückgängig">
+                                    <i class="bi bi-arrow-90deg-left"></i>
+                                </button>
+
+                                <div class="dropdown" role="group">
+                                    <button id="btn-clipboard" class="btn dropdown-toggle" aria-label="Zwischenablage"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-clipboard"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="btn-clipboard">
+                                        <li>
+                                            <a id="btn-cut" class="dropdown-item" href="#">Ausschneiden</a>
+                                        </li>
+                                        <li>
+                                            <a id="btn-copy" class="dropdown-item" href="#">Kopieren</a>
+                                        </li>
+                                        <li>
+                                            <a id="btn-paste" class="dropdown-item" href="#">Einfügen</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <button id="btn-format" class="btn" aria-label="Format übertragen">
+                                    <i class="bi bi-brush"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Toolbar: Einfügen -->
+                    <div id="tbar-insert"
+                         class="tab-pane"
+                         role="tabpanel" aria-labelledby="tab-insert">
+                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar: Einfügen">
+                            EINFÜGEN
+                        </div>
+                    </div>
+
+                    <!-- Toolbar: Layout -->
+                    <div id="tbar-layout"
+                         class="tab-pane"
+                         role="tabpanel" aria-labelledby="tab-layout">
+                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar: Layout">
+                            LAYOUT
+                        </div>
+                    </div>
+
+                    <!-- Toolbar: Hilfe -->
+                    <div id="tbar-help"
+                         class="tab-pane"
+                         role="tabpanel" aria-labelledby="tab-help">
+                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar: Hilfe">
+                            HILFE
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Offcanvas-Menü: Datei -->
+            <div id="menu-file"
+                 class="offcanvas offcanvas-start"
+                 tabindex="-1" aria-labelledby="tab-file">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title">Datei</h5>
+                    <button class="btn-close text-reset"
+                            data-bs-dismiss="offcanvas"
+                            aria-label="Schließen">
+                    </button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a id="btn-new" class="nav-link ps-0 pe-0" href="#">
+                                Neues Dokument
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="btn-save-as" class="nav-link ps-0 pe-0" href="#">
+                                Speichern unter …
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="btn-export" class="nav-link ps-0 pe-0" href="#">
+                                Exportieren …
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="btn-print" class="nav-link ps-0 pe-0" href="#">
+                                Drucken …
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h6 class="mt-4">Zuletzt verwendet</h6>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link ps-0 pe-0" href="#">
+                                <i class="bi bi-file-earmark-richtext me-1"></i>
+                                Grundlagen des Web
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ps-0 pe-3" href="#">
+                                <i class="bi bi-file-earmark-richtext me-1"></i>
+                                HTML und CSS
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ps-0 pe-0" href="#">
+                                <i class="bi bi-file-earmark-richtext me-1"></i>
+                                Responsive Webdesign
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ps-0 pe-0" href="#">
+                                <i class="bi bi-file-earmark-richtext me-1"></i>
+                                Einführung in JavaScript
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ps-0 pe-0" href="#">
+                                <i class="bi bi-file-earmark-richtext me-1"></i>
+                                App-Entwicklung mit JavaScript
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Bearbeitetes Dokument -->
+        <main class="flex-fill p-md-3 overflow-auto
+                     bg-secondary border-top border-bottom">
+            <section class="page bg-white border m-auto p-5" contenteditable="true">
+                Seite 1
+            </section>
+            <section class="page bg-white border m-auto mt-3 p-5" contenteditable="true">
+                Seite 2
+            </section>
+        </main>
+
+        <!-- Statuszeile -->
+        <footer class="bg-light text-muted p-2">
+            <!-- Toogle-Button für mobile Ansicht -->
+            <button class="navbar-toggler d-md-none"
+                    data-bs-toggle="collapse" data-bs-target="#statusbar-content"
+                    aria-controls="statusbar-content" aria-expanded="false"
+                    aria-label="Statuszeile ein-/ausblenden">
+                <i class="bi bi-list"></i>
+            </button>
+
+            <!-- Eigentlicher Inhalt der Statuszeile -->
+            <div id="statusbar-content" class="collapse d-md-block">
+                <div class="d-flex flex-column flex-md-row align-items-end gap-md-5">
+                    <!-- Anzahl Seiten -->
+                    <div>
+                        Seite <span id="page-number">1</span>
+                        von <span id="page-count">2</span>
+                    </div>
+
+                    <!-- Anzahl Wörter -->
+                    <div>
+                        <span id="word-count">4</span> Wörter
+                    </div>
+
+                    <!-- Sprache -->
+                    <div id="doc-language">
+                        Deutsch (Deutschland)
+                    </div>
+
+                    <!-- Zoom Level -->
+                    <div class="dropup ms-md-auto">
+                        <div id="zoom-level"
+                             data-bs-toggle="dropdown" aria-expanded="false"
+                             class="dropdown-toggle">
+                            100%
+                        </div>
+                        <ul class="dropdown-menu" aria-labelledby="zoom-level">
+                            <li><a class="dropdown-item" href="#">50%</a></li>
+                            <li><a class="dropdown-item" href="#">75%</a></li>
+                            <li><a class="dropdown-item" href="#">100%</a></li>
+                            <li><a class="dropdown-item" href="#">125%</a></li>
+                            <li><a class="dropdown-item" href="#">150%</a></li>
+                            <li><a class="dropdown-item" href="#">175%</a></li>
+                            <li><a class="dropdown-item" href="#">200%</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

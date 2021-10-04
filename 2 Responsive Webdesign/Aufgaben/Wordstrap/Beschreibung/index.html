@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>📝 Aufgabe: Wordstrap</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Syntaxhighlighting -->
+        <link rel="stylesheet" href="prism.css" />
+        <script src="prism.js"></script>
+
+        <!-- Bootstrap Icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
+        <style>
+            html {
+                font-family: sans-serif;
+                font-size: max(1.4vmin, 10pt);
+            }
+
+            @media (min-width: 63em) {
+                html {
+                    /* https://pixabay.com/photos/type-typewriter-font-writing-1161949/ */
+                    background-color: rgb(30, 30, 30);
+                    background-image: url(background.jpg);
+                    background-attachment: fixed;
+                    background-size: cover;
+                    background-position: center;
+                }
+
+                section {
+                    background: white;
+
+                    width: 60em;
+                    margin: 0 auto;
+                    margin-top: 2em;
+                    margin-bottom: 2em;
+
+                    box-shadow: 0px 0px 4px rgba(0,0,0, 0.5);
+                }
+
+                section > h1 {
+                    font-size: 200%;
+                    margin: 0;
+                }
+
+                section article {
+                    padding: 1em;
+                }
+
+                section p,
+                section h2:first-child,
+                section h3:first-child,
+                section h4:first-child {
+                    margin-top: 0;
+                }
+
+                section h2,
+                section h3,
+                section h4 {
+                    margin-bottom: 0.5em;
+                }
+
+                .screenshot {
+                    margin: 0 !important;
+                }
+
+                .screenshot.small {
+                    max-width: 15em;
+                }
+
+                .flexbox {
+                    display: flex;
+                    justify-content: center;
+                    column-gap: 1em;
+                }
+            }
+
+            @media print {
+                .screenshot.small {
+                    max-width: 15em;
+                }
+
+                .flexbox {
+                    display: flex;
+                    justify-content: center;
+                    column-gap: 1em;
+                }
+            }
+
+            section {
+                text-align: justify;
+                word-wrap: break-word;
+                hyphens: auto;
+            }
+
+            h1 {
+                padding: 0.25em;
+                margin-top: 1.5em;
+                color: rgb(193, 29, 29);
+                background: #DFDFDF;
+            }
+
+            h1:first-child {
+                margin-top: 0;
+            }
+
+            a, a:visited {
+                color: #3968A1;
+                text-decoration: underline;
+            }
+
+            a:hover {
+                color: #6E9ED9;
+            }
+
+            .screenshot {
+                display: block;
+                width: 100%;
+                border: 1px solid #A0A0A0;
+                margin: 1em 0 1em 0;
+            }
+
+            .teilaufgabe {
+                color: darkslateblue;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                margin-bottom: 1em;
+                text-align: left;
+            }
+
+            table thead {
+                background-color: lightsteelblue;
+            }
+
+            table th,
+            table td {
+                padding: 0.5em;
+                border: 1px solid black;
+            }
+
+            #tutorial-nav {
+                display: flex;
+                gap: 1em;
+            }
+
+            #select-steps {
+                margin-right: auto;
+                margin-bottom: 2rem;
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            tt {
+                color: DeepPink;
+            }
+
+            pre {
+                margin-bottom: 1em !important;
+            }
+
+            @media print {
+                .tutorial-step {
+                    margin-bottom: 2rem;
+                }
+
+                .tutorial-step.hidden {
+                    display: block;
+                }
+
+                #tutorial-nav {
+                    display: none;
+                }
+            }
+        </style>
+
+        <script>
+            window.addEventListener("load", () => {
+                let selectSteps = document.querySelector("#select-steps");
+                let buttonPrevStep = document.querySelector("#btn-prev-step");
+                let buttonNextStep = document.querySelector("#btn-next-step");
+                let steps = document.querySelectorAll(".tutorial-step");
+
+                let currentStep = 1;
+                let maxSteps = -1;
+                let options = [];
+
+                for (let step of steps) {
+                    let option = document.createElement("option");
+                    option.value = step.dataset.step;
+                    option.textContent = step.dataset.title;
+                    option.dataset.step = step.dataset.step;
+                    selectSteps.appendChild(option);
+
+                    if (step.dataset.step == currentStep) {
+                        option.selected = true;
+                        step.classList.remove("hidden");
+                        firstSelected = true;
+                    }
+
+                    if (step.dataset.step > maxSteps) {
+                        maxSteps = parseInt(step.dataset.step);
+                    }
+
+                    options.push(option);
+                }
+
+                let switchStep = () => {
+                    for (let step of steps) {
+                        step.classList.add("hidden");
+
+                        if (step.dataset.step == currentStep) {
+                            step.classList.remove("hidden");
+                        }
+                    }
+
+                    for (let option of options) {
+                        option.selected = option.dataset.step == currentStep;
+                    }
+                };
+
+                buttonPrevStep.addEventListener("click", event => {
+                    currentStep = Math.max(--currentStep, 1);
+                    switchStep();
+                    event.preventDefault();
+                });
+
+                buttonNextStep.addEventListener("click", event => {
+                    currentStep = Math.min(++currentStep, maxSteps);
+                    switchStep();
+                    event.preventDefault();
+                });
+
+                selectSteps.addEventListener("input", event => {
+                    for (let option of options) {
+                        if (option.selected) {
+                            currentStep = parseInt(option.dataset.step);
+                            switchStep();
+                        }
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <section>
+            <h1>Aufgabe: Wordstrap</h1>
+
+            <article>
+                <p>
+                    Die Techniken und Prinzipien zur Gestaltung von Webseiten können natürlich
+                    auch auf webbasierte Programmoberflächen angewendet werden. Typische User
+                    Interfaces sind im Vergleich jedoch meist weniger anspruchsvoll, da
+                    größtenteils nur vordefinierte Bedienelemente wie Toolbars, Dropdown-Menüs,
+                    Auswahlfelder und so weiter auf dem Bildschirm platziert werden. 🖌️
+                </p>
+                <p>
+                    Zwar beinhaltet das ursprünglich für Textdokumente entworfene HTML kaum fertige
+                    UI-Elemente, diese lassen sich jedoch sehr flexibel nachbauen 🔧, was gleichzeitig
+                    auch der größte Vorteil gegenüber anderen UI-Technologien ist. Da aber selbst einfache
+                    Webseiten immer wieder auf dieselben Elemente zurückgreifen, kann dies mitunter einen
+                    großen, initialen Aufwand verursachen. Für die Frontend-Entwicklung konzipierte Frameworks
+                    versuchen daher den Aufwand zu reduzieren, indem sie neben allerlei Helferlein auch
+                    Vorlagen für die am häufigsten anzutreffenden UI-Patterns implementieren.
+                </p>
+                <p>
+                    Eines dieser Frameworks ist Bootstrap, das in unzähligen Projekten aller Art
+                    zum Einsatz kommt. In dieser Aufgabe wollen wir daher eine Programmoberfläche
+                    mit Hilfe von Bootstrap nachprogrammieren. Als Vorlage dienen dabei typische
+                    Schreibprogramme ✒️ wie Microsoft Word Online oder Google Docs. Als Amalgam aus
+                    Bootstrap und Word soll die neue Anwendung deshalb Wordstrap heißen. Die
+                    folgenden Screenshots zeigen die fertige Anwendung, die – da wir JavaScript
+                    noch nicht behandelt haben – allerdings noch ohne Programmlogik auskommen muss.
+                </p>
+                <p class="flexbox">
+                    <a href="loesung-mobile-1.png" target="_blank">
+                        <img
+                            src   = "loesung-mobile-1.png"
+                            alt   = "Mobile Ansicht der zu erstellenden App (1 von 4)"
+                            class = "screenshot inline"
+                        />
+                    </a>
+                    <a href="loesung-mobile-2.png" target="_blank">
+                        <img
+                            src   = "loesung-mobile-2.png"
+                            alt   = "Mobile Ansicht der zu erstellenden App (2 von 4)"
+                            class = "screenshot inline"
+                        />
+                    </a>
+                    <a href="loesung-mobile-3.png" target="_blank">
+                        <img
+                            src   = "loesung-mobile-3.png"
+                            alt   = "Mobile Ansicht der zu erstellenden App (3 von 4)"
+                            class = "screenshot inline"
+                        />
+                    </a>
+                    <a href="loesung-mobile-4.png" target="_blank">
+                        <img
+                            src   = "loesung-mobile-4.png"
+                            alt   = "Mobile Ansicht der zu erstellenden App (4 von 4)"
+                            class = "screenshot inline"
+                        />
+                    </a>
+                </p>
+                <p class="flexbox">
+                    <a href="loesung-desktop-1.png" target="_blank">
+                        <img
+                            src   = "loesung-desktop-1.png"
+                            alt   = "Große Ansicht der zu erstellenden App (1 von 3)"
+                            class = "screenshot inline"
+                        />
+                    </a>
+                    <a href="loesung-desktop-2.png" target="_blank">
+                        <img
+                            src   = "loesung-desktop-2.png"
+                            alt   = "Große Ansicht der zu erstellenden App (2 von 3)"
+                            class = "screenshot inline"
+                        />
+                    </a>
+                </p>
+                <p style="text-align: center;">
+                    <small>
+                        Bilder anklicken für eine größere Version
+                        (<a href="../loesung/index.html" target="_blank">Musterlösung</a>)
+                    </small>
+                </p>
+            </article>
+        </section>
+
+        <section style="page-break-before: always;">
+            <h1>Anleitung</h1>
+
+            <article>
+                <div id="tutorial-nav">
+                    <select id="select-steps"></select>
+                    <a href="#" id="btn-prev-step">Vorheriger Schritt</a>
+                    <a href="#" id="btn-next-step">Nächster Schritt</a>
+                </div>
+
+                <div class="tutorial-step hidden" data-step="1" data-title="HTML-Grundgerüst">
+                    <p>
+                        <span class="teilaufgabe">1)</span>
+                        Das HTML-Grundgerüst ist durch die Aufgabe bereits vorgegeben.
+                        Es entspricht der Vorlage aus dem Vorlesungsskript, die wiederum
+                        der Vorlage auf der Bootstrap-Webseite mit kleinen Anpassungen
+                        entspricht. Zusätzlich wurde hier aber noch das Stylesheet für
+                        die <b>Bootstrap Icons</b> eingebunden. Alternativ könnten die
+                        Icons auch zum Beispiel auf
+                        <a href="https://fontello.com/" target="_blank">Fontello</a>
+                        zusammengestellt werden.
+                    </p>
+                    <p>
+                        Bootstrap-typisch werden alle Parameter für die Darstellung mit
+                        den durch Bootstrap vordefinierten CSS-Klassen im HTML-Code gepflegt.
+                        Das eingebundene Stylesheet wird nur für folgende Dinge benötigt:
+                    </p>
+                    <ol>
+                        <li>
+                            Den Farbton der Sekundärfarbe auf ein helleres Grau ändern.
+                        </li>
+                        <li>
+                            Die exakte Größe einer Seite des dargestellten Dokuments definieren.
+                        </li>
+                        <li>
+                            Den aktiven Tab-Reiter wie in Android durch einen Unterstrich hervorheben.
+                        </li>
+                        <li>
+                            Die Toolbar durch einen kleinen Schatten vom Hauptinhalt abheben.
+                        </li>
+                    </ol>
+                    <p>
+                        Dementsprechend tragen die in der Musterlösung verwendeten <tt>id</tt>-Attribute
+                        (bis auf den Schatten der Toolbar) nicht zur Darstellung bei. Sie würden stattdessen
+                        benötigt werden, um mit JavaScript gezeilt auf die einzelnen Elemente zugreifen oder
+                        auf angeklickte Buttons reagieren zu können.
+                    </p>
+                </div>
+
+                <div class="tutorial-step hidden" data-step="2" data-title="Grundstruktur der App">
+                    <p>
+                        <span class="teilaufgabe">2)</span>
+                        Zunächst bietet es sich an, die Seite in einen <tt>&lt;header&gt;</tt>,
+                        <tt>&lt;main&gt;</tt> und <tt>&lt;footer&gt;</tt> zu unterteilen.
+                        Der <tt>&lt;header&gt;</tt> kann dann gleich in drei <tt>&lt;div&gt;</tt>
+                        für die Titelzeile, die Toolbars und das Datei-Menü aufgeteilt werden.
+                    </p>
+<pre><code class="language-html">&lt;!-- Kopfbereich --&gt;
+&lt;header&gt;
+    &lt;!-- Programmtitel --&gt;
+    &lt;div id="titlebar"&gt;
+        APP-TITEL
+    &lt;/div&gt;
+
+    &lt;!-- Toolbar-Menü --&gt;
+    &lt;div id="toolbar"&gt;
+        TOOLBAR
+    &lt;/div&gt;
+
+    &lt;!-- Offcanvas-Menü: Datei --&gt;
+    &lt;div id="menu-file"&gt;
+        &lt;!-- Hier vorerst noch kein Inhalt --&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+    MAIN
+&lt;/main&gt;
+
+&lt;footer&gt;
+    STATUSBAR
+&lt;/footer&gt;</code></pre>
+                </div>
+
+                <div class="tutorial-step hidden" data-step="3" data-title="Hauptinhalte vertikal ausrichten">
+                    <p>
+                        <span class="teilaufgabe">3)</span>
+                        Eine typische Programmoberfläche besteht aus einer Titelzeile und einer Toolbar
+                        am oberen Bildschirmrand und einer Statuszeile ganz unten. In der Mitte befindet
+                        sich der Hauptbereich, der den meisten Platz beansprucht und ggf. Scrollbalken
+                        besitzt, wenn sein Inhalt nicht auf einmal dargestellt werden kann. Dies kann
+                        mit dem Flexbox-Algorithmus wie folgt erreicht werden:
+                    </p>
+<pre><code class="language-html">&lt;body class="user-select-none overflow-hidden
+             d-flex flex-column justify-content-between vh-100"&gt;
+    ...
+
+    &lt;main class="flex-fill"&gt;
+        ...
+    &lt;/main&gt;
+
+    ...
+&lt;/body&gt;</code></pre>
+                    <p>
+                        Eine andere Möglichkeit wäre die Nutzung des nativen Grid-Algorithmus in CSS.
+                        Für diesen gibt es in Bootstrap allerdings noch keine CSS-Klassen. Aufgrund
+                        der großen Flexibilität des nativen Grid-Algorithmus in CSS ist auch nicht klar,
+                        ob es diese jemals geben wird.
+                    </p>
+                    <h4>Bootstrap-Dokumentation</h4>
+                    <ul>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/flex/" target="_blank">Utilities → Flex</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/interactions/" target="_blank">Utilities → Interactions</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/overflow/" target="_blank">Utilities → Overflow</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/sizing/#relative-to-the-viewport" target="_blank">Utilities → Sizing → Relative to the viewport</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tutorial-step hidden" data-step="4" data-title="App- und Dokumententitel">
+                    <p>
+                        <span class="teilaufgabe">4)</span>
+                        Die Inhalte des Kopfbereichs können ebenfalls mit dem Flex-Utilities ausgerichtet
+                        werden. Zusätzlich werden noch die Hilfsklassen für Hintergrund- und Textfarben,
+                        Schriftgröße und Abstände benötigt.
+                    </p>
+<pre><code class="language-html">&lt;!-- Titelzeile --&gt;
+&lt;div id="titlebar"
+     class="d-md-flex justify-content-between align-items-center
+            bg-primary text-white
+            p-2"&gt;
+    &lt;!-- App-Titel --&gt;
+    &lt;div id="app-title" class="fs-5 mb-2 mb-md-0"&gt;
+        &lt;i class="bi bi-file-earmark-richtext fs-3"&gt;&lt;/i&gt;
+        &lt;span class="fw-bold"&gt;Wordstrap Online 365&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Dokumententitel --&gt;
+    &lt;div id="doc-title" class="fs-6 text-md-end"&gt;
+        &lt;div id="doc-name" class="fw-bold" contenteditable="true"&gt;Neues Dokument&lt;/div&gt;
+        &lt;div id="doc-status" class="text-white-50"&gt;Ungesicherte Änderungen&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                    <h4>Bootstrap-Dokumentation</h4>
+                    <ul>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/background/" target="_blank">Utilities → Background</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/colors/" target="_blank">Utilities → Colors</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/flex/" target="_blank">Utilities → Flex</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/spacing/" target="_blank">Utilities → Spacing</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/text/#font-size" target="_blank">Utilities → Text → Font Size</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tutorial-step hidden" data-step="5" data-title="Gestaltung des Hauptbereichs">
+                    <p>
+                        <span class="teilaufgabe">5)</span>
+                        Der Hauptbereich soll einen grauen Hintergrund besitzen und die einzelnen
+                        Seiten des bearbeiteten Dokuments anzeigen. Zusätzlich soll der Hauptbereich
+                        Scollbalken besitzen, wenn der Dokumenteninhalt über den Bildschirm hinaus ragt.
+                        Die Seiten werden hier durch <tt>&lt;section&gt;</tt> allerdings nur angedeutet.
+                    </p>
+<pre><code class="language-html">&lt;main class="flex-fill p-md-3 overflow-auto
+             bg-secondary border-top border-bottom"&gt;
+    &lt;section class="page bg-white border m-auto p-5" contenteditable="true"&gt;
+        Seite 1
+    &lt;/section&gt;
+    &lt;section class="page bg-white border m-auto mt-3 p-5" contenteditable="true"&gt;
+        Seite 2
+    &lt;/section&gt;
+&lt;/main&gt;</code></pre>
+                    <p>
+                        <b>Hinweis:</b> Das Seitenverhältnis der Dokumentenseiten wird durch die
+                        Klasse <tt>.page</tt> im Stylesheet definiert. In der Desktopansicht
+                        entspricht es einer DIN&nbsp;A4-Seite. Das Problem, wie diese in der
+                        mobilen Ansicht korrekt dargestellt und dennoch leicht bearbeitet
+                        werden kann, soll an dieser Stelle außen vor bleiben.
+                    </p>
+                    <p>
+                        <b>Hinweis:</b> Als Hintergrundfarbe wird hier die Sekundärfarbe von
+                        Bootstrap verwendet. Da diese allerdings sehr dunkel ist, wird ihr Wert im
+                        Stylesheet übersteuert.
+                    </p>
+                    <h4>Bootstrap-Dokumentation</h4>
+                    <ul>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/background/" target="_blank">Utilities → Background</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/borders/" target="_blank">Utilities → Borders</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/flex/" target="_blank">Utilities → Flex</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/overflow/" target="_blank">Utilities → Overflow</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/spacing/" target="_blank">Utilities → Spacing</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tutorial-step hidden" data-step="6" data-title="Inhalte der Statuszeile">
+                    <p>
+                        <span class="teilaufgabe">6)</span>
+                        Wie die meisten Bereiche ist auch die Statusbar im Grunde genommen nur ein
+                        Flexbox-Container zur Ausrichtung ihrer Inhalte. Hier kommen jedoch die
+                        responsiven Varianten <tt>.flex-md-…</tt>, <tt>.gap-md-…</tt> und so weiter
+                        zum Einsatz, um die Statuswerte in der mobilen Ansicht untereinander anzuordnen.
+                        Außerdem wird mit dem Aufklappmenü für den Zoom-Level das erste Mal eine
+                        vordefinierte UI-Komponente von Bootstrap genutzt.
+                    </p>
+<pre><code class="language-html">&lt;footer class="d-flex flex-column flex-md-row align-items-end gap-md-5
+               bg-light text-muted p-2"&gt;
+    &lt;!-- Anzahl Seiten --&gt;
+    &lt;div&gt;
+        Seite &lt;span id="page-number"&gt;1&lt;/span&gt;
+        von &lt;span id="page-count"&gt;2&lt;/span&gt;
+    &lt;/div&gt;
+
+    ... Restliche Statuswerte analog ...
+
+    &lt;!-- Zoom Level --&gt;
+    &lt;div class="dropup ms-md-auto"&gt;
+        &lt;div id="zoom-level"
+             data-bs-toggle="dropdown" aria-expanded="false"
+             class="dropdown-toggle"&gt;
+            100%
+        &lt;/div&gt;
+        &lt;ul class="dropdown-menu" aria-labelledby="zoom-level"&gt;
+            &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;50%&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;75%&lt;/a&gt;&lt;/li&gt;
+            ... Restliche Einträge analog ...
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;
+</code></pre>
+                    <h4>Bootstrap-Dokumentation</h4>
+                    <ul>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/components/dropdowns/#dropup" target="_blank">Components → Dropdown → Dropup</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/background/" target="_blank">Utilities → Background</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/colors/" target="_blank">Utilities → Colors</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/flex/" target="_blank">Utilities → Flex</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/spacing/" target="_blank">Utilities → Spacing</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tutorial-step hidden" data-step="7" data-title="Statuswerte ein- und ausblenden">
+                    <p>
+                        <span class="teilaufgabe">7)</span>
+                        Da die Inhalte der Statuszeile auf ganz kleinen Bildschirmen nicht in
+                        eine Zeile passen, müssen sie dort untereinander angeordnet werden,
+                        wodurch allerdings kostbarer Bildschirmplatz vergeudet wird. In diesem
+                        Fall bietet es sich an, die Werte standardmäßig auszublenden und nur
+                        bei Bedarf anzuzeigen. Die Collapse-Komponente von Bootstrap leistet
+                        genau das.
+                    </p>
+<pre><code class="language-html">&lt;footer class="bg-light text-muted p-2"&gt;
+    &lt;!-- Toogle-Button für mobile Ansicht --&gt;
+    &lt;button class="navbar-toggler d-md-none"
+            data-bs-toggle="collapse" data-bs-target="#statusbar-content"
+            aria-controls="statusbar-content" aria-expanded="false"
+            aria-label="Statuszeile ein-/ausblenden"&gt;
+        &lt;i class="bi bi-list"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+
+    &lt;!-- Eigentlicher Inhalt der Statuszeile --&gt;
+    &lt;div id="statusbar-content" class="collapse d-md-block"&gt;
+        &lt;div class="d-flex flex-column flex-md-row align-items-end gap-md-5"&gt;
+
+            ... Bisheriger Inhalte der Statuszeile ...
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+                    <h4>Bootstrap-Dokumentation</h4>
+                    <ul>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/components/collapse/" target="_blank">Components → Collapse</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/components/dropdowns/#dropup" target="_blank">Components → Dropdown → Dropup</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/background/" target="_blank">Utilities → Background</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/colors/" target="_blank">Utilities → Colors</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/display/" target="_blank">Utilities → Display</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/flex/" target="_blank">Utilities → Flex</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/spacing/" target="_blank">Utilities → Spacing</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tutorial-step hidden" data-step="8" data-title="Menü zum Umschalten der Toolbar">
+                    <p>
+                        <span class="teilaufgabe">8)</span>
+                        Weiter geht es mit den Toolbar-Buttons. Diese befinden sich in mehreren Toolbars,
+                        die über Tabreiter umgeschaltet werden. An dieser Stelle sollen daher zunächst
+                        die Navigationspunkte zum Umschalten der Tabreiter angelegt werden. Wir verwenden
+                        dabei die Nav-Komponente von Bootstrap, bauen diese allerdings erst im nächsten
+                        Schritt zu vollwertigen Tabreitern aus.
+                    </p>
+<pre><code class="language-html">&lt;!-- Toolbar-Menü --&gt;
+&lt;div id="toolbar"&gt;
+    &lt;ul class="nav nav-tabs border-0" role="tablist"&gt;
+        &lt;li class="nav-item" role="presentation"&gt;
+            &lt;button id="tab-start"
+                    class="nav-link active"&gt;
+                Start
+            &lt;/button&gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item" role="presentation"&gt;
+            &lt;button id="tab-insert"
+                    class="nav-link"&gt;
+                Einfügen
+            &lt;/button&gt;
+        &lt;/li&gt;
+
+        ... Weitere Einträge analog ...
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+                    <p>
+                        Abweichend zum Beispiel in der Bootstrap-Dokumentation werde in der Musterlösung
+                        <tt>&lt;button&gt;</tt>-Elemente anstatt Links verwendet. Optisch macht dies keinen
+                        Unterschied. Jedoch werden Links eher verwendet, um auf eine vollkommen neue Seite
+                        zu navigieren, wärend Buttons anwendungsinterne Funktionen steuern oder einzelne
+                        Teilbereiche innerhalb der Anwendung umschalten. Für die Barrierefreiheit ist dies
+                        ein wichtiger Unterschied.
+                    </p>
+                    <h4>Bootstrap-Dokumentation</h4>
+                    <ul>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/components/navs-tabs/" target="_blank">Components → Navs &amp; Tabs → Navs</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/borders/" target="_blank">Utilities → Borders</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tutorial-step hidden" data-step="9" data-title="Toolbar tatsächlich wechseln">
+                    <p>
+                        <span class="teilaufgabe">9)</span>
+                        Nachdem die Vorarbeiten für die Menüeinträge im Kopfbereich erledigt sind,
+                        können sie nun zu vollwertigen Tabreitern im Sinne von Tab Panes aus Bootstrap
+                        umgebaut werden. Hierfür werden weitere <tt>&lt;div&gt;</tt>-Elemente mit den
+                        Inhalten der einzelnen Toolbars sowie eine Erweiterung der Buttons benötigt,
+                        damit diese die richtigen Elemente ein- und ausblenden.
+                    </p>
+<pre><code class="language-html">&lt;!-- Toolbar-Menü --&gt;
+&lt;div id="toolbar"&gt;
+    &lt;!-- Menü zum Unschalten der Toolbar --&gt;
+    &lt;ul class="nav nav-tabs border-0" role="tablist"&gt;
+        &lt;li class="nav-item" role="presentation"&gt;
+            &lt;button id="tab-start"
+                    class="nav-link active"
+                    role="tab" data-bs-toggle="tab"
+                    data-bs-target="#tbar-start" aria-controls="tbar-start" aria-selected="false"&gt;
+                Start
+            &lt;/button&gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item" role="presentation"&gt;
+            &lt;button id="tab-insert"
+                    class="nav-link"
+                    role="tab" data-bs-toggle="tab"
+                    data-bs-target="#tbar-insert" aria-controls="tbar-insert" aria-selected="false"&gt;
+                Einfügen
+            &lt;/button&gt;
+        &lt;/li&gt;
+
+        ... Restliche Buttons analog ...
+    &lt;/ul&gt;
+
+    &lt;!-- Mit dem Menü umgeschaltete Toolbars --&gt;
+    &lt;div class="tab-content p-2"&gt;
+        &lt;div id="tbar-start"
+             class="tab-pane"
+             role="tabpanel" aria-labelledby="tab-start"&gt;
+            START
+        &lt;/div&gt;
+
+        ... Restliche Tab-Inhalte analog ...
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    <p>
+                        <b>Hinweis:</b> Damit das Umschalten der Tabreiter funktioniert, müssen die
+                        Attribute <tt>data-bs-target</tt> und <tt>aria-controls</tt> der Buttons auf
+                        die ID des einzublendenden <tt>&lt;div&gt;</tt> verweisen. Die <tt>&lt;div&gt;</tt>
+                        sollten dann der Barierefreiheite wegen in <tt>aria-labelledby</tt> auf die ID
+                        des Buttons beinhalten.
+                    </p>
+                    <h4>Bootstrap-Dokumentation</h4>
+                    <ul>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/components/navs-tabs/#using-data-attributes" target="_blank">Components → Navs &amp; Tabs → Using data attributes</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/borders/" target="_blank">Utilities → Borders</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/spacing/" target="_blank">Utilities → Spacing</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tutorial-step hidden" data-step="10" data-title="Toolbars mit Inhalten füllen">
+                    <p>
+                        <span class="teilaufgabe">10)</span>
+                        Die Start-Toolbar soll an dieser Stelle exemplarisch mit Inhalten versorgt werden.
+                        Hierfür werden Buttons, vertikale Trennstriche, Dropdowns und Select-Listen benötigt.
+                        Die meisten Inhalte sollen dabe in der mobilen Darstellung zunächst verborgen bleiben,
+                        wofür wieder das Collapse-Element genutzt werden kann. Die anderen Toolbars lassen wir
+                        der Einfachheit halber leer.
+                    </p>
+<pre><code class="language-html">&lt;div class="btn-toolbar" role="toolbar" aria-label="Toolbar: Start"&gt;
+    &lt;select id="sel-partype" class="form-select w-auto me-1" aria-label="Absatzformat"&gt;
+        &lt;option value="p" selected&gt;Absatz&lt;/option&gt;
+        &lt;option value="h1"&gt;Überschrift 1&lt;/option&gt;
+        &lt;option value="h2"&gt;Überschrift 2&lt;/option&gt;
+        &lt;option value="h3"&gt;Überschrift 3&lt;/option&gt;
+    &lt;/select&gt;
+
+    ... Weitere Select-Listen analog ...
+
+    &lt;!-- Toogle-Button für mobile Ansicht --&gt;
+    &lt;button id="btn-start-toggle" class="btn d-md-none" aria-label="Weitere Aktionen"
+            data-bs-toggle="collapse" data-bs-target="#tbar-start-collapse"
+            aria-controls="tbar-start-collapse" aria-expanded="false"&gt;
+        &lt;i class="bi bi-three-dots"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+
+    &lt;div id="tbar-start-collapse" class="collapse btn-toolbar d-md-flex"&gt;
+        &lt;button id="btn-fontsize-inc" class="btn" aria-label="Schriftgröße vergrößern"&gt;
+            &lt;i class="bi bi-plus"&gt;&lt;/i&gt;
+        &lt;/button&gt;
+
+        ... Weitere Buttons analog ...
+
+        &lt;!-- Trennstrich --&gt;
+        &lt;div class="vr ms-2 me-2"&gt;&lt;/div&gt;
+
+        ... Weitere Buttons ...
+
+        &lt;!-- Dropdown-Menü: Zwischenablage --&gt;
+        &lt;div class="dropdown" role="group"&gt;
+            &lt;button id="btn-clipboard" class="btn dropdown-toggle" aria-label="Zwischenablage"
+                    data-bs-toggle="dropdown" aria-expanded="false"&gt;
+                &lt;i class="bi bi-clipboard"&gt;&lt;/i&gt;
+            &lt;/button&gt;
+            &lt;ul class="dropdown-menu" aria-labelledby="btn-clipboard"&gt;
+                &lt;li&gt;
+                    &lt;a id="btn-cut" class="dropdown-item" href="#"&gt;Ausschneiden&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;a id="btn-copy" class="dropdown-item" href="#"&gt;Kopieren&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;a id="btn-paste" class="dropdown-item" href="#"&gt;Einfügen&lt;/a&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+
+        ... Button: Format übertragen ...
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    <h4>Icons für die Toolbar-Buttons</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Icon</th>
+                                <th>Name</th>
+                                <th>CSS-Klasse</th>
+                                <th>Beschreibung</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><i class="bi bi-three-dots"></i></td>
+                                <td>Three Dots</td>
+                                <td><tt>bi bi-three-dots</tt></td>
+                                <td>Weitere Inhalte ein-/ausblenden</td>
+                            </tr>
+                            <tr>
+                                <td><i class="bi bi-plus"></i></td>
+                                <td>Plus</td>
+                                <td><tt>bi bi-plus</tt></td>
+                                <td>Schriftgröße vergrößern</td>
+                            </tr>
+                            <tr>
+                                <td><i class="bi bi-dash"></i></td>
+                                <td>Dash</td>
+                                <td><tt>bi bi-dash</tt></td>
+                                <td>Schriftgröße verkleinern</td>
+                            </tr>
+                            <tr>
+                                <td><i class="bi bi-type-bold"></i></td>
+                                <td>Type Bold</td>
+                                <td><tt>bi bi-type-bold</tt></td>
+                                <td>Fett</td>
+                            </tr>
+                            <tr>
+                                <td><i class="bi bi-type-italic"></i></td>
+                                <td>Type Italic</td>
+                                <td><tt>bi bi-type-italic</tt></td>
+                                <td>Kursiv</td>
+                            </tr>
+                            <tr>
+                                <td><i class="bi bi-type-underline"></i></td>
+                                <td>Type Underline</td>
+                                <td><tt>bi bi-type-underline</tt></td>
+                                <td>Unterstrichen</td>
+                            </tr>
+                            <tr>
+                                <td><i class="bi bi-list-ul"></i></td>
+                                <td>List UL</td>
+                                <td><tt>bi bi-list-ul</tt></td>
+                                <td>Liste</td>
+                            </tr>
+                            <tr>
+                                <td><i class="bi bi-list-ol"></i></td>
+                                <td>List OL</td>
+                                <td><tt>bi bi-list-ol</tt></td>
+                                <td>Aufzählung</td>
+                            </tr>
+                            <tr>
+                                <td><i class="bi bi-text-indent-left"></i></td>
+                                <td>Text Indent Left</td>
+                                <td><tt>bi bi-text-indent-left</tt></td>
+                                <td>Einzug vergrößern</td>
+                            </tr>
+                            <tr>
+                                <td><i class="bi bi-text-indent-right"></i></td>
+                                <td>Text Indent Right</td>
+                                <td><tt>bi bi-text-indent-right</tt></td>
+                                <td>Einzug verringern</td>
+                            </tr>
+                            <tr>
+                                <td><i class="bi bi-arrow-90deg-left"></i></td>
+                                <td>Arrow 90deg left</td>
+                                <td><tt>bi bi-arrow-90deg-left</tt></td>
+                                <td>Rückgängig</td>
+                            </tr>
+                            <tr>
+                                <td><i class="bi bi-clipboard"></i></td>
+                                <td>Clipboard</td>
+                                <td><tt>bi bi-clipboard</tt></td>
+                                <td>Zwischenablage</td>
+                            </tr>
+                            <tr>
+                                <td><i class="bi bi-brush"></i></td>
+                                <td>Brush</td>
+                                <td><tt>bi bi-brush</tt></td>
+                                <td>Format übertragen</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h4>Bootstrap-Dokumentation</h4>
+                    <ul>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/forms/select/" target="_blank">Forms → Select</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/components/buttons/" target="_blank">Components → Buttons</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/components/collapse/" target="_blank">Components → Collapse</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/components/dropdowns/" target="_blank">Components → Dropdowns</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.1/helpers/vertical-rule/" target="_blank">Helpers → Vertical rule</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/display/" target="_blank">Utilities → Display</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/sizing/" target="_blank">Utilities → Sizing</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/spacing/" target="_blank">Utilities → Spacing</a>
+                        </li>
+                        <li>
+                            <a href="https://icons.getbootstrap.com/" target="_blank">Icons</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tutorial-step hidden" data-step="11" data-title="Offcanvas für das Dateimenü">
+                    <p>
+                        <span class="teilaufgabe">11)</span>
+                        Die Programmoberfläche sieht inzwischen richtig gut aus! Als letztes i-Tüppfelchen
+                        soll jetzt noch das Dateimenü als Offcanvas-Menü am linken Bildschirmrand umgesetzt
+                        werden. Das Menü selbst ist ein Offcanvas-Element von Bootstrap, dessen Inhalte
+                        recht konventionell definiert werden. Getriggert wird es über einen weiteren Button
+                        in der Menüzeile.
+                    </p>
+<pre><code class="language-html">&lt;!-- Toolbar-Menü --&gt;
+&lt;div id="toolbar"&gt;
+    &lt;!-- Menü zum Unschalten der Toolbar --&gt;
+    &lt;ul class="nav nav-tabs border-0" role="tablist"&gt;
+        &lt;li class="nav-item" role="presentation"&gt;
+            &lt;button id="tab-file"
+                    class="nav-link"
+                    role="tab" data-bs-toggle="offcanvas"
+                    data-bs-target="#menu-file" aria-controls="menu-file"&gt;
+                Datei
+            &lt;/button&gt;
+        &lt;/li&gt;
+
+        ... Weitere Inhalte unverändert ...
+    &lt;/ul&gt;
+
+    ... Weitere Inhalte unverändert ...
+&lt;/div&gt;
+
+&lt;!-- Offcanvas-Menü: Datei --&gt;
+&lt;div id="menu-file"
+        class="offcanvas offcanvas-start"
+        tabindex="-1" aria-labelledby="tab-file"&gt;
+    &lt;div class="offcanvas-header"&gt;
+        &lt;h5 class="offcanvas-title"&gt;Datei&lt;/h5&gt;
+        &lt;button class="btn-close text-reset"
+                   data-bs-dismiss="offcanvas"
+                   aria-label="Schließen"&gt;
+        &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="offcanvas-body"&gt;
+        &lt;ul class="nav flex-column"&gt;
+            &lt;li class="nav-item"&gt;
+                &lt;a id="btn-new" class="nav-link ps-0 pe-0" href="#"&gt;
+                    Neues Dokument
+                &lt;/a&gt;
+            &lt;/li&gt;
+
+            ... Restliche Menüeinträge analog ...
+        &lt;/ul&gt;
+
+        &lt;h6 class="mt-4"&gt;Zuletzt verwendet&lt;/h6&gt;
+        &lt;ul class="nav flex-column"&gt;
+            &lt;li class="nav-item"&gt;
+                &lt;a class="nav-link ps-0 pe-0" href="#"&gt;
+                    &lt;i class="bi bi-file-earmark-richtext me-1"&gt;&lt;/i&gt;
+                    Grundlagen des Web
+                &lt;/a&gt;
+            &lt;/li&gt;
+
+            ... Restliche Menüeinträge analog ...
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    <h4>Icon für die zuletzt verwendeten Dokumente</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Icon</th>
+                                <th>Name</th>
+                                <th>CSS-Klasse</th>
+                                <th>Beschreibung</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><i class="bi bi-file-earmark-richtext"></i></td>
+                                <td>File earmark richtext</td>
+                                <td><tt>bi bi-file-earmark-richtext</tt></td>
+                                <td>RichText-Dokument</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h4>Bootstrap-Dokumentation</h4>
+                    <ul>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/components/buttons/" target="_blank">Components → Buttons</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/components/navs-tabs/" target="_blank">Components → Navs &amp; tabs</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/components/offcanvas/" target="_blank">Components → Offcanvas</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/borders/" target="_blank">Utilities → Borders</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/flex/" target="_blank">Utilities → Flex</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/5.0/utilities/spacing/" target="_blank">Utilities → Spacing</a>
+                        </li>
+                        <li>
+                            <a href="https://icons.getbootstrap.com/" target="_blank">Icons</a>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+    </body>
+</html>

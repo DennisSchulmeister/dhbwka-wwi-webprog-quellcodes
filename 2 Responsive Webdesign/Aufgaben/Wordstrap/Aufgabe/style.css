@@ -1,0 +1,24 @@
+/***************
+ * ALLGEMEINES *
+ **************/
+body {
+    --bs-secondary-rgb: 240, 240, 240;
+}
+
+.page {
+    max-width: calc(21.0em * 3.5);
+    height: calc(29.7em * 3.5);
+}
+
+.nav-link.active {
+    font-weight: bold;
+
+    border: 0 solid rgb(var(--bs-primary-rgb)) !important;
+    border-bottom-width: 3px !important;
+}
+
+#toolbar {
+    position: relative;
+    z-index: 100;
+    box-shadow: 0px 1px 4px rgba(0,0,0, 0.2);
+}
