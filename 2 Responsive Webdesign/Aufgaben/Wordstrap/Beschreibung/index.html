@@ -484,7 +484,7 @@
     &lt;/div&gt;
 
     &lt;!-- Dokumententitel --&gt;
-    &lt;div id="doc-title" class="fs-6 text-md-end"&gt;
+    &lt;div id="doc-title" class="text-md-end"&gt;
         &lt;div id="doc-name" class="fw-bold" contenteditable="true"&gt;Neues Dokument&lt;/div&gt;
         &lt;div id="doc-status" class="text-white-50"&gt;Ungesicherte Änderungen&lt;/div&gt;
     &lt;/div&gt;
@@ -750,10 +750,18 @@
 
     &lt;!-- Mit dem Menü umgeschaltete Toolbars --&gt;
     &lt;div class="tab-content p-2"&gt;
+        &lt;!-- Toolbar: Start --&gt;
         &lt;div id="tbar-start"
-             class="tab-pane"
+             class="tab-pane show active"
              role="tabpanel" aria-labelledby="tab-start"&gt;
             START
+        &lt;/div&gt;
+
+        &lt;!-- Toolbar: Einfügen --&gt;
+        &lt;div id="tbar-insert"
+             class="tab-pane"
+             role="tabpanel" aria-labelledby="tab-insert"&gt;
+            EINFÜGEN
         &lt;/div&gt;
 
         ... Restliche Tab-Inhalte analog ...
