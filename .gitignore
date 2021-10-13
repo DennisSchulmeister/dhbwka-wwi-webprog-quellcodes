@@ -1,6 +1,5 @@
 **/node_modules
 **/build
-**/lib
 **/env
 **/__pycache__
 **/.build
