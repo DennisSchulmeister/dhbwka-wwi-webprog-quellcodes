@@ -42,8 +42,10 @@ window.addEventListener("load", () => {
      */
     function postMessage(local, message) {
         // TODO: Neues <div>-Element erzeugen.
+        // TODO: CSS-Klasse "message" zuweisen.
+        // TODO: CSS-Klasse "local" zuweisen, wenn local === true, sonst "remote" (z.B. mit ?:-Operator).
         // TODO: Inhalt des <div>-Elements mit dem Nachrichtentext belegen.
-        // TODO: CSS-Klasse "local" zuweisen, wenn local === true, sonst "remote".
+
         // TODO: <div>-Element an messagesElement anhängen
 
         messagesElement.scrollTop = messagesElement.scrollTopMax;
@@ -67,7 +69,8 @@ window.addEventListener("load", () => {
 
         // TODO: Schleife über alle Werte in Object.keys(chatbotKeywords)
         // TODO: Innerhalb der Schleife den Eintrag mit Keyword "" überspringen
-        // TODO: Innerhalb der Schleife die Keyboards bei jedem "|" trennen
+        // TODO: Innerhalb der Schliefe, alle Antworten in einer lokalen Variablen sichern
+        // TODO: Innerhalb der Schleife die Keywords bei jedem "|" trennen
         // TODO: Schleife über die einzelnen, getrennten Keywords
         // TODO: Antworten an possibleAnswers anhängen, wenn ein Schlüsselwort in der Nachricht vorkommt
 
