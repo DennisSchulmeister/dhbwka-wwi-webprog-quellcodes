@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Digitales Fotobuch</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- https://pixabay.com/vectors/camera-icon-take-a-photo-1724286/ -->
+        <link rel="shortcut icon" href="logo.svg" />
+
+        <link rel="stylesheet" href="style.css" />
+        <script src="index.js"></script>
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+
+        <!-- TODO 1: Anzuzeigende Bilder hier einfügen -->
+        <link rel="preload" as="image" href="photos/death_valley_01.jpg" />
+        <link rel="preload" as="image" href="photos/death_valley_02.jpg" />
+    </head>
+    <body>
+        <!-- Hintergrundbild -->
+        <div id="background"></div>
+
+        <!-- Logo -->
+        <div id="logo">
+            <img src="logo.svg" alt="" />
+            <div>
+                Digitales <br /> Fotobuch
+            </div>
+        </div>
+
+        <!-- Bildauswahl -->
+        <div id="preview"></div>
+    </body>
+</html>
