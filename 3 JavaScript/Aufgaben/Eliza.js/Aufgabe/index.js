@@ -69,7 +69,7 @@ window.addEventListener("load", () => {
 
         // TODO: Schleife über alle Werte in Object.keys(chatbotKeywords)
         // TODO: Innerhalb der Schleife den Eintrag mit Keyword "" überspringen
-        // TODO: Innerhalb der Schliefe, alle Antworten in einer lokalen Variablen sichern
+        // TODO: Innerhalb der Schleife, alle Antworten in einer lokalen Variablen sichern
         // TODO: Innerhalb der Schleife die Keywords bei jedem "|" trennen
         // TODO: Schleife über die einzelnen, getrennten Keywords
         // TODO: Antworten an possibleAnswers anhängen, wenn ein Schlüsselwort in der Nachricht vorkommt
