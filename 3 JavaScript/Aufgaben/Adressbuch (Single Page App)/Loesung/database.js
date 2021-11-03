@@ -60,6 +60,8 @@ export default class Database {
                 },
             ];
         }
+
+        this._data.sort(this._compareLastnameFirstname);
     }
 
     /**
@@ -78,7 +80,6 @@ export default class Database {
      * @return {Object} Gewünschter Datensatz oder undefined
      */
     async getById(id) {
-        debugger;
         let dataset = this._data.find(e => e.id == id);
         return Object.assign({}, dataset);
     }
@@ -89,20 +90,22 @@ export default class Database {
      *
      * @param {Object} dataset Neue Daten des Datensatzes
      */
-    async safe(dataset) {
+    async save(dataset) {
         if (dataset.id) {
             this.delete(dataset.id);
         } else {
             dataset.id = 0;
 
             this._data.forEach(existing => {
-                dataset.id = max(dataset.id, existing.id);
+                dataset.id = Math.max(dataset.id, existing.id);
             });
 
             dataset.id++;
         }
 
         this._data.push(dataset);
+
+        this._data.sort(this._compareLastnameFirstname);
         this._updateLocalStorage();
     }
 
@@ -113,7 +116,7 @@ export default class Database {
      * @param {[type]} id ID des zu löschenden Datensatzes
      */
     async delete(id) {
-        this._data.remove(e => e.id == id);
+        this._data = this._data.filter(e => e.id != id);
         this._updateLocalStorage();
     }
 
@@ -123,5 +126,33 @@ export default class Database {
      */
     _updateLocalStorage() {
         localStorage.setItem("database", JSON.stringify(this._data));
+    }
+
+    /**
+     * Hilfsmethode zum Sortieren der Datenliste. Die Liste wird nach
+     * Nachname und dann nach Vorname sortiert.
+     *
+     * @param  {Object} a Vergleichsdatensatz A
+     * @param  {Object} b Vergleichsdatensatz B
+     * @return {Number} -1, 0 oder 1
+     */
+    _compareLastnameFirstname(a, b) {
+        let a_last_name = a.last_name.toUpperCase();
+        let a_first_name = a.first_name.toUpperCase();
+
+        let b_last_name = b.last_name.toUpperCase();
+        let b_first_name = b.first_name.toUpperCase();
+
+        if (a_last_name < b_last_name) {
+            return -1;
+        } else if (a_last_name > b_last_name) {
+            return 1;
+        } else if (a_first_name < b_first_name) {
+            return -1;
+        } else if (a_first_name > b_first_name) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 };
