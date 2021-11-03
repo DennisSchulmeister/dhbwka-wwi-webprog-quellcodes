@@ -12,7 +12,7 @@
  */
 class Router {
     /**
-     * Konstruktor.  Im Parameter routes muss eine Liste mit den vorhandenen
+     * Konstruktor. Im Parameter routes muss eine Liste mit den vorhandenen
      * URL-Routen der App übergeben werden. Die Liste muss folgendes Format
      * haben:
      *
@@ -53,10 +53,10 @@ class Router {
     }
 
     /**
-     * Diese Methode wertet die aktuelle URL aus und sorgt dafür, dass die
-     * dazu passende App-Seite geladen und angezeigt wird. Der Einfachheit
-     * halber wird eine sog. Hash-URL verwendet, bei der die aufzurufende
-     * Seite nach einem #-Zeichen stehen muss. Zum Beispiel:
+     * Diese Methode wertet die aktuelle URL aus und sorgt dafür, dass der
+     * dazu passende Inhalt angezeigt wird. Der Einfachheit halber wird eine
+     * so genannte Hash-URL verwendet, bei der die aufzurufende Seite nach
+     * einem #-Zeichen stehen muss. Zum Beispiel:
      *
      *   http://localhost:8080/index.html#/Detail/1234
      *
@@ -64,15 +64,19 @@ class Router {
      * Seite. Der Vorteil dieser Technik besteht darin, dass ein Link mit einer
      * solchen URL keine neue Seite vom Server lädt, wenn sich der vordere Teil
      * der URL (alles vor dem #-Zeichen) nicht verändert. Stattdessen wird
-     * ein "hashchange"-Ereignis generiert, auf das wir hier reagieren können,
-     * um die sichtbare Unterseite der App auszutauschen.
+     * ein "hashchange"-Ereignis geworfen, auf das hier reagiert werden kann.
      *
      * Auf Basis der History-API und dem "popstate"-Ereignis lässt sich ein
      * noch ausgefeilterer Single Page Router entwickeln, der bei Bedarf auch
      * ohne das #-Zeichen in der URL auskommt. Dies würde jedoch sowohl mehr
-     * Quellcode in JavaScript sowie eine spezielle Server-Konfiguration
-     * erfordern, so dass der Server bei jeder URL immer die gleiche HTML-Seite
-     * an den Browser schickt. Diesen Aufwand sparen wir uns deshalb hier. :-)
+     * Quellcode sowie eine spezielle Server-Konfiguration erfordern, um
+     * wirklich stabil zu laufen. Denn der Single Page Router kann nur aktiv
+     * werden, wenn die Seite schon geladen wurde, so dass insbesondere der
+     * erste Aufruf, wenn ein so genannter "Deep Link", der nicht auf die
+     * Startseite der Anwendung zeigt, aufgerufen wird, zu einem "404 Not Found"
+     * Fehler führen kann. Der Server müsste in diesem Fall so konfiguriert
+     * werden, dass er trotzdem die Startseite zurückliefert, auch wenn diese
+     * nicht direkt angesprochen wurde. Diesen Aufwand sparen wir uns hier. :-)
      */
     _handleRouting() {
         let url = location.hash.slice(1);
