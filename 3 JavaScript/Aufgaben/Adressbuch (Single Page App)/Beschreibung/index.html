@@ -72,6 +72,10 @@
                 margin-top: 0;
             }
 
+            h2 {
+                font-size: 120%;
+            }
+
             p {
                 text-align: justify;
                 hyphens: auto;
@@ -127,9 +131,11 @@
             table, tr, td {
                 vertical-align: top;
             }
+            td.filename {
+                padding-right: 2em;
+            }
             .filename {
                 font-family: monospace;
-                padding-right: 2em;
                 color: darkblue;
             }
             .command {
@@ -214,6 +220,12 @@
                         />
                     </a>
                 </div>
+                <p style="text-align: center;">
+                    <small>
+                        Bilder anklicken für eine größere Version
+                        (<a href="../Loesung/index.html" target="_blank">Musterlösung</a>)
+                    </small>
+                </p>
             </article>
         </section>
 
@@ -296,7 +308,7 @@
                     genutzt werden kann, um zu einer vorherigen Ansicht zurückzukehren.
                 </p>
                 <p>
-                    Die Klasse <code>App</code> beinhaltet hierfür mehrere <code>goto…()</code>
+                    Die Klasse <code>App</code> beinhaltet hierfür mehrere <code>_goto…()</code>
                     genannte Methoden zum Aufruf einer Ansicht. Diese werden vom Single Page
                     Router verwendet, um die aktuelle Ansicht zu wechseln. Innerhalb der Methoden
                     wird dann jeweils der passende Quellcode nachgeladen und ein von der Klasse
@@ -311,7 +323,65 @@
         <section>
             <h1>Aufgabenstellung</h1>
             <article>
-                TODO
+                <p>
+                    Das Grundgerüst der Anwendung ist wie immer vorgegeben und die zu bearbeitenden
+                    Codestellen sind mit <code>TODO</code> in den Kommentaren gekennzeichnet. Folgende
+                    Dinge müssen erledigt werden:
+                </p>
+
+                <h2>Einbau des Single Page Routers</h2>
+                <ol>
+                    <li>
+                        Definition der Menüeinträge in der Datei <span class="filename">index.html</span>.
+                    </li>
+                    <li>
+                        Definition der URL-Routen im Konstruktur der Klasse <code>App</code>.
+                    </li>
+                    <li>
+                        Methode <code>start()</code> des Routers in der <code>init</code>-Methode von <code>App</code> aufrufen.
+                    </li>
+                    <li>
+                        Methoden <code>_gotoList()</code> und <code>_gotoNew()</code> der <code>App</code>-Klasse ausprogrammieren.
+                    </li>
+                    <li>
+                        Arbeitsweise der Methode <code>init()</code> der Basisklasse <code>Page</code> nachvollziehen.
+                    </li>
+                    <li>
+                        In der Klasse <code>App</code> in <code>_showPage()</code> das sichtbare <code>&lt;main&gt;</code>-Element austauschen.
+                    </li>
+                </ol>
+
+                <h2>Fertigstellen der Übersichtsseite</h2>
+                <ol>
+                    <li>
+                        Den Aufbau des HTML-Templates <span class="filename">page-list/page-list.html</span> nachvollziehen.
+                    </li>
+                    <li>
+                        In der Klasse <code>PageList</code> bei vorhandenen Datenbankeinträgen den Hinweistext unsichtbar machen.
+                    </li>
+                    <li>
+                        Die Platzhalter im HTML-Code durch die tatsächlichen Werte aus der Datenbank ersetzen.
+                    </li>
+                    <li>
+                        Den HTML-Code des aktuellen Datensatzes an das <code>&lt;ol&gt;</code>-Element anhängen, um ihn anzuzeigen.
+                    </li>
+                    <li>
+                        Event Handler für die Buttons zum Bearbeiten und Löschen einer Adresse ausprogrammieren.
+                    </li>
+                </ol>
+
+                <h2>Adressen anlegen und bearbeiten</h2>
+                <ol>
+                    <li>
+                        Beim Speichern sicherstellen, dass mindestens der Vorname und der Nachname gefüllt sein müssen.
+                    </li>
+                    <li>
+                        Methode <code>save()</code> der Datenbankklasse aufrufen, um den bearbeiteten Datensatz zu speichern.
+                    </li>
+                    <li>
+                        Aktuelle URL auf <code>#/</code> ändern, um die Übersichtsseite aufzurufen.
+                    </li>
+                </ol>
             </article>
         </section>
     </body>

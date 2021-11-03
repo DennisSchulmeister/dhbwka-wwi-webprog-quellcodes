@@ -41,8 +41,8 @@ export default class PageList extends Page {
         let data = await this._app.database.getAll();
         this._emptyMessageElement = this._mainElement.querySelector(".empty-placeholder");
 
-        if (!data.length) {
-            this._emptyMessageElement.classList.remove("hidden");
+        if (data.length) {
+            this._emptyMessageElement.classList.add("hidden");
         }
 
         // Je Datensatz einen Listeneintrag generieren
@@ -52,12 +52,12 @@ export default class PageList extends Page {
         let templateHtml = templateElement.outerHTML;
         templateElement.remove();
 
-        for (let id in data) {
+        for (let index in data) {
             // Platzhalter ersetzen
-            let dataset = data[id];
+            let dataset = data[index];
             let html = templateHtml;
 
-            html = html.replace("$ID$", id);
+            html = html.replace("$ID$", dataset.id);
             html = html.replace("$LAST_NAME$", dataset.last_name);
             html = html.replace("$FIRST_NAME$", dataset.first_name);
             html = html.replace("$PHONE$", dataset.phone);
@@ -71,8 +71,8 @@ export default class PageList extends Page {
             olElement.appendChild(liElement);
 
             // Event Handler registrieren
-            liElement.querySelector(".action.edit").addEventListener("click", () => location.hash = `#/edit/${id}`);
-            liElement.querySelector(".action.delete").addEventListener("click", () => this._askDelete(id));
+            liElement.querySelector(".action.edit").addEventListener("click", () => location.hash = `#/edit/${dataset.id}`);
+            liElement.querySelector(".action.delete").addEventListener("click", () => this._askDelete(dataset.id));
         }
     }
 

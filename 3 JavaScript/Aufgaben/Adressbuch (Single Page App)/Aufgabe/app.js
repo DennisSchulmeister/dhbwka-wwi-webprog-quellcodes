@@ -21,19 +21,22 @@ class App {
 
         // Single Page Router zur Steuerung der sichtbaren Inhalte
         this.router = new Router([
-            {
-                url: "^/$",
-                show: () => this._gotoList()
-            },{
-                url: "^/new/$",
-                show: () => this._gotoNew()
-            },{
-                url: "^/edit/(.*)$",
-                show: matches => this._gotoEdit(matches[1]),
-            },{
-                url: ".*",
-                show: () => this._gotoList()
-            },
+            // TODO: URL-Routen definieren. Für jede Route muss ein Objektliteral
+            // mit den beiden Attributen `url` und `show` übergeben werden. `url`
+            // ist ein regulärer Ausdruck zum Prüfen der URL (alles, was nach dem
+            // Rautezeichen kommt), `show` eine Rückruffunktion, die bei einem
+            // positiven Treffer aufgerufen wird.
+            //
+            // Folgende URL-Routen werden benötigt:
+            //
+            // ┌──────────────────────┬──────────────────┬──────────────────────────────┐
+            // │  BEZEICHNUNG         │  REGEXP          │  CALLBACK                    │
+            // ├──────────────────────┼──────────────────┼──────────────────────────────┤
+            // |  Startseite          │  "^/$"           │  () => this._gotoList()      │
+            // │  Adresse anlegen     │   ^/new/$"       │  this._gotoNew()             │
+            // │  Adresse bearbeiten  │   "^/edit/(.*)$" │  this._gotoEdit(matches[1])  │
+            // │  Unbekannte URL      │   ".*"           │  this._gotoList()            │
+            // └──────────────────────┴──────────────────┴──────────────────────────────┘
         ]);
 
         // Fenstertitel merken, um später den Name der aktuellen Seite anzuhängen
@@ -53,7 +56,8 @@ class App {
      */
     async init() {
         await this.database.init();
-        this.router.start();
+
+        // TODO: Single Page Router starten
     }
 
     /**
@@ -61,12 +65,16 @@ class App {
      */
     async _gotoList() {
         try {
-            // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
-            let {default: PageList} = await import("./page-list/page-list.js");
+            // TODO: Klasse PageList aus dem Modul "./page-list/page-list.js" importieren.
+            // Vgl. hierzu https://javascript.info/modules-dynamic-imports
 
-            let page = new PageList(this);
-            await page.init();
-            this._showPage(page, "list");
+            // TODO: Neue Instanz von der Klasse PageList erzeugen und die init-Methode aufrufen.
+            // Dabei beachten, dass die Methode init() asynchron ist und erst ihr erfolgreiches
+            // Ende abgewartet werden muss, bevor der nächste Schritt ausgeführt wird.
+
+            // TODO: Methode this._showPage() mit dem eben erzeugten Objekt aufrufen. Als zweiter
+            // Parameter muss "list" als technischer Name der Seite übergeben werden, damit der
+            // dazugehörige Menüeintrag farblich hervorgehoben wird.
         } catch (ex) {
             this._showException(ex);
         }
@@ -78,12 +86,16 @@ class App {
      */
     async _gotoNew() {
         try {
-            // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
-            let {default: PageEdit} = await import("./page-edit/page-edit.js");
+            // TODO: Klasse PageEdit aus dem Modul "./page-edit/page-edit.js" importieren.
+            // Vgl. hierzu https://javascript.info/modules-dynamic-imports
 
-            let page = new PageEdit(this);
-            await page.init();
-            this._showPage(page, "new");
+            // TODO: Neue Instanz von der Klasse PageEdit erzeugen und die init-Methode aufrufen.
+            // Dabei beachten, dass die Methode init() asynchron ist und erst ihr erfolgreiches
+            // Ende abgewartet werden muss, bevor der nächste Schritt ausgeführt wird.
+
+            // TODO: Methode this._showPage() mit dem eben erzeugten Objekt aufrufen. Als zweiter
+            // Parameter muss "new" als technischer Name der Seite übergeben werden, damit der
+            // dazugehörige Menüeintrag farblich hervorgehoben wird.
         } catch (ex) {
             this._showException(ex);
         }
@@ -126,8 +138,8 @@ class App {
         this._menuElement.querySelectorAll(`li[data-page-name="${name}"]`).forEach(li => li.classList.add("active"));
 
         // Sichtbaren Hauptinhalt austauschen
-        this._bodyElement.querySelector("main")?.remove();
-        this._bodyElement.appendChild(page.mainElement);
+        // TODO: Das bisherige <main>-Element aus this._bodyElement entfernen.
+        // TODO: Das neue Element page.mainElement an this._bodyElement anhängen.
     }
 
     /**

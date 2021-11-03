@@ -24,30 +24,35 @@ export default class Database {
         if (!this._data || !this._data.length) {
             this._data = [
                 {
+                    id: 1,
                     first_name: "Willy",
                     last_name: "Tanner",
                     phone: "+49 711 564412",
                     email: "willy.tanner@alf.com",
                 },
                 {
+                    id: 2,
                     first_name: "Michael",
                     last_name: "Knight",
                     phone: "+49 721 554194",
                     email: "michael@knight-rider.com",
                 },
                 {
+                    id: 3,
                     first_name: "Fox",
                     last_name: "Mulder",
                     phone: "+49 721 553181",
                     email: "mulder@xfiles.com",
                 },
                 {
+                    id: 4,
                     first_name: "Dana",
                     last_name: "Scully",
                     phone: "+49 721 572287",
                     email: "scully@xfiles.com",
                 },
                 {
+                    id: 5,
                     first_name: "Elwood",
                     last_name: "Blues",
                     phone: "+49 721 957338",
@@ -69,25 +74,35 @@ export default class Database {
      * Gibt den Datensatz mit dem übergebenen Index zurück. Kann der Datensatz
      * nicht gefunden werden, wird undefined zurückgegeben.
      *
-     * @param  {Integer} index Index des gewünschten Datensatzes
+     * @param  {Integer} id ID des gewünschten Datensatzes
      * @return {Object} Gewünschter Datensatz oder undefined
      */
-    async getById(index) {
-        let copy = {};
-        Object.assign(copy, this._data[index]);
-        return copy;
+    async getById(id) {
+        debugger;
+        let dataset = this._data.find(e => e.id == id);
+        return Object.assign({}, dataset);
     }
 
     /**
-     * Aktualisiert den Datensatz mit dem übergebenen Index und überschreibt
-     * ihn mit dem ebenfalls übergebenen Objekt. Der Datensatz muss hierfür
-     * bereits vorhanden sein.
+     * Legt einen neuen Datensatz an oder aktualisiert einen bereits vorhandenen
+     * Datensatz mit derselben ID.
      *
-     * @param {Integer} index Index des zu aktualisierenden Datensatzes
      * @param {Object} dataset Neue Daten des Datensatzes
      */
-    async update(index, dataset) {
-        this._data[index] = dataset;
+    async safe(dataset) {
+        if (dataset.id) {
+            this.delete(dataset.id);
+        } else {
+            dataset.id = 0;
+
+            this._data.forEach(existing => {
+                dataset.id = max(dataset.id, existing.id);
+            });
+
+            dataset.id++;
+        }
+
+        this._data.push(dataset);
         this._updateLocalStorage();
     }
 
@@ -95,26 +110,11 @@ export default class Database {
      * Löscht den Datensatz mit dem übergebenen Index. Alle anderen Datensätze
      * rücken dadurch eins vor.
      *
-     * @param {[type]} index Index des zu löschenden Datensatzes
+     * @param {[type]} id ID des zu löschenden Datensatzes
      */
-    async delete(index) {
-        this._data.splice(index, 1);
+    async delete(id) {
+        this._data.remove(e => e.id == id);
         this._updateLocalStorage();
-    }
-
-    /**
-     * Fügt einen neuen Datensatz am Ende der Liste hinzu.
-     *
-     * @param  {Object} dataset Neu anzuhängender Datensatz
-     * @return {Integer} Index des neuen Datensatzes
-     */
-    async insert(dataset) {
-        let copy = {};
-        Object.assign(copy, dataset);
-        this._data.push(copy);
-        this._updateLocalStorage();
-
-        return this._data.length - 1;
     }
 
     /**

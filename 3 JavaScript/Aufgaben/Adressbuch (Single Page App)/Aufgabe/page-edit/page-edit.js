@@ -53,7 +53,7 @@ export default class PageEdit extends Page {
         await super.init();
 
         // Bearbeiteten Datensatz laden
-        if (this._editId > -1) {
+        if (this._editId) {
             this._dataset = await this._app.database.getById(this._editId);
             this._title = `${this._dataset.first_name} ${this._dataset.last_name}`;
         } else {
@@ -85,29 +85,24 @@ export default class PageEdit extends Page {
      */
     async _saveAndExit() {
         // Eingegebene Werte prüfen
+        this._dataset.id         = this._editId;
         this._dataset.first_name = this._firstNameInput.value.trim();
         this._dataset.last_name  = this._lastNameInput.value.trim();
         this._dataset.phone      = this._phoneInput.value.trim();
         this._dataset.email      = this._emailInput.value.trim();
 
-        if (!this._dataset.first_name) {
-            alert("Geben Sie erst einen Vornamen ein.");
-            return;
-        }
-
-        if (!this._dataset.last_name) {
-            alert("Geben Sie erst einen Nachnamen ein.");
-            return;
-        }
+        // TODO: Meldung ausgeben, wenn der Vorname oder der Nachname fehlt.
+        // In diesem Fall die Methode abbrechen und den Datensatz nicht speichern.
 
         // Datensatz speichern
-        if (this._editId > -1) {
-            this._app.database.update(this._editId, this._dataset);
-        } else {
-            this._app.database.insert(this._dataset);
-        }
+        //
+        // TODO: Methode save() der Datenbankklasse aufrufen. Hierbei unbedingt
+        // darauf achten, dass Methode asynchron ist und erst abgewartet werden
+        // muss, bis sie zu Ende gelaufen ist. In dieser Version macht dies zwar
+        // keinen Unterscheid, bei einer echten Datenbank würde sonst aber eine
+        // Race Condition entstehen und die Änderung sonst nicht zuverlässig in
+        // der Übersicht angezeigt werden.
 
-        // Zurück zur Übersicht
-        location.hash = "#/";
+        // TODO: Zurück zur URL #/ mit der Übersichtsseite wechseln
     }
 };
