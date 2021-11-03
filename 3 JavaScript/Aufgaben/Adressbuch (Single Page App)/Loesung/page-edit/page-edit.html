@@ -1,0 +1,64 @@
+<style>
+    /* FORMULARFELDER */
+    main {
+        background-color: white;
+        padding: 1em;
+    }
+
+    main .form > * {
+        display: block;
+        width: 100%;
+
+        border: 0px solid lightgrey;
+        border-bottom-width: 1px;
+
+        padding: 0.5em 0 0.5em 0;
+        margin-bottom: 1em;
+    }
+
+    /* AKTIONSBUTTONS */
+    main .actions {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    main .actions > div {
+        padding: 0.5em;
+        margin: 0.5em;
+
+        background-color: #e0e0e0;
+        transition: background-color 0.5s;
+
+        flex: 1;
+        text-align: center;
+    }
+
+    main .actions > div:first-child {
+        margin-left: 0;
+    }
+
+    main .actions > div:last-child {
+        margin-right: 0;
+    }
+
+    main .actions > div:hover {
+        background-color: #f0f0f0;
+        cursor: pointer;
+    }
+</style>
+
+<main>
+    <div>
+        <div class="form">
+            <input class="first_name" placeholder="Vorname" value="$FIRST_NAME$" />
+            <input class="last_name" placeholder="Nachname" value="$LAST_NAME$" />
+            <input class="phone" placeholder="Telefonnummer" value="$PHONE$" />
+            <input class="email" placeholder="E-Mailadresse" value="$EMAIL$" />
+        </div>
+        <div class="actions">
+            <div class="action save">
+                <a>💾</a>
+            </div>
+        </div>
+    </div>
+</main>

@@ -2,9 +2,9 @@
  * Stylesheet zur Klasse App: Hauptstylesheet der Anwendung.
  *
  * Hier sollten nur allgemeine Sachen stehen, die das Layout als Ganzes
- * betreffen. Also solche Dinge wie Schriftart und Größe, Farben usw.
+ * betreffen. Also solche Dinge wie Schriftart, Schriftgrößen oder Farben.
  * Spezifische Angaben zur Listenübersicht oder dem Eingabeformular gehören
- * in das jeweilige Stylesheet und nicht hierher.
+ * stattdessen in das jeweilige Stylesheet.
  */
 @import url('https://fonts.googleapis.com/css?family=Rubik');
 
@@ -28,7 +28,7 @@ html {
     html {
         /* http://bg.siteorigin.com/ */
         background-color: #669ac4;
-        background-image: url(background.png);
+        background-image: url(img/background.png);
 
         font-size: 11pt;
     }
@@ -47,11 +47,27 @@ html {
 
 /* NAVIGATION */
 nav {
+    user-select: none;
+
     background-color: #404040;
     color: white;
 
     border: 0px solid #202020;
     border-bottom-width: 3px;
+}
+
+nav a,
+nav a:visited,
+nav a:hover {
+    color: white;
+    text-decoration: none;
+
+    display: block;
+    padding: 1em;
+}
+
+nav.non-interactive a:hover {
+    cursor: default;
 }
 
 nav ul {
@@ -61,11 +77,6 @@ nav ul {
     margin-bottom: -3px;
 
     display: flex;
-}
-
-nav li {
-    padding: 1em;
-    margin: 0;
 }
 
 nav li.active {
@@ -79,6 +90,4 @@ nav li:hover {
 
     border: 0px solid rgb(103, 197, 231);
     border-bottom-width: 3px;
-
-    cursor: pointer;
 }

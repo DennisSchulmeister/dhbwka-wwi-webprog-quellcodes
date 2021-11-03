@@ -2,144 +2,37 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>☎️ Adressbuch</title>
+        <title>Adressbuch</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Klasse App: Steuert die gesamte Anwendung -->
-        <script src="app.js"></script>
-        <link rel="stylesheet" href="app.css" />
+        <link href="app.css" rel="stylesheet" />
+        <script src="app.js" type="module"></script>
 
-        <!-- Klasse Router: Implementiert einen einfachen Single Page Router -->
-        <script src="router.js"></script>
+        <!-- Dummy-Element für dynamisch nachgeladene CSS-Anweisungen -->
+        <style id="page-css"></style>
 
-        <!-- Klasse PageList: Stellt die Listenansicht zur Verfügung -->
-        <script src="page-list.js"></script>
-        <link rel="stylesheet" href="page-list.css" />
-
-        <!-- Klasse PageEdit: Stellt das Eingabeformular zur Verfügung -->
-        <script src="page-edit.js"></script>
-        <link rel="stylesheet" href="page-edit.css" />
-
-        <!-- Anwendung starten -->
-        <script>
-            window.addEventListener("load", () => {
-                /**
-                 * Konfiguration der App-Klasse mit der Anwendungslogik
-                 */
-                let pages = [
-                    {
-                        name: "page-list",              // Name zum Aufrufen der Seite
-                        klass: PageList,                // Klasse, die die Seite bereitstellt
-                        label: "Übersicht",             // Bezeichnung der Seite
-                        url: "/",                       // URL zum Öffnen der Seite
-                        hidden: false,                  // Seite kann im Menü ausgewählt werden
-                    },
-                    {
-                        name: "page-new",
-                        klass: PageEdit,
-                        label: "Adresse hinzufügen",
-                        url: "/new/",                   // URL zum Öffnen der Seite
-                        hidden: false,                  // Seite kann im Menü ausgewählt werden
-                    },
-                    {
-                        name: "page-edit",
-                        klass: PageEdit,
-                        label: "Adresse bearbeiten",
-                        hidden: true,                   // Seite kann im Menü NICHT ausgewählt werden
-                    },
-                ];
-
-                let app = new App(pages);
-
-                /**
-                 * Konfiguration des URL-Routers
-                 */
-                let routes = [
-                    {
-                        url: "^/$",
-                        show: () => app.showPage("page-list"),
-                    },{
-                        url: "^/new/$",
-                        show: () => app.showPage("page-new"),
-                    },{
-                        url: "^/edit/(.*)$",
-                        show: matches => app.showPage("page-edit", matches[1]),
-                    },{
-                        url: ".*",
-                        show: () => app.showPage("page-list"),
-                    }
-                ];
-
-                let router = new Router(routes);
-                router.start();
-            });
-        </script>
+        <!-- https://pixabay.com/vectors/phone-call-telephone-651704/ -->
+        <link rel="shortcut icon" href="img/favicon.svg" />
     </head>
     <body>
         <!-- Kopfbereich mit Tabreitern -->
         <nav id="app-menu">
-            <ul></ul>
+            <ul>
+                <li data-page-name="list">
+                    <a href="#/">Übersicht</a>
+                </li>
+                <li data-page-name="new">
+                    <a href="#/new/">Adresse hinzufügen</a>
+                </li>
+                <li data-page-name="edit" class="non-interactive">
+                    <a>Adresse bearbeiten</a>
+                </li>
+            </ul>
         </nav>
 
-        <template id="template-app-menu-li">
-            <li data-page-name="$NAME$">
-                <a>$LABEL$</a>
-            </li>
-        </template>
-
-        <!-- Seite: Listenübersicht -->
-        <main id="main-page-list" class="hidden">
-            <ol></ol>
-        </main>
-
-        <template id="template-page-list-empty">
-            <li>
-                <div class="name">
-                    Keine Einträge vorhanden
-                </div>
-            </li>
-        </template>
-
-        <template id="template-page-list-li">
-            <li data-index="$INDEX$">
-                <div class="name">
-                    $LAST_NAME$, $FIRST_NAME$
-                </div>
-                <div class="field phone">
-                    $PHONE$
-                </div>
-                <div class="field email">
-                    $EMAIL$
-                </div>
-                <div class="actions">
-                    <div class="action edit">
-                        <a>🖊️</a>
-                    </div>
-                    <div class="action delete">
-                        <a>🗑️</a>
-                    </div>
-                </div>
-            </li>
-        </template>
-
-        <!-- Seite: Adresse anlegen/bearbeiten -->
-        <main id="main-page-edit" class="hidden">
-        </main>
-
-        <template id="template-page-edit">
-            <div>
-                <div class="form">
-                    <input class="first_name" placeholder="Vorname" value="$FIRST_NAME$" />
-                    <input class="last_name" placeholder="Nachname" value="$LAST_NAME$" />
-                    <input class="phone" placeholder="Telefonnummer" value="$PHONE$" />
-                    <input class="email" placeholder="E-Mailadresse" value="$EMAIL$" />
-                </div>
-                <div class="actions">
-                    <div class="action save">
-                        <a>💾</a>
-                    </div>
-                </div>
-            </div>
-        </template>
+        <!--
+            Der Inhalt der aktuellen Seite wird hier mit JavaScript
+            zur Laufzeit als <main>-Element eingebunden.
+        -->
     </body>
 </html>

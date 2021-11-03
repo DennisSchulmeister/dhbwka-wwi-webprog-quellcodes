@@ -1,160 +1,151 @@
 "use strict";
 
+import Database from "./database.js";
+import Router from "./router.js";
+
 /**
- * Klasse App: Steuert die gesamte Anwendung
+ * Hauptklasse App: Steuert die gesamte Anwendung
  *
- * Diese Klasse kümmert sich darum, dass die vom Anwender ausgewählte Seite
- * mit der Listenübersicht oder dem Eingabeformular angezeigt wird. Welche
- * Seite angezeigt wird, macht sie im Kopfbereich der Seite kenntlich.
- *
- * Außerdem enthält sie die eigentliche Datenliste, in der die Adressen
- * gespeichert sind.
+ * Diese Klasse erzeugt den Single Page Router zur Navigation innerhalb
+ * der Anwendung und ein Datenbankobjekt zur Verwaltung der Adressliste.
+ * Darüber hinaus beinhaltet sie verschiedene vom Single Page Router
+ * aufgerufene Methoden, zum Umschalten der aktiven Seite.
  */
 class App {
     /**
      * Konstruktor.
-     * @param {Liste} pages Seiten, zwischen denen umgeschaltet werden kann
      */
-    constructor(pages) {
-        // Verfügbare Seiten und Steuerobjekt der aktuellen Seite
-        this._pages = pages;
-        this._currentPageObject = null;
+    constructor(routes) {
+        // Datenbank-Klasse zur Verwaltung der Datensätze
+        this.database = new Database();
 
-        // Datensätze unserer Anwendung. Falls du die Anwendung erweitern
-        // willst, so dass die Datensätze nicht verloren gehen können, müsstest
-        // du die Datensätze hier komplett einlesen und wiederherstellen.
-        this._data = [
+        // Single Page Router zur Steuerung der sichtbaren Inhalte
+        this.router = new Router([
             {
-                first_name: "Willy",
-                last_name: "Tanner",
-                phone: "+49 711 564412",
-                email: "willy.tanner@alf.com",
+                url: "^/$",
+                show: () => this._gotoList()
+            },{
+                url: "^/new/$",
+                show: () => this._gotoNew()
+            },{
+                url: "^/edit/(.*)$",
+                show: matches => this._gotoEdit(matches[1]),
+            },{
+                url: ".*",
+                show: () => this._gotoList()
             },
+        ]);
 
-            // TODO: Füge hier ein paar weitere Adressen hinzu, damit du genügend Testdaten hast
-        ];
+        // Fenstertitel merken, um später den Name der aktuellen Seite anzuhängen
+        this._documentTitle = document.title;
 
-        // Interne Methode zum Rendern des Menüs aufrufen
-        this._renderMenu();
+        // Von dieser Klasse benötigte HTML-Elemente
+        this._pageCssElement = document.querySelector("#page-css");
+        this._bodyElement = document.querySelector("body");
+        this._menuElement = document.querySelector("#app-menu");
     }
 
-    ////
-    //// Umschalten der aktuell sichtbaren Seite
-    ////
-
     /**
-     * Tablaschen zum Umschalten der aktuellen Seite anzeigen. (Interne Methode)
+     * Initialisierung der Anwendung beim Start. Im Gegensatz zum Konstruktor
+     * der Klasse kann diese Methode mit der vereinfachten async/await-Syntax
+     * auf die Fertigstellung von Hintergrundaktivitäten warten, ohne dabei
+     * mit den zugrunde liegenden Promise-Objekten direkt hantieren zu müssen.
      */
-    _renderMenu() {
-        let ul = document.querySelector("#app-menu > ul");
-        let template = document.getElementById("template-app-menu-li").innerHTML;
-
-        this._pages.forEach(page => {
-            // Versteckte Seiten überspringen
-            if (page.hidden) return;
-
-            // Neues Element auf Basis des Templates erzeugen
-            let dummy = document.createElement("ul");
-            dummy.innerHTML = template;
-            dummy.innerHTML = dummy.innerHTML.replace("$NAME$", page.name);
-            dummy.innerHTML = dummy.innerHTML.replace("$LABEL$", page.label);
-
-            // Event Listener auf das <li>-Element registrieren
-            let li = dummy.firstElementChild;
-            li.addEventListener("click", () => location.hash = `#${page.url}`);
-
-            // Element nun in das Menü umhängen
-            dummy.removeChild(li);
-            ul.appendChild(li);
-        });
+    async init() {
+        await this.database.init();
+        this.router.start();
     }
 
     /**
-     * Umschalten der sichtbaren Seite.
+     * Übersichtsseite anzeigen. Wird vom Single Page Router aufgerufen.
+     */
+    async _gotoList() {
+        try {
+            // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
+            let {default: PageList} = await import("./page-list/page-list.js");
+
+            let page = new PageList(this);
+            await page.init();
+            this._showPage(page, "list");
+        } catch (ex) {
+            this._showException(ex);
+        }
+    }
+
+    /**
+     * Seite zum Anlegen einer neuen Adresse anzeigen.  Wird vom Single Page
+     * Router aufgerufen.
+     */
+    async _gotoNew() {
+        try {
+            // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
+            let {default: PageEdit} = await import("./page-edit/page-edit.js");
+
+            let page = new PageEdit(this);
+            await page.init();
+            this._showPage(page, "new");
+        } catch (ex) {
+            this._showException(ex);
+        }
+    }
+
+    /**
+     * Seite zum Bearbeiten einer Adresse anzeigen.  Wird vom Single Page
+     * Router aufgerufen.
      *
-     * @param  {String} name Name der anzuzeigenden Seite, gemäß this.pages
-     * @param  {Integer} editIndex Nummer des bearbeiteten Datensatzes (optional)
+     * @param {Number} id ID der zu bearbeitenden Adresse
      */
-    showPage(name, editIndex) {
-        // Gewünschte Seite suchen
-        let newPage = this._pages.find(p => p.name === name);
+    async _gotoEdit(id) {
+        try {
+            // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
+            let {default: PageEdit} = await import("./page-edit/page-edit.js");
 
-        if (newPage === undefined) {
-            console.error(`Klasse App, Methode showPage(): Ungültige Seite „${name}”`);
-            return;
+            let page = new PageEdit(this, id);
+            await page.init();
+            this._showPage(page, "edit");
+        } catch (ex) {
+            this._showException(ex);
         }
+    }
 
-        // Aktuelle Seite ausblenden
-        if (this._currentPageObject != null) {
-            // TODO: Methode zum Ausblenden der aktuellen Seite aufrufen
-        }
+    /**
+     * Interne Methode zum Umschalten der sichtbaren Seite.
+     *
+     * @param  {Page} page Objekt der anzuzeigenden Seiten
+     * @param  {String} name Name zur Hervorhebung der Seite im Menü
+     */
+    _showPage(page, name) {
+        // Fenstertitel aktualisieren
+        document.title = `${this._documentTitle} – ${page.title}`;
 
-        // Neue Seite anzeigen und merken
-        this._currentPageObject = new newPage.klass(this, name, editIndex);
-        // TODO: Methode zum Anzeigen der aktuellen Seite aufrufen
+        // Stylesheet der Seite einfügen
+        this._pageCssElement.innerHTML = page.css;
 
         // Aktuelle Seite im Kopfbereich hervorheben
-        document.querySelectorAll("#app-menu li").forEach(li => li.classList.remove("active"));
-        document.querySelectorAll(`#app-menu li[data-page-name="${name}"]`).forEach(li => li.classList.add("active"));
-    }
+        this._menuElement.querySelectorAll("li").forEach(li => li.classList.remove("active"));
+        this._menuElement.querySelectorAll(`li[data-page-name="${name}"]`).forEach(li => li.classList.add("active"));
 
-    ////
-    //// Methoden zum Bearbeiten der Datensätze
-    ////
-    //// Falls du die Anwendung so erweitern willst, dass die Datensätze
-    //// nicht verloren gehen können, musst du die Änderungen in den
-    //// nachfolgenden Methoden irgendwie dauerhaft speichern.
-    ////
-
-    /**
-     * Gibt die komplette Liste mit allen Daten zurück.
-     * @return {Array} Array mit allen Datenobjekten
-     */
-    getData() {
-        return this._data;
+        // Sichtbaren Hauptinhalt austauschen
+        this._bodyElement.querySelector("main")?.remove();
+        this._bodyElement.appendChild(page.mainElement);
     }
 
     /**
-     * Gibt den Datensatz mit dem übergebenen Index zurück. Kann der Datensatz
-     * nicht gefunden werden, wird undefined zurückgegeben.
+     * Hilfsmethode zur Anzeige eines Ausnahmefehlers. Der Fehler wird in der
+     * Konsole protokolliert und als Popupmeldung angezeigt.
      *
-     * @param  {Integer} index Index des gewünschten Datensatzes
-     * @return {Object} Gewünschter Datensatz oder undefined
+     * @param {Object} ex Abgefangene Ausnahme
      */
-    getDataByIndex(index) {
-        return this._data[index];
-    }
-
-    /**
-     * Aktualisiert den Datensatz mit dem übergebenen Index und überschreibt
-     * ihn mit dem ebenfalls übergebenen Objekt. Der Datensatz muss hierfür
-     * bereits vorhanden sein.
-     *
-     * @param {Integer} index Index des zu aktualisierenden Datensatzes
-     * @param {Object} dataset Neue Daten des Datensatzes
-     */
-    updateDataByIndex(index, dataset) {
-        this._data[index] = dataset;
-    }
-
-    /**
-     * Löscht den Datensatz mit dem übergebenen Index. Alle anderen Datensätze
-     * rücken dadurch eins vor.
-     *
-     * @param {[type]} index Index des zu löschenden Datensatzes
-     */
-    deleteDataByIndex(index) {
-        this._data.splice(index, 1);
-    }
-
-    /**
-     * Fügt einen neuen Datensatz am Ende der Liste hinzu.
-     *
-     * @param  {Object} dataset Neu anzuhängender Datensatz
-     * @return {Integer} Index des neuen Datensatzes
-     */
-    appendData(dataset) {
-        this._data.push(dataset);
-        return this._data.length - 1;
+    _showException(ex) {
+        console.error(ex);
+        alert(ex.toString());
     }
 }
+
+/**
+ * Anwendung starten
+ */
+window.addEventListener("load", async () => {
+    let app = new App();
+    await app.init();
+});
