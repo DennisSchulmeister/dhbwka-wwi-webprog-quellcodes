@@ -15,7 +15,7 @@ class App {
     /**
      * Konstruktor.
      */
-    constructor(routes) {
+    constructor() {
         // Datenbank-Klasse zur Verwaltung der Datensätze
         this.database = new Database();
 
