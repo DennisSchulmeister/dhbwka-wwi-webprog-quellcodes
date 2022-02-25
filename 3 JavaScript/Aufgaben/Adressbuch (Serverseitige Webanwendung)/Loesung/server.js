@@ -2,7 +2,7 @@ const express = require("express");
 const expressNunjucks = require("express-nunjucks");
 const path = require("path");
 
-const Database = require("./js/database");2
+const Database = require("./js/database");
 
 /* =============================================================================
  * SERVER-KONFIGURATION
