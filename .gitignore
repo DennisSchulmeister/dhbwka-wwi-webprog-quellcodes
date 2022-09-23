@@ -14,3 +14,4 @@ yarn-error.log
 *.class
 *.log
 *.pyc
+.DS_Store
