@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>🌍 Aufgabe: Neue HTML-Datei</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            html {
+                font-family: sans-serif;
+                font-size: max(1.4vmin, 10pt);
+            }
+
+            @media (min-width: 63em) {
+                html {
+                    /* https://pixabay.com/photos/music-performance-concert-musician-3264716/ */
+                    background-color: rgb(11, 85, 98);
+                    background-image: url(background.jpg);
+                    background-attachment: fixed;
+                    background-size: cover;
+                    background-position: center;
+
+                    hyphens: auto;
+
+                    min-height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                section {
+                    background: white;
+
+                    width: 60em;
+                    margin-top: 2em;
+                    margin-bottom: 2em;
+
+                    box-shadow: 0px 0px 4px rgba(0,0,0, 0.5);
+                }
+
+                section > h1 {
+                    font-size: 200%;
+                    margin: 0;
+                }
+
+                section article {
+                    padding: 1em;
+                }
+
+                section p,
+                section h2:first-child,
+                section h3:first-child,
+                section h4:first-child {
+                    margin-top: 0;
+                }
+
+                section h2,
+                section h3,
+                section h4 {
+                    margin-bottom: 0.5em;
+                }
+
+                .screenshot {
+                    margin: 0 !important;
+                }
+
+                .screenshot.small {
+                    max-width: 18em;
+                }
+
+                .flexbox {
+                    display: flex;
+                    justify-content: center;
+                    column-gap: 1em;
+                }
+            }
+
+            section {
+                text-align: justify;
+                word-wrap: break-word;
+                hyphens: auto;
+            }
+
+            h1 {
+                padding: 0.25em;
+                margin-top: 1.5em;
+                color: rgb(193, 29, 29);
+                background: #DFDFDF;
+            }
+
+            h1:first-child {
+                margin-top: 0;
+            }
+
+            a, a:visited {
+                color: #3968A1;
+                text-decoration: underline;
+            }
+
+            a:hover {
+                color: #6E9ED9;
+            }
+
+            .screenshot {
+                display: block;
+                width: 100%;
+                border: 1px solid #A0A0A0;
+                margin: 1em 0 1em 0;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Aufgabe: Neue HTML-Datei</h1>
+
+            <article>
+                 <p class="flexbox">
+                    <span>
+                        <span>Quellcode:</span>
+                        <a href="editor.png" target="_blank">
+                            <img
+                                src   = "editor.png"
+                                alt   = "Screenshot des Quellcodes"
+                                class = "screenshot small"
+                            />
+                        </a>
+                    </span>
+
+                    <span>
+                        <span>Musterlösung (<a href="../Loesung/index.html" target="_blank">Link</a>):</span>
+                        <a href="browser.png" target="_blank">
+                            <img
+                                src   = "browser.png"
+                                alt   = "Screenshot der Musterlösung"
+                                class = "screenshot small"
+                            />
+                        </a>
+                    </span>
+                </p>
+                <p style="text-align: center;">
+                    <small>
+                        Bilder anklicken für eine größere Version
+                    </small>
+                </p>
+
+                <p>
+                    Im Onlineskript befindet sich ganz am Anfang ein Beispielquellcode für eine
+                    einfache HTML-Datei. Speichere diesen Quellcode in einer neuen Textdatei mit
+                    der Dateiendung <tt>.html</tt> und öffne die Datei in einem Browser. Anschließend
+                    nimm folgende Änderungen daran vor.
+                </p>
+                <ol>
+                    <li>Nimm ein paar beliebige Änderungen am Inhalt vor.</li>
+                    <li>Füge etwas neuen Inhalt hinzu, beispielsweise einen weiteren Absatz oder eine Aufzählunsliste.</li>
+                    <li>Lege eine zweite HTML-Datei an und baue jeweils einen Link von der einen auf die andere ein.</li>
+                </ol>
+
+                <h3>Hinweis</h3>
+                <p>
+                    Achte auf den richtigen Zeichensatz der Datei. Das Tag &lt;meta charset="utf-8" /&gt; weist den Browser an,
+                    die Datei als UTF-8-Datei zu lesen. Sonst werden die Umlaute und Sonderzeichen nicht richtig dargestellt.
+                </p>
+            </article>
+        </section>
+    </body>
+</html>
