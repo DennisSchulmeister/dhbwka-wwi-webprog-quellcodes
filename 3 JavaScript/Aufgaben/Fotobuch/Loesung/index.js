@@ -5,7 +5,7 @@ window.addEventListener("load", async () => {
 
     /**
      * Hilfsfunktion, zur einfacheren Nutzung von window.setTimeout().
-     * Hierdurch kein eine Callback-Funktion eingespart werden, indem statt
+     * Hierdurch kann eine Callback-Funktion eingespart werden, indem statt
      *
      *   window.setTimeout(() => { ... }, zeit);
      *

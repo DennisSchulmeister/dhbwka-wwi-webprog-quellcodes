@@ -5,7 +5,7 @@ window.addEventListener("load", async () => {
 
     /**
      * Hilfsfunktion, zur einfacheren Nutzung von window.setTimeout().
-     * Hierdurch kein eine Callback-Funktion eingespart werden, indem statt
+     * Hierdurch kann eine Callback-Funktion eingespart werden, indem statt
      *
      *   window.setTimeout(() => { ... }, zeit);
      *
@@ -32,8 +32,8 @@ window.addEventListener("load", async () => {
      */
     async function showImage(index) {
         // TODO 4: Zunächst sollen alle Kinder des backgroundContainer gesucht
-        // in in einer lokalen Variable zwischengespeichert werden. Sie werden
-        // später noch gebraucht. In einer zusätzliche Boolean-Variable soll
+        // und in einer lokalen Variable zwischengespeichert werden. Sie werden
+        // später noch gebraucht. In einer zusätzlichen Boolean-Variable soll
         // gespeichert werden, ob etwas gefunden wurde und somit später eine
         // Animation zur Überblendung des Bildes angezeigt werden soll.
         //
@@ -48,7 +48,7 @@ window.addEventListener("load", async () => {
         // images-Array ermittelt werden. Dabei muss nur beachtet werden, dass
         // die URL im href-Attribut eines <link>-Elements steht.
         //
-        // Im previewContainer soll das ausgewählte Bild mit der Klasse "current"
+        // Im previewContainer soll das ausgewählte Bild die Klasse "current"
         // zugewiesen bekommen, damit es farblich hervorgehoben wird. Den anderen
         // Vorschaubildern muss die Klasse natürlich entfernt werden. Ebenso soll
         // den anderen Vorschaubildern die im Folgenden beschriebene Klasse "visible"

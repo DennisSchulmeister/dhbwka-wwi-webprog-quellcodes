@@ -19,16 +19,16 @@
          *   1. Anpassung des Stylesheets.
          *      Nimm folgende Erweiterungen am Stylesheet vor:
          *
-         *        » Auf Bildschirmen bis zu 60em Breite soll die CSS-Klasse
-         *          `mobile-hidden`, jedes damit markierte HTML-Element
-         *          unsichtbar schalten
+         *       » Auf Bildschirmen bis zu 60em Breite soll die CSS-Klasse
+         *         `mobile-hidden`, jedes damit markierte HTML-Element
+         *         unsichtbar schalten (diaply: none).
          *
-         *       » Auf Bildschirmen ab 60em Breite sollen das <ul>-Element
-         *         mit den Navigationslinks als Flexbox fungieren, die ihre
+         *       » Auf Bildschirmen ab 60em Breite soll das <ul>-Element
+         *         mit den Navigationslinks eine Flexbox sein, die ihre
          *         Inhalte in einer Zeile nebeneinander anzeigt. Die Links
          *         sollen dabei auf die gesamte Breite von ganz links bis
-         *         nach ganz rechts verteilt werden und zur Not in einer
-         *         zweite Zeile umbrechen dürfen.
+         *         nach ganz rechts verteilt werden (justify-content) und
+         *         zur Not in eine zweite Zeile umbrechen dürfen (flex-wrap)
          *
          *      » Auf kleineren Bildschirmen sollen die Links untereinander
          *        und zentriert dargestellt werden. Auch hierfür soll eine
@@ -40,8 +40,9 @@
          *
          *   2. Ausprogrammieren der UI-Logik:
          *
-         *      » Lege einen Event Listener an, der auf das `load`-Ereignis
-         *        des window-Objekts wartet.
+         *     » Lege einen Event Listener an, der auf das `load`-Ereignis
+         *       des window-Objekts wartet. Weil erst dann hat der Browser
+         *       den HTML-Code vollständig geladen und das DOM dazu erstellt.
          *
          *     » Innerhalb des Event Listeners greife auf das Document Object
          *       Model zu, um jeweils eine Referenz auf den Hamburger-Button
@@ -51,7 +52,7 @@
          *       aus, der das Menü abwechselnd mal ein- und mal ausblendet.
          *       Prüfe hierfür einfach ab, ob das HTML-Element des Menüs die
          *       CSS-Klasse `mobile-hidden` besitzt. Falls ja, entferne sie.
-         *        Falls nein, füge sie dem Element hinzu.
+         *       Falls nein, füge sie dem Element hinzu.
          */
         </script>
     </head>

@@ -31,22 +31,21 @@
 
              » Wenn Sie die tile_view.js programmieren, denken Sie daran, dass der
                Anwender gerne auf eine Kachel klicken möchte, um die Wiedergabe
-               zu starten. Auch hier dient die tile_view.js als Vorlage.
+               zu starten. Auch hier dient die list_view.js als Vorlage.
 
-            HINWEIS ZUM ATOM EDITOR:
+            HINWEIS:
 
-            Installieren Sie in den Preferences erst das Plugin "local-web-server".
-            Anschließend öffnen Sie die index.html aus dem __Wurzelverzeichnis__ der
-            Aufgabe und starten Sie den Server mit „Packages → Local Web Server → Start”.
-            Machen Sie das nicht, klappt der unten stehende AJAX-Aufruf nicht und
-            die Anwendung kann die Playlist nicht abrufen.
+               Die Webanwendung funktioniert nur, wenn sie von einem Webserver geladen
+               wird, da der Browser sonst die AJAX-Aufrufe zum Abrufen der Playlist
+               nicht ausführt. In VS Code können Sie das Plugin "Live Server" dafür
+               verwenden. Dabei muss die Datei "index.html" aus dem Wurzelverszeichnis
+               der Aufgabe gestart und die Anwender durch Klick auf den enthaltenen
+               Link gestartet werden.
         -->
         <script>
             window.addEventListener("load", async () => {
                 // ACHTUNG: Der AJAX-Aufruf funktioniert nur, wenn die Seite von einem Webserver
-                // geladen wird. Im Atom-Editor können Sie hierfür das Paket „local-web-server”
-                // installieren und dann im Menü unter „Packages → Local Web Server → Start” den
-                // Webserver starten.
+                // geladen wird.
                 let prefix = "../Songs";
                 let response = await fetch(`${prefix}/playlist.json`);
                 let playlist = await response.json();
