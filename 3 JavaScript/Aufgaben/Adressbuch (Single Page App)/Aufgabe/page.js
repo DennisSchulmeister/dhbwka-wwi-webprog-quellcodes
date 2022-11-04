@@ -36,13 +36,13 @@ export default class Page {
      * nachgeladenen HTML/CSS-Inhalte folgende Objektattribute mit Werten
      * zu versehen:
      *
-     *   ┌─────────────────────┬───────────────┬───────────────────────────────────────────────┐
-     *   │  ATTRIBUT           │  TYP          │  INHALT                                       │
-     *   ├─────────────────────┼───────────────┼───────────────────────────────────────────────┤
-     *   │  this._title        │  String       │  Titel der Seite                              │
-     *   │  this._cssString    │  String       |  CSS-Anweisungen der Seite                    │
-     *   |  this._mainElement  │  DOM Element  │  HTML-Element für den Hauptbereich oder null  │
-     *   └─────────────────────┴───────────────┴───────────────────────────────────────────────┘
+     *   +---------------------+---------------+-----------------------------------------------+---------------+
+     *   |  ATTRIBUT           |  TYP          |  INHALT                                       |               |
+     *   +---------------------+---------------+-----------------------------------------------+---------------+
+     *   |  this._title        |  String       |  Titel der Seite                              |               |
+     *   |  this._cssString    |  String       |  CSS-Anweisungen der Seite                    |               |
+     *   |  this._mainElement  |  DOM Element  |  HTML-Element für den Hauptbereich oder null  |               |
+     *   +---------------------+---------------+-----------------------------------------------+---------------+
      *
      * Damit die HTML-Inhalte abgerufen werden, muss die geerbte Methode in der
      * redefinierten Methode aufgerufen und this._title mit dem Anzeigetitel

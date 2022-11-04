@@ -29,14 +29,14 @@ class App {
             //
             // Folgende URL-Routen werden benötigt:
             //
-            // ┌──────────────────────┬──────────────────┬─────────────────────────────────────────┐
-            // │  BEZEICHNUNG         │  REGEXP          │  CALLBACK                               │
-            // ├──────────────────────┼──────────────────┼─────────────────────────────────────────┤
-            // |  Startseite          │  "^/$"           │  () => this._gotoList()                 │
-            // │  Adresse anlegen     │  "^/new/$"       │  () => this._gotoNew()                  │
-            // │  Adresse bearbeiten  │  "^/edit/(.*)$"  │  matches => this._gotoEdit(matches[1])  │
-            // │  Unbekannte URL      │  ".*"            │  () => this._gotoList()                 │
-            // └──────────────────────┴──────────────────┴─────────────────────────────────────────┘
+            // +----------------------+------------------+-----------------------------------------+
+            // |  BEZEICHNUNG         |  REGEXP          |  CALLBACK                               |
+            // +----------------------+------------------+-----------------------------------------+
+            // |  Startseite          |  "^/$"           |  () => this._gotoList()                 |
+            // |  Adresse anlegen     |  "^/new/$"       |  () => this._gotoNew()                  |
+            // |  Adresse bearbeiten  |  "^/edit/(.*)$"  |  matches => this._gotoEdit(matches[1])  |
+            // |  Unbekannte URL      |  ".*"            |  () => this._gotoList()                 |
+            // +----------------------+------------------+-----------------------------------------+
         ]);
 
         // Fenstertitel merken, um später den Name der aktuellen Seite anzuhängen
