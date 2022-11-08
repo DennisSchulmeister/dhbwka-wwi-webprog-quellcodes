@@ -1,10 +1,10 @@
 "use strict";
 
 import Page from "../page.js";
+import { AddressEntity } from "../entity.js";
 
 /**
- * Klasse PageEdit: Stellt die Seite zum Anlegen oder Bearbeiten einer Adresse
- * zur Verfügung.
+ * Klasse PageEdit: Stellt die Seite zum Anlegen oder Bearbeiten einer Adresse zur Verfügung.
  */
 export default class PageEdit extends Page {
     /**
@@ -18,7 +18,7 @@ export default class PageEdit extends Page {
 
         // Bearbeiteter Datensatz
         this._editId = editId;
-        this._dataset = new AddressEntity();
+        this._dataset = AddressEntity.createNew();
 
         // Eingabefelder
         this._firstNameInput = null;
@@ -30,17 +30,10 @@ export default class PageEdit extends Page {
     /**
      * HTML-Inhalt und anzuzeigende Daten laden.
      *
-     * HINWEIS: Durch die geerbte init()-Methode wird `this._mainElement` mit
-     * dem <main>-Element aus der nachgeladenen HTML-Datei versorgt. Dieses
-     * Element wird dann auch von der App-Klasse verwendet, um die Seite
-     * anzuzeigen. Hier muss daher einfach mit dem üblichen DOM-Methoden
-     * `this._mainElement` nachbearbeitet werden, um die angezeigten Inhalte
-     * zu beeinflussen.
-     *
-     * HINWEIS: In dieser Version der App wird mit dem üblichen DOM-Methoden
-     * gearbeitet, um den finalen HTML-Code der Seite zu generieren. In größeren
-     * Apps würde man ggf. eine Template Engine wie z.B. Nunjucks integrieren
-     * und den JavaScript-Code dadurch deutlich vereinfachen.
+     * HINWEIS: Durch die geerbte init()-Methode wird `this._mainElement` mit dem <main>-Element
+     * aus der nachgeladenen HTML-Datei versorgt. Dieses Element wird dann auch von der App-Klasse
+     * verwendet, um die Seite anzuzeigen. Hier muss daher einfach mit dem üblichen DOM-Methoden
+     * `this._mainElement` nachbearbeitet werden, um die angezeigten Inhalte zu beeinflussen.
      */
     async init() {
         // HTML-Inhalt nachladen
@@ -49,7 +42,7 @@ export default class PageEdit extends Page {
         // Bearbeiteten Datensatz laden
         if (this._editId) {
             this._dataset = await this._app.database.address.findById(this._editId);
-            this._title = `${this._dataset.first_name} ${this._dataset.last_name}`;
+            this._title = `${this._dataset.firstName} ${this._dataset.lastName}`;
         } else {
             this._title = "Adresse hinzufügen";
         }
@@ -85,8 +78,10 @@ export default class PageEdit extends Page {
         this._dataset.phone     = this._phoneInput.value.trim();
         this._dataset.email     = this._emailInput.value.trim();
 
-        // TODO: Meldung ausgeben, wenn der Vorname oder der Nachname fehlt.
-        // In diesem Fall die Methode abbrechen und den Datensatz nicht speichern.
+        // TODO: AddressEntity.validate() aufrufen, um den aktuellen Datensatz zu prüfen.
+        // Im Fehlerfall wird eine Exception geworfen, die mit `this._app.showException()`
+        // angezeigt werden kann. In diesem Fall die Methode abbrechen und den Datensatz
+        // nicht speichern.
 
         // Datensatz speichern
         //

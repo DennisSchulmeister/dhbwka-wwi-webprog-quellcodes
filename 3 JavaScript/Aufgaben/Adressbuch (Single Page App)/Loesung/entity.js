@@ -1,61 +1,80 @@
 "use strict";
 
 /**
- * Basisklasse für Entities zur Definition des Datenmodells der Anwendung.
- * Jede Entity wird in einer Collection gespeichert, wobei ein Entityobjekt
- * einem Datensatz entspricht.
+ * Konfigurationsobjekt für Adressdatensätze in der Datenbank. Vgl. Dokumentation
+ * zur Methode `createCollection` in der Klasse `Database`. Diese Klasse bietet
+ * eine Reihe von statischen Methoden:
+ * 
+ *  - createNew(): Erzeugt ein neues, leeres Adressobjekt
+ *  - validate(address): Prüft die Daten eines Adressobjekts
+ *  - compare(a, b): Vergleicht zwei Adressen zwecks Sortierung
+ * 
+ * Die Methode `compare(a,b)` wird von der Datenbankklasse verwendet, um die Einträge
+ * beim Speichern zu sortieren. Alle anderen Methoden sind eigene Methode, die innerhalb
+ * der Benutzeroberfläche der Anwendung aufgerufen werden können.
+ * 
+ * Die Datenbank kann prinzipiell beliebig viele Collections mit beliebig vielen
+ * Datensätzen verwalten. Falls die Anwendung um weitere Datenarten erweitert werden
+ * soll, muss hierfür diese Klasse kopiert und der Aufruf von `createCollection()`
+ * in der init-Methode der App-Klasse dupliziert werden.
  */
-class Entity {
+export class AddressEntity {
     /**
-     * Methode muss von den Unterklassen ausprogrammiert werden, damit die
-     * Entities für die Anzeige sortiert werden können.
+     * Statische Hilfsmethode zum Erzeugen eines neuen Adressdatensatzes. Der Datensatz
+     * wird absichtlich als einfaches Objekt ohne Methoden generiert, da er in dieser
+     * Form in der Datenbank abgelegt und von dieser wieder ausgelesen wird.
      * 
-     * @param {*} entity1 Zu vergleichende Entity 1
-     * @param {*} entity2 ZU vergleichende Entity 2
-     * @return {Number} -1, 0 oder 1
+     * @returns {Object} Neuer Adressdatensatz
      */
-    compare(entity1, entity2) {
-        return 0;
-    }
-}
-
-/**
- * Adresse: id, firstName, lastName, phone, email
- */
-class AddressEntity extends Entity {
-    constructor(data) {
-        super();
-        data = data || {};
-
-        this.id = data.id || "";
-        this.firstName = data.firstName || "";
-        this.lastName = data.lastName || "";
-        this.phone = data.phone || "";
-        this.email = data.email || "";
+    static createNew() {
+        return {
+            id: -1,
+            firstName: "",
+            lastName: "",
+            phone: "",
+            email: "",  
+        }
     }
 
     /**
-     * Hilfsmethode zum Sortieren der Datenliste. Die Liste wird nach
-     * Nachname und dann nach Vorname sortiert.
-     *
-     * @param  {Object} a Vergleichsdatensatz A
-     * @param  {Object} b Vergleichsdatensatz B
-     * @return {Number} -1, 0 oder 1
+     * Überprüft das übergebene Adressobjekt. Im Erfolgsfall passiert einfach nichts.
+     * Im Fehlerfall wird eine Exception geworfen, die abgefangen und als Fehlermeldung
+     * auf dem Bildschirm ausgegeben werden kann.
+     * 
+     * @param {Object} address Zu speichernder Adressdatensatz
+     * @throws {String} Fehlermeldung, falls die Prüfung fehlschlägt
      */
-    compare(a, b) {
-        let a_last_name = a.last_name.toUpperCase();
-        let a_first_name = a.first_name.toUpperCase();
+    static validate(address) {
+        if (!address.hasOwnProperty("firstName") || !address.firstName) {
+            throw "Geben Sie erst einen Vornamen ein.";
+        }
 
-        let b_last_name = b.last_name.toUpperCase();
-        let b_first_name = b.first_name.toUpperCase();
+        if (!address.hasOwnProperty("lastName") || !address.lastName) {
+            throw "Geben Sie erst einen Nachnamen ein.";
+        }
+    }
 
-        if (a_last_name < b_last_name) {
+    /**
+     * Vergleichsfunktion zur Sortierung von Adressbucheinträgen nach Nachname und Vorname.
+     * 
+     * @param {Object} a Adresse A
+     * @param {Object} b Adresse B
+     * @returns -1, 0, 1 entsprechend der Reihenfolge von A und B
+     */
+    static compare(a, b) {
+        let a_lastName = a.lastName.toUpperCase();
+        let a_firstName = a.firstName.toUpperCase();
+
+        let b_lastName = b.lastName.toUpperCase();
+        let b_firstName = b.firstName.toUpperCase();
+
+        if (a_lastName < b_lastName) {
             return -1;
-        } else if (a_last_name > b_last_name) {
+        } else if (a_lastName > b_lastName) {
             return 1;
-        } else if (a_first_name < b_first_name) {
+        } else if (a_firstName < b_firstName) {
             return -1;
-        } else if (a_first_name > b_first_name) {
+        } else if (a_firstName > b_firstName) {
             return 1;
         } else {
             return 0;
@@ -63,7 +82,49 @@ class AddressEntity extends Entity {
     }
 }
 
-export {
-    Entity,
-    AddressEntity
+/**
+ * Hilfsfunktion zur Erzeugung von Demoadressen, falls keine Adressen in der
+ * Datenbank vorhanden sind.
+ * 
+ * @param {Database} database Datenbankinstanz
+ */
+export async function createDemoAddresses(addressCollection) {
+    let existingData = await addressCollection.findAll();
+
+    if (existingData.length == 0) {
+        addressCollection.save({
+            firstName: "Willy",
+            lastName: "Tanner",
+            phone: "+49 711 564412",
+            email: "willy.tanner@alf.com",
+        });
+
+        addressCollection.save({
+            firstName: "Michael",
+            lastName: "Knight",
+            phone: "+49 721 554194",
+            email: "michael@knight-rider.com",
+        });
+
+        addressCollection.save({
+            firstName: "Fox",
+            lastName: "Mulder",
+            phone: "+49 721 553181",
+            email: "mulder@xfiles.com",
+        });
+
+        addressCollection.save({
+            firstName: "Dana",
+            lastName: "Scully",
+            phone: "+49 721 572287",
+            email: "scully@xfiles.com",
+        });
+
+        addressCollection.save({
+            firstName: "Elwood",
+            lastName: "Blues",
+            phone: "+49 721 957338",
+            email: "elwood@blues-brothers.com",
+        });
+    }
 }

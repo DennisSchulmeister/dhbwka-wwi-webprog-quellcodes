@@ -1,15 +1,14 @@
 "use strict";
 
 import Database from "./database.js";
+import { AddressEntity, createDemoAddresses } from "./entity.js";
 import Router from "./router.js";
 
 /**
- * Hauptklasse App: Steuert die gesamte Anwendung
- *
- * Diese Klasse erzeugt den Single Page Router zur Navigation innerhalb
- * der Anwendung und ein Datenbankobjekt zur Verwaltung der Adressliste.
- * Darüber hinaus beinhaltet sie verschiedene vom Single Page Router
- * aufgerufene Methoden, zum Umschalten der aktiven Seite.
+ * Hauptklasse App: Steuert die gesamte Anwendung bzw. dieser Klasse gehört der Bildschirm.
+ * Hierzu bedient sie sich einem Single Page Router, um zu erkennen, welche Ansicht der
+ * Anwender sehen will. Sowie für jede Ansicht einer Klasse, die den Inhalt dieser Ansicht
+ * liefert.
  */
 class App {
     /**
@@ -58,47 +57,10 @@ class App {
         // Datenbank initialisieren
         await this.database.init();
         // await this.database.deleteCollection("address");
-        await this.database.createCollection("address");
+        await this.database.createCollection("address", AddressEntity);
 
         // Demodaten anlegen
-        let existingData = await this.database.address.findAll();
-
-        if (existingData.length == 0) {
-            this.database.address.save(new AddressEntity({
-                firstName: "Willy",
-                lastName: "Tanner",
-                phone: "+49 711 564412",
-                email: "willy.tanner@alf.com",
-            }));
-
-            this.database.address.save(new AddressEntity({
-                firstName: "Michael",
-                lastName: "Knight",
-                phone: "+49 721 554194",
-                email: "michael@knight-rider.com",
-            }));
-
-            this.database.address.save(new AddressEntity({
-                firstName: "Fox",
-                lastName: "Mulder",
-                phone: "+49 721 553181",
-                email: "mulder@xfiles.com",
-            }));
-
-            this.database.address.save(new AddressEntity({
-                firstName: "Dana",
-                lastName: "Scully",
-                phone: "+49 721 572287",
-                email: "scully@xfiles.com",
-            }));
-
-            this.database.address.save(new AddressEntity({
-                firstName: "Elwood",
-                lastName: "Blues",
-                phone: "+49 721 957338",
-                email: "elwood@blues-brothers.com",
-            }));
-        }
+        createDemoAddresses(this.database.address);
 
         // TODO: Single Page Router starten
     }
@@ -119,7 +81,7 @@ class App {
             // Parameter muss "list" als technischer Name der Seite übergeben werden, damit der
             // dazugehörige Menüeintrag farblich hervorgehoben wird.
         } catch (ex) {
-            this._showException(ex);
+            this.showException(ex);
         }
     }
 
@@ -140,7 +102,7 @@ class App {
             // Parameter muss "new" als technischer Name der Seite übergeben werden, damit der
             // dazugehörige Menüeintrag farblich hervorgehoben wird.
         } catch (ex) {
-            this._showException(ex);
+            this.showException(ex);
         }
     }
 
@@ -159,7 +121,7 @@ class App {
             await page.init();
             this._showPage(page, "edit");
         } catch (ex) {
-            this._showException(ex);
+            this.showException(ex);
         }
     }
 
@@ -191,7 +153,7 @@ class App {
      *
      * @param {Object} ex Abgefangene Ausnahme
      */
-    _showException(ex) {
+    showException(ex) {
         console.error(ex);
         alert(ex.toString());
     }
