@@ -5,7 +5,9 @@ export default class Database {
      * Konstruktor
      */
     constructor() {
-        this._data = [];
+        this._dbname = "local_database";
+        this._collections = [];
+        this._data = {};
     }
 
     /**
@@ -16,60 +18,76 @@ export default class Database {
      * ausgeführt werden können.
      */
     async init() {
-        // Datensätze unserer Anwendung. Falls Sie die Anwendung erweitern
-        // wollen, so dass die Datensätze nicht verloren gehen können, müssten
-        // Sie hier die Datensätze komplett einlesen und wiederherstellen.
-        this._data = JSON.parse(localStorage.getItem("database"));
+        let storage = JSON.parse(localStorage.getItem(this._dbname)) || {};
 
-        if (!this._data || !this._data.length) {
-            this._data = [
-                {
-                    id: 1,
-                    first_name: "Willy",
-                    last_name: "Tanner",
-                    phone: "+49 711 564412",
-                    email: "willy.tanner@alf.com",
-                },
-                {
-                    id: 2,
-                    first_name: "Michael",
-                    last_name: "Knight",
-                    phone: "+49 721 554194",
-                    email: "michael@knight-rider.com",
-                },
-                {
-                    id: 3,
-                    first_name: "Fox",
-                    last_name: "Mulder",
-                    phone: "+49 721 553181",
-                    email: "mulder@xfiles.com",
-                },
-                {
-                    id: 4,
-                    first_name: "Dana",
-                    last_name: "Scully",
-                    phone: "+49 721 572287",
-                    email: "scully@xfiles.com",
-                },
-                {
-                    id: 5,
-                    first_name: "Elwood",
-                    last_name: "Blues",
-                    phone: "+49 721 957338",
-                    email: "elwood@blues-brothers.com",
-                },
-            ];
+        if ("collections" in storage) {
+            for (let collection of storage.collections) {
+                this.createCollection(collection);
+            }
         }
 
-        this._data.sort(this._compareLastnameFirstname);
+        if ("data" in storage) {
+            this._data = storage.data;
+        }
+    }
+
+    /**
+     * Inhalt der Datenbank im Local Storage des Browsers ablegen, damit er
+     * beim Neuladen der Seite erhalten bleibt.
+     */
+    _updateLocalStorage() {
+        localStorage.setItem(this._dbname, JSON.stringify({
+            collections: this._collections,
+            data: this._data,
+        }));
+    }
+
+    /**
+     * Neue Collection zum Speichern von Datensätzen anlegen.
+     * Erzeugt eine gleichnamige Property zum Zugriff auf die Collection.
+     * @param {String} name Name der Collection
+     */
+    createCollection(name) {
+        if (this._collections.indexOf(name) < 0) {
+            this._collections.push(name);
+            this._data[name] = [];
+            this[name] = new Collection(this, name);
+        }
+    }
+
+    /**
+     * Komplette Collection löschen.
+     * @param {String} name Name der Collection
+     */
+    deleteCollection(name) {
+        if (this._collections.indexOf(name) >= 0) {
+            this._collections = this._collections.filter(e => e !== name);
+            delete this._data[name];
+            delete this[name];
+            this._updateLocalStorage();
+        }
+    }
+};
+
+/**
+ * Sammlung von Datensätzen ähnlich einer Datenbanktabelle.
+ */
+class Collection {
+    /**
+     * Konstruktor.
+     * @param {Database} database Datenbankklasse
+     */
+    constructor(database, name) {
+        this._database = database;
+        this._name = name;
     }
 
     /**
      * Gibt die komplette Liste mit allen Daten zurück.
      * @return {Array} Array mit allen Datenobjekten
      */
-    async getAll() {
-        return this._data;
+    async findAll() {
+        return this._database._data[this._name];
     }
 
     /**
@@ -79,8 +97,8 @@ export default class Database {
      * @param  {Integer} id ID des gewünschten Datensatzes
      * @return {Object} Gewünschter Datensatz oder undefined
      */
-    async getById(id) {
-        let dataset = this._data.find(e => e.id == id);
+    async findById(id) {
+        let dataset = this._database._data[this._name].find(e => e.id == id);
         return Object.assign({}, dataset);
     }
 
@@ -96,17 +114,17 @@ export default class Database {
         } else {
             dataset.id = 0;
 
-            this._data.forEach(existing => {
+            this._database._data[this._name].forEach(existing => {
                 dataset.id = Math.max(dataset.id, existing.id);
             });
 
             dataset.id++;
         }
 
-        this._data.push(dataset);
+        this._database._data[this._name].push(dataset);
 
-        this._data.sort(this._compareLastnameFirstname);
-        this._updateLocalStorage();
+        //this._database._data[this._name].sort(this._compareLastnameFirstname);
+        this._database._updateLocalStorage();
     }
 
     /**
@@ -116,43 +134,7 @@ export default class Database {
      * @param {[type]} id ID des zu löschenden Datensatzes
      */
     async delete(id) {
-        this._data = this._data.filter(e => e.id != id);
-        this._updateLocalStorage();
+        this._database._data[this._name] = this._database._data[this._name].filter(e => e.id != id);
+        this._database._updateLocalStorage();
     }
-
-    /**
-     * Inhalt der Datenbank im Local Storage des Browsers ablegen, damit er
-     * beim Neuladen der Seite erhalten bleibt.
-     */
-    _updateLocalStorage() {
-        localStorage.setItem("database", JSON.stringify(this._data));
-    }
-
-    /**
-     * Hilfsmethode zum Sortieren der Datenliste. Die Liste wird nach
-     * Nachname und dann nach Vorname sortiert.
-     *
-     * @param  {Object} a Vergleichsdatensatz A
-     * @param  {Object} b Vergleichsdatensatz B
-     * @return {Number} -1, 0 oder 1
-     */
-    _compareLastnameFirstname(a, b) {
-        let a_last_name = a.last_name.toUpperCase();
-        let a_first_name = a.first_name.toUpperCase();
-
-        let b_last_name = b.last_name.toUpperCase();
-        let b_first_name = b.first_name.toUpperCase();
-
-        if (a_last_name < b_last_name) {
-            return -1;
-        } else if (a_last_name > b_last_name) {
-            return 1;
-        } else if (a_first_name < b_first_name) {
-            return -1;
-        } else if (a_first_name > b_first_name) {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
-};
+}

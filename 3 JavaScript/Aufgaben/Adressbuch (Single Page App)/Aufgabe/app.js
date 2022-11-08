@@ -55,7 +55,50 @@ class App {
      * mit den zugrunde liegenden Promise-Objekten direkt hantieren zu müssen.
      */
     async init() {
+        // Datenbank initialisieren
         await this.database.init();
+        // await this.database.deleteCollection("address");
+        await this.database.createCollection("address");
+
+        // Demodaten anlegen
+        let existingData = await this.database.address.findAll();
+
+        if (existingData.length == 0) {
+            this.database.address.save(new AddressEntity({
+                firstName: "Willy",
+                lastName: "Tanner",
+                phone: "+49 711 564412",
+                email: "willy.tanner@alf.com",
+            }));
+
+            this.database.address.save(new AddressEntity({
+                firstName: "Michael",
+                lastName: "Knight",
+                phone: "+49 721 554194",
+                email: "michael@knight-rider.com",
+            }));
+
+            this.database.address.save(new AddressEntity({
+                firstName: "Fox",
+                lastName: "Mulder",
+                phone: "+49 721 553181",
+                email: "mulder@xfiles.com",
+            }));
+
+            this.database.address.save(new AddressEntity({
+                firstName: "Dana",
+                lastName: "Scully",
+                phone: "+49 721 572287",
+                email: "scully@xfiles.com",
+            }));
+
+            this.database.address.save(new AddressEntity({
+                firstName: "Elwood",
+                lastName: "Blues",
+                phone: "+49 721 957338",
+                email: "elwood@blues-brothers.com",
+            }));
+        }
 
         // TODO: Single Page Router starten
     }

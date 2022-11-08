@@ -38,7 +38,7 @@ export default class PageList extends Page {
         this._title = "Übersicht";
 
         // Platzhalter anzeigen, wenn noch keine Daten vorhanden sind
-        let data = await this._app.database.getAll();
+        let data = await this._app.database.address.findAll();
         this._emptyMessageElement = this._mainElement.querySelector(".empty-placeholder");
 
         if (data.length) {
@@ -58,8 +58,8 @@ export default class PageList extends Page {
             let html = templateHtml;
 
             html = html.replace("$ID$", dataset.id);
-            html = html.replace("$LAST_NAME$", dataset.last_name);
-            html = html.replace("$FIRST_NAME$", dataset.first_name);
+            html = html.replace("$LAST_NAME$", dataset.lastName);
+            html = html.replace("$FIRST_NAME$", dataset.firstName);
             html = html.replace("$PHONE$", dataset.phone);
             html = html.replace("$EMAIL$", dataset.email);
 
@@ -88,7 +88,7 @@ export default class PageList extends Page {
         if (!answer) return;
 
         // Datensatz löschen
-        this._app.database.delete(id);
+        this._app.database.address.delete(id);
 
         // HTML-Element entfernen
         this._mainElement.querySelector(`[data-id="${id}"]`)?.remove();

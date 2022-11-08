@@ -38,7 +38,7 @@ export default class PageList extends Page {
         this._title = "Übersicht";
 
         // Platzhalter anzeigen, wenn noch keine Daten vorhanden sind
-        let data = await this._app.database.getAll();
+        let data = await this._app.database.address.findAll();
         this._emptyMessageElement = this._mainElement.querySelector(".empty-placeholder");
 
         // TODO: Das eben ermittelte Platzhalter-Element ausblenden, wenn Datenbankeinträge vorliegen.
@@ -81,7 +81,7 @@ export default class PageList extends Page {
         if (!answer) return;
 
         // Datensatz löschen
-        this._app.database.delete(id);
+        this._app.database.address.delete(id);
 
         // HTML-Element entfernen
         this._mainElement.querySelector(`[data-id="${id}"]`)?.remove();

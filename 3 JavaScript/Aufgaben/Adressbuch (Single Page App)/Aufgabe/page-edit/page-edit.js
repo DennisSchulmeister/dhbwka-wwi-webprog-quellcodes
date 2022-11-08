@@ -18,13 +18,7 @@ export default class PageEdit extends Page {
 
         // Bearbeiteter Datensatz
         this._editId = editId;
-
-        this._dataset = {
-            first_name: "",
-            last_name: "",
-            phone: "",
-            email: "",
-        };
+        this._dataset = new AddressEntity();
 
         // Eingabefelder
         this._firstNameInput = null;
@@ -54,7 +48,7 @@ export default class PageEdit extends Page {
 
         // Bearbeiteten Datensatz laden
         if (this._editId) {
-            this._dataset = await this._app.database.getById(this._editId);
+            this._dataset = await this._app.database.address.findById(this._editId);
             this._title = `${this._dataset.first_name} ${this._dataset.last_name}`;
         } else {
             this._title = "Adresse hinzufügen";
@@ -62,8 +56,8 @@ export default class PageEdit extends Page {
 
         // Platzhalter im HTML-Code ersetzen
         let html = this._mainElement.innerHTML;
-        html = html.replace("$LAST_NAME$", this._dataset.last_name);
-        html = html.replace("$FIRST_NAME$", this._dataset.first_name);
+        html = html.replace("$LAST_NAME$", this._dataset.lastName);
+        html = html.replace("$FIRST_NAME$", this._dataset.firstName);
         html = html.replace("$PHONE$", this._dataset.phone);
         html = html.replace("$EMAIL$", this._dataset.email);
         this._mainElement.innerHTML = html;
@@ -85,11 +79,11 @@ export default class PageEdit extends Page {
      */
     async _saveAndExit() {
         // Eingegebene Werte prüfen
-        this._dataset.id         = this._editId;
-        this._dataset.first_name = this._firstNameInput.value.trim();
-        this._dataset.last_name  = this._lastNameInput.value.trim();
-        this._dataset.phone      = this._phoneInput.value.trim();
-        this._dataset.email      = this._emailInput.value.trim();
+        this._dataset.id        = this._editId;
+        this._dataset.firstName = this._firstNameInput.value.trim();
+        this._dataset.lastName  = this._lastNameInput.value.trim();
+        this._dataset.phone     = this._phoneInput.value.trim();
+        this._dataset.email     = this._emailInput.value.trim();
 
         // TODO: Meldung ausgeben, wenn der Vorname oder der Nachname fehlt.
         // In diesem Fall die Methode abbrechen und den Datensatz nicht speichern.
