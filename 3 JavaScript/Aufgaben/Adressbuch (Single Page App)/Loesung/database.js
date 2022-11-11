@@ -86,8 +86,11 @@ export default class Database {
      * @param {Class} config Konfiguration der Collection
      */
     async createCollection(name, config) {
-        if (!this._collections.indexOf(name) < 0) {
+        if (this._collections.indexOf(name) < 0) {
             this._collections.push(name);
+        }
+
+        if (!this._data.hasOwnProperty(name)) {
             this._data[name] = [];
         }
         
