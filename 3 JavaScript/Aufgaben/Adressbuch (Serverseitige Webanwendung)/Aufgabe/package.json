@@ -9,7 +9,7 @@
   "author": "Dennis Schulmeister-Zimolong <dennis@wpvs.de>",
   "license": "AGPL-3.0",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "express-nunjucks": "^2.2.5",
     "nunjucks": "^3.2.2"
   }
