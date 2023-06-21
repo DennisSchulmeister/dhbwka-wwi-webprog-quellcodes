@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>🖼️ Aufgabe: Mobile Bildergalerie</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Syntaxhighlighting -->
+        <link rel="stylesheet" href="prism.css" />
+        <script src="prism.js"></script>
+
+        <style>
+            html {
+                font-family: sans-serif;
+                font-size: max(1.4vmin, 10pt);
+            }
+
+            @media (min-width: 63em) {
+                html {
+                    /* https://www.transparenttextures.com/ */
+                    background-color: #005887;
+                    background-image: url("45-degree-fabric-light.png");
+                    background-attachment: fixed;
+                }
+
+                section {
+                    background: white;
+
+                    width: 60em;
+                    margin: 0 auto;
+                    margin-top: 2em;
+                    margin-bottom: 2em;
+
+                    box-shadow: 0px 0px 4px rgba(0,0,0, 0.5);
+                }
+
+                section > h1 {
+                    font-size: 200%;
+                    margin: 0;
+                }
+
+                section article {
+                    padding: 1em;
+                }
+
+                section p,
+                section h2:first-child,
+                section h3:first-child,
+                section h4:first-child {
+                    margin-top: 0;
+                }
+
+                section h2,
+                section h3,
+                section h4 {
+                    margin-bottom: 0.5em;
+                }
+            }
+
+            section {
+                text-align: justify;
+                word-wrap: break-word;
+                hyphens: auto;
+            }
+
+            h1 {
+                padding: 0.25em;
+                margin-top: 1.5em;
+                color: rgb(193, 29, 29);
+                background: #DFDFDF;
+            }
+
+            h1:first-child {
+                margin-top: 0;
+            }
+
+            a, a:visited {
+                color: #3968A1;
+                text-decoration: underline;
+            }
+
+            a:hover {
+                color: #6E9ED9;
+            }
+
+            li {
+                margin-bottom: 0.5em;
+            }
+
+            .screenshot {
+                display: block;
+                box-sizing: border-box;
+                max-width: 100%;
+                margin: 0 auto;
+
+                border: 1px solid #A0A0A0;
+            }
+
+            .caption {
+                font-size: 85%;
+                text-align: center;
+            }
+
+            .footnote {
+                font-size: 75%;
+            }
+
+            pre {
+                margin-bottom: 1.5em !important;
+            }
+
+            #color-codes {
+            }
+
+            #color-codes td {
+                padding: 0.3em;
+                padding-right: 1em;
+            }
+
+            #color-codes td:last-child {
+                padding-right: 0;
+            }
+
+            #color-codes tr > td:first-child {
+                width: 7em;
+                border: 1px solid; #A0A0A0;
+            }
+
+            #color-codes tr > td:nth-child(2) {
+                font-family: monospace;
+                padding-left: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Worum geht es hier?</h1>
+            <article>
+                <p>
+                    Hoffentlich stellst du dir diese Frage nur für diese Aufgabe und nicht für unsere
+                    gesamte Vorlesung. 🤪 In dieser Aufgabe kannst du den Umgang mit CSS weiter üben
+                    und dabei ein kleines UI nach dem Mobile-First-Ansatz realisieren. Der HTML-Code
+                    hierfür ist bereits vorgegeben, du musst jedoch ein Stylesheet entwickeln, das die
+                    Darstellung ausgehend von einem Smartphone immer weiter entwickelt, bis das Layout
+                    letztlich auf Smartphones, Tables und Desktopcomputern einfach zu bedienen ist. 🖐️
+                </p>
+            </article>
+        </section>
+
+        <section>
+            <h1>Entwicklung der Smartphone-Ansicht</h1>
+            <article>
+                <p>
+                    Schalte den Responsive-Modus deines Browsers ein.¹ Füge dann dem HTML-Gerüst ein
+                    Stylesheet hinzu, durch das die Seite wie im folgenden Screenshot gestaltet wird.
+                    Nimm hierfür keine Änderungen am HTML-Code vor, außer um das Styleshoot einzubinden!
+                    In diesem Schritt benötigst du auch noch keine Media Queries.
+                </p>
+                <a href="screenshot1.png" target="_blank">
+                    <img
+                        src   = "screenshot1.png"
+                        alt   = "Darstellung auf dem Smartphone"
+                        class = "screenshot"
+                        style = "width: 33%;"
+                    />
+                </a>
+                <p class="caption">
+                    Darstellung auf dem Smartphone
+                </p>
+                <p class="footnote">
+                    ¹ Möglicherweise musst du auf Firefox umsteigen, wenn du Chrome nutzt und dabei
+                    feststellst, dass alle Inhalte im Responsive-Modus winzig klein erscheinen.
+                    Das ist ein bekannter Bug in Chrome in Zusammenhang mit ultrahochauflösenden
+                    Bildschirmen.
+                </p>
+            </article>
+        </section>
+
+        <section>
+            <h1>Weiterentwicklung zur Tablet-Version</h1>
+            <article>
+                <p>
+                    Füge dem Stylesheet nun ein Media Query für alle Bildschirme mit <code>>800px</code>
+                    Breite hinzu. Auf diesen Geräten soll die Schrift ein wenig größer erscheinen
+                    (zum Beispiel <code>13pt</code>) und es sollen drei statt zwei Bilder nebeneinander
+                    stehen.
+                </p>
+                <a href="screenshot2.png" target="_blank">
+                    <img
+                        src   = "screenshot2.png"
+                        alt   = "Darstellung auf Tablets"
+                        class = "screenshot"
+                        style = "width: 60%;"
+                    />
+                </a>
+                <p class="caption">
+                    Darstellung auf einem Tablet
+                </p>
+            </article>
+        </section>
+
+        <section>
+            <h1>Weiterentwicklung für Desktopcomputer</h1>
+            <article>
+                <p>
+                    Füge ein weiteres Media Query für Bildschirme ab <code>1200px</code> hinzu.
+                    Erfüllt das Ausgabegerät dieses Kriterium, sitzt der Anwender wahrscheinlich
+                    an einem gewöhnlichen Computer. Die Schrift soll entsprechend noch größer
+                    erscheinen und es sollen vier statt drei Bilder in einer Rehe stehen.
+                    Zusätzlich sollen die Bilder einen kleinen Schatten werfen und die Buttons
+                    sollen mit halber Fensterbreite nebeneinander stehen.
+                </p>
+                <a href="screenshot3.png" target="_blank">
+                    <img
+                        src   = "screenshot3.png"
+                        alt   = "Darstellung auf Desktopcomputern"
+                        class = "screenshot"
+                        style = "width: 82%;"
+                    />
+                </a>
+                <p class="caption">
+                    Darstellung auf einem Desktopcomputer
+                </p>
+            </article>
+        </section>
+
+        <section>
+            <h1>Hinweise</h1>
+            <article>
+                <p>
+                    Um die Bilder nebeinander zu bekommen, kannst du den
+                    <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">Flexbox-Algorithmus</a>
+                    verwenden. Der CSS-Code hierfür sieht ungefähr wie folgt aus:
+                </p>
+<pre><code class="language-css">ELTERN-ELEMENT {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+BILD {
+    box-sizing: border-box;         /* padding und border nicht zur Größe hinzuaddieren */
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: calc(50% - 0.2em);  /* 0.2em = 2x margin */
+    max-width: calc(50% - 0.2em);   /* 0.2em = 2x margin */
+    margin: 0.1em;
+}</code></pre>
+                <p>
+                    In der Musterlösung werden folgende Farbcodes verwendet: 🎨
+                </p>
+                <table id="color-codes" style="margin-bottom: 1em;">
+                    <tr>
+                        <td style="background: rgb(25, 77, 125);"></td>
+                        <td>rgb(25, 77, 125)</td>
+                        <td>Hintergrundfarbe des Headers und der Buttons</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #c5d2de;"></td>
+                        <td>rgba(255, 255, 255, 0.75)</td>
+                        <td>Schriftfarbe im Header (weiß mit Transparenz)</td>
+                    </tr>
+                    <tr>
+                        <td style="background: white;"></td>
+                        <td>white</td>
+                        <td>Schriftfarbe der Buttons (komplett weiß)</td>
+                    </tr>
+                    <tr>
+                        <td style="background: lightgrey;"></td>
+                        <td>lightgrey</td>
+                        <td>Rahmenfarbe der Bilder, damit sie wie Fotos aussehen</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #f6f6f6;"></td>
+                        <td>rgb(246, 246, 246)</td>
+                        <td>Füllfarbe der Bilder, damit sie wie Fotos aussehen</td>
+                    </tr>
+                </table>
+            </article>
+        </section>
+    </body>
+</html>
