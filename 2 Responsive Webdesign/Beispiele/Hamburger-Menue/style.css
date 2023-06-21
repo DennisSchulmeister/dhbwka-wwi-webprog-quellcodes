@@ -39,7 +39,7 @@ header, main {
 
     .animated {
         /* Die maximale Höhe muss angepasst werden, wenn sich die Anzahl der
-         * Menüeinträge ändert, damit des Menü vollständig angezeigt und die
+         * Menüeinträge ändert, damit das Menü vollständig angezeigt und die
          * Animation beim Zuklappen ohne Zeitversatz sichtbar wird. */
         max-height: 10em;
         transition: max-height 1s;
