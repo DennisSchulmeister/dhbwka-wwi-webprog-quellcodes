@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>🐏 Aufgabe: Hallo Bootstrap</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            html {
+                font-family: sans-serif;
+                font-size: max(1.4vmin, 10pt);
+            }
+
+            @media (min-width: 63em) {
+                html {
+                    /* https://pixabay.com/de/photos/schafe-l%C3%A4mmer-herde-tiere-grasen-3437467/ */
+                    background-color: rgb(209, 230, 233);
+                    background-image: url(background.jpg);
+                    background-attachment: fixed;
+                    background-size: cover;
+                    background-position: center;
+                }
+
+                section {
+                    background: white;
+
+                    width: 60em;
+                    margin: 0 auto;
+                    margin-top: 2em;
+                    margin-bottom: 2em;
+
+                    box-shadow: 0px 0px 4px rgba(0,0,0, 0.5);
+                }
+
+                section > h1 {
+                    font-size: 200%;
+                    margin: 0;
+                }
+
+                section article {
+                    padding: 1em;
+                }
+
+                section p,
+                section h2:first-child,
+                section h3:first-child,
+                section h4:first-child {
+                    margin-top: 0;
+                }
+
+                section h2,
+                section h3,
+                section h4 {
+                    margin-bottom: 0.5em;
+                }
+
+                .screenshot {
+                    margin: 0 !important;
+                }
+
+                .screenshot.small {
+                    max-width: 15em;
+                }
+
+                .flexbox {
+                    display: flex;
+                    justify-content: center;
+                    column-gap: 1em;
+                }
+            }
+
+            @media print {
+                .screenshot.small {
+                    max-width: 15em;
+                }
+
+                .flexbox {
+                    display: flex;
+                    justify-content: center;
+                    column-gap: 1em;
+                }
+            }
+
+            section {
+                text-align: justify;
+                word-wrap: break-word;
+                hyphens: auto;
+            }
+
+            h1 {
+                padding: 0.25em;
+                margin-top: 1.5em;
+                color: rgb(193, 29, 29);
+                background: #DFDFDF;
+            }
+
+            h1:first-child {
+                margin-top: 0;
+            }
+
+            a, a:visited {
+                color: #3968A1;
+                text-decoration: underline;
+            }
+
+            a:hover {
+                color: #6E9ED9;
+            }
+
+            .screenshot {
+                display: block;
+                width: 100%;
+                border: 1px solid #A0A0A0;
+                margin: 1em 0 1em 0;
+            }
+
+            .teilaufgabe {
+                color: darkslateblue;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Aufgabe: Hallo Bootstrap</h1>
+
+            <article>
+                <p>
+                    Im Vorlesungsskript wurde das unten gezeigte Formular als Fallbeispiel für Bootstrap vorgestellt.
+                    Um die konzeptionellen Unterschiede zur Entwicklung nur mit HTML und CSS besser zu verstehen,
+                    wollen wir dieses ein wenig überarbeiten. Die beiden Screenshots zeigen die Vorlage sowie die
+                    daraus abzuleitende Version. Es handelt sich um ein Anmeldeformular für eine neue Social Media
+                    Plattform mit dem Namen „Flock of Sheep“. 🐑
+                </p>
+                <p class="flexbox">
+                    <a href="screenshot-vorher.png" target="_blank">
+                        <img
+                            src   = "screenshot-vorher.png"
+                            alt   = "Ursprüngliche Version des Formulars"
+                            class = "screenshot inline"
+                        />
+                    </a>
+                    <a href="screenshot-nachher.png" target="_blank">
+                        <img
+                            src   = "screenshot-nachher.png"
+                            alt   = "Neue Version des Formulars"
+                            class = "screenshot inline"
+                        />
+                    </a>
+                </p>
+                <p style="text-align: center;">
+                    <small>
+                        Bilder anklicken für eine größere Version
+                        (<a href="../Aufgabe/index.html" target="_blank">Aufgabe</a>)
+                        (<a href="../Loesung/index.html" target="_blank">Musterlösung</a>)
+                    </small>
+                </p>
+
+                Schließt euch in kleine Gruppen zusammen und passt die Vorlage so an, dass sie der neuen Version entspricht.
+            </article>
+        </section>
+
+        <section>
+            <h1>Offene Diskussion</h1>
+
+            <article>
+                <p>
+                    <span class="teilaufgabe">a)</span>
+                    Welche Teile des Quellcodes sind allgemeingültiges HTML/CSS und welche Bootstrap?
+                </p>
+
+                <p style="margin-top: 1em;">
+                    <span class="teilaufgabe">b)</span>
+                    Wie geht Bootstrap¹ anders als HTML/CSS mit der Trennung von Markup und Styling um?
+                </p>
+
+                <p style="margin-top: 1em;">
+                    <span class="teilaufgabe">c)</span>
+                    Welche Vor- oder Nachteile könnte das Vorgehen von Bootstrap haben? Welches Vorgehen bevorzugst du?
+                </p>
+
+                <p style="margin-top: 1em;">
+                    <span class="teilaufgabe">d)</span>
+                    Wie beschleunigt Bootstrap die Entwicklung responsiver Layouts?
+                </p>
+
+                <p style="margin-top: 1em">
+                    ¹
+                    <small>
+                        <small>
+                            Andere CSS-Frameworks wie <a href="https://tailwindcss.com/" target="_blank">TailwindCSS</a>
+                            verfolgen tatsächlich einen ähnlichen Ansatz.
+                        </small>
+                    </small>
+                </p>
+            </article>
+        </section>
+    </body>
+</html>
