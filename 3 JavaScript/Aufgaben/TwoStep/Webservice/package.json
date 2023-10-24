@@ -1,0 +1,18 @@
+{
+  "name": "webservice",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon ./server.js",
+    "start:vorlage": "nodemon ./server.vorlage.js"
+  },
+  "author": "Dennis Schulmeister-Zimolong",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

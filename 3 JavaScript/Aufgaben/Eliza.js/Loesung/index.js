@@ -76,7 +76,7 @@ window.addEventListener("load", () => {
         "STUDIUM|HOCHSCHULE|VORLESUNG": [
             "Wie gefallen dir deine aktuellen Vorlesungen?",
             "Ist das Studium derzeit sehr stressig?",
-            "Studenjahre sind die besten Jahre.",
+            "Studentenjahre sind die besten Jahre.",
             "Wann warst du zuletzt an der Hochschule?",
             "Hast du schon alle Aufgaben bearbeitet?",
         ],
@@ -125,7 +125,9 @@ window.addEventListener("load", () => {
         let possibleAnswers = [];
 
         if (message != "*") {
-            possibleAnswers = possibleAnswers.concat(chatbotKeywords[""]);
+            // Nur eine Fallback-Antwort hinzufügen, damit diese nicht zu oft erscheinen
+            let index = Math.floor(Math.random() * chatbotKeywords[""].length);
+            possibleAnswers.push(chatbotKeywords[""][index]);
         }
 
         Object.keys(chatbotKeywords).forEach(keywords => {

@@ -87,6 +87,6 @@ app.listen(config.port, config.host, () => {
     console.log();
     console.log("  » DICT_FILE:  Pfad und Dateiname der Wörterbuchdatei (Plain-Text-Format)");
     console.log("  » PORT:       TCP-Port, auf dem der Webserver erreichbar ist");
-    console.log("  » HOST:       Hostname oder IP-Addresse, auf welcher der Webserver erreichbar ist");
+    console.log("  » HOST:       Hostname oder IP-Adresse, auf welcher der Webserver erreichbar ist");
     console.log();
 });
