@@ -13,6 +13,9 @@ html {
 }
 
 body {
+    /* padding: 1rem; */
+    backdrop-filter: blur(10px);
+
     font-family: sans-serif;
     font-size: 13pt;
 }
@@ -26,18 +29,24 @@ main {
 }
 
 h1 {
-    color: #eb3b5a;
-    text-shadow:  1px  1px white,
-                 -1px -1px white,
-                 -1px  1px white,
-                  1px -1px white;
+    font-size: 130%;
+    color: white;
+    text-shadow:  1px  1px #2e0f48,
+                 -1px -1px #2e0f48,
+                 -1px  1px #2e0f48,
+                  1px -1px #2e0f48;
+
+    background: rgba(75, 101, 132, 0.75);
+    margin: 0;
+    padding: 0.25rem;
+    padding-bottom: 4rem;
+    margin-bottom: -4rem;
 }
 
 .flexbox {
     display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
+    align-items: stretch;
+    gap: 1rem;
 }
 
 .column {
@@ -60,21 +69,25 @@ h1 {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
+
+    margin: 1rem;
+    margin-top: 0;
+    align-self: center;
 }
 
-@media screen and (min-width: 36em) and (min-height: 36em){
+@media screen and (min-width: 61rem) {
     #chatbox {
-        max-width: 30em;
-        max-height: 50em;
+        max-width: 60rem;
     }
 }
-
 
 #chatbox .messages {
     align-self: stretch;
     padding: 1em;
     overflow: auto;
     scroll-behavior: smooth;
+
+    justify-content: start;
 }
 
 #chatbox input {
@@ -92,20 +105,20 @@ h1 {
     border-radius: 0.5em;
 
     padding: 0.5em;
-    width: 60%;
     box-sizing: border-box;
 
     margin-bottom: 1em;
+    box-shadow: 1px 1px 2px rgba(0,0,0, 0.33);
 }
 
 .message.local {
     background-color: #a5b1c2;
     color: rgba(0,0,0, 0.75);
-    float: left;
+    align-self: flex-start;
 }
 
 .message.remote {
     background-color: #4b6584;
     color: rgba(255,255,255, 0.75);
-    float: right;
+    align-self: flex-end;
 }

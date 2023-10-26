@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>📱 Eliza.js</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="style.css"/>
+        <script src="index.js" type="module"></script>
+    </head>
+    <body class="flexbox column">
+        <h1>Eliza.js – Chatten bis der Arzt kommt!</h1>
+
+        <main id="app-frame" class="flexbox stretch">
+            <!-- Kontaktliste -->
+            <aside id="contacts">
+                <ul>
+                    <li class="about" onclick="location.hash='/about'">
+                        <span>Über diese App</span>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- Chatbereich -->
+            <section id="chatbox" class="hidden stretch flexbox column">
+                <div class="messages stretch flexbox column"></div>
+                <input placeholder="Antwort …" />
+            </section>
+
+            <!-- Über diese App -->
+            <section id="about" class="hidden">
+                <h2>Eliza.js</h2>
+                <h3>Vorlesung Webprogrammierung</h3>
+
+                <p>
+                    © 2017 – 2023 Dennis Schulmeister-Zimolong <br>
+                    <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Namensnennung 4.0 International</a>
+                </p>
+
+                <p>
+                    Die Chatanwendung für langweilige Vorlesungsstunden und die perfekte Ablenkung beim Lernen.
+                    Reagiert nicht immer intelligent, macht aber Spaß. Zumindest anfangs.
+                </p>
+            </section>
+
+            <!-- Nicht gefunden -->
+            <section id="not-found" class="hidden">
+                <h1>Fehler</h1>
+                <p>Die gewünschte Seite wurde nicht gefunden.</p>
+                <p><a href="#/">Zurück zur Startseite</a></p>
+            </section>
+        </main>
+    </body>
+</html>

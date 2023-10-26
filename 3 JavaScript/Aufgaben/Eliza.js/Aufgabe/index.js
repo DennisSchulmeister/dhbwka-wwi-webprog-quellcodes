@@ -3,9 +3,11 @@
  * im JavaScript vornehmen. Sonst funktionieren die DOM-Zugriffe nicht.
  */
 window.addEventListener("load", () => {
+    // Wichtige HTML-Elemente besorgen
     let messagesElement = null;     // TODO: Element "#chatbox .messages" stattdessen zuweisen
     let inputElement = null;        // TODO: Element "#chatbox input" stattdessen zuweisen
 
+    // Chatbot-Logik
     let chatbotKeywords = {
         "*": [
             "Hallo! Ich bin der Doktor. Wie geht es dir?",
@@ -22,6 +24,12 @@ window.addEventListener("load", () => {
             "Lass uns das Thema wechseln.",
         ],
 
+        "?": [
+            "Die Frage solltest du lieber selbst beantworten.",
+            "Überlasse das Fragestellen lieber mir.",
+            "Lass uns diese Frage für später aufheben.",
+        ],
+        
         "HALLO|HI|TAG|MAHLZEIT|SERVUS": [
             "Schön, dich zu sehen. Lange nichts mehr gehört.",
             "Ich weiß nicht, ob ich gerade in Stimmung dafür bin …",
