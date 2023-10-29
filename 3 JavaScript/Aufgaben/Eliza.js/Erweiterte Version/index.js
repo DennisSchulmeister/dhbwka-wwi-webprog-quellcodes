@@ -187,7 +187,7 @@ window.addEventListener("load", () => {
      * Hauptverarbeitungslogik des Chatbots. Nimmt eine Nachricht entgegen
      * und erzeugt eine Antwortnachricht.
      *
-     * @param  {String} message Nachricht vom Anwneder
+     * @param  {String} message Nachricht vom Anwender
      * @return {String} Antwort des Chatbots
      */
     function generateBotAnswer(message) {
