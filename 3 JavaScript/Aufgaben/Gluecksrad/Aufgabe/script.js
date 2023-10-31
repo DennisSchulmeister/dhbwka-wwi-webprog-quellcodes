@@ -12,15 +12,21 @@ class WheelOfFortune {
         this._quote = "";
 
         // Audio-Objekte für die verschiedenen Sounds
-        this.hitSound = new Audio("snd/hit.ogg");
+        this.hitSound  = new Audio("snd/hit.ogg");
         this.failSound = new Audio("snd/fail.ogg");
-        this.winSound = new Audio("snd/win.ogg");
+        this.winSound  = new Audio("snd/win.ogg");
 
-        // TODO: Benötigte HTML-Elemente merken
+        // Benötigte HTML-Elemente merken
+        this.optionsDiv  = null;    // TODO: Element besorgen: #options
+        this.scoreDiv    = null;    // TODO: Element besorgen: #score
+        this.mainElement = null;    // TODO: Element besorgen: main
 
-        // TODO: Event Handler für Tastendruck
+        // Event Handler für Tastendruck
+        let bodyElement = document.querySelector("body");
+        bodyElement.addEventListener("keypress", event => this.onKeyPressed(event));
 
-        // TODO: Auswahl des Lösungsworts anbieten
+        // Auswahl des Lösungsworts anbieten
+        this.createTopbarElements();
     }
 
     /**
@@ -33,5 +39,100 @@ class WheelOfFortune {
 
     get score() {
         return this._score;
+    }
+
+    /**
+     * Hilfsmethode, mit der die Einträge in der Topbar zur Auswahl des
+     * Lösungsworts erzeugt werden.
+     */
+    createTopbarElements() {
+        for (let quote of this.quotes || []) {
+            let divElement = document.createElement("div");
+            divElement.classList.add("option");
+            divElement.textContent = quote[0];
+            this.optionsDiv.appendChild(divElement);
+    
+            divElement.addEventListener("click", () => this.startGame(quote[1]));
+        }
+    }
+
+    /**
+     * Start eines neuen Spiels.
+     * @param {String} quote Das gesuchte Lösungswort
+     */
+    startGame(quote) {
+        // Scorewert auf Null zurücksetzen
+        this.score  = 0;
+        this._quote = "";
+
+        quote = quote.toUpperCase();
+
+        // Kästchen für die Buchstaben erzeugen
+        this.mainElement.innerHTML = "";
+
+        // TODO: Variable quote bei jedem Leerzeichen in einzelne Wörter splitten
+        // TODO: Schleife über die gesplitteten Wörter (hierfür [] in der nächsten Zeile ersetzen!)
+
+        for (let word of []) {
+            // TODO: <div class="word"> erzeugen und an das mainElement anhängen
+
+            // Je Buchstabe ein eigenes <div>
+            for (let i = 0; i < word.length; i++) {
+                let char = word[i];
+
+                // TODO: <div class="char" data-char="B"> erzeugen. data-char muss den Buchstaben beinhalten!
+                // TODO: Das neue DIV-Element an das <div class="word"> anhängen
+
+                if (!"ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜß".includes(char)) {
+                    // Alles, was kein Buchstabe ist, direkt anzeigen
+                    charDiv.textContent = char;
+                } else {
+                    // Buchstabe merken, um ihn später beim Drücken
+                    // einer Taste als gesuchten Buchstaben zu erkennen
+                    this._quote += char;
+                }
+            }
+        }
+    }
+
+    /**
+     * Event Handler für Tastaturereignisse.
+     * @param  {Event} event Die Event-Struktur des Ereignisses
+     */
+    onKeyPressed(event) {
+        // Nur weiter, wenn es ein Lösungswort gibt
+        if (this._quote === "") return;
+
+        // Gedrückte Taste ermitteln und prüfen
+        let char = event.key.toUpperCase();
+
+        if (this._quote.includes(char)) {
+            // Treffer!
+            this.score += 10;
+
+            // Buchstabe aus der Liste entfernen
+            this._quote = this._quote.split(char).join("");
+
+            // Buchstabe anzeigen
+            // TODO: Alle passenden DIV-Elemente für den Buchstaben finden und den Buchstaben darin anzeigen
+
+            // Sound abspielen
+            if (this._quote.length > 0) {
+                // Noch Buchstaben übrig
+                this.hitSound.currentTime = 0;
+                this.hitSound.play();
+            } else {
+                // Alle Buchstaben erraten
+                this.winSound.currentTime = 0;
+                this.winSound.play();
+            }
+        } else {
+            // Kein Treffer!
+            this.score -= 15;
+
+            // Sound abspielen
+            this.failSound.currentTime = 0;
+            this.failSound.play();
+        }
     }
 }

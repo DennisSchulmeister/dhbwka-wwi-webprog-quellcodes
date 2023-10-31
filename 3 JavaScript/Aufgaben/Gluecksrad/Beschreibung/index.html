@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>🎲 Aufgabe: Glücksrad</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            html {
+                font-family: sans-serif;
+                font-size: max(1.4vmin, 10pt);
+            }
+
+            @media (min-width: 63em) {
+                html {
+                    /* https://pixabay.com/photos/gambling-contest-poker-happiness-4178462/ */
+                    background-color: rgb(11, 85, 98);
+                    background-image: url(background.jpg);
+                    background-attachment: fixed;
+                    background-size: cover;
+                    background-position: center;
+
+                    hyphens: auto;
+
+                    min-height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                section {
+                    background: white;
+
+                    width: 60em;
+                    margin-top: 2em;
+                    margin-bottom: 2em;
+
+                    box-shadow: 0px 0px 4px rgba(0,0,0, 0.5);
+
+                    text-align: justify;
+                }
+
+                section > h1 {
+                    font-size: 200%;
+                    margin: 0;
+                }
+
+                section article {
+                    padding: 1em;
+                }
+
+                section p,
+                section h2:first-child,
+                section h3:first-child,
+                section h4:first-child {
+                    margin-top: 0;
+                }
+
+                section h2,
+                section h3,
+                section h4 {
+                    margin-bottom: 0.5em;
+                }
+            }
+
+            section {
+                text-align: justify;
+                word-wrap: break-word;
+                hyphens: auto;
+            }
+
+            h1 {
+                padding: 0.25em;
+                margin-top: 1.5em;
+                color: rgb(193, 29, 29);
+                background: #DFDFDF;
+            }
+
+            h1:first-child {
+                margin-top: 0;
+            }
+
+            a, a:visited {
+                color: #3968A1;
+                text-decoration: underline;
+            }
+
+            a:hover {
+                color: #6E9ED9;
+            }
+
+            .screenshot {
+                display: block;
+                width: 100%;
+                height: 100%;
+                border: 1px solid #A0A0A0;
+                margin: 1em 0 1em 0;
+            }
+
+            .screenshot {
+                margin: 0 !important;
+            }
+
+            .screenshot.small {
+                max-width: 18em;
+            }
+
+            .flexbox {
+                display: flex;
+                justify-content: center;
+                column-gap: 1em;
+            }
+
+            tt {
+                color: DeepPink;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Aufgabe: Glücksrad</h1>
+
+            <article>
+                <p>
+                    Mit dem bisher erworbenen Wissen können wir sogar kleine Browserspiele programmieren.
+                    Denn mit HTML und CSS lassen sich diese einfach gestalten, wobei JavaScript die Spiellogik
+                    beisteuert. In dieser Aufgabe wollen wir daher ein kleines Ratespiel in Anlehnung an die
+                    Spielshow <a target="_blank" href="https://de.wikipedia.org/wiki/Gl%C3%BCcksrad_(Spielshow)">Glücksrad</a>
+                    programmieren. 📺
+                </p>
+                <p>
+                    Die Regeln sind jedoch einfach gehalten als beim Original. In unsere Version müssen lediglich
+                    durch Drücken der entsprechenden Taste Buchstaben geraten werden. Jeder richtige Buchstabe wird
+                    aufgedeckt und schreibt dem Spieler Punkte gut. Jeder falsch geratene Buchstabe reduziert den
+                    Punktestand. Passende Geräuscheffekte begleiten das Spielgeschehen. ♪
+                </p>
+                <div class="flexbox" style="margin-bottom: 1em;">
+                    <a href="screenshot.jpg" target="_blank">
+                        <img
+                            src   = "screenshot.jpg"
+                            alt   = "Screenshot der zu erstellenden Webanwendung"
+                            class = "screenshot"
+                        />
+                    </a>
+                </div>
+                <p style="text-align: center;">
+                    <small>
+                        Bild anklicken für eine größere Version
+                        (<a href="../Loesung/index.html" target="_blank">Musterlösung</a>)
+                    </small>
+                </p>
+            </article>
+        </section>
+
+        <section>
+            <h1>Vorgehensweise</h1>
+
+            <article>
+                <p>
+                    Die zu bearbeitenden Stellen sind mit <tt>TODO</tt> im Quellcode gekennzeichnet.
+                    Los geht es in der Datei <tt>index.html</tt>, in der ein neues Objekt der Klasse
+                    <tt>WheelOfFortune</tt> erzeugt werden muss. Die Syntax ist ähnlich wie in Java.
+                    Anschließend müssen in der Klasse ein paar DOM-Zugriffe ausprogrammiert werden,
+                    um das Spiel fertigzustellen.
+                </p>
+            </article>
+        </section>
+    </body>
+</html>

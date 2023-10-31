@@ -12,13 +12,13 @@ class WheelOfFortune {
         this._quote = "";
 
         // Audio-Objekte für die verschiedenen Sounds
-        this.hitSound = new Audio("snd/hit.ogg");
+        this.hitSound  = new Audio("snd/hit.ogg");
         this.failSound = new Audio("snd/fail.ogg");
-        this.winSound = new Audio("snd/win.ogg");
+        this.winSound  = new Audio("snd/win.ogg");
 
         // Benötigte HTML-Elemente merken
-        this.optionsDiv = document.getElementById("options");
-        this.scoreDiv = document.getElementById("score");
+        this.optionsDiv  = document.getElementById("options");
+        this.scoreDiv    = document.getElementById("score");
         this.mainElement = document.querySelector("main");
 
         // Event Handler für Tastendruck
@@ -30,18 +30,30 @@ class WheelOfFortune {
     }
 
     /**
+     * Aktualisierung der aktuellen Punktzahl.
+     */
+    set score(score) {
+        this._score = score;
+        this.scoreDiv.textContent = `${score} Punkte`;
+    }
+
+    get score() {
+        return this._score;
+    }
+
+    /**
      * Hilfsmethode, mit der die Einträge in der Topbar zur Auswahl des
      * Lösungsworts erzeugt werden.
      */
     createTopbarElements() {
-        this.quotes.forEach(quote => {
+        for (let quote of this.quotes || []) {
             let divElement = document.createElement("div");
             divElement.classList.add("option");
             divElement.textContent = quote[0];
             this.optionsDiv.appendChild(divElement);
-
+    
             divElement.addEventListener("click", () => this.startGame(quote[1]));
-        });
+        }
     }
 
     /**
@@ -50,14 +62,15 @@ class WheelOfFortune {
      */
     startGame(quote) {
         // Scorewert auf Null zurücksetzen
-        this.score = 0;
+        this.score  = 0;
         this._quote = "";
+
         quote = quote.toUpperCase();
 
         // Kästchen für die Buchstaben erzeugen
         this.mainElement.innerHTML = "";
 
-        quote.split(" ").forEach(word => {
+        for (let word of quote.split(" ")) {
             // <div class="word"> … </div> für das gesamte Wort
             let wordDiv = document.createElement("div");
             wordDiv.classList.add("word");
@@ -75,37 +88,25 @@ class WheelOfFortune {
                     // Alles, was kein Buchstabe ist, direkt anzeigen
                     charDiv.textContent = char;
                 } else {
-                    // Buchstabe merken, um ihn später beim Drücker einer Taste
-                    // als gesuchten Buchstaben zu erkennen
+                    // Buchstabe merken, um ihn später beim Drücken
+                    // einer Taste als gesuchten Buchstaben zu erkennen
                     this._quote += char;
                 }
 
                 wordDiv.appendChild(charDiv);
             }
-        });
+        }
     }
 
     /**
-     * Aktualisierung der aktuellen Punktzahl.
-     */
-    set score(score) {
-        this._score = score;
-        this.scoreDiv.textContent = `${score} Punkte`;
-    }
-
-    get score() {
-        return this._score;
-    }
-
-    /**
-     * Event Handler für Tastatusereignisse.
+     * Event Handler für Tastaturereignisse.
      * @param  {Event} event Die Event-Struktur des Ereignisses
      */
     onKeyPressed(event) {
         // Nur weiter, wenn es ein Lösungswort gibt
         if (this._quote === "") return;
 
-        // Gedrücke Taste ermitteln und prüfen
+        // Gedrückte Taste ermitteln und prüfen
         let char = event.key.toUpperCase();
 
         if (this._quote.includes(char)) {
