@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <title>🏁 Webprogrammierung: Vorlesungsende</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kalam&family=Roboto:wght@300&family=Russo+One&family=Satisfy&display=swap" rel="stylesheet">
+
+        <style>
+            html {
+                font-family: 'Roboto', sans-serif;
+                font-size: max(1.4vmin, 10pt);
+            }
+
+            @media (min-width: 63em) {
+                html {
+                    /* https://pixabay.com/photos/book-literature-page-book-bindings-3033196/ */
+                    background-color: rgb(11, 85, 98);
+                    background-image: url(background.jpg);
+                    background-attachment: fixed;
+                    background-size: cover;
+                    background-position: center;
+
+                    hyphens: auto;
+
+                    min-height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                section {
+                    background: white;
+
+                    width: 60em;
+                    margin-top: 2em;
+                    margin-bottom: 2em;
+
+                    box-shadow: 0px 0px 4px rgba(0,0,0, 0.5);
+
+                    text-align: justify;
+                }
+
+                section > h1 {
+                    font-size: 200%;
+                    margin: 0;
+                }
+
+                section article {
+                    padding: 1em;
+                }
+
+                section p,
+                section h2:first-child,
+                section h3:first-child,
+                section h4:first-child {
+                    margin-top: 0;
+                }
+
+                section h2,
+                section h3,
+                section h4 {
+                    margin-bottom: 0.5em;
+                }
+            }
+
+            section {
+                text-align: justify;
+                word-wrap: break-word;
+                hyphens: auto;
+            }
+
+            h1 {
+                padding: 0.25em;
+                margin-top: 1.5em;
+                color: rgb(193, 29, 29);
+                background: #DFDFDF;
+            }
+
+            h1:first-child {
+                margin-top: 0;
+            }
+
+            a, a:visited {
+                color: #3968A1;
+                text-decoration: underline;
+            }
+
+            a:hover {
+                color: #6E9ED9;
+            }
+
+            .screenshot {
+                display: block;
+                width: 100%;
+                height: 100%;
+                border: 1px solid #A0A0A0;
+                margin: 1em 0 1em 0;
+            }
+
+            .screenshot {
+                margin: 0 !important;
+            }
+
+            .screenshot.small {
+                max-width: 18em;
+            }
+
+            .flexbox {
+                display: flex;
+                justify-content: center;
+                column-gap: 1em;
+            }
+
+            tt {
+                color: DeepPink;
+            }
+
+            /**
+             * Konfetti-Button
+             */
+            button {
+                border: none;
+                background: rgb(45, 79, 131);
+                color: white;
+                padding: 0.5em;
+                border-radius: 0.5em;
+
+                transition: background 0.25s;
+            }
+
+            button:hover {
+                background: rgb(73, 122, 159);
+                cursor: pointer;
+            }
+
+            /**
+             * Accordion, vgl. https://dev.to/link2twenty/native-html-accordion-2fma
+             */
+            details {
+                overflow: hidden;
+                border: 1px solid #dddddd;
+                margin-top: -1px;
+                background: #ffffff;
+                color: #333333;
+            }
+
+            details:first-child {
+                border-radius: 3px 3px 0 0;
+            }
+
+            details:last-child {
+                border-radius: 0 0 3px 3px;
+            }
+
+            details summary {
+                display: block;
+                cursor: pointer;
+                padding: .5em .5em .5em .7em;
+                background: #ededed;
+                color: #2b2b2b;
+            }
+
+            details summary:hover {
+                background: #f6f6f6;
+                color: #454545;
+            }
+
+            details[open] summary {
+                font-weight: bold;
+            }
+
+            /** Gruppeneinteilung **/
+            #gruppeneinteilung article {
+                height: 35rem;
+                padding: 0;
+            }
+
+            #firepad {
+                border: none;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+
+        <script type="module">
+            import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+
+            window.addEventListener("load", () => {
+                document.querySelector("#party-button")?.addEventListener("click", () => {
+                    confetti({particleCount: 100});
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div style="margin-top: 1em">
+            <button id="party-button">Hurra, wieder ein Semester geschafft! &nbsp; 🎉</button>
+        </div>
+
+        <section>
+            <h1>Workshopaufgabe</h1>
+
+            <article>
+                <p>
+                    Am Ende des dritten Semesters wollen wir einen Ausblick auf verschiedene Themen im Bereich
+                    Webprogrammierung geben. Setzt euch hierfür ein kleinen Gruppen mit vier bis fünf Personen
+                    zusammen, sucht euch eines der folgenden Themen aus und recherchiert die jeweils angegebenen
+                    Leitfragen. Fasst die Ergebnisse hierbei in einer 10-minütigen Kurzpräsentation zusammen, die
+                    eure Gruppe in der zweiten Hälfte der Vorlesung den anderen Kursteilnehmern vorstellen wird.
+                </p>
+
+                <!-- Material Design -->
+                <details>
+                    <summary>Material Design</summary>
+                    <main>
+                        <ol>
+                            <li>Was ist eine Design Language (deutsch: Formensprache)?</li>
+                            <li>Welche Einsatzgebiete deckt das Google Material Design ab?</li>
+                            <li>Welche Metapher liegt dem Material Design zugrunde?</li>
+                            <li>Was sind besondere Gestaltungselemente des Material Design?</li>
+                            <li>Wie sehen typische Anwendungen im Material Design aus (Screenshots)?</li>
+                        </ol>
+                    </main>
+                </details>
+
+                <!-- UI-Patterns -->
+                <details>
+                    <summary>UI-Patterns</summary>
+                    <main>
+                        <ol>
+                            <li>Was bedeutet der Begriff UI-Pattern?</li>
+                            <li>Welche Vorteile und Nachteile hat die Verwendung von UI-Patterns?</li>
+                            <li>Was sind typische UI-Patterns für Webanwendungen (mit Screenshots)?</li>
+                            <li>Was sind gängige UI-Patterns anderer UI-Technologien außerhalb des Web?</li>
+                            <li>Welche UI-Patterns werden von Frameworks wie Bootstrap verwendet?</li>
+                        </ol>
+                    </main>
+                </details>
+
+                <!-- Farbe/Typographie -->
+                <details>
+                    <summary>Farbe/Typographie</summary>
+                    <main>
+                        <ol>
+                            <li>Was ist ein Farbe und wie entsteht überhaupt ein farbiger Seheindruck?</li>
+                            <li>Welche Arten der Farbmischung sind für die UI-Gestaltung relevant?</li>
+                            <li>Was ist ein Farbenkreis und wofür wird er typischerweise verwendet?</li>
+                            <li>Was ist Typographie und welche Regeln sind für das Web von Bedeutung?</li>
+                            <li>Finden Sie Screenshots von besonders gut/schlecht gestalteten Webseiten?</li>
+                        </ol>
+                    </main>
+                </details>
+                
+                <!-- Modernes JavaScript -->
+                <details>
+                    <summary>Modernes JavaScript</summary>
+                    <main>
+                        <ol>
+                            <li>Was wird allgemeine unter dem Begriff „Modern JavaScript“ verstanden?</li>
+                            <li>Wie wird die Sprache JavaScript spezifiziert und weiterentwickelt?</li>
+                            <li>Was sind Promises und wofür werden sie in JavaScript genutzt (Beispiel)?</li>
+                            <li>Wie lässt sich die Verwendung von Promises mit <code>async/await</code> vereinfachen?</li>
+                            <li>Wie werden Klassen in JavaScript definiert und wie werden sie genutzt (Beispiel)?</li>
+                        </ol>
+                    </main>
+                </details>
+
+                <!-- Import Maps -->
+                <details>
+                    <summary>Import Maps</summary>
+                    <main>
+                        <ol>
+                            <li>Was sind ES6-Module und welches Problem sollen sie lösen?</li>
+                            <li>Wie werden <code>import</code> und <code>export</code> in JavaScript verwendet (Beispiel)?</li>
+                            <li>Was ist ein „JavaScript Bundler” und wofür wird er typischerweise eingesetzt?</li>
+                            <li>Was ist eine JavaScript Import Map und welches Problem soll sie lösen?</li>
+                            <li>Wie lassen sich NPM-Pakete mit <a href="https://www.skypack.dev/" target="_blank">skypack.dev</a> auch ohne Bundler nutzen (Beispiel)?</li>
+                        </ol>
+                    </main>
+                </details>
+
+                <!-- Node.js -->
+                <details>
+                    <summary>Node.js</summary>
+                    <main>
+                        <ol>
+                            <li>Was ist Node.js und wann wurde es zu welchem Zweck erfunden?</li>
+                            <li>Wofür wird Node.js neben der Entwicklung von Serveranwendungen noch genutzt?</li>
+                            <li>Wie lässt sich JavaScript-Code mit Node.js außerhalb des Browsers ausführen?</li>
+                            <li>Was ist ein Node.js Package und wie wird es erzeugt (Stichwort <code>package.json</code>)?</li>
+                            <li>Was passiert bei der Ausführung des Befehls <code>npm install</code>?</li>
+                        </ol>
+                    </main>
+                </details>
+            </article>
+        </section>
+
+        <section id="gruppeneinteilung">
+            <h1>Gruppeneinteilung</h1>
+            <article>
+                <iframe id="firepad" src="https://www.wpvs.de/repo/firepad/"></iframe>
+            </article>
+        </section>
+    </body>
+</html>
