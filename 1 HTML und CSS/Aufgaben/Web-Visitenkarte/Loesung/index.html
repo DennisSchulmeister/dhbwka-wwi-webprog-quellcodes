@@ -15,6 +15,13 @@
                 background-attachment: fixed;
             }
 
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+            }
+
             html, body {
                 margin: 0;
                 padding: 0;
@@ -27,15 +34,8 @@
                 left: 0;
                 right: 0;
 
-                backdrop-filter: blur(15px);
                 z-index: -100;
-            }
-
-            body {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                min-height: 100vh;
+                backdrop-filter: blur(15px);
             }
 
             main {
@@ -67,8 +67,10 @@
     <body>
         <div id="bg-blur"></div>
         <main>
+            <!-- Dummy-Element zum Weichzeichnen des Hintergrunds -->
             <img src="foto.jpg" alt="Foto" />
 
+            <!-- Seiteninhalt -->
             <div class="padding">
                 <h1>Dennis Schulmeister-Zimolong</h1>
                 
