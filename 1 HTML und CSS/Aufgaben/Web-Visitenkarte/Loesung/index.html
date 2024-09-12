@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>🪪 Web-Visitenkarte</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            html {
+                font-family: sans-serif;
+                font-size: 12pt;
+
+                background-image: url(foto.jpg);
+                background-size: cover;
+                background-attachment: fixed;
+            }
+
+            html, body {
+                margin: 0;
+                padding: 0;
+            }
+
+            #bg-blur {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+
+                backdrop-filter: blur(15px);
+                z-index: -100;
+            }
+
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+            }
+
+            main {
+                background: white;
+                box-shadow: 2px 2px 4px rgba(0,0,0, 0.25);
+                max-width: 50em;
+            }
+
+            h1 {
+                margin: 0;
+                color: crimson;
+                text-shadow: 1px 1px 2px rgba(0,0,0, 0.25);
+            }
+
+            img {
+                width: 100%;
+            }
+
+            .padding {
+                padding: 1em;
+            }
+
+            p:last-child {
+                margin-bottom: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="bg-blur"></div>
+        <main>
+            <img src="foto.jpg" alt="Foto" />
+
+            <div class="padding">
+                <h1>Dennis Schulmeister-Zimolong</h1>
+                
+                <p>
+                    <b>Seit 1992</b> begeistert von Computern und deren Programmierung <br/>
+                    <b>Seit 2005</b> Software-Entwickler bei der SOA People AG, Karlsruhe <br/>
+                    <b>Seit 2009</b> nebenberuflicher Dozent an der DHBW Karlsruhe <br/>
+                    <b>Seit 2024</b> akademischer Mitarbeiter an der DHBW Karlsruhe
+                </p>
+    
+                <p>
+                    Webprogrammierung, Verteilte Systeme, Internet of Things, Projekte, … <br/>
+                    Keyboarder, Bassist, Sänger und Songwriter in der Freizeit <br/>
+                    Papa einer süßen kleinen Tochter ☺️
+                </p>
+            </div>
+        </main>
+    </body>
+</html>
