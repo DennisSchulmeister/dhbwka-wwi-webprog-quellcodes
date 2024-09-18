@@ -1,0 +1,155 @@
+/***************
+ * ALLGEMEINES *
+ **************/
+
+html {
+    font-size: 110%;
+}
+
+body {
+    background: #666666;
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body.vertical {
+    flex-direction: row;
+}
+
+#options {
+    position: absolute;
+    top: 2em;
+    left: 2em;
+    z-index: 999;
+}
+
+/***********************
+ * HEADER-BAR MTI LOGO *
+ ***********************/
+header {
+    /* Allgemeine Gestaltung */
+    z-index: 100;
+    background-color: white;
+    box-shadow: 2px 2px 4px rgba(0,0,0, 0.5);
+
+    /* Logo mittig ausrichten */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.25em;
+    box-sizing: content-box;
+
+    --image-height: 1.5em;
+
+    img {
+        height: var(--image-height);
+    }
+
+    /* Anpassungen für vertikale Darstellung auf kleinen Bildschirmen */
+    max-height: 100vh;
+    position: sticky;
+    top: 0;
+
+    /*
+     * Container Queries gegen dieses Element erlauben 
+     *
+     * WICHTIG: Dem Element muss eine explizite Größe zugewiesen werden, da Elemente
+     * die in Container Queries abgefragt werden können, ihre Höhe mehr automatisch
+     * aus ihren Inhalten ableiten. Deshalb wird hier mit `flex-basis` die Größe gesetzt.
+     * `flex-basis` ist die Höhe innerhalb einer horizontalen Flexbox und die Breite
+     * in einer vertikalen Flexbox.
+     */
+    container-type: size;
+    container-name: header-bar;
+    flex-basis: var(--image-height);
+}
+
+@container header-bar (orientation: portrait) {
+    /* Logo drehen, wenn der Header hochkant steht */
+    img {
+        transform: rotate(-90deg);
+    }
+}
+
+/***************
+ * FOTOGALERIE *
+ ***************/
+main {
+    /* Container Queries gegen dieses Element erlauben */
+    container-type: inline-size;
+    container-name: main;
+
+    /*
+     * Alternativ die Breite und Höhe explizit zu setzen, wird empfohlen, Elemente,
+     * die mit Container Queries abgefragt werden, den Elementen durch eine sie
+     * umgebende Flexbox oder ein Grid ihre Größe zu geben. `<body>` ist deshalb
+     * eine Flexbox in mindestens Bildschirmhöhe, von der wir uns hier den Löwenteil
+     * schnappen.
+     */
+    flex: 1;
+
+    /* Die eigenen Inhalte wollen wir auch mit dem Flexbox-Algorithmus platzieren */
+    display: flex;
+    align-items: stretch;
+}
+
+main.limited-width {
+    /* Container-Größe künstlich begrenzen */
+    width: 30em;
+    max-width: 100%;
+    margin: 0 auto;
+    box-shadow: 0px 0px 8px rgba(0,0,0, 0.5);
+}
+
+#gallery {
+    /* Umsetzung des Galerie-Effekts in einem kleinen Container */
+    flex: 1;
+    overflow: hidden;
+
+    img {
+        object-fit: cover;
+        box-shadow: 2px 2px 4px rgba(0,0,0, 0.5);
+        width: 100%;
+        height: 20vh;
+        transition: height 0.5s;
+        cursor: pointer;
+    }
+
+    img:hover {
+        height: 30vh;
+    }
+
+    img:nth-child(1)  { z-index: 13; }
+    img:nth-child(2)  { z-index: 12; }
+    img:nth-child(3)  { z-index: 11; }
+    img:nth-child(4)  { z-index: 10; }
+    img:nth-child(5)  { z-index: 9;  }
+    img:nth-child(6)  { z-index: 8;  }
+    img:nth-child(7)  { z-index: 7;  }
+    img:nth-child(8)  { z-index: 6;  }
+    img:nth-child(9)  { z-index: 5;  }
+    img:nth-child(10) { z-index: 4;  }
+    img:nth-child(11) { z-index: 3;  }
+    img:nth-child(12) { z-index: 2;  }
+    img:nth-child(13) { z-index: 1;  }
+}
+
+@container main (min-width: 50em) {
+    /* Bilder in einem großen Container nebeneinander statt untereinander anordnen */
+    #gallery {
+        display: flex;
+        align-items: stretch;
+    }
+
+    img {
+        height: 100% !important;
+        width: 7.8vw !important;
+        transition: width 0.5s !important;
+    }
+
+    img:hover {
+        width: 30vh !important;
+    }
+}

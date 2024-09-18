@@ -23,7 +23,7 @@ html, body {
 html,               /* Die Seite allgemein */
 a,                  /* Unbesuchte Links    */
 a:visited {         /* Besuchte Links      */
-    /* Weiße Schriftfarbe und keine Untertreichung */
+    /* Weiße Schriftfarbe und keine Unterstreichung */
     color: rgb(220, 220, 220);
     text-decoration: none;
 }
