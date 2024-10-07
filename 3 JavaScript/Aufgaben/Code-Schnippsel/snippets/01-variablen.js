@@ -19,7 +19,7 @@ class SnippetVariablen {
         if (!vorlesung) {
             error = "Variable <b><code>vorlesung</code></b> existiert nicht oder besitzt keinen Inhalt.";
         } else if (vorlesung !== "Webprogrammierung") {
-            error = `Variable <b><code>vorlesung</code></b> enhtält den falschen Wert <b><code>${vorlesung}</code></b>.`;
+            error = `Variable <b><code>vorlesung</code></b> enthält den falschen Wert <b><code>${vorlesung}</code></b>.`;
         }
 
         return error;

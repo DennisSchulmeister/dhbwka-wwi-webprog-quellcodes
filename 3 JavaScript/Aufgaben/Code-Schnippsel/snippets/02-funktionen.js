@@ -41,9 +41,9 @@ class SnippetFunktionen2 {
     get description() {
         return html`
             <p>
-                Definiere eine Funktion mit dem Namen <b><code>checkTemparature()</code></b>
-                an, die als Parameter eine Temparatur in Grad Celsius übergeben bekommt.
-                Je nach Wert der übergebenen Temparatur soll sie einen der folgenden Strings
+                Definiere eine Funktion mit dem Namen <b><code>checkTemperature()</code></b>
+                an, die als Parameter eine Temperatur in Grad Celsius übergeben bekommt.
+                Je nach Wert der übergebenen Temperatur soll sie einen der folgenden Strings
                 zurückliefern:
             </p>
             <ul>
@@ -61,26 +61,26 @@ class SnippetFunktionen2 {
 
     verify(iframe) {
         let error = "";
-        let checkTemparature = iframe.contentWindow.checkTemparature;
+        let checkTemperature = iframe.contentWindow.checkTemperature;
         let results = [undefined, undefined, undefined, undefined];
 
-        if (checkTemparature) {
-            results[0] = checkTemparature(5);
-            results[1] = checkTemparature(12);
-            results[2] = checkTemparature(25);
-            results[3] = checkTemparature(36);
+        if (checkTemperature) {
+            results[0] = checkTemperature(5);
+            results[1] = checkTemperature(12);
+            results[2] = checkTemperature(25);
+            results[3] = checkTemperature(36);
         }
 
-        if (!checkTemparature) {
-            error = "Funktion <b><code>checkTemparature</code></b> existiert nicht.";
+        if (!checkTemperature) {
+            error = "Funktion <b><code>checkTemperature</code></b> existiert nicht.";
         } else if (results[0] !== "Kalt") {
-            error = `Funktion <b><code>checkTemparature(5)</code></b> liefert das falsche Ergebnis <b><code>${results[0]}</code></b>.`;
+            error = `Funktion <b><code>checkTemperature(5)</code></b> liefert das falsche Ergebnis <b><code>${results[0]}</code></b>.`;
         } else if (results[1] !== "Etwas frisch") {
-            error = `Funktion <b><code>checkTemparature(12)</code></b> liefert das falsche Ergebnis <b><code>${results[1]}</code></b>.`;
+            error = `Funktion <b><code>checkTemperature(12)</code></b> liefert das falsche Ergebnis <b><code>${results[1]}</code></b>.`;
         } else if (results[2] !== "Genau richtig") {
-            error = `Funktion <b><code>checkTemparature(25)</code></b> liefert das falsche Ergebnis <b><code>${results[2]}</code></b>.`;
+            error = `Funktion <b><code>checkTemperature(25)</code></b> liefert das falsche Ergebnis <b><code>${results[2]}</code></b>.`;
         } else if (results[3] !== "Heiß") {
-            error = `Funktion <b><code>checkTemparature(36)</code></b> liefert das falsche Ergebnis <b><code>${results[3]}</code></b>.`;
+            error = `Funktion <b><code>checkTemperature(36)</code></b> liefert das falsche Ergebnis <b><code>${results[3]}</code></b>.`;
         }
 
         return error;
