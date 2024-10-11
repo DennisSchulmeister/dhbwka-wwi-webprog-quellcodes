@@ -1,7 +1,7 @@
 "use strict";
 
  /**
- * Hauptklasse der Anwendung. Sie erzeugte den Single Page Router und besitzt
+ * Hauptklasse der Anwendung. Sie erzeugt den Single Page Router und besitzt
  * eine Reihe von Hilfsmethoden, die an verschiedenen Stellen in der Anwendung
  * benötigt werden.
  */

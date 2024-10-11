@@ -4,7 +4,7 @@
   "description": "Online dictionary for mobile devices",
   "main": "server.js",
   "scripts": {
-    "run": "node server.js"
+    "start": "node server.js"
   },
   "author": "Dennis Schulmeister-Zimolong <dennis@wpvs.de>",
   "license": "AGPL-3.0",

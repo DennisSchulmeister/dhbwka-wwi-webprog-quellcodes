@@ -7,6 +7,8 @@ window.addEventListener("load", () => {
     let messagesElement = null;     // TODO: Element "#chat-area .messages" stattdessen zuweisen
     let inputElement = null;        // TODO: Element "#chat-area input" stattdessen zuweisen
 
+    document.querySelector("html").addEventListener("click", () => inputElement.focus());
+
     // Chatbot-Logik
     let chatbotKeywords = {
         "*": [
@@ -29,7 +31,7 @@ window.addEventListener("load", () => {
             "Überlasse das Fragestellen lieber mir.",
             "Lass uns diese Frage für später aufheben.",
         ],
-        
+
         "HALLO|HI|TAG|MAHLZEIT|SERVUS": [
             "Schön, dich zu sehen. Lange nichts mehr gehört.",
             "Ich weiß nicht, ob ich gerade in Stimmung dafür bin …",
@@ -67,6 +69,9 @@ window.addEventListener("load", () => {
      * @return {String} Antwort des Chatbots
      */
     function generateBotAnswer(message) {
+        // TODO: Die folgende Zeile entfernen
+        return "Hallo. Ich bin Eliza.";
+
         // Keywords des Chatbots nach einem Treffer durchsuchen
         message = message.toUpperCase();
         let possibleAnswers = [];

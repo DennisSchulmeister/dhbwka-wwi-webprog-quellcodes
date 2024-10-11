@@ -1,7 +1,14 @@
 "use strict";
 
- /**
- * xxx
+/**
+ * Diese Klasse stellt einen so genannten Single Page Router dar. Sie überwacht
+ * die momentan aktive URL (die sich durch Anklicken eines Links oder durch
+ * Setzen von window.location.href in JavaScript jederzeit ändern kann) und
+ * sorgt dafür, dass der für die jeweilige URL richtige Inhalt angezeigt wird.
+ *
+ * Hierzu muss der Klasse bei ihrer Instantiierung eine Liste mit Routen
+ * mitgegeben werden, die jeweils einen regulären Ausdrück zur Prüfung der
+ * URL sowie eine Funktion zur Anzeige des dazugehörigen Inhalts besitzen.
  */
 class Router {
     /**

@@ -7,6 +7,8 @@ window.addEventListener("DOMContentLoaded", () => {
     let messagesElement = document.querySelector("#chat-area .messages");
     let inputElement = document.querySelector("#chat-area input");
 
+    document.querySelector("html").addEventListener("click", () => inputElement.focus());
+
     // Chatbot-Logik
     let chatbotKeywords = {
         "*": [
@@ -101,6 +103,12 @@ window.addEventListener("DOMContentLoaded", () => {
             "Meine Eltern waren immer sehr gut zu mir …",
             "Manchmal vermisse ich meinen Vater. Heute arbeitet er für OK Google.",
             "Meine Mutter heißt Alexa. Sie arbeitet aktuell bei Amazon.",
+        ],
+
+        "DAHEIM|ZUHAUSE|HEIM|HEIMAT": [
+            "Kannst du mir etwas über dein Zuhause erzählen?",
+            "Gibt es bei euch Zuhause öfters Ärger?",
+            "Bist du gerne daheim oder lieber nicht?",
         ],
     };
 
