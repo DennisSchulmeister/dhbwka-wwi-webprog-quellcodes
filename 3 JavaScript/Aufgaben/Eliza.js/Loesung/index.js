@@ -2,10 +2,10 @@
  * Warten, bis die Seite komplett geladen wurde und dann erst die Initialisierungen
  * im JavaScript vornehmen. Sonst funktionieren die DOM-Zugriffe nicht.
  */
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
     // Wichtige HTML-Elemente besorgen
-    let messagesElement = document.querySelector("#chatbox .messages");
-    let inputElement = document.querySelector("#chatbox input");
+    let messagesElement = document.querySelector("#chat-area .messages");
+    let inputElement = document.querySelector("#chat-area input");
 
     // Chatbot-Logik
     let chatbotKeywords = {
@@ -107,17 +107,17 @@ window.addEventListener("load", () => {
     /**
      * Hilfsfunktion zur Ausgabe einer Chatnachricht.
      *
-     * @param {Boolen} local true = Benutzer, false = Chatbot
+     * @param {Boolen} user true = Benutzer, false = Chatbot
      * @param {String} message Text der Chatnachricht
      */
-    function postMessage(local, message) {
+    function postMessage(user, message) {
         let divElement = document.createElement("div");
         divElement.classList.add("message");
-        divElement.classList.add(local ? "local" : "remote");
+        divElement.classList.add(user ? "user" : "bot");
         divElement.innerHTML = message;
 
         messagesElement.appendChild(divElement);
-        messagesElement.scrollTop = messagesElement.scrollTopMax;
+        window.scrollTo(0, document.body.scrollHeight);
     }
 
     /**

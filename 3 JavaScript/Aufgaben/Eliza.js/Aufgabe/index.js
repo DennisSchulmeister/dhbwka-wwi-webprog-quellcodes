@@ -4,8 +4,8 @@
  */
 window.addEventListener("load", () => {
     // Wichtige HTML-Elemente besorgen
-    let messagesElement = null;     // TODO: Element "#chatbox .messages" stattdessen zuweisen
-    let inputElement = null;        // TODO: Element "#chatbox input" stattdessen zuweisen
+    let messagesElement = null;     // TODO: Element "#chat-area .messages" stattdessen zuweisen
+    let inputElement = null;        // TODO: Element "#chat-area input" stattdessen zuweisen
 
     // Chatbot-Logik
     let chatbotKeywords = {
@@ -45,13 +45,13 @@ window.addEventListener("load", () => {
     /**
      * Hilfsfunktion zur Ausgabe einer Chatnachricht.
      *
-     * @param {Boolen} local true = Benutzer, false = Chatbot
+     * @param {Boolen} user true = Benutzer, false = Chatbot
      * @param {String} message Text der Chatnachricht
      */
-    function postMessage(local, message) {
+    function postMessage(user, message) {
         // TODO: Neues <div>-Element erzeugen.
         // TODO: CSS-Klasse "message" zuweisen.
-        // TODO: CSS-Klasse "local" zuweisen, wenn local === true, sonst "remote" (z.B. mit ?:-Operator).
+        // TODO: CSS-Klasse "user" zuweisen, wenn local === true, sonst "bot" (z.B. mit ?:-Operator).
         // TODO: Inhalt des <div>-Elements mit dem Nachrichtentext belegen.
 
         // TODO: <div>-Element an messagesElement anhängen

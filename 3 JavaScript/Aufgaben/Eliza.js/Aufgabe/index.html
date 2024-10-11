@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>📱 Eliza.js</title>
+        <title>🤖 Eliza.js</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="style.css"/>
         <script src="index.js"></script>
     </head>
-    <body class="flexbox column">
-        <h1>Eliza.js – Chatten bis der Arzt kommt!</h1>
-
-        <main id="chatbox" class="stretch flexbox column">
-            <div class="messages stretch flexbox column"></div>
-            <input placeholder="Antwort …" />
+    <body>
+        <main id="chat-area">
+            <div class="banner">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</div>
+            <div class="banner">Eliza.js – Chatten bis der Arzt kommt!</div>
+            <div class="banner">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</div>
+        
+            <div class="messages"></div>
+            <input autofocus />
         </main>
+
+        <main id="page-content" class="hidden"></main>
     </body>
 </html>

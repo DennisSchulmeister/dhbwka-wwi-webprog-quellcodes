@@ -1,19 +1,45 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>📱 Eliza.js</title>
+        <title>🤖 Eliza.js</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        <!-- HTMX als einfache Lösung für Single Page Apps -->
+        <script src="https://unpkg.com/htmx.org@2.0.3"></script>
+
+        <!-- Eigene Skripte -->
         <link rel="stylesheet" href="style.css"/>
         <script src="index.js"></script>
-    </head>
-    <body class="flexbox column">
-        <h1>Eliza.js – Chatten bis der Arzt kommt!</h1>
 
-        <main id="chatbox" class="stretch flexbox column">
-            <div class="messages stretch flexbox column"></div>
-            <input placeholder="Antwort …" />
+        <script>
+            function showChat() {
+                htmx.find('#chat-area').classList.remove("hidden");
+                htmx.find('#page-content').classList.add("hidden");
+            }
+
+            function hideChat() {
+                htmx.find('#chat-area').classList.add("hidden");
+                htmx.find('#page-content').classList.remove("hidden");
+            }
+        </script>
+    </head>
+    <body>
+        <nav>
+            <a hx-on:click="showChat()">Chat</a>
+            <a hx-get="pages/settings.html" hx-target="#page-content" hx-on:click="hideChat()">Einstellungen</a>
+            <a hx-get="pages/about.html" hx-target="#page-content" hx-on:click="hideChat()">Informationen</a>
+        </nav>
+
+        <main id="chat-area">
+            <div class="banner">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</div>
+            <div class="banner">Eliza.js – Chatten bis der Arzt kommt!</div>
+            <div class="banner">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</div>
+        
+            <div class="messages"></div>
+            <input autofocus />
         </main>
+
+        <main id="page-content" class="hidden"></main>
     </body>
 </html>

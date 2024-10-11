@@ -1,124 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 html, body {
     margin: 0;
     padding: 0;
     min-height: 100%;
     height: 100%;
     box-sizing: border-box;
+
+    scrollbar-width: none;
+
+    --green1: rgb(0, 145, 0);
+    --green2: rgb(0, 200, 0);
+    --grey: lightgrey;
 }
 
 html {
-    /* https://pixabay.com/illustrations/leaves-tropical-summer-exotic-3923413/ */
-    background-image: url(background.jpg);
-    background-attachment: fixed;
-}
+    /* https://pixabay.com/vectors/scan-scan-lines-scanner-monitor-tv-7133901/ */
+    background-image: url(background.png);
+    background-color: rgb(0, 9, 0);
+    color: var(--green1);
 
-body {
-    /* padding: 1rem; */
-    backdrop-filter: blur(10px);
+    font-family: "VT323", monospace;
+    font-size: 16pt;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
 
-    font-family: sans-serif;
-    font-size: 13pt;
-}
-
-input {
-    font-size: 13pt;
-}
-
-main {
-    max-height: 100%;
-}
-
-h1 {
-    font-size: 130%;
-    color: white;
-    text-shadow:  1px  1px #2e0f48,
-                 -1px -1px #2e0f48,
-                 -1px  1px #2e0f48,
-                  1px -1px #2e0f48;
-
-    background: rgba(75, 101, 132, 0.75);
-    margin: 0;
-    padding: 0.25rem;
-    padding-bottom: 4rem;
-    margin-bottom: -4rem;
-}
-
-.flexbox {
-    display: flex;
-    align-items: stretch;
-    gap: 1rem;
-}
-
-.column {
-    flex-direction: column;
-}
-
-.stretch {
-    flex: 1;
-    overflow: auto;
-}
-
-#chatbox {
-    border: 1px solid rgb(100, 100, 100);
-    box-shadow: 0px 0px 4px rgba(0,0,0, 0.2);
-    background: white;
-
-    /* https://pixabay.com/illustrations/children-drawings-baby-fish-cat-1941336/ */
-    background-image: url(pattern.png);
-
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-
-    margin: 1rem;
-    margin-top: 0;
-    align-self: center;
-}
-
-@media screen and (min-width: 61rem) {
-    #chatbox {
-        max-width: 60rem;
-    }
-}
-
-#chatbox .messages {
-    align-self: stretch;
     padding: 1em;
-    overflow: auto;
-    scroll-behavior: smooth;
-
-    justify-content: start;
 }
 
-#chatbox input {
-    border: none;
-    outline: none;
-    background: rgb(230, 230, 230);
-    color: rgb(60, 60, 60);
+.hidden {
+    display: none;
+}
 
-    padding: 0.5em;
-    width: 100%;
-    box-sizing: border-box;
+a, a:visited {
+    color: var(--green1);
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+a:hover {
+    color: var(--green2);
+}
+
+nav {
+    margin-bottom: 1em;
+}
+
+.banner {
+    font-weight: bold;
+    color: var(--grey);
+}
+
+.messages {
+    margin-top: 1em;
 }
 
 .message {
-    border-radius: 0.5em;
-
-    padding: 0.5em;
-    box-sizing: border-box;
-
     margin-bottom: 1em;
-    box-shadow: 1px 1px 2px rgba(0,0,0, 0.33);
 }
 
-.message.local {
-    background-color: #a5b1c2;
-    color: rgba(0,0,0, 0.75);
-    align-self: flex-start;
+.message.bot {
+    font-weight: bold;
 }
 
-.message.remote {
-    background-color: #4b6584;
-    color: rgba(255,255,255, 0.75);
-    align-self: flex-end;
+input,
+.message.user {
+    color: var(--green2);
+}
+
+input {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+
+    font-family: "VT323", monospace;
+    font-size: 16pt;
 }
