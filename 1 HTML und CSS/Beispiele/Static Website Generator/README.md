@@ -34,12 +34,12 @@ muss jede HTML-Datei dieselben Grundelemente wie Kopfbereich, Navigationsmenü, 
 und so weiter beinhalten. Auch muss jede HTML-Datei einem einheitlichen Layout folgen.
 
 Bisher können wir schon die „Gestaltungsregeln” in Stylesheet-Dateien auslagern und diese
-in jeder HTML-Datei einbinden. Dadurch wird immerhin sichergestellt, dass die Inhalt der
-HTML-Dateien einheitlich formatiert werden. Ungelöst ist aber bisher das Problem, wie wir
+in jeder HTML-Datei einbinden. Dadurch wird immerhin sichergestellt, dass die Inhalte der
+HTML-Dateien einheitlich formatiert werden. Ungelöst ist aber noch das Problem, wie wir
 einen einheitlichen Aufbau der HTML-Dateien erzielen können, ohne die allgemeinen Teile
-wie Kopf- und Fußbereich in jeder HTML-Datei aufs Neue ausprogrammieren zu müssen. Die
-einzige Lösung, die wir bisher kennen, ist diese Inhalte per Copy & Paste in jede
-HTML-Datei zu kopieren (oder die Dateien gleich durch Kopieren einer Vorlagedatei zu
+wie Kopf- und Fußbereich in jeder HTML-Datei immer wieder aufs Neue ausprogrammieren zu
+müssen. Die einzige Lösung, die wir bisher kennen, ist diese Inhalte per Copy & Paste in
+jede HTML-Datei zu kopieren (oder die Dateien gleich durch Kopieren einer Vorlagedatei zu
 erzeugen) und zu hoffen, dass sie sich später nicht mehr all zu oft ändern werden.
 
 Doppelter Quellcode ist beim Programmieren eigentlich so gut wie immer schlecht. Wir
@@ -53,12 +53,12 @@ eingefügt wird.
 
 Diese Grundidee liegt eigentlich allen Methoden zur dynamischen Erzeugung von Webinhalten
 zugrunde. Unterschiede gibt es jedoch darin, in welcher Form Templates und Content definiert
-werden sowie wann und wie diese zusammengefügt werden. MitBlick auf das Wann und Wie lassen
+werden sowie wann und wie diese zusammengefügt werden. Mit Blick auf das Wann und Wie lassen
 sich folgende drei Ansätze unterscheiden:
 
   1. Zur Laufzeit auf der Serverseite, wenn eine Seite angefordert wird
   2. Zur Laufzeit auf der Clientseite, wenn die Seite dargestellt wird
-  3. Während der Programmierung der Seite auf dem Rechner der/des Entwickler*in
+  3. Während der Programmierung auf dem Rechner der/des Entwickler*in
 
 Die ersten beiden Ansätze schauen wir uns zu einem späteren Zeitpunkt an, wenn wir uns
 mit JavaScript beschäftigen. Hier soll es stattdessen um die dritte Möglichkeit gehen,
@@ -84,7 +84,7 @@ In diesem Beispiel wird die in Python programmierte Anwendung
 [Cactus](https://github.com/eudicots/Cactus) verwendet. Der Grund hierfür ist, dass sie
 nur die wichtigsten Funktionen implementiert und somit wesentlich überschaubarer als
 viele andere Produkte ist. Außerdem werden die HTML-Templates in der
-[Django Template Language](https://docs.djangoproject.com/en/3.1/topics/templates/)
+[Django Template Language](https://docs.djangoproject.com/en/dev/topics/templates/)
 geschrieben, die eine gute Strukturierung der Templates ermöglicht.
 
 
@@ -96,8 +96,8 @@ installiert sein. Alternativ kann das Beispiel auch auf [gitpod.io](https://gitp
 in deren Online-IDE ausgeführt werden.
 
 Auf dem eigenen Rechner empfiehlt es sich, zunächst ein Python-Environment anzulegen,
-um darin die abhängigen Pakete installieren zu können. Auf gitpod.io entfällt dieser
-Schritt hingegen:
+um darin die abhängigen Pakete installieren zu können. Auf `gitpod.io` entfällt dieser
+Schritt:
 
   *Linux, Unix, Mac:*
 
@@ -242,5 +242,5 @@ Eine kleine Dokumentation zu Cactus findet sich in der
 [README-Datei auf GitHub](https://github.com/eudicots/Cactus).
 
 Die Django Template Language ist im der
-[Onlinedokumentation von Django](https://docs.djangoproject.com/en/3.1/topics/templates/)
+[Onlinedokumentation von Django](https://docs.djangoproject.com/en/dev/topics/templates/)
 beschrieben.
