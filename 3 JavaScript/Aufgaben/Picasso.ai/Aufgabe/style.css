@@ -170,12 +170,11 @@ page-start {
             
             padding: 0.5em;
             border-radius: 0.5em;
-            transition: transform 0.25s, box-shadow 0.25s;
+            transition: transform 0.25s;
         }
 
         button:hover {
             transform: scale(102%);
-            box-shadow: var(--shadow1);
             cursor: pointer;
         }
     }
