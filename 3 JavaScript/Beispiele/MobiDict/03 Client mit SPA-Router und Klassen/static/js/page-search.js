@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * Klasse PageSearch: Zeigt die Startseite mit der Suche und Ergebnislsite.
+ * Klasse PageSearch: Zeigt die Startseite mit der Suche und Ergebnisliste.
  */
 class PageSearch {
     /**
@@ -70,7 +70,7 @@ class PageSearch {
     }
 
     /**
-     * Den Router auffordern, eine Seite mit dem Suchergebniss zu einer
+     * Den Router auffordern, eine Seite mit dem Suchergebnis zu einer
      * Suche zu öffnen.
      */
     _gotoSearchResult(query) {

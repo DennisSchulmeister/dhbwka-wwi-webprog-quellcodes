@@ -16,7 +16,7 @@ window.addEventListener("load", async () => {
      *
      * Die rufende Funktion muss hierfür mit async gekennzeichnet werden.
      *
-     * @param {Number} ms Abzuwartende Zeit in Milisekunden
+     * @param {Number} ms Abzuwartende Zeit in Millisekunden
      */
     async function sleep(ms) {
         return new Promise(resolve => {
@@ -25,7 +25,7 @@ window.addEventListener("load", async () => {
     }
 
     /**
-     * Wechsel des gerade sichtbaren Hintergrundbilds. Der Übgergang wird
+     * Wechsel des gerade sichtbaren Hintergrundbilds. Der Übergang wird
      * mit Hilfe von CSS animiert.
      *
      * @param {Number} index Index im images-Array
@@ -67,7 +67,7 @@ window.addEventListener("load", async () => {
         //
         //   1. Dem <div> mit dem neuen Bild die Klasse "fadeout" geben.
         //
-        //   2. 50 Milisekunden warten, damit die CSS-Regeln wirklich greifen.
+        //   2. 50 Millisekunden warten, damit die CSS-Regeln wirklich greifen.
         //
         //   3. Dem <div> die Klasse "fadeout" wieder wegnehmen.
         //
@@ -96,7 +96,7 @@ window.addEventListener("load", async () => {
         // übergeben werden.
         //
         // Wenn das angeklickte Bild die Klasse "current" besitzt, soll nichts passieren.
-        // Andernfalls soll das angeklicke Bild mit showImage() wie oben beschrieben
+        // Andernfalls soll das angeklickte Bild mit showImage() wie oben beschrieben
         // angezeigt werden.
     };
 

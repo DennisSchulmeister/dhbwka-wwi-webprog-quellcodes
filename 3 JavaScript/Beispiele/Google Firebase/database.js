@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * Zentrale Klasse für alle Datenbazugriffe. Diese Klasse versteckt die
+ * Zentrale Klasse für alle Datenbankzugriffe. Diese Klasse versteckt die
  * Einzelheiten der Firebase-Datenbank vor dem Rest der Anwendung, indem
  * sie für alle benötigten Datenbankzugriffe eine Methode definiert, in der
  * der Zugriff auf Firebase ausprogrammiert wurde.
@@ -46,7 +46,7 @@ class Database {
      *
      * Beachte, dass das Auslesen aller Datensätze keine gute Idee ist, weil
      * Firebase für jedes abgerufene Dokument eine Gebühr verlangt, wenn man
-     * keinen kostenlosten Account hat. Dummerweise gibt es aber keine einfache
+     * keinen kostenlosen Account hat. Dummerweise gibt es aber keine einfache
      * Funktion zum Ermitteln der Anzahl Datensätze. Siehe:
      *
      * https://stackoverflow.com/questions/46554091/cloud-firestore-collection-count

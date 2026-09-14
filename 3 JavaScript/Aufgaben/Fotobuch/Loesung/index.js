@@ -16,7 +16,7 @@ window.addEventListener("load", async () => {
      *
      * Die rufende Funktion muss hierfür mit async gekennzeichnet werden.
      *
-     * @param {Number} ms Abzuwartende Zeit in Milisekunden
+     * @param {Number} ms Abzuwartende Zeit in Millisekunden
      */
     async function sleep(ms) {
         return new Promise(resolve => {
@@ -42,7 +42,7 @@ window.addEventListener("load", async () => {
 
         // Dazugehöriges Vorschaubild hervorheben und sicherstellen, dass in
         // der mobilen Ansicht auch das Bild davor und danach ausgewählt werden
-        // kann. In der Mobilansicht werden hierfür immer exkt drei Vorschau-
+        // kann. In der Mobilansicht werden hierfür immer exakt drei Vorschau-
         // Bilder angezeigt.
         for (let previewImage of previewContainer.querySelectorAll("img")) {
             previewImage.classList.remove("visible");

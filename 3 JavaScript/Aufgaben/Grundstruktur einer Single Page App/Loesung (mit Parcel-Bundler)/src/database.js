@@ -76,7 +76,7 @@ export default class Database {
     }
 
     /**
-     * Diese Methode sucht einen Datensazt anhand seiner ID in der Datenbank
+     * Diese Methode sucht einen Datensatz anhand seiner ID in der Datenbank
      * und liefert den ersten, gefundenen Treffer zurück.
      *
      * @param  {Number} id Datensatz-ID

@@ -5,7 +5,7 @@
  * um mehrere Elemente nebeneinander anzuordnen, die Höhe und Breite der Elemente
  * zu maximieren und diese zu zentrieren. Dadurch passt sich das Layout
  * automatisch an die maximale Breite des Bildschirms an, ganz egal wie groß
- * oder klein diese ist. (Reponsive ist das Layout deshalb aber noch nicht, da
+ * oder klein diese ist. (Responsive ist das Layout deshalb aber noch nicht, da
  * hierfür bei zu kleinen Bildschirmen auf klassische, übereinander gestapelte
  * Layouts umgeschaltet werden müsste. Aber beachte, wie die Musterlösung
  * harmonischer als das Original wirkt, da sich alle Elemente schön bündig
@@ -17,7 +17,7 @@
  * rechts vom Layout immer größer wird, je höher die Bildschirmauflösung ist,
  * da die Breite ja immer gleich bleibt. Wollte man trotzdem anstelle von
  * FlexBox immer noch so arbeiten, könnte man heute die Größenangaben in `vw`
- * und `vh` vornehmen, um sierelativ zur Breite oder Höhe des Browsers
+ * und `vh` vornehmen, um sie relativ zur Breite oder Höhe des Browsers
  * (Viewports) zu definieren.
  *
  * Es gilt also wie so oft in der Webentwicklung: Viele Wege führen nach Rom.

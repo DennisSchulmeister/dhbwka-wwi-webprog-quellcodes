@@ -5,7 +5,7 @@
  */
 class PageAbout {
     /**
-     * Konsturktor
+     * Konstruktor
      * @param {App} app Zentrale App-Instanz
      */
     constructor(app) {

@@ -79,7 +79,7 @@ header .searchbar .input {
     /* Dem eigentlichen Eingabefeld maximale Breite in der Flexbox geben. */
     flex: 1;
 
-    /* Hintegrundfarbe und Rahmen entfernen, da durch das Elternelement schon
+    /* Hintergrundfarbe und Rahmen entfernen, da durch das Elternelement schon
      * schon ein Hintergrund definiert ist. */
     border-width: 0;
     background: transparent;

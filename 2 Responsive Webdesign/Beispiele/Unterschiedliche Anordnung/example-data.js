@@ -14,7 +14,7 @@ examples = [
     }, {
         "img":  "img/dog4.jpg",
         "name": "Danni",
-        "text": "Danni ist eine ganz besondere kleine Hundedame. Sie weiß, was sie will und gibt nicht nach, bis sie es hat. Aber wer könnte diesem Blick schon wiederstehen?"
+        "text": "Danni ist eine ganz besondere kleine Hundedame. Sie weiß, was sie will und gibt nicht nach, bis sie es hat. Aber wer könnte diesem Blick schon widerstehen?"
     }, {
         "img":  "img/dog5.jpg",
         "name": "Rudi",

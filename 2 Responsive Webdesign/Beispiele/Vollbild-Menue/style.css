@@ -107,8 +107,8 @@ header .toggle-button:hover {
     gap: 0.5em;
 }
 
-/* Beim Ein-/Ausblenden zunächst nur die Transaprenz des Menüs ändern,
- * später mit JavaScript das Menü richtig vom Bildschirm entfnern, indem
+/* Beim Ein-/Ausblenden zunächst nur die Transparenz des Menüs ändern,
+ * später mit JavaScript das Menü richtig vom Bildschirm entfernen, indem
  * die Klasse 'hidden' gesetzt wird */
 #main-menu.invisible {
     opacity: 0;
