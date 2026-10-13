@@ -99,7 +99,6 @@ JavaScript
 - [Picasso.ai](https://github.com/DennisSchulmeister/dhbwka-wwi-webprog-aufgabe-picasso-ai)
 - [SPA-Router](https://github.com/DennisSchulmeister/dhbwka-wwi-webprog-aufgabe-spa-router)
 - [Stoppuhr mit Closures](https://github.com/DennisSchulmeister/dhbwka-wwi-webprog-aufgabe-stoppuhr-closures)
-- [TwoStep](https://github.com/DennisSchulmeister/dhbwka-wwi-webprog-aufgabe-twostep)
 
 ### Lösungen
 
@@ -128,6 +127,7 @@ JavaScript
 - [Socketserver](https://github.com/DennisSchulmeister/dhbwka-wwi-webprog-beispiel-socketserver)
 - [Syntaxbeispiele](https://github.com/DennisSchulmeister/dhbwka-wwi-webprog-beispiel-syntaxbeispiele)
 - [Tabreiter umschalten](https://github.com/DennisSchulmeister/dhbwka-wwi-webprog-beispiel-tabreiter-umschalten)
+- [TwoStep](https://github.com/DennisSchulmeister/dhbwka-wwi-webprog-beispiel-twostep)
 
 Sonstiges
 ---------
